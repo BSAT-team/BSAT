@@ -1,0 +1,1210 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.11.9">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Raw data sources – BSAT</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./pipeline.html" rel="next">
+<link href="./data-format.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/scrollable-regions/scrollable-regions.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-4ace205358711f90eddc57b99ce3a538.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar docked nav-fixed quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">Skip to main content</a>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark" aria-label="Site">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">BSAT</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link active" href="./installation/local-unix.html" aria-current="page"> 
+<span class="menu-text">Install</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./walkthrough.html"> 
+<span class="menu-text">Walkthrough</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./data-format.html"> 
+<span class="menu-text">Data</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./model.html"> 
+<span class="menu-text">Model</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./dashboard.html"> 
+<span class="menu-text">Dashboard</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./reference/index.html"> 
+<span class="menu-text">Reference</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/BSAT-team/BSAT"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+            <div id="quarto-search" class="" title="Search"></div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav" aria-label="Toolbar">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="Breadcrumbs"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./data-format.html">Data</a></li><li class="breadcrumb-item"><a href="./data-sources.html">Raw data sources</a></li></ol></nav>
+        <a class="flex-grow-1" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto" aria-label="Section">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-controls="quarto-sidebar-section-1" aria-expanded="false">
+ <span class="menu-text" id="quarto-sidebar-section-1-label">Installation</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
+      </div>
+      <ul id="quarto-sidebar-section-1" aria-labelledby="quarto-sidebar-section-1-label" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./installation/cloud.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Cloud and Docker</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./installation/local-unix.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Local: macOS and Linux</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./installation/local-windows.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Local: Windows</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./installation/troubleshooting.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Troubleshooting</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./walkthrough.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Walkthrough</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-controls="quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text" id="quarto-sidebar-section-2-label">Data</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
+      </div>
+      <ul id="quarto-sidebar-section-2" aria-labelledby="quarto-sidebar-section-2-label" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./data-format.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Package and file format</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./data-sources.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Raw data sources</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./pipeline.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Processing pipeline</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./updating-raw-data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Updating raw data</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./model.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Model</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./dashboard.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Dashboard</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./reference/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text" id="quarto-sidebar-section-3-label">Reference</span></a>
+            <button type="button" class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-controls="quarto-sidebar-section-3" aria-expanded="false" aria-label="Toggle section: Reference">
+              <i class="bi bi-chevron-right ms-2" aria-hidden="true"></i>
+            </button> 
+      </div>
+      <ul id="quarto-sidebar-section-3" aria-labelledby="quarto-sidebar-section-3-label" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./reference/cli.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Command line</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./reference/julia.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Julia: BSATRunner</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./reference/r.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">R: pipeline scripts</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./reference/python.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Python: bsat_dashboard</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./contributing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Contributing</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" aria-labelledby="toc-title" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#usda-baseline" id="toc-usda-baseline" class="nav-link active" data-scroll-target="#usda-baseline">USDA baseline</a></li>
+  <li><a href="#macro-and-population" id="toc-macro-and-population" class="nav-link" data-scroll-target="#macro-and-population">Macro and population</a></li>
+  <li><a href="#international-prices-and-cpi" id="toc-international-prices-and-cpi" class="nav-link" data-scroll-target="#international-prices-and-cpi">International prices and CPI</a></li>
+  <li><a href="#trade-barriers" id="toc-trade-barriers" class="nav-link" data-scroll-target="#trade-barriers">Trade barriers</a></li>
+  <li><a href="#land-cost-and-livestock" id="toc-land-cost-and-livestock" class="nav-link" data-scroll-target="#land-cost-and-livestock">Land cost and livestock</a></li>
+  <li><a href="#identifiers-and-parameters" id="toc-identifiers-and-parameters" class="nav-link" data-scroll-target="#identifiers-and-parameters">Identifiers and parameters</a></li>
+  <li><a href="#large-files" id="toc-large-files" class="nav-link" data-scroll-target="#large-files">Files not distributed and their derived products</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content" tabindex="-1">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="Breadcrumbs"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./data-format.html">Data</a></li><li class="breadcrumb-item"><a href="./data-sources.html">Raw data sources</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Raw data sources</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>Every file under <code>data/raw/</code> is a public source file exactly as downloaded; the pipeline never modifies it. Five trade-barrier files are not distributed with the repository (two for size, three because their source terms do not allow redistribution); the pipeline ships their derived products in <code>data/interim/</code> instead, as described in <a href="#large-files">Files not distributed and their derived products</a>. This page lists each file with its source, download location, vintage and whether an account is needed to download it. Which script reads each file and how to bring in a new vintage is in <a href="./updating-raw-data.html">Updating raw data</a>; the original source list is kept as <a href="data/data_source.md">data/data_source.md</a> and the attribution lines in <code>data/raw/README.md</code>.</p>
+<p>Each source’s terms of use apply to its files; the project does not relicense them. The terms are linked in the last column of each table.</p>
+<p>Files are grouped by role in the pipeline. “Account” says whether the source requires registration to download the file.</p>
+<section id="usda-baseline" class="level2">
+<h2 class="anchored" data-anchor-id="usda-baseline">USDA baseline</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>File</th>
+<th>Source and content</th>
+<th>Vintage</th>
+<th>Account</th>
+<th>Terms</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>2025 International Long-Term Projections to 2034.xlsx</code></td>
+<td>USDA ERS, <a href="https://www.ers.usda.gov/data-products/international-baseline-data">International Baseline Data</a> : 10-year projections of area, yield, production, consumption, trade, stocks and feed use by commodity and region</td>
+<td>2025 release, projections to 2034</td>
+<td>No</td>
+<td><a href="https://www.usda.gov/policies-and-links">USDA policies</a></td>
+</tr>
+<tr class="even">
+<td><code>region_commodity_list_2025.xlsx</code></td>
+<td>Project-maintained: the regions covered by each commodity sheet of the baseline workbook, in sheet order</td>
+<td>Matches the 2025 workbook</td>
+<td>n/a</td>
+<td>project file</td>
+</tr>
+<tr class="odd">
+<td><code>baseline_units.csv</code></td>
+<td>Project-maintained: unit of each baseline attribute per commodity</td>
+<td>Matches the 2025 workbook</td>
+<td>n/a</td>
+<td>project file</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="macro-and-population" class="level2">
+<h2 class="anchored" data-anchor-id="macro-and-population">Macro and population</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>File</th>
+<th>Source and content</th>
+<th>Vintage</th>
+<th>Account</th>
+<th>Terms</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>Current_GDP_WB_2025.xls</code></td>
+<td>World Bank, <a href="https://data.worldbank.org/indicator/NY.GDP.MKTP.CD">GDP (current US$), NY.GDP.MKTP.CD</a></td>
+<td>2025 download; the 2025 column is used</td>
+<td>No</td>
+<td><a href="https://data.worldbank.org/summary-terms-of-use">World Bank terms</a></td>
+</tr>
+<tr class="even">
+<td><code>population_WB_2025.xls</code></td>
+<td>World Bank, <a href="https://data.worldbank.org/indicator/SP.POP.TOTL">Population, SP.POP.TOTL</a></td>
+<td>2025 download; the 2025 column is used</td>
+<td>No</td>
+<td><a href="https://data.worldbank.org/summary-terms-of-use">World Bank terms</a></td>
+</tr>
+<tr class="odd">
+<td><code>Current_GDP_IMF_WEO_2025.csv</code>, <code>population_IMF_WEO_2025.csv</code></td>
+<td>IMF, <a href="https://www.imf.org/en/Publications/SPROLLs/world-economic-outlook-databases">World Economic Outlook database</a>: GDP (current prices, billions) and population (millions); used only for Taiwan, which the World Bank series lack</td>
+<td>WEO 2025</td>
+<td>No</td>
+<td><a href="https://www.imf.org/en/about/copyright-and-terms">IMF copyright and usage</a></td>
+</tr>
+<tr class="even">
+<td><code>Global GDP Shares and GDP Growth Assumptions to 2035.xlsx</code></td>
+<td>USDA, <a href="https://www.ers.usda.gov/publications/pub-details?pubid=113816">Agricultural Projections to 2035</a>: real GDP levels and growth assumptions underlying the baseline</td>
+<td>Projections to 2035</td>
+<td>No</td>
+<td><a href="https://www.usda.gov/policies-and-links">USDA policies</a></td>
+</tr>
+<tr class="odd">
+<td><code>current_GDP_2014_WB.csv</code>, <code>current_GDPpc_2014_WB.csv</code></td>
+<td>World Bank, <a href="https://databank.worldbank.org/source/world-development-indicators">World Development Indicators</a>: 2014 GDP and GDP per capita, current US$ (non-tariff-measure step)</td>
+<td>2014 values</td>
+<td>No</td>
+<td><a href="https://data.worldbank.org/summary-terms-of-use">World Bank terms</a></td>
+</tr>
+<tr class="even">
+<td><code>current_GDP_IMF.xls</code>, <code>current_GDPpc_IMF.xls</code></td>
+<td>IMF, World Economic Outlook database: 2014 GDP and GDP per capita; used only for Taiwan in the non-tariff-measure step</td>
+<td>2014 values</td>
+<td>No</td>
+<td><a href="https://www.imf.org/en/about/copyright-and-terms">IMF copyright and usage</a></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="international-prices-and-cpi" class="level2">
+<h2 class="anchored" data-anchor-id="international-prices-and-cpi">International prices and CPI</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>File</th>
+<th>Source and content</th>
+<th>Vintage</th>
+<th>Account</th>
+<th>Terms</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>2026-06-19 IMF Commodity Prices external-data.xlsx</code></td>
+<td>IMF, <a href="https://www.imf.org/en/research/commodity-prices">Primary Commodity Prices</a>: monthly prices of barley, wheat, cotton, rice, maize, sorghum, soybeans, soybean meal and soybean oil</td>
+<td>Accessed 19 June 2026</td>
+<td>No</td>
+<td><a href="https://www.imf.org/en/about/copyright-and-terms">IMF copyright and usage</a></td>
+</tr>
+<tr class="even">
+<td><code>2026-06-19 International Prices FAO Meat.xlsx</code></td>
+<td>FAO GIEWS, <a href="https://fpma.fao.org/giews/fpmat4/global/#/dashboard/tool/international">FPMA tool, international prices</a>: monthly export prices of beef, pork and poultry</td>
+<td>Accessed 19 June 2026</td>
+<td>No</td>
+<td><a href="https://www.fao.org/contact-us/terms/db-terms-of-use/en/">FAO database terms</a></td>
+</tr>
+<tr class="odd">
+<td><code>2026-06-24 CPI_US.xlsx</code></td>
+<td>BLS, <a href="https://www.bls.gov/cpi/">Consumer Price Index</a>, CPI-U all items, U.S. city average, annual average, rebased to 2017 = 1 (the same series is on <a href="https://fred.stlouisfed.org/series/CPIAUCNS">FRED, CPIAUCNS</a>)</td>
+<td>Retrieved 24 June 2026</td>
+<td>No</td>
+<td><a href="https://www.bls.gov/opub/copyright-information.htm">BLS copyright information</a></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="trade-barriers" class="level2">
+<h2 class="anchored" data-anchor-id="trade-barriers">Trade barriers</h2>
+<p>All files live in <code>data/raw/trade_barriers/</code>.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>File</th>
+<th>Source and content</th>
+<th>Vintage</th>
+<th>Account</th>
+<th>Terms</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>tariff_ave_WITS_2023.csv</code></td>
+<td>World Bank <a href="https://wits.worldbank.org/">WITS</a> (UNCTAD TRAINS): MFN applied tariffs, simple average by reporter and HS product, latest reported year per product. Not distributed; obtain from source (below)</td>
+<td>2023 or last observed</td>
+<td>Free WITS account for custom queries</td>
+<td><a href="https://wits.worldbank.org/data/public/UNCTAD_TermsofUseandDisclaimer.pdf">UNCTAD TRAINS terms</a></td>
+</tr>
+<tr class="even">
+<td><code>tariff_ave_2014_WITS.csv</code></td>
+<td>WITS (UNCTAD TRAINS): 2014 applied tariff ad valorem equivalents, all reporters, all partners, all HS6 products. Not distributed; obtain from source (below)</td>
+<td>2014</td>
+<td>Free WITS account</td>
+<td><a href="https://wits.worldbank.org/data/public/UNCTAD_TermsofUseandDisclaimer.pdf">UNCTAD TRAINS terms</a></td>
+</tr>
+<tr class="odd">
+<td><code>ag_hs_products.csv</code></td>
+<td>WITS: list of agricultural HS products (product group <code>WTO_HS_Aggri</code>). Not distributed; obtain from source (below)</td>
+<td>Static list</td>
+<td>Free WITS account</td>
+<td><a href="https://wits.worldbank.org/data/public/UNCTAD_TermsofUseandDisclaimer.pdf">UNCTAD TRAINS terms</a></td>
+</tr>
+<tr class="even">
+<td><code>country_code_WITS.xlsx</code></td>
+<td>WITS reporter codes with ISO-3 codes (distributed lookup)</td>
+<td>Static list</td>
+<td>No</td>
+<td><a href="https://wits.worldbank.org/faqs.html">WITS FAQ</a></td>
+</tr>
+<tr class="odd">
+<td><code>ag_tariff_USA_2014.xls</code></td>
+<td>WTO, <a href="https://ttd.wto.org/en">Tariff and Trade Data</a>: U.S. applied MFN schedule at HS6, 2014; used only as the source of the commodity-to-HS6 mapping. Not distributed; obtain from source (below)</td>
+<td>2014</td>
+<td>No for HS6-level data (free login for some downloads)</td>
+<td><a href="https://ttd.wto.org/download-static/terms-of-use">WTO TTD terms</a></td>
+</tr>
+<tr class="even">
+<td><code>ave_hs_importer.csv</code></td>
+<td>World Bank, <a href="https://datacatalog.worldbank.org/search/dataset/0040437">Ad Valorem Equivalent of Non-Tariff Measures</a> (Kee and Nicita): AVE by importer and HS6 product</td>
+<td>2014 reference year</td>
+<td>No</td>
+<td><a href="https://datacatalog.worldbank.org/search/dataset/0040437">Dataset page</a></td>
+</tr>
+<tr class="odd">
+<td><code>BACI_HS92_Y2014_V202401b.csv</code></td>
+<td>CEPII, <a href="https://www.cepii.fr/CEPII/en/bdd_modele/bdd_modele_item.asp?id=37">BACI</a>: bilateral trade flows at HS6, 2014. Not distributed (size); obtain from source (below)</td>
+<td>HS92, release 202401b, year 2014</td>
+<td>No</td>
+<td><a href="https://www.cepii.fr/CEPII/en/bdd_modele/bdd_modele_item.asp?id=37">BACI page</a></td>
+</tr>
+<tr class="even">
+<td><code>country_codes_V202401b.csv</code></td>
+<td>CEPII BACI: numeric country codes with ISO-3 codes (distributed lookup)</td>
+<td>Release 202401b</td>
+<td>No</td>
+<td><a href="https://www.cepii.fr/CEPII/en/bdd_modele/bdd_modele_item.asp?id=37">BACI page</a></td>
+</tr>
+<tr class="odd">
+<td><code>country_region_WB.xlsx</code></td>
+<td>World Bank, <a href="https://datahelpdesk.worldbank.org/knowledgebase/articles/906519-world-bank-country-and-lending-groups">Country and lending groups</a>: geographic region of each economy (fixed effects in the NTM imputation)</td>
+<td>Current classification at download</td>
+<td>No</td>
+<td><a href="https://data.worldbank.org/summary-terms-of-use">World Bank terms</a></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="land-cost-and-livestock" class="level2">
+<h2 class="anchored" data-anchor-id="land-cost-and-livestock">Land cost and livestock</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>File</th>
+<th>Source and content</th>
+<th>Vintage</th>
+<th>Account</th>
+<th>Terms</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>AgTFPInternational2023.xlsx</code></td>
+<td>USDA ERS, <a href="https://www.ers.usda.gov/data-products/international-agricultural-productivity">International Agricultural Productivity</a>: cost shares of land by country (sheet “Cost Shares”, 2021-2030 column)</td>
+<td>2023 release</td>
+<td>No</td>
+<td><a href="https://www.usda.gov/policies-and-links">USDA policies</a></td>
+</tr>
+<tr class="even">
+<td><code>variable_costs_2025/*.xlsx</code> (Feed Grains, Rice, Soybeans and products, Upland Cotton, Wheat)</td>
+<td>USDA, <a href="https://www.ers.usda.gov/publications/pub-details?pubid=113816">Agricultural Projections to 2035</a>: U.S. per-acre variable costs of production by crop</td>
+<td>Projections to 2035</td>
+<td>No</td>
+<td><a href="https://www.usda.gov/policies-and-links">USDA policies</a></td>
+</tr>
+<tr class="odd">
+<td><code>FAOSTAT_total_livestock_value_constant_IntlD.csv</code>, <code>FAOSTAT_each_livestock_value_constant_IntlD.csv</code></td>
+<td>FAO, <a href="https://www.fao.org/faostat/en/#data/QV">FAOSTAT Value of Agricultural Production (QV)</a>: gross production value of livestock, total and by item (indigenous meat), constant 2014-2016 international dollars</td>
+<td>2015 values</td>
+<td>No</td>
+<td><a href="https://www.fao.org/contact-us/terms/db-terms-of-use/en/">FAO database terms</a></td>
+</tr>
+<tr class="even">
+<td><code>FAOSTAT_Livestock_Inventory_2024.csv</code>, <code>FAOSTAT_Slaughtered Livestock_2024.csv</code></td>
+<td>FAO, <a href="https://www.fao.org/faostat/en/#data/QCL">FAOSTAT Crops and livestock products (QCL)</a>: live-animal stocks and animals slaughtered</td>
+<td>2024</td>
+<td>No</td>
+<td><a href="https://www.fao.org/contact-us/terms/db-terms-of-use/en/">FAO database terms</a></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="identifiers-and-parameters" class="level2">
+<h2 class="anchored" data-anchor-id="identifiers-and-parameters">Identifiers and parameters</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>File</th>
+<th>Content</th>
+<th>Vintage</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>mapping.csv</code></td>
+<td>Project-maintained: country to region crosswalk (ISO-3 codes, region codes and names, aggregation groups A, B, C). Group A marks the 42 model regions.</td>
+<td>Matches the 2025 baseline</td>
+</tr>
+<tr class="even">
+<td><code>exogenous_data.csv</code></td>
+<td>Project-maintained: the calibrated elasticities and parameters entered by hand in the model schema (<code>sigma_t</code>, <code>sigma_u</code>, <code>sigma_n</code>, <code>sigma_a</code>, <code>sigma_i</code>, <code>phi_i</code>, <code>omega_q</code>, <code>omega_c</code>, <code>epsilon_l</code>, <code>epsilon_q</code>) and the baseline levels of land productivity, land unavailability and the three TFP attributes. <code>sigma_t</code> and <code>sigma_u</code> come from the calibration in the working paper (BSAT working paper, forthcoming).</td>
+<td>Current model calibration</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="large-files" class="level2">
+<h2 class="anchored" data-anchor-id="large-files">Files not distributed and their derived products</h2>
+<p>Five inputs of scripts 22 and 23, all under <code>data/raw/trade_barriers/</code>, are not distributed with the repository and are listed in <code>.gitignore</code>. Two exceed GitHub’s file size limit; three are extracts whose source terms (UNCTAD TRAINS via WITS, WTO Tariff and Trade Data) do not allow redistribution. In their place the repository tracks the derived products in <code>data/interim/</code>, and <code>main.R</code> reuses those when the raw files are absent. The raw files are needed only to rebuild the derived products from scratch.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Raw file</th>
+<th>Source</th>
+<th>Why not distributed</th>
+<th>Derived file shipped in <code>data/interim/</code></th>
+<th>Consumed by</th>
+<th>How to obtain the raw file</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>tariff_ave_WITS_2023.csv</code></td>
+<td>World Bank WITS, UNCTAD TRAINS: MFN applied tariffs, 2023 or last observed</td>
+<td>Source terms</td>
+<td><code>tariff_ave_region.csv</code>, <code>export_taxes_comm_reg.csv</code></td>
+<td><code>22_compute_tariff_ave.R</code></td>
+<td>WITS manual query for year 2023 (below)</td>
+</tr>
+<tr class="even">
+<td><code>tariff_ave_2014_WITS.csv</code></td>
+<td>World Bank WITS, UNCTAD TRAINS: 2014 applied tariff AVEs</td>
+<td>Size (about 245 MB) and source terms</td>
+<td><code>NTM_IMP_ave_region.csv</code>, <code>NTM_EXP_ave_region.csv</code></td>
+<td><code>23_compute_NTM_ave.R</code></td>
+<td>WITS manual query for year 2014 (below)</td>
+</tr>
+<tr class="odd">
+<td><code>ag_hs_products.csv</code></td>
+<td>World Bank WITS, product group <code>WTO_HS_Aggri</code></td>
+<td>Source terms</td>
+<td><code>NTM_IMP_ave_region.csv</code>, <code>NTM_EXP_ave_region.csv</code></td>
+<td><code>23_compute_NTM_ave.R</code></td>
+<td>WITS: export the product group <code>WTO_HS_Aggri</code> as CSV with a <code>Product</code> column of HS6 codes</td>
+</tr>
+<tr class="even">
+<td><code>ag_tariff_USA_2014.xls</code></td>
+<td>WTO Tariff and Trade Data: United States applied MFN schedule, 2014</td>
+<td>Source terms</td>
+<td><code>commodity_hs6_mapping.csv</code> (the commodity-to-HS6 mapping, 67 HS6 codes)</td>
+<td><code>23_compute_NTM_ave.R</code></td>
+<td><a href="https://ttd.wto.org/" class="uri">https://ttd.wto.org/</a>: export the United States applied MFN schedule for 2014 to Excel; sheet <code>Applied_MFN</code>, HS6 codes in column E from row 6</td>
+</tr>
+<tr class="odd">
+<td><code>BACI_HS92_Y2014_V202401b.csv</code></td>
+<td>CEPII BACI, HS92, release 202401b (the 2014 file of the archive)</td>
+<td>Size (about 460 MB)</td>
+<td><code>NTM_IMP_ave_region.csv</code>, <code>NTM_EXP_ave_region.csv</code></td>
+<td><code>23_compute_NTM_ave.R</code></td>
+<td><code>scripts/fetch_large_raw_data.sh --download</code> downloads the release archive (about 2.4 GB, resumable) from <code>https://www.cepii.fr/DATA_DOWNLOAD/baci/data/BACI_HS92_V202401b.zip</code> and extracts only the 2014 file</td>
+</tr>
+</tbody>
+</table>
+<p>The NTM outputs <code>NTM_IMP_ave_region.csv</code> and <code>NTM_EXP_ave_region.csv</code> are shipped in <code>data/interim/</code> in the same way as the other derived files; the project owner is obtaining them.</p>
+<p>Without arguments, <code>scripts/fetch_large_raw_data.sh</code> (or <code>scripts\fetch_large_raw_data.bat</code>) reports which of the five files is present and prints how to obtain the missing ones. Only the CEPII file can be downloaded by the script; the WITS and WTO files require a free account and an interactive export.</p>
+<p><strong>WITS manual query.</strong> Sign in at <a href="https://wits.worldbank.org/" class="uri">https://wits.worldbank.org/</a>, open Advanced Query, Tariff and Trade Analysis (TRAINS). Reporters: all; partners: all; products: all HS6; year: 2014 or 2023; indicator: AVE of applied tariff. Export the result as CSV and save it as <code>data/raw/trade_barriers/tariff_ave_2014_WITS.csv</code> or <code>data/raw/trade_barriers/tariff_ave_WITS_2023.csv</code>. The file must have the WITS export layout (<code>Reporter</code>, <code>Product</code>, <code>DutyType</code>, <code>Simple Average</code>, <code>Tariff Year</code>); only <code>DutyType == "MFN"</code> rows are used. <code>ag_hs_products.csv</code> is the WITS product group <code>WTO_HS_Aggri</code> exported as CSV with a <code>Product</code> column of HS6 codes.</p>
+<p><strong>WTO schedule.</strong> <code>ag_tariff_USA_2014.xls</code> is the WTO Tariff and Trade Data export of the United States applied MFN schedule for 2014 (sheet <code>Applied_MFN</code>, HS6 codes in column E from row 6). Script 23 reads it only to build the commodity-to-HS6 mapping: when the file is present the mapping is rebuilt and <code>data/interim/commodity_hs6_mapping.csv</code> is rewritten; when it is absent the shipped mapping is read instead.</p>
+<p><strong>What happens without them.</strong> <code>main.R</code> runs script 22 only when <code>tariff_ave_WITS_2023.csv</code> is present; otherwise it prints <code>22_compute_tariff_ave: SKIPPED (WITS 2023 extract absent)</code> and reuses the shipped <code>tariff_ave_region.csv</code> and <code>export_taxes_comm_reg.csv</code>. It runs script 23 only when <code>BACI_HS92_Y2014_V202401b.csv</code>, <code>tariff_ave_2014_WITS.csv</code> and <code>ag_hs_products.csv</code> are all present; otherwise it prints <code>23_compute_NTM_ave: SKIPPED (large raw files absent)</code> and reuses <code>NTM_IMP_ave_region.csv</code> and <code>NTM_EXP_ave_region.csv</code>. If a raw input and its derived files are both absent, <code>main.R</code> stops with a message naming the missing files. Everything else in the pipeline runs from the tracked raw files alone. See <a href="./pipeline.html#large-files-and-the-ntm-step">Processing pipeline</a>.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/bsat-team\.github\.io\/BSAT\/");
+      const newWindowLabel = "(opens in a new tab)";
+      const newWindowNoteId = "quarto-ext-newwindow-label";
+      // Links reference one hidden label through aria-describedby, so the
+      // announcement never changes their accessible name.
+      var describeNewWindow = (link) => {
+        if (!window.document.getElementById(newWindowNoteId)) {
+          var newWindowNote = window.document.createElement("span");
+          newWindowNote.id = newWindowNoteId;
+          newWindowNote.hidden = true;
+          newWindowNote.textContent = newWindowLabel;
+          window.document.body.appendChild(newWindowNote);
+        }
+        var describedBy = (link.getAttribute("aria-describedby") || "").split(/\s+/).filter(Boolean);
+        if (!describedBy.includes(newWindowNoteId)) {
+          describedBy.push(newWindowNoteId);
+          link.setAttribute("aria-describedby", describedBy.join(" "));
+        }
+      }
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+      window.quartoDecorateExternalLinks = function (root) {
+     var links = (root || window.document).querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+            describeNewWindow(link);
+          if (!link.classList.contains('no-external-icon')) {
+          }
+        }
+      }
+      };
+      window.quartoDecorateExternalLinks(window.document);
+    // Esc closes the popup (WCAG 1.4.13) and focus leaving both trigger and
+    // popup closes it (WCAG 2.4.11); tippy handles neither for interactive popups.
+    const hideOnEscAndFocusOut = {
+      name: 'hideOnEscAndFocusOut',
+      defaultValue: true,
+      fn(instance) {
+        const dismiss = () => {
+          // A show scheduled by the trigger delay would otherwise reopen it
+          instance.clearDelayTimeouts();
+          instance.hide();
+        };
+        const onKeyDown = (event) => {
+          if (event.key !== 'Escape') {
+            return;
+          }
+          // Keep Esc from also reaching page handlers (e.g. reveal.js overview),
+          // except an open reveal.js slide menu, which Esc should close too.
+          // The menu handles keys only when its keyboard option is on.
+          const menuHandlesEsc = window.Reveal?.getPlugin?.('menu')?.isOpen() &&
+            window.Reveal.getConfig().menu?.keyboard !== false;
+          if (!menuHandlesEsc) {
+            event.stopPropagation();
+          }
+          if (instance.popper.contains(window.document.activeElement)) {
+            // Disabled while refocusing so the focus trigger does not reopen it
+            instance.disable();
+            instance.reference.focus();
+            instance.enable();
+          }
+          dismiss();
+        };
+        const onFocusOut = (event) => {
+          const target = event.relatedTarget;
+          if (target && !instance.reference.contains(target) &&
+              !instance.popper.contains(target)) {
+            dismiss();
+          }
+        };
+        // On the trigger too: a click trigger (code-annotations: select) has no
+        // blur handling. Attached for the instance's lifetime so leaving the
+        // trigger also cancels a show still pending on the trigger delay.
+        instance.reference.addEventListener('focusout', onFocusOut);
+        return {
+          onShow() {
+            window.document.addEventListener('keydown', onKeyDown, true);
+            instance.popper.addEventListener('focusout', onFocusOut);
+          },
+          onHide() {
+            window.document.removeEventListener('keydown', onKeyDown, true);
+            instance.popper.removeEventListener('focusout', onFocusOut);
+          },
+          onDestroy() {
+            instance.reference.removeEventListener('focusout', onFocusOut);
+          },
+        };
+      },
+    };
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+        plugins: [hideOnEscAndFocusOut],
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          // Each band is positioned against its own containing block, which is
+          // not the offsetParent of the lines, so place it from client rects.
+          const placeBand = (band, firstEl, lastEl, codeBlock) => {
+            const container = band.offsetParent;
+            if (container === null) {
+              return;
+            }
+            const containerRect = container.getBoundingClientRect();
+            // Reveal.js scales slides with a transform, so convert client
+            // pixels back to the CSS pixels of the container.
+            const scale = containerRect.height / container.offsetHeight || 1;
+            const firstRect = firstEl.getBoundingClientRect();
+            const lastRect = lastEl.getBoundingClientRect();
+            const top = (firstRect.top - containerRect.top) / scale - container.clientTop + container.scrollTop;
+            const height = (lastRect.bottom - firstRect.top) / scale;
+            band.style.top = top - 2 + "px";
+            band.style.height = height + 4 + "px";
+            if (codeBlock) {
+              // Without the copy button wrapper, the containing block is wider
+              // than the code block, so span the code block explicitly.
+              const blockRect = codeBlock.getBoundingClientRect();
+              band.style.left = (blockRect.left - containerRect.left) / scale - container.clientLeft + container.scrollLeft + "px";
+              band.style.width = blockRect.width / scale + "px";
+            }
+          };
+          if (lineIds.length > 0) {
+            const el = window.document.getElementById(lineIds[0]);
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const parent = el.parentElement.parentElement;
+            // cook up a div (if necessary) and position it
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            placeBand(div, el, lastEl, parent.closest("div.sourceCode") || parent);
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            placeBand(gutterDiv, el, lastEl);
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+  <script type="application/javascript">
+  window.quartoScrollableRegionsLabels = {"code":"Scrollable code","output":"Scrollable output"};
+  </script>
+<nav class="page-navigation" aria-label="Page">
+  <div class="nav-page nav-page-previous">
+      <a href="./data-format.html" class="pagination-link" aria-label="Package and file format">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Package and file format</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./pipeline.html" class="pagination-link" aria-label="Processing pipeline">
+        <span class="nav-page-text">Processing pipeline</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>BSAT documentation. Code under MIT; documentation and data products under CC BY 4.0.</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p>Built with Quarto.</p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

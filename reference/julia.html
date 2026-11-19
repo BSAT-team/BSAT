@@ -1,0 +1,1111 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.11.9">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Julia reference: BSATRunner – BSAT</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../reference/r.html" rel="next">
+<link href="../reference/cli.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/scrollable-regions/scrollable-regions.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-4ace205358711f90eddc57b99ce3a538.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar docked nav-fixed quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">Skip to main content</a>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark" aria-label="Site">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">BSAT</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link active" href="../installation/local-unix.html" aria-current="page"> 
+<span class="menu-text">Install</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../walkthrough.html"> 
+<span class="menu-text">Walkthrough</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../data-format.html"> 
+<span class="menu-text">Data</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../model.html"> 
+<span class="menu-text">Model</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../dashboard.html"> 
+<span class="menu-text">Dashboard</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../reference/index.html"> 
+<span class="menu-text">Reference</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/BSAT-team/BSAT"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+            <div id="quarto-search" class="" title="Search"></div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav" aria-label="Toolbar">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="Breadcrumbs"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../reference/index.html">Reference</a></li><li class="breadcrumb-item"><a href="../reference/julia.html">Julia: BSATRunner</a></li></ol></nav>
+        <a class="flex-grow-1" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto" aria-label="Section">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-controls="quarto-sidebar-section-1" aria-expanded="false">
+ <span class="menu-text" id="quarto-sidebar-section-1-label">Installation</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
+      </div>
+      <ul id="quarto-sidebar-section-1" aria-labelledby="quarto-sidebar-section-1-label" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../installation/cloud.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Cloud and Docker</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../installation/local-unix.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Local: macOS and Linux</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../installation/local-windows.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Local: Windows</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../installation/troubleshooting.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Troubleshooting</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../walkthrough.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Walkthrough</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-controls="quarto-sidebar-section-2" aria-expanded="false">
+ <span class="menu-text" id="quarto-sidebar-section-2-label">Data</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
+      </div>
+      <ul id="quarto-sidebar-section-2" aria-labelledby="quarto-sidebar-section-2-label" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../data-format.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Package and file format</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../data-sources.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Raw data sources</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../pipeline.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Processing pipeline</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../updating-raw-data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Updating raw data</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../model.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Model</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../dashboard.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Dashboard</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../reference/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text" id="quarto-sidebar-section-3-label">Reference</span></a>
+            <button type="button" class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-controls="quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section: Reference">
+              <i class="bi bi-chevron-right ms-2" aria-hidden="true"></i>
+            </button> 
+      </div>
+      <ul id="quarto-sidebar-section-3" aria-labelledby="quarto-sidebar-section-3-label" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/cli.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Command line</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/julia.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Julia: BSATRunner</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/r.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">R: pipeline scripts</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/python.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Python: bsat_dashboard</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../contributing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Contributing</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" aria-labelledby="toc-title" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#constants" id="toc-constants" class="nav-link active" data-scroll-target="#constants">Constants</a></li>
+  <li><a href="#exported-functions" id="toc-exported-functions" class="nav-link" data-scroll-target="#exported-functions">Exported functions</a>
+  <ul class="collapse">
+  <li><a href="#run_bsat" id="toc-run_bsat" class="nav-link" data-scroll-target="#run_bsat">run_bsat</a></li>
+  <li><a href="#make_shock" id="toc-make_shock" class="nav-link" data-scroll-target="#make_shock">make_shock</a></li>
+  <li><a href="#build_scenario" id="toc-build_scenario" class="nav-link" data-scroll-target="#build_scenario">build_scenario</a></li>
+  </ul></li>
+  <li><a href="#input-and-output-helpers-io.jl" id="toc-input-and-output-helpers-io.jl" class="nav-link" data-scroll-target="#input-and-output-helpers-io.jl">Input and output helpers (io.jl)</a>
+  <ul class="collapse">
+  <li><a href="#bsat_set_license" id="toc-bsat_set_license" class="nav-link" data-scroll-target="#bsat_set_license">bsat_set_license!</a></li>
+  <li><a href="#bsat_extract_input" id="toc-bsat_extract_input" class="nav-link" data-scroll-target="#bsat_extract_input">bsat_extract_input</a></li>
+  <li><a href="#bsat_periods_solved" id="toc-bsat_periods_solved" class="nav-link" data-scroll-target="#bsat_periods_solved">bsat_periods_solved</a></li>
+  <li><a href="#bsat_collect_output" id="toc-bsat_collect_output" class="nav-link" data-scroll-target="#bsat_collect_output">bsat_collect_output</a></li>
+  <li><a href="#bsat_write_metadata" id="toc-bsat_write_metadata" class="nav-link" data-scroll-target="#bsat_write_metadata">bsat_write_metadata</a></li>
+  <li><a href="#bsat_write_solver_log" id="toc-bsat_write_solver_log" class="nav-link" data-scroll-target="#bsat_write_solver_log">bsat_write_solver_log</a></li>
+  <li><a href="#bsat_zip_dir" id="toc-bsat_zip_dir" class="nav-link" data-scroll-target="#bsat_zip_dir">bsat_zip_dir</a></li>
+  <li><a href="#bsat_tee_stdout" id="toc-bsat_tee_stdout" class="nav-link" data-scroll-target="#bsat_tee_stdout">bsat_tee_stdout</a></li>
+  </ul></li>
+  <li><a href="#shock-helpers-shocks.jl" id="toc-shock-helpers-shocks.jl" class="nav-link" data-scroll-target="#shock-helpers-shocks.jl">Shock helpers (shocks.jl)</a>
+  <ul class="collapse">
+  <li><a href="#bsat_read_zip_entries" id="toc-bsat_read_zip_entries" class="nav-link" data-scroll-target="#bsat_read_zip_entries">bsat_read_zip_entries</a></li>
+  <li><a href="#bsat_write_zip_entries" id="toc-bsat_write_zip_entries" class="nav-link" data-scroll-target="#bsat_write_zip_entries">bsat_write_zip_entries</a></li>
+  </ul></li>
+  <li><a href="#scenario-helpers-scenario.jl" id="toc-scenario-helpers-scenario.jl" class="nav-link" data-scroll-target="#scenario-helpers-scenario.jl">Scenario helpers (scenario.jl)</a></li>
+  <li><a href="#command-line-helpers" id="toc-command-line-helpers" class="nav-link" data-scroll-target="#command-line-helpers">Command-line helpers</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content" tabindex="-1">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="Breadcrumbs"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../reference/index.html">Reference</a></li><li class="breadcrumb-item"><a href="../reference/julia.html">Julia: BSATRunner</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Julia reference: BSATRunner</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><code>BSATRunner</code> (<code>code/model/src/BSATRunner.jl</code>) wraps the verbatim model core. It reads a standard input package, runs the model year by year and writes a standard output package. Entry points: <code>run_bsat</code> from Julia, <code>run_model.jl</code> from the command line, and <code>run_scenario.jl</code> for the edited-CSV route (<a href="../reference/cli.html">Command line</a>). All wrapper names are prefixed <code>bsat_</code> so they cannot collide with variables assigned inside the model core, which is evaluated in the module’s global scope.</p>
+<p>Load the module from the repository root:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">include</span>(<span class="st">"code/model/src/BSATRunner.jl"</span>); <span class="im">using</span> <span class="bu">.BSATRunner</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>res <span class="op">=</span> <span class="fu">run_bsat</span>(<span class="st">"data/packages/baseline_2025_Input.zip"</span>; output_zip<span class="op">=</span><span class="st">"output/baseline_Output.zip"</span>, periods<span class="op">=</span><span class="fl">2025</span><span class="op">:</span><span class="fl">2034</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>res.periods_solved</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Exports: <code>run_bsat</code>, <code>make_shock</code>, <code>build_scenario</code>, <code>BSAT_SHOCKS</code>.</p>
+<section id="constants" class="level2">
+<h2 class="anchored" data-anchor-id="constants">Constants</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Value</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>BSAT_MODEL_VERSION</code></td>
+<td><code>"v2.27 (2026-07-29)"</code></td>
+<td>Version label of the model core embedded in the runner; written to <code>METADATA.csv</code> and the solver log</td>
+</tr>
+<tr class="even">
+<td><code>BSAT_CORE_FILE</code></td>
+<td><code>src/model_core.jl</code> next to the module</td>
+<td>Path of the verbatim model core</td>
+</tr>
+<tr class="odd">
+<td><code>BSAT_DEFAULT_LICENSE</code></td>
+<td><code>code/model/path_license.txt</code></td>
+<td>Default location of the PATH license file (next to <code>Project.toml</code>)</td>
+</tr>
+<tr class="even">
+<td><code>BSAT_INPUT_FILES</code></td>
+<td><code>("data_params_init.csv", "data_exogenous.csv", "data_targets.csv", "data_shocks.csv")</code></td>
+<td>Input files the model core reads from <code>Input/</code></td>
+</tr>
+<tr class="odd">
+<td><code>BSAT_SHOCKS</code></td>
+<td>tuple of ten <code>(name, type, meaning)</code> triples</td>
+<td>The shock attributes of <code>data_shocks.csv</code>, with the baseline quantity each one modifies. Every shock is stored in decimal form and applied additively to the baseline level, except <code>shock_ag_expenditure_share</code>, which multiplies the baseline share by (1 + value). The neutral value is 0 for all of them. Table in <a href="../data-format.html#shock-attributes">Package and file format</a></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="exported-functions" class="level2">
+<h2 class="anchored" data-anchor-id="exported-functions">Exported functions</h2>
+<section id="run_bsat" class="level3">
+<h3 class="anchored" data-anchor-id="run_bsat">run_bsat</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">run_bsat</span>(input_zip; output_zip<span class="op">=</span><span class="st">"Output.zip"</span>, periods<span class="op">=</span><span class="fl">2025</span><span class="op">:</span><span class="fl">2034</span>, workdir<span class="op">=</span><span class="cn">nothing</span>,</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>         keep_workdir<span class="op">=</span><span class="cn">false</span>, license<span class="op">=</span>BSAT_DEFAULT_LICENSE)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Run the BSAT model on the input package <code>input_zip</code> for the years in <code>periods</code> and write the output package to <code>output_zip</code>.</p>
+<p>Arguments:</p>
+<ul>
+<li><code>input_zip::AbstractString</code>: path of the input package.</li>
+<li><code>output_zip::AbstractString</code>: path of the output package to write (folders are created).</li>
+<li><code>periods</code>: years to simulate; any collection of integers.</li>
+<li><code>workdir</code>: folder in which the core reads <code>Input/</code> and writes its per-year files. Defaults to a fresh temporary folder, deleted afterwards unless <code>keep_workdir=true</code>.</li>
+<li><code>keep_workdir::Bool</code>: keep the working folder.</li>
+<li><code>license::AbstractString</code>: path of the PATH license file.</li>
+</ul>
+<p>Returns a named tuple with <code>output_zip</code>, <code>periods_solved</code>, <code>periods_skipped</code>, <code>elapsed</code> (seconds) and <code>workdir</code> (<code>nothing</code> when the temporary folder was deleted).</p>
+<p>Years the model refuses (market-clearing checks fail, or the solver does not reach a solution) are skipped by the core and reported in <code>SCENARIO_SOLVER_LOG.txt</code> and in the return value; the remaining years still produce output. Errors if <code>periods</code> is empty, the license file is missing or holds the placeholder, or the input package lacks one of the four required files. Warns when no year was solved.</p>
+</section>
+<section id="make_shock" class="level3">
+<h3 class="anchored" data-anchor-id="make_shock">make_shock</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">make_shock</span>(template_zip, inputpkg_zip; attribute, value, regions<span class="op">=</span><span class="cn">nothing</span>, commodities<span class="op">=</span><span class="cn">nothing</span>,</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>           years<span class="op">=</span><span class="cn">nothing</span>, mode<span class="op">=:</span>set, description<span class="op">=</span><span class="cn">nothing</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Create a scenario input package from <code>template_zip</code> by editing <code>data_shocks.csv</code>.</p>
+<p>Arguments:</p>
+<ul>
+<li><code>template_zip::AbstractString</code>, <code>inputpkg_zip::AbstractString</code>: packages to read and write; the package written is a scenario <em>input</em> package, the input of <code>run_bsat</code>.</li>
+<li><code>attribute::AbstractString</code>: one of the ten shock attributes (see <code>BSAT_SHOCKS</code>).</li>
+<li><code>value::Real</code>: the shock in decimal form.</li>
+<li><code>regions</code>, <code>commodities</code>, <code>years</code>: optional selections (vectors of ISO-3 codes, commodity codes, integer years). <code>nothing</code> selects every row of that attribute. Region-level shocks ignore <code>commodities</code>.</li>
+<li><code>mode::Symbol</code>: <code>:set</code> writes <code>value</code>; <code>:add</code> adds it to the existing value, which lets shocks be layered by calling the function repeatedly with the previous package as template.</li>
+<li><code>description</code>: replaces the <code>Description</code> field of <code>METADATA.csv</code> (created if the template has no metadata file) and records the derivation in <code>Comments</code>, so the dashboard shows what the scenario is.</li>
+</ul>
+<p>Returns <code>(inputpkg_zip, rows_changed, attribute, value)</code>. Errors if the attribute is unknown, <code>mode</code> is not <code>:set</code> or <code>:add</code>, the template has no <code>data_shocks.csv</code>, or no row matches the selection.</p>
+</section>
+<section id="build_scenario" class="level3">
+<h3 class="anchored" data-anchor-id="build_scenario">build_scenario</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">build_scenario</span>(template_zip, shocks_csv, inputpkg_zip; description<span class="op">=</span><span class="cn">nothing</span>, io<span class="op">=</span><span class="cn">stdout</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Create a scenario input package from <code>template_zip</code> by writing the values of <code>shocks_csv</code> into its <code>data_shocks.csv</code>. The CSV can be a full edited copy of the shocks file or only the rows to change; rows are matched on region, year, commodity and attribute, and rows absent from the CSV keep the template value. The package’s shocks file is regenerated from the template table, so the spreadsheet’s formatting never reaches the model.</p>
+<p>Arguments:</p>
+<ul>
+<li><code>template_zip::AbstractString</code>, <code>shocks_csv::AbstractString</code>, <code>inputpkg_zip::AbstractString</code>: package to read, CSV to apply, scenario <em>input</em> package to write.</li>
+<li><code>description</code>: written to the <code>Description</code> field of <code>METADATA.csv</code>; default <code>Scenario from &lt;csv name&gt;</code>. The <code>Comments</code> field records the source CSV and the count of changed rows.</li>
+<li><code>io::IO</code>: where the changed rows are printed, grouped by attribute, region and commodity (<code>devnull</code> to silence).</li>
+</ul>
+<p>Only the columns <code>region</code>, <code>year</code>, <code>commodity</code>, <code>attribute</code> and <code>value</code> are read; header names and codes are matched regardless of case and surrounding blanks. A row that cannot be applied (unknown attribute, region or commodity; a commodity on a region-level attribute or none on a commodity-level one; a year outside the template; a blank or non-numeric value; a region and commodity pair the template does not have) is reported with <code>@warn</code> (one warning per reason, with line numbers) and skipped; a repeated key warns and the last row wins. Errors if the template has no <code>data_shocks.csv</code>, a required column is missing, or no row can be applied; warns if the result equals the template.</p>
+<p>Returns <code>(inputpkg_zip, rows_read, rows_applied, rows_skipped, rows_changed, changes)</code>, where <code>changes</code> is a <code>DataFrame</code> (<code>attribute</code>, <code>region</code>, <code>commodity</code>, <code>year</code>, <code>value</code>) of the rows whose value differs from the template.</p>
+</section>
+</section>
+<section id="input-and-output-helpers-io.jl" class="level2">
+<h2 class="anchored" data-anchor-id="input-and-output-helpers-io.jl">Input and output helpers (io.jl)</h2>
+<section id="bsat_set_license" class="level3">
+<h3 class="anchored" data-anchor-id="bsat_set_license">bsat_set_license!</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bsat_set_license!</span>(path) <span class="op">-&gt;</span> <span class="dt">String</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Read the PATH license string from <code>path</code> (first line that is neither blank nor a <code>#</code> comment) and register it with PATHSolver. Throws an informative error when the file is missing, holds no license line, or still holds the placeholder. Returns the string.</p>
+</section>
+<section id="bsat_extract_input" class="level3">
+<h3 class="anchored" data-anchor-id="bsat_extract_input">bsat_extract_input</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bsat_extract_input</span>(zipfile, workdir) <span class="op">-&gt;</span> <span class="dt">Dict</span>{<span class="dt">String</span>,<span class="dt">String</span>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Extract the standard input files from <code>zipfile</code> into <code>workdir/Input/</code>, matching entries by file name so the archive may or may not carry a leading folder. Returns a map from file name to extracted path (including <code>METADATA.csv</code> when present). Errors if the package is not found or any of the four required files is absent.</p>
+</section>
+<section id="bsat_periods_solved" class="level3">
+<h3 class="anchored" data-anchor-id="bsat_periods_solved">bsat_periods_solved</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bsat_periods_solved</span>(workdir, periods) <span class="op">-&gt;</span> <span class="dt">Vector</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Return the years in <code>periods</code> for which the core produced a solution file (<code>workdir/Output_&lt;year&gt;/data_solution.csv</code>).</p>
+</section>
+<section id="bsat_collect_output" class="level3">
+<h3 class="anchored" data-anchor-id="bsat_collect_output">bsat_collect_output</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bsat_collect_output</span>(workdir, periods_solved) <span class="op">-&gt;</span> <span class="dt">String</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Assemble <code>workdir/Output/</code> from the per-year folders the core wrote. The file contents reproduce the original code’s overall export step (same column selections, same read and write sequence), with the targets file renamed to <code>data_targets_adjusted.csv</code>. Writes <code>data_params_calibrated.csv</code>, <code>data_exogenous.csv</code>, <code>data_shocks.csv</code>, <code>data_solution.csv</code> and <code>data_targets_adjusted.csv</code>. Returns the output folder.</p>
+</section>
+<section id="bsat_write_metadata" class="level3">
+<h3 class="anchored" data-anchor-id="bsat_write_metadata">bsat_write_metadata</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bsat_write_metadata</span>(workdir, input_metadata, periods, periods_solved)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Write <code>Output/METADATA.csv</code>. <code>Author</code>, <code>Description</code> and <code>Comments</code> come from the input package’s <code>METADATA.csv</code> (<code>input_metadata</code>, a path or <code>nothing</code>) when present, together with any other field it holds; otherwise the defaults of the original code are used. Appends <code>Model calibration</code> and <code>Scenario simulation</code> (the same timestamp), <code>Model version</code>, <code>Years requested</code> and <code>Years solved</code>.</p>
+</section>
+<section id="bsat_write_solver_log" class="level3">
+<h3 class="anchored" data-anchor-id="bsat_write_solver_log">bsat_write_solver_log</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bsat_write_solver_log</span>(workdir, periods, periods_solved, elapsed, console_log)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Write <code>Output/SCENARIO_SOLVER_LOG.txt</code>: run summary, per-year solver and model status as recorded by the core in <code>Results_&lt;year&gt;/Solver_Status_Model_&lt;year&gt;.txt</code> (or <code>not solved</code> for years without that file), and the captured console output (which includes the PATH solver log) read from <code>console_log</code>.</p>
+</section>
+<section id="bsat_zip_dir" class="level3">
+<h3 class="anchored" data-anchor-id="bsat_zip_dir">bsat_zip_dir</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bsat_zip_dir</span>(dir, zipfile) <span class="op">-&gt;</span> <span class="dt">String</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Zip every file directly under <code>dir</code> into <code>zipfile</code> with entries at the archive root (no folder prefix), deflate-compressed, in sorted name order. Platform independent. Returns <code>zipfile</code>.</p>
+</section>
+<section id="bsat_tee_stdout" class="level3">
+<h3 class="anchored" data-anchor-id="bsat_tee_stdout">bsat_tee_stdout</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bsat_tee_stdout</span>(f, logpath)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Run <code>f()</code> while copying everything written to standard output (Julia and C level, so the PATH solver output is included) both to the console and to <code>logpath</code>. Returns the value of <code>f()</code>.</p>
+</section>
+</section>
+<section id="shock-helpers-shocks.jl" class="level2">
+<h2 class="anchored" data-anchor-id="shock-helpers-shocks.jl">Shock helpers (shocks.jl)</h2>
+<section id="bsat_read_zip_entries" class="level3">
+<h3 class="anchored" data-anchor-id="bsat_read_zip_entries">bsat_read_zip_entries</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bsat_read_zip_entries</span>(zipfile) <span class="op">-&gt;</span> <span class="dt">Dict</span>{<span class="dt">String</span>,<span class="dt">Vector</span>{<span class="dt">UInt8</span>}}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Read every file entry of a zip into a dictionary from base name to bytes (folder prefixes dropped). Errors if the package is not found.</p>
+</section>
+<section id="bsat_write_zip_entries" class="level3">
+<h3 class="anchored" data-anchor-id="bsat_write_zip_entries">bsat_write_zip_entries</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bsat_write_zip_entries</span>(zipfile, entries) <span class="op">-&gt;</span> <span class="dt">String</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Write entries (base name to bytes) under an <code>Input/</code> folder, the layout of the input packages, deflate-compressed, in sorted name order. Returns <code>zipfile</code>.</p>
+</section>
+</section>
+<section id="scenario-helpers-scenario.jl" class="level2">
+<h2 class="anchored" data-anchor-id="scenario-helpers-scenario.jl">Scenario helpers (scenario.jl)</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>BSAT_SCENARIO_COLUMNS</code></td>
+<td><code>("region", "year", "commodity", "attribute", "value")</code>, the columns an edited shocks CSV must have</td>
+</tr>
+<tr class="even">
+<td><code>bsat_read_scenario_csv(path)</code></td>
+<td>Read an edited shocks CSV as a <code>DataFrame</code> of trimmed strings (missing cells as empty strings), headers matched case-insensitively; errors if a required column is missing</td>
+</tr>
+<tr class="odd">
+<td><code>bsat_norm(s)</code></td>
+<td>Matching key for codes and attribute names: lowercased and stripped</td>
+</tr>
+<tr class="even">
+<td><code>bsat_parse_year(s)</code>, <code>bsat_parse_value(s)</code></td>
+<td>Parse a year (accepting <code>2026.0</code>) or a value cell; <code>nothing</code> when not a finite number (or not an integer, for years)</td>
+</tr>
+<tr class="odd">
+<td><code>bsat_print_changes(io, changes, template_name)</code></td>
+<td>Print the changed rows grouped by attribute, region and commodity, one line per group</td>
+</tr>
+<tr class="even">
+<td><code>bsat_format_runs(years, values)</code></td>
+<td>Format year and value pairs, compressing runs of consecutive years with equal values to <code>2026:2034 = -0.1</code></td>
+</tr>
+<tr class="odd">
+<td><code>bsat_set_metadata!(entries; description, comment)</code></td>
+<td>Set the <code>Description</code> and <code>Comments</code> fields of a package’s <code>METADATA.csv</code> in an entries dictionary (created when absent); used by <code>make_shock</code> and <code>build_scenario</code></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="command-line-helpers" class="level2">
+<h2 class="anchored" data-anchor-id="command-line-helpers">Command-line helpers</h2>
+<p><code>run_model.jl</code> defines <code>bsat_parse_args(args)</code> and <code>bsat_parse_years(s)</code>; <code>make_shock.jl</code> defines <code>bsat_parse(args)</code>, <code>bsat_list(s)</code> and <code>bsat_years(s)</code>; <code>run_scenario.jl</code> defines <code>bsat_parse_scenario_args(args)</code>, <code>bsat_parse_scenario_years(s)</code> and <code>bsat_input_path(output_zip)</code> (the input package path beside the output, <code>my_case_Output.zip</code> to <code>my_case_Input.zip</code>). They parse the options documented in <a href="../reference/cli.html">Command line</a>; a year string is either a range <code>2025:2034</code> (or <code>2025-2034</code>) or a comma list.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/bsat-team\.github\.io\/BSAT\/");
+      const newWindowLabel = "(opens in a new tab)";
+      const newWindowNoteId = "quarto-ext-newwindow-label";
+      // Links reference one hidden label through aria-describedby, so the
+      // announcement never changes their accessible name.
+      var describeNewWindow = (link) => {
+        if (!window.document.getElementById(newWindowNoteId)) {
+          var newWindowNote = window.document.createElement("span");
+          newWindowNote.id = newWindowNoteId;
+          newWindowNote.hidden = true;
+          newWindowNote.textContent = newWindowLabel;
+          window.document.body.appendChild(newWindowNote);
+        }
+        var describedBy = (link.getAttribute("aria-describedby") || "").split(/\s+/).filter(Boolean);
+        if (!describedBy.includes(newWindowNoteId)) {
+          describedBy.push(newWindowNoteId);
+          link.setAttribute("aria-describedby", describedBy.join(" "));
+        }
+      }
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+      window.quartoDecorateExternalLinks = function (root) {
+     var links = (root || window.document).querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+            describeNewWindow(link);
+          if (!link.classList.contains('no-external-icon')) {
+          }
+        }
+      }
+      };
+      window.quartoDecorateExternalLinks(window.document);
+    // Esc closes the popup (WCAG 1.4.13) and focus leaving both trigger and
+    // popup closes it (WCAG 2.4.11); tippy handles neither for interactive popups.
+    const hideOnEscAndFocusOut = {
+      name: 'hideOnEscAndFocusOut',
+      defaultValue: true,
+      fn(instance) {
+        const dismiss = () => {
+          // A show scheduled by the trigger delay would otherwise reopen it
+          instance.clearDelayTimeouts();
+          instance.hide();
+        };
+        const onKeyDown = (event) => {
+          if (event.key !== 'Escape') {
+            return;
+          }
+          // Keep Esc from also reaching page handlers (e.g. reveal.js overview),
+          // except an open reveal.js slide menu, which Esc should close too.
+          // The menu handles keys only when its keyboard option is on.
+          const menuHandlesEsc = window.Reveal?.getPlugin?.('menu')?.isOpen() &&
+            window.Reveal.getConfig().menu?.keyboard !== false;
+          if (!menuHandlesEsc) {
+            event.stopPropagation();
+          }
+          if (instance.popper.contains(window.document.activeElement)) {
+            // Disabled while refocusing so the focus trigger does not reopen it
+            instance.disable();
+            instance.reference.focus();
+            instance.enable();
+          }
+          dismiss();
+        };
+        const onFocusOut = (event) => {
+          const target = event.relatedTarget;
+          if (target && !instance.reference.contains(target) &&
+              !instance.popper.contains(target)) {
+            dismiss();
+          }
+        };
+        // On the trigger too: a click trigger (code-annotations: select) has no
+        // blur handling. Attached for the instance's lifetime so leaving the
+        // trigger also cancels a show still pending on the trigger delay.
+        instance.reference.addEventListener('focusout', onFocusOut);
+        return {
+          onShow() {
+            window.document.addEventListener('keydown', onKeyDown, true);
+            instance.popper.addEventListener('focusout', onFocusOut);
+          },
+          onHide() {
+            window.document.removeEventListener('keydown', onKeyDown, true);
+            instance.popper.removeEventListener('focusout', onFocusOut);
+          },
+          onDestroy() {
+            instance.reference.removeEventListener('focusout', onFocusOut);
+          },
+        };
+      },
+    };
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+        plugins: [hideOnEscAndFocusOut],
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          // Each band is positioned against its own containing block, which is
+          // not the offsetParent of the lines, so place it from client rects.
+          const placeBand = (band, firstEl, lastEl, codeBlock) => {
+            const container = band.offsetParent;
+            if (container === null) {
+              return;
+            }
+            const containerRect = container.getBoundingClientRect();
+            // Reveal.js scales slides with a transform, so convert client
+            // pixels back to the CSS pixels of the container.
+            const scale = containerRect.height / container.offsetHeight || 1;
+            const firstRect = firstEl.getBoundingClientRect();
+            const lastRect = lastEl.getBoundingClientRect();
+            const top = (firstRect.top - containerRect.top) / scale - container.clientTop + container.scrollTop;
+            const height = (lastRect.bottom - firstRect.top) / scale;
+            band.style.top = top - 2 + "px";
+            band.style.height = height + 4 + "px";
+            if (codeBlock) {
+              // Without the copy button wrapper, the containing block is wider
+              // than the code block, so span the code block explicitly.
+              const blockRect = codeBlock.getBoundingClientRect();
+              band.style.left = (blockRect.left - containerRect.left) / scale - container.clientLeft + container.scrollLeft + "px";
+              band.style.width = blockRect.width / scale + "px";
+            }
+          };
+          if (lineIds.length > 0) {
+            const el = window.document.getElementById(lineIds[0]);
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const parent = el.parentElement.parentElement;
+            // cook up a div (if necessary) and position it
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            placeBand(div, el, lastEl, parent.closest("div.sourceCode") || parent);
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            placeBand(gutterDiv, el, lastEl);
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+  <script type="application/javascript">
+  window.quartoScrollableRegionsLabels = {"code":"Scrollable code","output":"Scrollable output"};
+  </script>
+<nav class="page-navigation" aria-label="Page">
+  <div class="nav-page nav-page-previous">
+      <a href="../reference/cli.html" class="pagination-link" aria-label="Command line">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Command line</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../reference/r.html" class="pagination-link" aria-label="R: pipeline scripts">
+        <span class="nav-page-text">R: pipeline scripts</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>BSAT documentation. Code under MIT; documentation and data products under CC BY 4.0.</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p>Built with Quarto.</p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

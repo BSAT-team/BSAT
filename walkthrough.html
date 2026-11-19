@@ -1,0 +1,1175 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.11.9">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Walkthrough: from install to results – BSAT</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./data-format.html" rel="next">
+<link href="./installation/troubleshooting.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/scrollable-regions/scrollable-regions.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-4ace205358711f90eddc57b99ce3a538.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar docked nav-fixed quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">Skip to main content</a>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark" aria-label="Site">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">BSAT</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link active" href="./installation/local-unix.html" aria-current="page"> 
+<span class="menu-text">Install</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./walkthrough.html"> 
+<span class="menu-text">Walkthrough</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./data-format.html"> 
+<span class="menu-text">Data</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./model.html"> 
+<span class="menu-text">Model</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./dashboard.html"> 
+<span class="menu-text">Dashboard</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./reference/index.html"> 
+<span class="menu-text">Reference</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/BSAT-team/BSAT"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+            <div id="quarto-search" class="" title="Search"></div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav" aria-label="Toolbar">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="Breadcrumbs"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./walkthrough.html">Walkthrough</a></li></ol></nav>
+        <a class="flex-grow-1" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto" aria-label="Section">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-controls="quarto-sidebar-section-1" aria-expanded="false">
+ <span class="menu-text" id="quarto-sidebar-section-1-label">Installation</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
+      </div>
+      <ul id="quarto-sidebar-section-1" aria-labelledby="quarto-sidebar-section-1-label" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./installation/cloud.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Cloud and Docker</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./installation/local-unix.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Local: macOS and Linux</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./installation/local-windows.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Local: Windows</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./installation/troubleshooting.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Troubleshooting</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./walkthrough.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Walkthrough</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <button type="button" class="sidebar-item-text sidebar-item-toggle sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-controls="quarto-sidebar-section-2" aria-expanded="false">
+ <span class="menu-text" id="quarto-sidebar-section-2-label">Data</span><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
+      </div>
+      <ul id="quarto-sidebar-section-2" aria-labelledby="quarto-sidebar-section-2-label" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./data-format.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Package and file format</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./data-sources.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Raw data sources</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./pipeline.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Processing pipeline</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./updating-raw-data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Updating raw data</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./model.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Model</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./dashboard.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Dashboard</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./reference/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text" id="quarto-sidebar-section-3-label">Reference</span></a>
+            <button type="button" class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-controls="quarto-sidebar-section-3" aria-expanded="false" aria-label="Toggle section: Reference">
+              <i class="bi bi-chevron-right ms-2" aria-hidden="true"></i>
+            </button> 
+      </div>
+      <ul id="quarto-sidebar-section-3" aria-labelledby="quarto-sidebar-section-3-label" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./reference/cli.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Command line</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./reference/julia.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Julia: BSATRunner</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./reference/r.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">R: pipeline scripts</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./reference/python.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Python: bsat_dashboard</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./contributing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Contributing</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" aria-labelledby="toc-title" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#install" id="toc-install" class="nav-link active" data-scroll-target="#install">1. Install</a></li>
+  <li><a href="#license" id="toc-license" class="nav-link" data-scroll-target="#license">2. License</a></li>
+  <li><a href="#test-the-installation-run-the-baseline-package-no-shock" id="toc-test-the-installation-run-the-baseline-package-no-shock" class="nav-link" data-scroll-target="#test-the-installation-run-the-baseline-package-no-shock">3. Test the installation: run the baseline package (no shock)</a></li>
+  <li><a href="#three-ways-to-define-a-scenario" id="toc-three-ways-to-define-a-scenario" class="nav-link" data-scroll-target="#three-ways-to-define-a-scenario">4. Three ways to define a scenario</a></li>
+  <li><a href="#scenario-from-an-edited-csv" id="toc-scenario-from-an-edited-csv" class="nav-link" data-scroll-target="#scenario-from-an-edited-csv">5. Scenario from an edited CSV</a></li>
+  <li><a href="#create-a-shock-package-with-make_shock.jl-and-simulate-it" id="toc-create-a-shock-package-with-make_shock.jl-and-simulate-it" class="nav-link" data-scroll-target="#create-a-shock-package-with-make_shock.jl-and-simulate-it">6. Create a shock package with make_shock.jl and simulate it</a>
+  <ul class="collapse">
+  <li><a href="#worked-example-china-soybean-import-tariff" id="toc-worked-example-china-soybean-import-tariff" class="nav-link" data-scroll-target="#worked-example-china-soybean-import-tariff">Worked example: China soybean import tariff</a></li>
+  <li><a href="#simulate-it" id="toc-simulate-it" class="nav-link" data-scroll-target="#simulate-it">Simulate it</a></li>
+  </ul></li>
+  <li><a href="#open-the-dashboard" id="toc-open-the-dashboard" class="nav-link" data-scroll-target="#open-the-dashboard">7. Open the dashboard</a></li>
+  <li><a href="#layering-shocks-and-editing-data_shocks.csv-by-hand" id="toc-layering-shocks-and-editing-data_shocks.csv-by-hand" class="nav-link" data-scroll-target="#layering-shocks-and-editing-data_shocks.csv-by-hand">8. Layering shocks and editing data_shocks.csv by hand</a></li>
+  <li><a href="#stylized-cases" id="toc-stylized-cases" class="nav-link" data-scroll-target="#stylized-cases">9. Stylized cases</a>
+  <ul class="collapse">
+  <li><a href="#case-1-land-availability" id="toc-case-1-land-availability" class="nav-link" data-scroll-target="#case-1-land-availability">Case 1: land availability</a></li>
+  <li><a href="#case-2-export-tax" id="toc-case-2-export-tax" class="nav-link" data-scroll-target="#case-2-export-tax">Case 2: export tax</a></li>
+  <li><a href="#case-3-tfp-improvement" id="toc-case-3-tfp-improvement" class="nav-link" data-scroll-target="#case-3-tfp-improvement">Case 3: TFP improvement</a></li>
+  <li><a href="#case-4-land-productivity-decline" id="toc-case-4-land-productivity-decline" class="nav-link" data-scroll-target="#case-4-land-productivity-decline">Case 4: land productivity decline</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content" tabindex="-1">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Walkthrough: from install to results</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>This page runs through one complete cycle: install, run the baseline package once as a test of the installation, define a scenario, run it, and read the results in the dashboard, which shows the scenario against the baseline. A scenario can be defined three ways (section 4); the walkthrough follows the spreadsheet route first and the command-line route after it. Commands are for macOS, Linux and the container; on Windows replace <code>scripts/run_model_unix.sh</code> with <code>scripts\run_model_windows.bat</code> and <code>julia</code> with <code>.bsat_local\julia\bin\julia.exe</code>. All paths are relative to the repository root.</p>
+<section id="install" class="level2">
+<h2 class="anchored" data-anchor-id="install">1. Install</h2>
+<p>Pick one of the three tracks: <a href="./installation/cloud.html">Cloud and Docker</a>, <a href="./installation/local-unix.html">Local: macOS and Linux</a> or <a href="./installation/local-windows.html">Local: Windows</a>. Each ends with a working Julia environment for <code>code/model/</code> and the <code>bsat</code> R environment and, optionally, the <code>bsat-dashboard</code> Python environment.</p>
+<p>The commands below are typed at a terminal prompt and run by pressing Enter. In a codespace the terminal is the panel at the bottom of the VS Code window in the browser, usually already open when the codespace starts; if it is not there, open it from the menu with Terminal &gt; New Terminal (the menu sits behind the three-line icon at the top left) or with the keyboard shortcut Ctrl+<code>`</code> (the backtick key). On a local Windows install the terminal is a Command Prompt, on macOS the Terminal application (Applications &gt; Utilities, or search “Terminal” in Spotlight), on Linux your usual terminal application. Every command assumes the repository root is the current directory: a codespace starts there, and on a local install you <code>cd</code> into the repository folder first.</p>
+<p><strong>In a codespace, install nothing.</strong> VS Code offers to install extensions, and the R extension in particular asks to install an R language server and then reports that it failed. Decline or close every such prompt and dismiss the error; the container already carries Julia, R and the dashboard environment, and nothing in the model depends on those extensions. <a href="./installation/cloud.html">Cloud and Docker</a> has the detail.</p>
+</section>
+<section id="license" class="level2">
+<h2 class="anchored" data-anchor-id="license">2. License</h2>
+<p>The PATH solver needs a free license string. Copy <code>code/model/path_license.txt.example</code> to <code>code/model/path_license.txt</code> and replace the placeholder line with the “Variable value” string from <a href="https://pages.cs.wisc.edu/~ferris/path/LICENSE" class="uri">https://pages.cs.wisc.edu/~ferris/path/LICENSE</a>. The runner checks the file at every start and stops with a message if it is missing or still holds the placeholder.</p>
+</section>
+<section id="test-the-installation-run-the-baseline-package-no-shock" class="level2">
+<h2 class="anchored" data-anchor-id="test-the-installation-run-the-baseline-package-no-shock">3. Test the installation: run the baseline package (no shock)</h2>
+<p>This run tests the installation and nothing else. The baseline input package <code>data/packages/baseline_2025_Input.zip</code> is built by the R pipeline from the USDA 2025 baseline, and its <code>data_shocks.csv</code> holds neutral values (all zeros), so the run reproduces the baseline projections and shows no change anywhere. What it demonstrates is that Julia, the solver and the license work.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">scripts/run_model_unix.sh</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Defaults: input <code>data/packages/baseline_2025_Input.zip</code>, output <code>output/baseline_Output.zip</code>, years <code>2025:2034</code>. The run takes about two minutes. The terminal shows, for each year, the three market-clearing checks, the PATH iteration log, and the solver and model status; the last lines are</p>
+<pre><code>Output package written to: .../output/baseline_Output.zip
+Years solved:  2025 2026 2027 2028 2029 2030 2031 2032 2033 2034
+Elapsed:       ... s</code></pre>
+<p>Unzip the output package, or open it in a file manager, and look at two files:</p>
+<p><strong><code>SCENARIO_SOLVER_LOG.txt</code></strong> starts with a summary followed by the per-year status, then the full console output:</p>
+<pre><code>BSAT scenario solver log
+Model version:   v2.27 (2026-07-29)
+Run finished:    ...
+Elapsed seconds: ...
+Julia:           1.12.1
+Years requested: 2025 2026 2027 2028 2029 2030 2031 2032 2033 2034
+Years solved:    2025 2026 2027 2028 2029 2030 2031 2032 2033 2034
+Years skipped:   none
+
+Per-year status (from Results_&lt;year&gt;/Solver_Status_Model_&lt;year&gt;.txt):
+  2025  Solver status: FEASIBLE_POINT
+  2025  Model status: LOCALLY_SOLVED
+  ...</code></pre>
+<p>Every year should read <code>FEASIBLE_POINT</code> and <code>LOCALLY_SOLVED</code>. A year that the model refused appears as <code>not solved (market-clearing checks failed or solve skipped)</code> and under “Years skipped”; see <a href="./installation/troubleshooting.html#the-model-refuses-a-year">Troubleshooting</a>.</p>
+<p><strong><code>METADATA.csv</code></strong> carries the fields of the input package’s metadata plus what the run added:</p>
+<pre><code>field,value
+Author,BSAT team
+Description,Baseline scenario
+Comments,Neutral shocks: reproduces the USDA baseline
+Pipeline build,2026-09-04T14:39:02
+Model calibration,&lt;timestamp&gt;
+Scenario simulation,&lt;timestamp&gt;
+Model version,v2.27 (2026-07-29)
+Years requested,2025 2026 2027 2028 2029 2030 2031 2032 2033 2034
+Years solved,2025 2026 2027 2028 2029 2030 2031 2032 2033 2034</code></pre>
+<p>The dashboard shows this table for each uploaded package, so the <code>Description</code> line is what identifies a scenario later. The other five files of the package are described in <a href="./data-format.html#output-package">Package and file format</a>. A copy of this baseline output is committed as <code>data/outputs/baseline_2025_Output.zip</code>.</p>
+<p>This output is not needed later. Every output package carries the baseline it was solved against (<code>data_targets_adjusted.csv</code>), so the dashboard shows a shock against the baseline from the shock’s own output package alone. The dashboard’s two upload slots are for comparing two different shocks with each other, not a shock against the baseline.</p>
+</section>
+<section id="three-ways-to-define-a-scenario" class="level2">
+<h2 class="anchored" data-anchor-id="three-ways-to-define-a-scenario">4. Three ways to define a scenario</h2>
+<p>A scenario is the baseline input package with <code>data_shocks.csv</code> edited. There are three routes to that package; they produce the same file and can be mixed.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Route</th>
+<th>Where the shock is written</th>
+<th>Best for</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Edited CSV plus one command (section 5)</td>
+<td>a spreadsheet: a copy of <code>data/scenarios/shocks_template.csv</code>, or a small file listing only the rows to change</td>
+<td>several attributes, regions, years or ramps at once; no command-line options to remember; the run starts from the same command</td>
+</tr>
+<tr class="even">
+<td><code>make_shock.jl</code> (section 6)</td>
+<td>command-line options: one attribute, a value, and a selection of regions, commodities and years</td>
+<td>a single uniform shock; scripting; layering shocks on an existing package</td>
+</tr>
+<tr class="odd">
+<td>The Julia API (<code>build_scenario</code>, <code>make_shock</code>, <code>run_bsat</code>; <a href="./reference/julia.html">Julia reference</a>)</td>
+<td>Julia code</td>
+<td>loops over many scenarios, or embedding the model in a larger workflow</td>
+</tr>
+</tbody>
+</table>
+<p>Whatever the route, the package then goes through the model (<code>run_model.jl</code> or the run scripts) and the dashboard as in sections 6 and 7. The CSV route runs the model itself.</p>
+</section>
+<section id="scenario-from-an-edited-csv" class="level2">
+<h2 class="anchored" data-anchor-id="scenario-from-an-edited-csv">5. Scenario from an edited CSV</h2>
+<p>The shocks file has five columns that matter: <code>region</code>, <code>year</code>, <code>commodity</code>, <code>attribute</code> and <code>value</code>. <code>data/scenarios/README.md</code> documents the ten attributes, their units and neutral value, and the region and commodity codes. Two forms of CSV are accepted:</p>
+<ul>
+<li>a full copy of <code>data/scenarios/shocks_template.csv</code> (the baseline shocks, 28,980 rows, all zeros) with some values edited: open it in a spreadsheet, filter by attribute, region, commodity and year, type the values, save as CSV;</li>
+<li>a partial file with only the rows to change. Rows absent from the file keep the baseline value.</li>
+</ul>
+<p>The China soybean import tariff of the worked example (+10 percentage points from 2026 to 2034) as a partial file, <code>data/scenarios/example_china_soybean_tariff.csv</code>:</p>
+<pre><code>region,year,commodity,attribute,value
+CHN,2026,Soybean,shock_import_tariff,0.1
+CHN,2027,Soybean,shock_import_tariff,0.1
+...
+CHN,2034,Soybean,shock_import_tariff,0.1</code></pre>
+<p>One command builds the package, prints what differs from the baseline, runs the model and writes the output:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">scripts/run_scenario_unix.sh</span> data/scenarios/example_china_soybean_tariff.csv <span class="dt">\</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>      output/china_soybean_tariff_Output.zip <span class="st">"China soybean import tariff +10 pp from 2026"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<pre><code>9 row(s) differ from baseline_2025_Input.zip:
+  shock_import_tariff                         CHN  Soybean  2026:2034 = 0.1
+Input package written to: .../output/china_soybean_tariff_Input.zip (9 row(s) applied, 0 skipped, 9 differ from the template)
+... (the model run, as in section 3)
+Years solved:  2025 2026 2027 2028 2029 2030 2031 2032 2033 2034</code></pre>
+<p>The second argument (output package) defaults to <code>output/&lt;csv name&gt;_Output.zip</code>, the third (description written to <code>METADATA.csv</code>) to <code>Scenario from &lt;csv name&gt;</code>. The input package is written beside the output with the same stem, so a run always leaves both packages behind. On Windows, <code>scripts\run_scenario_windows.bat</code> takes the same arguments.</p>
+<p>Rows the command cannot apply are skipped with a warning naming the line and the reason (unknown attribute, region or commodity, a year outside 2025 to 2034, a blank or non-numeric value, a commodity on a region-level attribute, a region and commodity pair the model does not have); the run continues with the other rows and stops only if none can be applied. Header names and codes are matched regardless of case, and the byte-order mark, <code>CRLF</code> line ends and number spellings such as <code>2026.0</code> or <code>1E-1</code> that spreadsheets produce are accepted. The package’s shocks file is regenerated from the template, so the spreadsheet’s formatting never reaches the model.</p>
+<p>To check a CSV without running the model, use the Julia entry point with <code>--build-only</code>; it writes the input package and prints the changes, and <code>--years</code>, <code>--template</code> and <code>--license</code> are also available there (<a href="./reference/cli.html#run_scenario.jl">Command line</a>):</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">julia</span> <span class="at">--project</span><span class="op">=</span>code/model code/model/run_scenario.jl <span class="at">--shocks</span> my_case.csv <span class="at">--build-only</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="create-a-shock-package-with-make_shock.jl-and-simulate-it" class="level2">
+<h2 class="anchored" data-anchor-id="create-a-shock-package-with-make_shock.jl-and-simulate-it">6. Create a shock package with make_shock.jl and simulate it</h2>
+<p><code>code/model/make_shock.jl</code> takes a template package, edits <code>data_shocks.csv</code> for one attribute over a selection of regions, commodities and years, and writes a new package. Start by listing the attributes:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">julia</span> <span class="at">--project</span><span class="op">=</span>code/model code/model/make_shock.jl <span class="at">--list</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<pre><code>shock_import_tariff                          [RYNC]  ad valorem import tariff, added in decimal form (0.10 = +10 percentage points)
+shock_export_tax                             [RYNC]  ad valorem export tax, added in decimal form
+shock_nontariff_import                       [RYNC]  ad valorem equivalent of import non-tariff measures, added in decimal form
+shock_nontax_export                          [RYNC]  ad valorem equivalent of export non-tax measures, added in decimal form
+shock_land_prod                              [RYNC]  land productivity shifter, decimal change (-0.10 = 10 percent lower yields per hectare)
+shock TFP Productivity Value Added           [RYNC]  total factor productivity shifter in value added, decimal change
+shock TFP Productivity Intermediates         [RYNC]  total factor productivity shifter in intermediate use (soybean crushing), decimal change
+shock_TFP_Productivity_Feed_Use_livestock    [RYNC]  total factor productivity shifter in feed use of livestock, decimal change
+shock_land_supply                            [RY]  land supply availability, decimal change (-0.10 = 10 percent less land), region level
+shock_ag_expenditure_share                   [RY]  agricultural expenditure share, proportional change (0.05 = 5 percent higher), region level</code></pre>
+<p><code>RYNC</code> attributes vary by region, year and commodity; <code>RY</code> attributes are region-level and ignore <code>--commodities</code>. Two attribute names contain spaces and must be quoted on the command line.</p>
+<section id="worked-example-china-soybean-import-tariff" class="level3">
+<h3 class="anchored" data-anchor-id="worked-example-china-soybean-import-tariff">Worked example: China soybean import tariff</h3>
+<p>Raise China’s ad valorem import tariff on soybeans by 10 percentage points from 2026 to the end of the horizon:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">julia</span> <span class="at">--project</span><span class="op">=</span>code/model code/model/make_shock.jl <span class="dt">\</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>      <span class="at">--template</span> data/packages/baseline_2025_Input.zip <span class="dt">\</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>      <span class="at">--inputpkg</span> output/china_soybean_tariff_Input.zip <span class="dt">\</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>      <span class="at">--shock</span> shock_import_tariff <span class="at">--value</span> 0.10 <span class="dt">\</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>      <span class="at">--regions</span> CHN <span class="at">--commodities</span> Soybean <span class="at">--years</span> 2026:2034 <span class="dt">\</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">--description</span> <span class="st">"China soybean import tariff +10 pp from 2026"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<pre><code>Wrote .../output/china_soybean_tariff_Input.zip: 9 rows of "shock_import_tariff" set to 0.1</code></pre>
+<p>Nine rows changed: one per year from 2026 to 2034. The new package is identical to the template except for those nine values in <code>data_shocks.csv</code> and the <code>Description</code> and <code>Comments</code> fields of <code>METADATA.csv</code>. The package produced by this exact command is committed as <code>data/packages/example_china_soybean_tariff_Input.zip</code>, and its output as <code>data/outputs/example_china_soybean_tariff_Output.zip</code>, so the run below and the dashboard of section 7 can be checked against them. It is the same package that section 5 builds from the CSV.</p>
+<p>Options: <code>--regions</code> and <code>--commodities</code> take comma-separated codes (ISO-3 region codes and the commodity codes <code>Barley, Beef, Corn, Cotton, Pork, Poultry, Rice, Sorghum, SoyMeal, SoyOil, Soybean, Wheat</code>); <code>--years</code> takes a range <code>2026:2034</code> or a list <code>2026,2027</code>; omitting a selection means “all”. <code>--add</code> adds the value to what is already in the file instead of replacing it. The command errors if no row matches the selection or if the attribute name is unknown.</p>
+</section>
+<section id="simulate-it" class="level3">
+<h3 class="anchored" data-anchor-id="simulate-it">Simulate it</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">scripts/run_model_unix.sh</span> output/china_soybean_tariff_Input.zip output/china_soybean_tariff_Output.zip</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The third argument (years) defaults to <code>2025:2034</code>. The 2025 solution is identical to the baseline because the shock starts in 2026. Check <code>SCENARIO_SOLVER_LOG.txt</code> as in section 3: ten years solved, none skipped. (The CSV route of section 5 already ran this step.)</p>
+</section>
+</section>
+<section id="open-the-dashboard" class="level2">
+<h2 class="anchored" data-anchor-id="open-the-dashboard">7. Open the dashboard</h2>
+<p>In a cloud or container environment (Codespaces, Docker), use the hosted dashboard at <a href="https://huggingface.co/spaces/bsat-team/BSAT_Viz" class="uri">https://huggingface.co/spaces/bsat-team/BSAT_Viz</a>. Download <code>output/china_soybean_tariff_Output.zip</code> from the codespace to your own computer first: right-click the file in the Explorer panel on the left and choose “Download…”, or drag it from the Explorer onto your desktop. Then upload it on the hosted page. This route needs nothing installed and is the recommended one for everyone; from a local install the hosted copy works the same way, with the file already on your computer.</p>
+<p>Run the dashboard server yourself only if both hold: you work on your own computer, not in the cloud, and you want the server on that computer. It needs the optional <code>bsat-dashboard</code> environment from the bootstrap.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">scripts/run_dashboard_unix.sh</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>On Windows the script is <code>scripts\run_dashboard_windows.bat</code>. Either way, open <a href="http://localhost:8501" class="uri">http://localhost:8501</a> afterwards. <a href="./dashboard.html">Dashboard</a> describes both routes in full.</p>
+<p>Upload <code>output/china_soybean_tariff_Output.zip</code> as Shock 1 (up to 20 MB) and leave Shock 2 empty. The baseline output is never uploaded: every package carries its own baseline (<code>data_targets_adjusted.csv</code>) and solution (<code>data_solution.csv</code>), and the dashboard joins them by region, commodity, year and attribute and computes the ratio solution over baseline. The second slot takes a second, different shock, compared against the first; both scenarios are then measured against the baseline of Shock 1, and if the second package’s baseline differs, a warning says so.</p>
+<p>What to look at, top to bottom:</p>
+<ul>
+<li><strong>Metadata</strong>: the <code>Description</code> confirms which package this is.</li>
+<li><strong>Time series</strong> for <code>China</code>, <code>Soybean</code>, <code>Imports</code>: the baseline path and the scenario path, which diverge from 2026.</li>
+<li><strong>Regional changes</strong> and <strong>Heatmap of changes</strong> for <code>Soybean</code> and <code>2026</code>: the cross-region pattern of the percent change. The year dropdowns open on 2026 because 2025 reproduces the observed data and shows no change.</li>
+<li><strong>Top Regional Changes</strong> for <code>Soybean</code>, <code>Imports</code>, <code>2026</code>: which regions’ soybean imports move most.</li>
+<li><strong>Table: Scenario Variables</strong>, active shocks only: the nine <code>shock_import_tariff</code> rows for China, soybeans.</li>
+</ul>
+<p>With a second package loaded, the regional charts show the two scenarios side by side, and a radio button picks the one drawn in the heatmap, on a color scale shared by both.</p>
+<p>The attribute names in the dashboard are the display names of the baseline file (<code>Production</code>, <code>Imports</code>, <code>Beginning Stocks</code>, …); the solution file uses lowercase codes that the dashboard maps to them (table in <a href="./data-format.html#solution-attributes">Package and file format</a>).</p>
+</section>
+<section id="layering-shocks-and-editing-data_shocks.csv-by-hand" class="level2">
+<h2 class="anchored" data-anchor-id="layering-shocks-and-editing-data_shocks.csv-by-hand">8. Layering shocks and editing data_shocks.csv by hand</h2>
+<p><strong>Layering with make_shock.</strong> Run the command again with the previous package as template. Each call edits one attribute; <code>--add</code> accumulates on rows that already hold a value:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="ex">julia</span> <span class="at">--project</span><span class="op">=</span>code/model code/model/make_shock.jl <span class="dt">\</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>      <span class="at">--template</span> output/china_soybean_tariff_Input.zip <span class="dt">\</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>      <span class="at">--inputpkg</span> output/china_soybean_tariff_and_us_land_Input.zip <span class="dt">\</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>      <span class="at">--shock</span> shock_land_supply <span class="at">--value</span> <span class="at">-0.05</span> <span class="at">--regions</span> USA <span class="at">--years</span> 2026:2034 <span class="dt">\</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>      <span class="at">--description</span> <span class="st">"China soybean tariff +10 pp and US land supply -5 percent from 2026"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Editing by hand.</strong> The CSV route of section 5 is the easy form of this: it takes the edited file and does the packaging. Doing it without the command, <code>data_shocks.csv</code> inside the package (folder <code>Input/</code>) is a plain CSV in the standard 13-column schema; open it in a spreadsheet or a script, edit the <code>value</code> column, and zip the folder again (the runner matches files by name, with or without the <code>Input/</code> folder). The columns are:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Column</th>
+<th>Content for a shock row</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>region</code></td>
+<td>ISO-3 region code (<code>USA</code>, <code>CHN</code>, <code>EUR</code>, …)</td>
+</tr>
+<tr class="even">
+<td><code>year</code></td>
+<td>2025 to 2034</td>
+</tr>
+<tr class="odd">
+<td><code>nest</code></td>
+<td>commodity nest (<code>Cereals</code>, <code>Livestock</code>, …); blank for region-level shocks</td>
+</tr>
+<tr class="even">
+<td><code>commodity</code></td>
+<td>commodity code; blank for region-level shocks</td>
+</tr>
+<tr class="odd">
+<td><code>input</code></td>
+<td>blank</td>
+</tr>
+<tr class="even">
+<td><code>attribute</code></td>
+<td>one of the ten shock attributes, spelled exactly as in <code>--list</code></td>
+</tr>
+<tr class="odd">
+<td><code>value</code></td>
+<td>the shock, decimal form; 0 is neutral</td>
+</tr>
+<tr class="even">
+<td><code>unit</code></td>
+<td><code>decimal form</code></td>
+</tr>
+<tr class="odd">
+<td><code>attribute_type</code></td>
+<td><code>RYNC</code> or <code>RY</code></td>
+</tr>
+<tr class="even">
+<td><code>attribute_description</code>, <code>region_name</code>, <code>nest_name</code>, <code>commodity_name</code></td>
+<td>labels, not read by the model</td>
+</tr>
+</tbody>
+</table>
+<p>Semantics: the model reads the shock rows of the year being solved and adds each value to the baseline level of the corresponding exogenous variable (tariff, export tax, non-tariff measures, land productivity, the three TFP shifters, land supply). The expenditure share is the one exception: the baseline share is multiplied by <code>1 + value</code>. A value of 0 leaves the baseline unchanged, which is why the file shipped with the baseline package is all zeros. Do not add or remove rows: the scaffold covers every region, commodity and year the model expects, and the ten attribute names must not be changed. Change <code>Description</code> in <code>METADATA.csv</code> so the dashboard can tell the scenario apart.</p>
+</section>
+<section id="stylized-cases" class="level2">
+<h2 class="anchored" data-anchor-id="stylized-cases">9. Stylized cases</h2>
+<p>The model team defined four stylized cases for the working paper (BSAT working paper, forthcoming). They are shipped as ready-to-run packages under <code>data/packages/</code> with their model outputs under <code>data/outputs/</code>, so you can upload a case output on its own, or beside another case as Shock 2, in the dashboard without running anything. Each case is shipped twice: as a partial CSV under <code>data/scenarios/</code> (the scenario definition, a few rows), and as the <code>make_shock.jl</code> command that produces the same package. Either rebuilds the package from the baseline; solving a case takes about two minutes. From the CSV:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="ex">scripts/run_scenario_unix.sh</span> data/scenarios/case1_land_supply_ukraine.csv output/case1_Output.zip <span class="dt">\</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Case 1, land availability: Ukraine land supply 20 percent lower in 2026"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>2025 is the realized base year and stays at the baseline in every case: the single-year shocks are placed in 2026, the second year of the horizon, and the nine-step ramps run over 2026 to 2034. Every year is solved independently, so a single-year shock changes only that year’s results.</p>
+<section id="case-1-land-availability" class="level3">
+<h3 class="anchored" data-anchor-id="case-1-land-availability">Case 1: land availability</h3>
+<p>Ukraine’s land supply is 20 percent lower in 2026 (<code>shock_land_supply</code>, region level).</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="ex">julia</span> <span class="at">--project</span><span class="op">=</span>code/model code/model/make_shock.jl <span class="at">--template</span> data/packages/baseline_2025_Input.zip <span class="dt">\</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>      <span class="at">--inputpkg</span> output/case1_Input.zip <span class="at">--shock</span> shock_land_supply <span class="at">--value</span> <span class="at">-0.20</span> <span class="at">--regions</span> UKR <span class="at">--years</span> 2026 <span class="dt">\</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>      <span class="at">--description</span> <span class="st">"Case 1, land availability: Ukraine land supply 20 percent lower in 2026"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>CSV: <code>data/scenarios/case1_land_supply_ukraine.csv</code>. Package: <code>data/packages/case1_land_supply_ukraine_Input.zip</code>. What to look at: Ukrainian area and production of every crop in 2026, and the export flows of wheat and corn.</p>
+</section>
+<section id="case-2-export-tax" class="level3">
+<h3 class="anchored" data-anchor-id="case-2-export-tax">Case 2: export tax</h3>
+<p>India applies an export tax of 50 percentage points on rice and wheat in 2026 (<code>shock_export_tax</code>).</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="ex">julia</span> <span class="at">--project</span><span class="op">=</span>code/model code/model/make_shock.jl <span class="at">--template</span> data/packages/baseline_2025_Input.zip <span class="dt">\</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>      <span class="at">--inputpkg</span> output/case2_Input.zip <span class="at">--shock</span> shock_export_tax <span class="at">--value</span> 0.50 <span class="at">--regions</span> IND <span class="at">--commodities</span> Rice,Wheat <span class="at">--years</span> 2026 <span class="dt">\</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>      <span class="at">--description</span> <span class="st">"Case 2, export tax: India rice and wheat export tax +50 percentage points in 2026"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>CSV: <code>data/scenarios/case2_export_tax_india.csv</code>. Package: <code>data/packages/case2_export_tax_india_Input.zip</code>. What to look at: Indian rice and wheat exports in 2026 and the exports of the other rice exporters (Thailand, Vietnam, Pakistan, United States).</p>
+</section>
+<section id="case-3-tfp-improvement" class="level3">
+<h3 class="anchored" data-anchor-id="case-3-tfp-improvement">Case 3: TFP improvement</h3>
+<p>Total factor productivity in the value added of Chinese soybean production rises gradually over the horizon (<code>shock TFP Productivity Value Added</code>). Two variants ship: Case 3a rises 1 percent per year from 1 percent in 2026 to 9 percent in 2034; Case 3b rises 0.5 percent per year from 0.5 to 4.5 percent. 2025 is not shocked, so its results equal the baseline. A ramp is a sequence of <code>make_shock.jl</code> calls, each using the package written by the previous call as template:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># julia --project=code/model</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">include</span>(<span class="st">"code/model/src/BSATRunner.jl"</span>); <span class="im">using</span> <span class="bu">.BSATRunner</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>pkg <span class="op">=</span> <span class="st">"data/packages/baseline_2025_Input.zip"</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (k, y) <span class="kw">in</span> <span class="fu">enumerate</span>(<span class="fl">2026</span><span class="op">:</span><span class="fl">2034</span>)</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>    pkg <span class="op">=</span> <span class="fu">make_shock</span>(pkg, <span class="st">"output/case3a_Input.zip"</span>; attribute<span class="op">=</span><span class="st">"shock TFP Productivity Value Added"</span>,</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>                     value<span class="op">=</span><span class="fl">0.01</span>k, regions<span class="op">=</span>[<span class="st">"CHN"</span>], commodities<span class="op">=</span>[<span class="st">"Soybean"</span>], years<span class="op">=</span>[y],</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>                     description<span class="op">=</span><span class="st">"Case 3a, TFP improvement: China soybean value-added TFP rising 1 to 9 percent over 2026 to 2034"</span>).inputpkg_zip</span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>For Case 3b use <code>value=0.005k</code>. From the command line, the same ramp is nine <code>make_shock.jl</code> calls, each with the package written by the previous call as <code>--template</code> and <code>--years</code> set to one year.</p>
+<p>CSVs: <code>data/scenarios/case3a_tfp_soybean_china.csv</code>, <code>data/scenarios/case3b_tfp_soybean_china_half.csv</code> (nine rows each, one per year from 2026: the ramp is plain to read there). Packages: <code>data/packages/case3a_tfp_soybean_china_Input.zip</code>, <code>data/packages/case3b_tfp_soybean_china_half_Input.zip</code>. What to look at: Chinese soybean production, imports and crushing year by year, and Brazilian and US soybean exports.</p>
+</section>
+<section id="case-4-land-productivity-decline" class="level3">
+<h3 class="anchored" data-anchor-id="case-4-land-productivity-decline">Case 4: land productivity decline</h3>
+<p>Land productivity of US corn and soybeans falls 10 percent in 2026 (<code>shock_land_prod</code>).</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="ex">julia</span> <span class="at">--project</span><span class="op">=</span>code/model code/model/make_shock.jl <span class="at">--template</span> data/packages/baseline_2025_Input.zip <span class="dt">\</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>      <span class="at">--inputpkg</span> output/case4_Input.zip <span class="at">--shock</span> shock_land_prod <span class="at">--value</span> <span class="at">-0.10</span> <span class="at">--regions</span> USA <span class="at">--commodities</span> Corn,Soybean <span class="at">--years</span> 2026 <span class="dt">\</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>      <span class="at">--description</span> <span class="st">"Case 4, land productivity decline: US corn and soybean land productivity 10 percent lower in 2026"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>CSV: <code>data/scenarios/case4_land_productivity_usa.csv</code>. Package: <code>data/packages/case4_land_productivity_usa_Input.zip</code>. What to look at: US corn and soybean production, area, yields and exports in 2026, and the imports of the main buyers.</p>
+<p>Each case follows the pattern of sections 5 to 7: build and run it from the CSV with <code>scripts/run_scenario_unix.sh</code>, or build it with <code>make_shock.jl</code> and run it with <code>scripts/run_model_unix.sh &lt;Input.zip&gt; &lt;Output.zip&gt;</code>, then open the output in the dashboard.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/bsat-team\.github\.io\/BSAT\/");
+      const newWindowLabel = "(opens in a new tab)";
+      const newWindowNoteId = "quarto-ext-newwindow-label";
+      // Links reference one hidden label through aria-describedby, so the
+      // announcement never changes their accessible name.
+      var describeNewWindow = (link) => {
+        if (!window.document.getElementById(newWindowNoteId)) {
+          var newWindowNote = window.document.createElement("span");
+          newWindowNote.id = newWindowNoteId;
+          newWindowNote.hidden = true;
+          newWindowNote.textContent = newWindowLabel;
+          window.document.body.appendChild(newWindowNote);
+        }
+        var describedBy = (link.getAttribute("aria-describedby") || "").split(/\s+/).filter(Boolean);
+        if (!describedBy.includes(newWindowNoteId)) {
+          describedBy.push(newWindowNoteId);
+          link.setAttribute("aria-describedby", describedBy.join(" "));
+        }
+      }
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+      window.quartoDecorateExternalLinks = function (root) {
+     var links = (root || window.document).querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+            describeNewWindow(link);
+          if (!link.classList.contains('no-external-icon')) {
+          }
+        }
+      }
+      };
+      window.quartoDecorateExternalLinks(window.document);
+    // Esc closes the popup (WCAG 1.4.13) and focus leaving both trigger and
+    // popup closes it (WCAG 2.4.11); tippy handles neither for interactive popups.
+    const hideOnEscAndFocusOut = {
+      name: 'hideOnEscAndFocusOut',
+      defaultValue: true,
+      fn(instance) {
+        const dismiss = () => {
+          // A show scheduled by the trigger delay would otherwise reopen it
+          instance.clearDelayTimeouts();
+          instance.hide();
+        };
+        const onKeyDown = (event) => {
+          if (event.key !== 'Escape') {
+            return;
+          }
+          // Keep Esc from also reaching page handlers (e.g. reveal.js overview),
+          // except an open reveal.js slide menu, which Esc should close too.
+          // The menu handles keys only when its keyboard option is on.
+          const menuHandlesEsc = window.Reveal?.getPlugin?.('menu')?.isOpen() &&
+            window.Reveal.getConfig().menu?.keyboard !== false;
+          if (!menuHandlesEsc) {
+            event.stopPropagation();
+          }
+          if (instance.popper.contains(window.document.activeElement)) {
+            // Disabled while refocusing so the focus trigger does not reopen it
+            instance.disable();
+            instance.reference.focus();
+            instance.enable();
+          }
+          dismiss();
+        };
+        const onFocusOut = (event) => {
+          const target = event.relatedTarget;
+          if (target && !instance.reference.contains(target) &&
+              !instance.popper.contains(target)) {
+            dismiss();
+          }
+        };
+        // On the trigger too: a click trigger (code-annotations: select) has no
+        // blur handling. Attached for the instance's lifetime so leaving the
+        // trigger also cancels a show still pending on the trigger delay.
+        instance.reference.addEventListener('focusout', onFocusOut);
+        return {
+          onShow() {
+            window.document.addEventListener('keydown', onKeyDown, true);
+            instance.popper.addEventListener('focusout', onFocusOut);
+          },
+          onHide() {
+            window.document.removeEventListener('keydown', onKeyDown, true);
+            instance.popper.removeEventListener('focusout', onFocusOut);
+          },
+          onDestroy() {
+            instance.reference.removeEventListener('focusout', onFocusOut);
+          },
+        };
+      },
+    };
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+        plugins: [hideOnEscAndFocusOut],
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          // Each band is positioned against its own containing block, which is
+          // not the offsetParent of the lines, so place it from client rects.
+          const placeBand = (band, firstEl, lastEl, codeBlock) => {
+            const container = band.offsetParent;
+            if (container === null) {
+              return;
+            }
+            const containerRect = container.getBoundingClientRect();
+            // Reveal.js scales slides with a transform, so convert client
+            // pixels back to the CSS pixels of the container.
+            const scale = containerRect.height / container.offsetHeight || 1;
+            const firstRect = firstEl.getBoundingClientRect();
+            const lastRect = lastEl.getBoundingClientRect();
+            const top = (firstRect.top - containerRect.top) / scale - container.clientTop + container.scrollTop;
+            const height = (lastRect.bottom - firstRect.top) / scale;
+            band.style.top = top - 2 + "px";
+            band.style.height = height + 4 + "px";
+            if (codeBlock) {
+              // Without the copy button wrapper, the containing block is wider
+              // than the code block, so span the code block explicitly.
+              const blockRect = codeBlock.getBoundingClientRect();
+              band.style.left = (blockRect.left - containerRect.left) / scale - container.clientLeft + container.scrollLeft + "px";
+              band.style.width = blockRect.width / scale + "px";
+            }
+          };
+          if (lineIds.length > 0) {
+            const el = window.document.getElementById(lineIds[0]);
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const parent = el.parentElement.parentElement;
+            // cook up a div (if necessary) and position it
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            placeBand(div, el, lastEl, parent.closest("div.sourceCode") || parent);
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            placeBand(gutterDiv, el, lastEl);
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+  <script type="application/javascript">
+  window.quartoScrollableRegionsLabels = {"code":"Scrollable code","output":"Scrollable output"};
+  </script>
+<nav class="page-navigation" aria-label="Page">
+  <div class="nav-page nav-page-previous">
+      <a href="./installation/troubleshooting.html" class="pagination-link" aria-label="Troubleshooting">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Troubleshooting</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./data-format.html" class="pagination-link" aria-label="Package and file format">
+        <span class="nav-page-text">Package and file format</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>BSAT documentation. Code under MIT; documentation and data products under CC BY 4.0.</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p>Built with Quarto.</p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
