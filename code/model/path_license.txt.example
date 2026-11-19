@@ -1,0 +1,8 @@
+# BSAT PATH solver license file.
+# 1. Get a free license: https://pages.cs.wisc.edu/~ferris/path/LICENSE
+# 2. Copy the "Variable value" string from that page.
+# 3. Replace the placeholder line below with that string.
+# 4. Save this file as "path_license.txt" (remove the .example extension),
+#    in this same folder (code/model/).
+# Lines starting with # and blank lines are ignored; the first real line is used.
+PASTE-YOUR-PATH-LICENSE-STRING-HERE

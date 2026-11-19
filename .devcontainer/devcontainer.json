@@ -1,0 +1,21 @@
+{
+  "name": "BSAT",
+  "build": { "dockerfile": "Dockerfile", "context": ".." },
+  "postCreateCommand": "julia --project=code/model -e 'import Pkg; Pkg.instantiate(); Pkg.precompile()'",
+  "forwardPorts": [8501],
+  "portsAttributes": { "8501": { "label": "Streamlit", "onAutoForward": "openBrowser" } },
+  "remoteEnv": {
+    "MAMBA_ROOT_PREFIX": "/opt/mamba",
+    "JULIA_DEPOT_PATH": "/opt/julia-depot"
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": ["julialang.language-julia", "ms-python.python", "REditorSupport.r"],
+      "settings": {
+        "r.lsp.enabled": false,
+        "r.lsp.promptToInstall": false,
+        "extensions.ignoreRecommendations": true
+      }
+    }
+  }
+}

@@ -1,0 +1,107 @@
+---
+title: "Contributing"
+---
+
+Conventions for code, headers and documentation in this repository, and the checks to run before a change.
+
+## Where things live
+
+| Kind of document | Location |
+|---|---|
+| User documentation (this site) | `doc/*.qmd`, `doc/installation/`, `doc/reference/`, rendered by Quarto |
+| Per-component notes | `code/model/README.md`, `code/processing/README.md`, `code/visualization/README.md` (the last one is also the Hugging Face Space front matter) |
+| Source references for the data pages | `doc/data/` (`data_specification.md`, `data_source.md`, the method notes on land cost shares, livestock feed and NTM imputation, `Region_list.txt`) |
+| Raw data attribution | `data/raw/README.md` |
+| Function documentation | In the code: Julia docstrings, R script headers, Python docstrings (below) |
+
+Model equations are not restated in the documentation; the working paper ({{< var wp.cite >}}) and the code are the references.
+
+## Julia
+
+Every function in `code/model/src/` carries a docstring in the standard Julia form: a signature line indented by four spaces, a blank line, a description, then argument and return descriptions.
+
+```julia
+"""
+    bsat_zip_dir(dir, zipfile)
+
+Zip every file directly under `dir` into `zipfile` with entries at the archive root
+(no folder prefix), deflate-compressed. Platform independent.
+"""
+function bsat_zip_dir(dir::AbstractString, zipfile::AbstractString)
+```
+
+Wrapper names are prefixed `bsat_` so that they cannot collide with the variables the model core assigns in the module's global scope. `src/model_core.jl` is verbatim model code and is not edited in this repository; changes go to the model authors, and any change to the wrapper must keep the regression test passing.
+
+## R
+
+Every script in `code/processing/R/` starts with a header block in this format:
+
+```r
+# ============================================================================ #
+# 22_compute_tariff_ave.R
+# Purpose:  Compute region-commodity ad valorem import tariffs (simple average of
+#           WITS MFN tariffs, latest reported year per product) and a zero
+#           export-tax scaffold.
+# Reads:    raw/trade_barriers/tariff_ave_WITS_2023.csv    (WITS TRAINS export: Reporter, Product, DutyType, Simple Average, Tariff Year)
+#           raw/trade_barriers/country_code_WITS.xlsx      (columns country, ISO3, Reporter)
+#           raw/mapping.csv
+# Writes:   interim/tariff_ave_region.csv
+#           interim/export_taxes_comm_reg.csv
+# Depends:  openxlsx, dplyr, tidyr, readr (loaded by 00_load_packages.R)
+# Notes:    HS codes are mapped to commodities by fixed 4- and 6-digit lists ...
+# ============================================================================ #
+```
+
+Fields: `Purpose`, `Reads` (paths relative to the data root, with the sheet or columns used), `Writes`, `Depends` (packages), `Notes` (constants that carry the data vintage, hard-coded positions, recodings, anything a maintainer must know before changing the input). Scripts communicate only through files; each starts with `rm(list = ls())` and reads the data root from `getOption("bsat.data_dir")`. File-name constants sit at the top of the script so that a new vintage is a one-line edit ([Updating raw data](updating-raw-data.qmd)). The [R reference](reference/r.qmd) is a copy of these headers; update both.
+
+## Python
+
+Modules, classes and functions in `code/visualization/` use Google-style docstrings: a one-line summary, an optional paragraph, then `Args:`, `Returns:` and `Raises:` sections.
+
+```python
+def find_member(names: list[str], filename: str) -> str | None:
+    """Find an archive member by base name, at the root or under any folder.
+
+    Args:
+        names: Member names as returned by ``ZipFile.namelist()``.
+        filename: Base file name to look for (case sensitive).
+
+    Returns:
+        The full member name, preferring the shallowest match, or ``None``.
+    """
+```
+
+Data handling stays in `bsat_dashboard.py` (no Streamlit import) so it can be tested with `tests/test_loaders.py`; `app.py` only renders.
+
+## Markdown and Quarto
+
+- Plain Markdown in `.qmd` files with a YAML `title`; no executed code cells (`execute: enabled: false` in `_quarto.yml`).
+- Sentence case for headings ("Package and file format", not "Package And File Format").
+- No em dashes; use commas, colons, parentheses or separate sentences.
+- Commands in fenced code blocks with a language tag (`bash`, `bat`, `julia`, `r`, `python`).
+- Relative links between pages (`installation/cloud.qmd`, `../model.qmd`), with anchors to headings where useful. Files in `doc/data/` are linked directly and copied to the site as resources.
+- File and attribute names in backticks, spelled exactly as in the code (`data_targets_adjusted.csv`, `shock TFP Productivity Value Added`).
+- Numbers about runtime, memory and sizes come from measured runs; state the machine class ("on a workstation").
+- The working paper is cited with `{{{< var wp.cite >}}}`, defined in `doc/_variables.yml`, so its reference is edited in one place.
+
+## Regenerating the site
+
+Quarto 1.4 or later. From the repository root:
+
+```bash
+quarto render doc
+```
+
+The site is written to `doc/_site/` (ignored by git). `quarto preview doc` serves it locally with live reload. Pushing to `main` triggers `.github/workflows/quarto-publish.yml`, which renders `doc/` and publishes to the `gh-pages` branch.
+
+## Checks to run before a change
+
+| Change | Run |
+|---|---|
+| Anything under `code/model/` (wrapper, packages, environment) | `julia --project=code/model code/model/test/runtests.jl` (about four minutes; byte-level comparison with the archived outputs) |
+| Anything under `code/processing/` or `data/raw/` | `scripts/run_r_pipeline_unix.sh`, then `git diff --stat data/processed data/packages` and a look at `data/interim/harmonization_log.csv`; then the model regression test, since the baseline package is one of its cases |
+| Anything under `code/visualization/` | `python code/visualization/tests/test_loaders.py` (or `pytest tests/` from that folder), then open the app with the two packages in `data/outputs/` |
+| Anything under `doc/` | `quarto render doc` with no warnings; check that every link resolves |
+| Scripts in `scripts/` or environments in `setup/` | Run the changed script on a clean checkout (Unix). For the Windows scripts, run the `Windows check` workflow (`.github/workflows/windows-check.yml`, from the Actions tab or on push): it bootstraps, runs the model twice, the pipeline, the fetch-script status and the dashboard tests on a GitHub-hosted Windows runner. The model runs need a PATH license, from `code/model/path_license.txt` or the repository secret `PATH_LICENSE`; without either they are skipped and the other steps still run. It covers script correctness; proxies, antivirus and path length still need a run on an agency laptop |
+
+Commits that change the model core are not accepted in this repository.

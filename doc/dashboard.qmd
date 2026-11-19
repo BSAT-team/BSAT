@@ -1,0 +1,86 @@
+---
+title: "Dashboard"
+---
+
+The BSAT dashboard is a Streamlit application (`code/visualization/`) that reads one or two model output packages and compares the scenario solution with the baseline across regions, commodities, attributes and years.
+
+## Hosted use
+
+The dashboard is hosted on Hugging Face Spaces at <https://huggingface.co/spaces/bsat-team/BSAT_Viz>. Nothing needs to be installed; open the page, upload a package as "Shock 1" and optionally a second one as "Shock 2". Uploaded files are held in memory for the session and are not stored.
+
+## What the dashboard expects
+
+A package is the `Output.zip` written by the model ([Package and file format](data-format.qmd#output-package)). The dashboard reads four of its seven files, at the archive root or inside a folder:
+
+| File | Role | Required |
+|---|---|---|
+| `data_targets_adjusted.csv` | baseline (the targets the model used) | yes |
+| `data_solution.csv` | scenario solution | yes |
+| `data_shocks.csv` | the shock inputs of the run | optional |
+| `METADATA.csv` | `field,value` pairs describing the run | optional |
+
+`data_params_calibrated.csv`, `data_exogenous.csv` and `SCENARIO_SOLVER_LOG.txt` are ignored. Packages from older model versions that hold `data_targets.csv` instead of `data_targets_adjusted.csv`, possibly under an `Output/` folder, are accepted as a fallback; a note says so when that file is used. The upload limit is 20 MB per package (set in `code/visualization/.streamlit/config.toml` and in `bsat_dashboard.py`, which the tests keep in agreement); a ten-year output package is about 1 MB.
+
+For each package the dashboard drops the input-level baseline rows (attribute type `RYNCI`), translates the lowercase solution codes to the baseline display names ([table](data-format.qmd#solution-attributes)), joins baseline and solution on region, commodity, year and attribute, and computes the ratio of solution to baseline and the percent change. A neutral run shows ratios of 1 everywhere. Duplicate keys, if any, keep the first row and produce a note.
+
+## The views
+
+Panels appear in this order; each opens from a header, and the charts come before the tables.
+
+- **Metadata**: the `METADATA.csv` of each package (author, description, model version, years requested and solved).
+- **Time series: region, commodity, variable**: the baseline path and each scenario path for one region, commodity and variable, labelled with the unit.
+- **Regional changes: commodity, year, variable**: percent change by region for a commodity, variable and year, side by side for two scenarios. Every region is labelled (names truncated to 20 characters; the tooltip has the full name).
+- **Heatmap of changes: year, variable**: percent change by region and commodity for a variable and year; with two scenarios a radio button picks the one shown. The color scale is symmetric around zero and spans the largest absolute change of either scenario in that view (at least 1 percent, at most 100 percent; larger changes take the end colors), so the same color means the same change in both heatmaps. Cells whose change rounds to 0.0 percent are white; region and commodity combinations without data are light gray.
+- **Top Regional Changes: commodity, year, variable**: the regions with the largest absolute percent change for a commodity, variable and year, for either scenario. Increases are red and decreases blue, the end colors of the heatmap scale, so small changes stay visible.
+- **Table: Baseline Data**: the baseline rows of either package, with column filters.
+- **Table: Scenario Variables**: the `data_shocks.csv` of each package, all rows or only the active shocks (value different from 0).
+
+Regions, commodities and variables are shown by their display names (`region_name`, `commodity_name`, `attribute_description` of the uploaded files); the dropdowns list only what the data contain. The year lists start at the first solved year and open on the second one, the first year in which a shock can act, since the first year reproduces the observed data.
+
+## Two-scenario comparison
+
+With two packages, both scenarios are compared against the baseline of Shock 1: the second package's solution is joined to the first package's baseline. Every output package carries its own baseline, so this is exact whenever both runs used the same input targets, which is the normal case for scenarios derived from one baseline package with `make_shock`. If the two baselines differ (different keys, or values differing by more than a relative 1e-6), the dashboard shows the warning
+
+> The baseline in the Shock 2 package differs from the baseline in the Shock 1 package. Both scenarios are compared against the Shock 1 baseline.
+
+and continues. Treat the comparison with care in that case: the percent changes of Shock 2 are then measured against a baseline its run did not use.
+
+## Running locally
+
+The hosted copy above is the recommended way to view results. It accepts any output package, wherever it was produced, and needs nothing installed. Running the dashboard server yourself only makes sense on an install on your own computer, where the server and the browser are on the same machine. In a codespace or a Docker container, download the output package to your own computer and use the hosted copy instead of the run script.
+
+### With the repository scripts
+
+After the bootstrap ([Local: macOS and Linux](installation/local-unix.qmd), [Local: Windows](installation/local-windows.qmd)):
+
+```bash
+scripts/run_dashboard_unix.sh
+```
+
+```bat
+scripts\run_dashboard_windows.bat
+```
+
+The script starts `streamlit run app.py` from `code/visualization/` in the `bsat-dashboard` conda environment (`setup/environment-dashboard.yml`: Python 3.11, pandas, numpy, altair, streamlit). Open <http://localhost:8501>.
+
+This environment is separate from the `bsat` R environment of the pipeline and is optional: the bootstrap creates it last, treats a failure there as a warning, and skips it with `--no-dashboard`. Streamlit depends on pyarrow and libarrow, a large dependency tree that failed to extract on a locked-down Windows laptop; the hosted copy above needs nothing installed. If the environment is missing, the run script prints the hosted URL and exits; rerun the bootstrap without `--no-dashboard` to create it. The container image has the environment preinstalled at `/opt/envs/bsat-dashboard`.
+
+### With pip
+
+From `code/visualization/`, with Python 3.10 or newer:
+
+```bash
+python -m venv venv
+source venv/bin/activate        # Windows: venv\Scripts\activate
+pip install "streamlit>=1.44.1" -r requirements.txt
+streamlit run app.py
+```
+
+`requirements.txt` pins every package, direct and transitive (Streamlit 1.44.1, pandas 2.2.3, numpy 1.26.4, altair 5.5.0, pyarrow 19.0.1); the Space runs that Streamlit version on Python 3.10, as declared in the front matter of `code/visualization/README.md`. The app also runs on newer stacks (tested with Streamlit 1.63, pandas 3.0, altair 6.2).
+
+## Code layout and tests
+
+- `app.py`: Streamlit entry point (layout, widgets, charts).
+- `bsat_dashboard.py`: the data functions (package parsing, merging, shock filtering, region labels, chart selections), with no Streamlit dependency. Documented in the [Python reference](reference/python.qmd).
+- `tests/test_loaders.py`: tests of the loaders on the committed example packages in `data/outputs/` and on synthesized old-naming and mismatched-baseline packages. Run `pytest tests/` from `code/visualization/`, or `python tests/test_loaders.py` when pytest is not installed.
+- `.streamlit/config.toml`: server settings (the upload size limit).

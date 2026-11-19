@@ -1,0 +1,90 @@
+---
+title: "Raw data sources"
+---
+
+Every file under `data/raw/` is a public source file exactly as downloaded; the pipeline never modifies it. Five trade-barrier files are not distributed with the repository (two for size, three because their source terms do not allow redistribution); the pipeline ships their derived products in `data/interim/` instead, as described in [Files not distributed and their derived products](#large-files). This page lists each file with its source, download location, vintage and whether an account is needed to download it. Which script reads each file and how to bring in a new vintage is in [Updating raw data](updating-raw-data.qmd); the original source list is kept as [data/data_source.md](data/data_source.md) and the attribution lines in `data/raw/README.md`.
+
+Each source's terms of use apply to its files; the project does not relicense them. The terms are linked in the last column of each table.
+
+Files are grouped by role in the pipeline. "Account" says whether the source requires registration to download the file.
+
+## USDA baseline
+
+| File | Source and content | Vintage | Account | Terms |
+|---|---|---|---|---|
+| `2025 International Long-Term Projections to 2034.xlsx` | USDA ERS, [International Baseline Data](https://www.ers.usda.gov/data-products/international-baseline-data) : 10-year projections of area, yield, production, consumption, trade, stocks and feed use by commodity and region | 2025 release, projections to 2034 | No | [USDA policies](https://www.usda.gov/policies-and-links) |
+| `region_commodity_list_2025.xlsx` | Project-maintained: the regions covered by each commodity sheet of the baseline workbook, in sheet order | Matches the 2025 workbook | n/a | project file |
+| `baseline_units.csv` | Project-maintained: unit of each baseline attribute per commodity | Matches the 2025 workbook | n/a | project file |
+
+## Macro and population
+
+| File | Source and content | Vintage | Account | Terms |
+|---|---|---|---|---|
+| `Current_GDP_WB_2025.xls` | World Bank, [GDP (current US\$), NY.GDP.MKTP.CD](https://data.worldbank.org/indicator/NY.GDP.MKTP.CD) | 2025 download; the 2025 column is used | No | [World Bank terms](https://data.worldbank.org/summary-terms-of-use) |
+| `population_WB_2025.xls` | World Bank, [Population, SP.POP.TOTL](https://data.worldbank.org/indicator/SP.POP.TOTL) | 2025 download; the 2025 column is used | No | [World Bank terms](https://data.worldbank.org/summary-terms-of-use) |
+| `Current_GDP_IMF_WEO_2025.csv`, `population_IMF_WEO_2025.csv` | IMF, [World Economic Outlook database](https://www.imf.org/en/Publications/SPROLLs/world-economic-outlook-databases): GDP (current prices, billions) and population (millions); used only for Taiwan, which the World Bank series lack | WEO 2025 | No | [IMF copyright and usage](https://www.imf.org/en/about/copyright-and-terms) |
+| `Global GDP Shares and GDP Growth Assumptions to 2035.xlsx` | USDA, [Agricultural Projections to 2035](https://www.ers.usda.gov/publications/pub-details?pubid=113816): real GDP levels and growth assumptions underlying the baseline | Projections to 2035 | No | [USDA policies](https://www.usda.gov/policies-and-links) |
+| `current_GDP_2014_WB.csv`, `current_GDPpc_2014_WB.csv` | World Bank, [World Development Indicators](https://databank.worldbank.org/source/world-development-indicators): 2014 GDP and GDP per capita, current US\$ (non-tariff-measure step) | 2014 values | No | [World Bank terms](https://data.worldbank.org/summary-terms-of-use) |
+| `current_GDP_IMF.xls`, `current_GDPpc_IMF.xls` | IMF, World Economic Outlook database: 2014 GDP and GDP per capita; used only for Taiwan in the non-tariff-measure step | 2014 values | No | [IMF copyright and usage](https://www.imf.org/en/about/copyright-and-terms) |
+
+## International prices and CPI
+
+| File | Source and content | Vintage | Account | Terms |
+|---|---|---|---|---|
+| `2026-06-19 IMF Commodity Prices external-data.xlsx` | IMF, [Primary Commodity Prices](https://www.imf.org/en/research/commodity-prices): monthly prices of barley, wheat, cotton, rice, maize, sorghum, soybeans, soybean meal and soybean oil | Accessed 19 June 2026 | No | [IMF copyright and usage](https://www.imf.org/en/about/copyright-and-terms) |
+| `2026-06-19 International Prices FAO Meat.xlsx` | FAO GIEWS, [FPMA tool, international prices](https://fpma.fao.org/giews/fpmat4/global/#/dashboard/tool/international): monthly export prices of beef, pork and poultry | Accessed 19 June 2026 | No | [FAO database terms](https://www.fao.org/contact-us/terms/db-terms-of-use/en/) |
+| `2026-06-24 CPI_US.xlsx` | BLS, [Consumer Price Index](https://www.bls.gov/cpi/), CPI-U all items, U.S. city average, annual average, rebased to 2017 = 1 (the same series is on [FRED, CPIAUCNS](https://fred.stlouisfed.org/series/CPIAUCNS)) | Retrieved 24 June 2026 | No | [BLS copyright information](https://www.bls.gov/opub/copyright-information.htm) |
+
+## Trade barriers
+
+All files live in `data/raw/trade_barriers/`.
+
+| File | Source and content | Vintage | Account | Terms |
+|---|---|---|---|---|
+| `tariff_ave_WITS_2023.csv` | World Bank [WITS](https://wits.worldbank.org/) (UNCTAD TRAINS): MFN applied tariffs, simple average by reporter and HS product, latest reported year per product. Not distributed; obtain from source (below) | 2023 or last observed | Free WITS account for custom queries | [UNCTAD TRAINS terms](https://wits.worldbank.org/data/public/UNCTAD_TermsofUseandDisclaimer.pdf) |
+| `tariff_ave_2014_WITS.csv` | WITS (UNCTAD TRAINS): 2014 applied tariff ad valorem equivalents, all reporters, all partners, all HS6 products. Not distributed; obtain from source (below) | 2014 | Free WITS account | [UNCTAD TRAINS terms](https://wits.worldbank.org/data/public/UNCTAD_TermsofUseandDisclaimer.pdf) |
+| `ag_hs_products.csv` | WITS: list of agricultural HS products (product group `WTO_HS_Aggri`). Not distributed; obtain from source (below) | Static list | Free WITS account | [UNCTAD TRAINS terms](https://wits.worldbank.org/data/public/UNCTAD_TermsofUseandDisclaimer.pdf) |
+| `country_code_WITS.xlsx` | WITS reporter codes with ISO-3 codes (distributed lookup) | Static list | No | [WITS FAQ](https://wits.worldbank.org/faqs.html) |
+| `ag_tariff_USA_2014.xls` | WTO, [Tariff and Trade Data](https://ttd.wto.org/en): U.S. applied MFN schedule at HS6, 2014; used only as the source of the commodity-to-HS6 mapping. Not distributed; obtain from source (below) | 2014 | No for HS6-level data (free login for some downloads) | [WTO TTD terms](https://ttd.wto.org/download-static/terms-of-use) |
+| `ave_hs_importer.csv` | World Bank, [Ad Valorem Equivalent of Non-Tariff Measures](https://datacatalog.worldbank.org/search/dataset/0040437) (Kee and Nicita): AVE by importer and HS6 product | 2014 reference year | No | [Dataset page](https://datacatalog.worldbank.org/search/dataset/0040437) |
+| `BACI_HS92_Y2014_V202401b.csv` | CEPII, [BACI](https://www.cepii.fr/CEPII/en/bdd_modele/bdd_modele_item.asp?id=37): bilateral trade flows at HS6, 2014. Not distributed (size); obtain from source (below) | HS92, release 202401b, year 2014 | No | [BACI page](https://www.cepii.fr/CEPII/en/bdd_modele/bdd_modele_item.asp?id=37) |
+| `country_codes_V202401b.csv` | CEPII BACI: numeric country codes with ISO-3 codes (distributed lookup) | Release 202401b | No | [BACI page](https://www.cepii.fr/CEPII/en/bdd_modele/bdd_modele_item.asp?id=37) |
+| `country_region_WB.xlsx` | World Bank, [Country and lending groups](https://datahelpdesk.worldbank.org/knowledgebase/articles/906519-world-bank-country-and-lending-groups): geographic region of each economy (fixed effects in the NTM imputation) | Current classification at download | No | [World Bank terms](https://data.worldbank.org/summary-terms-of-use) |
+
+## Land cost and livestock
+
+| File | Source and content | Vintage | Account | Terms |
+|---|---|---|---|---|
+| `AgTFPInternational2023.xlsx` | USDA ERS, [International Agricultural Productivity](https://www.ers.usda.gov/data-products/international-agricultural-productivity): cost shares of land by country (sheet "Cost Shares", 2021-2030 column) | 2023 release | No | [USDA policies](https://www.usda.gov/policies-and-links) |
+| `variable_costs_2025/*.xlsx` (Feed Grains, Rice, Soybeans and products, Upland Cotton, Wheat) | USDA, [Agricultural Projections to 2035](https://www.ers.usda.gov/publications/pub-details?pubid=113816): U.S. per-acre variable costs of production by crop | Projections to 2035 | No | [USDA policies](https://www.usda.gov/policies-and-links) |
+| `FAOSTAT_total_livestock_value_constant_IntlD.csv`, `FAOSTAT_each_livestock_value_constant_IntlD.csv` | FAO, [FAOSTAT Value of Agricultural Production (QV)](https://www.fao.org/faostat/en/#data/QV): gross production value of livestock, total and by item (indigenous meat), constant 2014-2016 international dollars | 2015 values | No | [FAO database terms](https://www.fao.org/contact-us/terms/db-terms-of-use/en/) |
+| `FAOSTAT_Livestock_Inventory_2024.csv`, `FAOSTAT_Slaughtered Livestock_2024.csv` | FAO, [FAOSTAT Crops and livestock products (QCL)](https://www.fao.org/faostat/en/#data/QCL): live-animal stocks and animals slaughtered | 2024 | No | [FAO database terms](https://www.fao.org/contact-us/terms/db-terms-of-use/en/) |
+
+## Identifiers and parameters
+
+| File | Content | Vintage |
+|---|---|---|
+| `mapping.csv` | Project-maintained: country to region crosswalk (ISO-3 codes, region codes and names, aggregation groups A, B, C). Group A marks the 42 model regions. | Matches the 2025 baseline |
+| `exogenous_data.csv` | Project-maintained: the calibrated elasticities and parameters entered by hand in the model schema (`sigma_t`, `sigma_u`, `sigma_n`, `sigma_a`, `sigma_i`, `phi_i`, `omega_q`, `omega_c`, `epsilon_l`, `epsilon_q`) and the baseline levels of land productivity, land unavailability and the three TFP attributes. `sigma_t` and `sigma_u` come from the calibration in the working paper ({{< var wp.cite >}}). | Current model calibration |
+
+## Files not distributed and their derived products {#large-files}
+
+Five inputs of scripts 22 and 23, all under `data/raw/trade_barriers/`, are not distributed with the repository and are listed in `.gitignore`. Two exceed GitHub's file size limit; three are extracts whose source terms (UNCTAD TRAINS via WITS, WTO Tariff and Trade Data) do not allow redistribution. In their place the repository tracks the derived products in `data/interim/`, and `main.R` reuses those when the raw files are absent. The raw files are needed only to rebuild the derived products from scratch.
+
+| Raw file | Source | Why not distributed | Derived file shipped in `data/interim/` | Consumed by | How to obtain the raw file |
+|---|---|---|---|---|---|
+| `tariff_ave_WITS_2023.csv` | World Bank WITS, UNCTAD TRAINS: MFN applied tariffs, 2023 or last observed | Source terms | `tariff_ave_region.csv`, `export_taxes_comm_reg.csv` | `22_compute_tariff_ave.R` | WITS manual query for year 2023 (below) |
+| `tariff_ave_2014_WITS.csv` | World Bank WITS, UNCTAD TRAINS: 2014 applied tariff AVEs | Size (about 245 MB) and source terms | `NTM_IMP_ave_region.csv`, `NTM_EXP_ave_region.csv` | `23_compute_NTM_ave.R` | WITS manual query for year 2014 (below) |
+| `ag_hs_products.csv` | World Bank WITS, product group `WTO_HS_Aggri` | Source terms | `NTM_IMP_ave_region.csv`, `NTM_EXP_ave_region.csv` | `23_compute_NTM_ave.R` | WITS: export the product group `WTO_HS_Aggri` as CSV with a `Product` column of HS6 codes |
+| `ag_tariff_USA_2014.xls` | WTO Tariff and Trade Data: United States applied MFN schedule, 2014 | Source terms | `commodity_hs6_mapping.csv` (the commodity-to-HS6 mapping, 67 HS6 codes) | `23_compute_NTM_ave.R` | <https://ttd.wto.org/>: export the United States applied MFN schedule for 2014 to Excel; sheet `Applied_MFN`, HS6 codes in column E from row 6 |
+| `BACI_HS92_Y2014_V202401b.csv` | CEPII BACI, HS92, release 202401b (the 2014 file of the archive) | Size (about 460 MB) | `NTM_IMP_ave_region.csv`, `NTM_EXP_ave_region.csv` | `23_compute_NTM_ave.R` | `scripts/fetch_large_raw_data.sh --download` downloads the release archive (about 2.4 GB, resumable) from `https://www.cepii.fr/DATA_DOWNLOAD/baci/data/BACI_HS92_V202401b.zip` and extracts only the 2014 file |
+
+The NTM outputs `NTM_IMP_ave_region.csv` and `NTM_EXP_ave_region.csv` are shipped in `data/interim/` in the same way as the other derived files; the project owner is obtaining them.
+
+Without arguments, `scripts/fetch_large_raw_data.sh` (or `scripts\fetch_large_raw_data.bat`) reports which of the five files is present and prints how to obtain the missing ones. Only the CEPII file can be downloaded by the script; the WITS and WTO files require a free account and an interactive export.
+
+**WITS manual query.** Sign in at <https://wits.worldbank.org/>, open Advanced Query, Tariff and Trade Analysis (TRAINS). Reporters: all; partners: all; products: all HS6; year: 2014 or 2023; indicator: AVE of applied tariff. Export the result as CSV and save it as `data/raw/trade_barriers/tariff_ave_2014_WITS.csv` or `data/raw/trade_barriers/tariff_ave_WITS_2023.csv`. The file must have the WITS export layout (`Reporter`, `Product`, `DutyType`, `Simple Average`, `Tariff Year`); only `DutyType == "MFN"` rows are used. `ag_hs_products.csv` is the WITS product group `WTO_HS_Aggri` exported as CSV with a `Product` column of HS6 codes.
+
+**WTO schedule.** `ag_tariff_USA_2014.xls` is the WTO Tariff and Trade Data export of the United States applied MFN schedule for 2014 (sheet `Applied_MFN`, HS6 codes in column E from row 6). Script 23 reads it only to build the commodity-to-HS6 mapping: when the file is present the mapping is rebuilt and `data/interim/commodity_hs6_mapping.csv` is rewritten; when it is absent the shipped mapping is read instead.
+
+**What happens without them.** `main.R` runs script 22 only when `tariff_ave_WITS_2023.csv` is present; otherwise it prints `22_compute_tariff_ave: SKIPPED (WITS 2023 extract absent)` and reuses the shipped `tariff_ave_region.csv` and `export_taxes_comm_reg.csv`. It runs script 23 only when `BACI_HS92_Y2014_V202401b.csv`, `tariff_ave_2014_WITS.csv` and `ag_hs_products.csv` are all present; otherwise it prints `23_compute_NTM_ave: SKIPPED (large raw files absent)` and reuses `NTM_IMP_ave_region.csv` and `NTM_EXP_ave_region.csv`. If a raw input and its derived files are both absent, `main.R` stops with a message naming the missing files. Everything else in the pipeline runs from the tracked raw files alone. See [Processing pipeline](pipeline.qmd#large-files-and-the-ntm-step).

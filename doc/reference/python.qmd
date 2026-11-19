@@ -1,0 +1,190 @@
+---
+title: "Python reference: bsat_dashboard"
+---
+
+`code/visualization/bsat_dashboard.py` holds the data functions of the dashboard. Everything in it is independent of Streamlit so that it can be imported and tested without the Streamlit runtime; `app.py` wraps the loaders with `st.cache_data` and renders the results. Paths below are relative to `code/visualization/`.
+
+A model output package is a ZIP archive written by the BSAT model. The current naming places `data_targets_adjusted.csv` (baseline), `data_solution.csv` (scenario solution), `data_shocks.csv` (shock inputs) and `METADATA.csv` (`field,value` pairs) at the archive root. Older packages store `data_targets.csv` instead of `data_targets_adjusted.csv` and may nest the files under a folder such as `Output/`. Both layouts are accepted; the older name produces a note that is surfaced to the user.
+
+## Constants
+
+| Name | Value | Meaning |
+|---|---|---|
+| `BASELINE_FILENAMES` | `(("data_targets_adjusted.csv", None), ("data_targets.csv", note))` | Baseline file names in order of preference, with the note shown when a fallback name is used |
+| `SOLUTION_FILENAME`, `SHOCKS_FILENAME`, `METADATA_FILENAME` | `data_solution.csv`, `data_shocks.csv`, `METADATA.csv` | Member names |
+| `MERGE_KEYS` | `["region", "commodity", "year", "attribute"]` | Columns that identify one observation in both baseline and solution files |
+| `SOLUTION_ATTRIBUTE_NAMES` | dict | Lowercase attribute codes of `data_solution.csv` mapped to the display names of the baseline; unlisted codes are kept unchanged ([table](../data-format.qmd#solution-attributes)) |
+| `SHOCK_TOLERANCE` | `1e-12` | A shock is active whenever its value is farther than this from zero |
+| `BASELINE_RTOL` | `1e-6` | Relative tolerance used when deciding whether two baselines agree |
+| `RATIO_DECIMALS` | `4` | Decimals kept for ratios; percent changes are rounded to 2 |
+| `NAME_COLUMNS` | dict | Code column to display-name column: `region` to `region_name`, `commodity` to `commodity_name`, `attribute` to `attribute_description` |
+
+## ScenarioPackage
+
+```python
+@dataclass
+class ScenarioPackage:
+    baseline: pd.DataFrame
+    solution: pd.DataFrame
+    notes: list[str]
+```
+
+Contents of one model output package relevant to the dashboard. `baseline`: tidy baseline rows with columns `region, commodity, year, attribute, value, unit, region_name` (`unit` and `region_name` may be missing when the source file lacks them). `solution`: solution rows with `MERGE_KEYS` plus `value_scenario`. `notes`: human-readable notes about fallbacks or data repairs performed while loading, for display in the app.
+
+## ZIP helpers
+
+### find_member
+
+```python
+find_member(names: list[str], filename: str) -> str | None
+```
+
+Find an archive member by base name, at the root or under any folder. `names` are the member names from `ZipFile.namelist()`; `filename` is the base name (case sensitive). Returns the full member name, preferring the shallowest match, or `None`.
+
+### read_csv_member
+
+```python
+read_csv_member(zip_source, filename: str) -> pd.DataFrame | None
+```
+
+Read one CSV member of a package into a DataFrame. `zip_source` is a path to the ZIP or an open binary file object (rewound before reading). Returns the parsed table, or `None` when the member is absent.
+
+### load_metadata
+
+```python
+load_metadata(zip_source) -> pd.DataFrame | None
+```
+
+Load `METADATA.csv` (columns `field` and `value`) from a package.
+
+### load_shocks
+
+```python
+load_shocks(zip_source) -> pd.DataFrame | None
+```
+
+Load `data_shocks.csv` from a package.
+
+## Shock table
+
+### changed_shocks
+
+```python
+changed_shocks(shocks: pd.DataFrame) -> pd.DataFrame
+```
+
+Keep only shock rows whose value differs from the neutral value zero. All shock attributes written by the model are decimals added to the baseline level (0.10 means +10 percentage points or +10 percent), so a value of zero leaves the baseline unchanged. Returns the subset of rows that represent an active shock.
+
+## Baseline and solution
+
+### find_baseline_member
+
+```python
+find_baseline_member(names: list[str]) -> tuple[str | None, str | None]
+```
+
+Locate the baseline file using the current name first, then fallbacks. Returns `(member_name, note)` where `note` is `None` for the current file name and a message for a fallback; `(None, None)` when absent.
+
+### tidy_baseline
+
+```python
+tidy_baseline(df: pd.DataFrame, notes: list[str]) -> pd.DataFrame
+```
+
+Reduce a baseline file to the columns and rows used by the dashboard. Input-level rows (non-empty `input` column, attribute type `RYNCI`) describe feed inputs to a commodity and have no counterpart in the solution, so they are dropped before checking uniqueness. `notes` receives notes about repairs performed (duplicated keys keep the first row). Returns the tidy baseline with `MERGE_KEYS` plus `value` and, when present, `unit` and `region_name`.
+
+### tidy_solution
+
+```python
+tidy_solution(df: pd.DataFrame, notes: list[str]) -> pd.DataFrame
+```
+
+Reduce a solution file to merge keys and the scenario value. Attribute codes are translated to the baseline's display names through `SOLUTION_ATTRIBUTE_NAMES`. Returns a table with `MERGE_KEYS` plus `value_scenario`. Raises `ValueError` if the solution file has no `value` column.
+
+### load_scenario_package
+
+```python
+load_scenario_package(zip_source) -> ScenarioPackage
+```
+
+Load baseline and solution tables from one model output package. Returns a `ScenarioPackage` with tidy baseline, tidy solution and notes. Raises `ValueError` if the baseline or solution file cannot be found.
+
+### baselines_agree
+
+```python
+baselines_agree(first: pd.DataFrame, second: pd.DataFrame) -> bool
+```
+
+Check whether two tidy baselines have the same keys and values. Returns `True` when both tables cover the same keys with values equal up to `BASELINE_RTOL`.
+
+### merge_scenarios
+
+```python
+merge_scenarios(package_1: ScenarioPackage, package_2: ScenarioPackage | None = None) -> tuple[pd.DataFrame, list[str]]
+```
+
+Join the baseline with one or two scenario solutions. Each scenario contributes a ratio `solution / baseline` and the implied shocked value. The baseline of scenario 1 is the reference for both scenarios; a warning note is produced if scenario 2 ships a different one. Returns `(df, notes)` where `df` has the baseline columns plus `ratio`, `pct_change` and `value_with_shock1` and, with a second package, `ratio_shock2` and `value_with_shock2`.
+
+## Lookups derived from the merged table
+
+### display_names
+
+```python
+display_names(df: pd.DataFrame, code_column: str, name_column: str) -> dict[str, str]
+```
+
+Map the codes present in `df` to display names, `{code: name}` for every code in the data, using the first name found for each code and the code itself when no name is available.
+
+### label_maps
+
+```python
+label_maps(df: pd.DataFrame) -> dict[str, dict[str, str]]
+```
+
+Display-name maps for regions, commodities and attributes, `{"region": {...}, "commodity": {...}, "attribute": {...}}`, built with `display_names` from the `NAME_COLUMNS` (`region_name`, `commodity_name`, `attribute_description`). The dropdowns of every view use these maps.
+
+### first_scenario_year
+
+```python
+first_scenario_year(df: pd.DataFrame) -> int
+```
+
+Return the first year for which the scenario solution has values: the smallest `year` with a non-missing `ratio`; falls back to the smallest year in the table when no ratio is available.
+
+### scenario_years
+
+```python
+scenario_years(df: pd.DataFrame) -> list[int]
+```
+
+List the years at or after `first_scenario_year` present in `df`.
+
+## Chart data
+
+### top_n_changes
+
+```python
+top_n_changes(df, commodity: str, attribute: str, year: int, shock: str = "shock1", top_n: int = 10) -> pd.DataFrame
+```
+
+Select the regions with the largest absolute percent change for a commodity, attribute and year. `shock` is `"shock1"` or `"shock2"` (falls back to shock 1 if the second scenario is absent). Returns rows with `region, commodity, year, attribute, value, unit, ratio, pct_change, abs_change` sorted by `abs_change` descending, at most `top_n` rows.
+
+### select_series
+
+```python
+select_series(df, region: str, commodity: str, attribute: str) -> pd.DataFrame
+```
+
+Rows of one region, commodity and attribute, sorted by year.
+
+### select_year
+
+```python
+select_year(df, attribute: str, year: int, commodity: str | None = None) -> pd.DataFrame
+```
+
+Rows of one attribute and year, optionally restricted to a commodity.
+
+## Tests
+
+`tests/test_loaders.py` exercises the loaders on the committed packages in `data/outputs/` (new naming) and on packages synthesized from the baseline package: the old naming (`data_targets.csv` under an `Output/` folder) and a package with a different baseline. Run `pytest tests/` from `code/visualization/`, or `python tests/test_loaders.py`.

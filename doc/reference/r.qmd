@@ -1,0 +1,132 @@
+---
+title: "R reference: pipeline scripts"
+---
+
+One entry per script in `code/processing/R/`, taken from the header block at the top of each file (Purpose, Reads, Writes, Depends, Notes), which is the authoritative description. Paths under "Reads" and "Writes" are relative to the data root (`<repo>/data`, or `BSAT_DATA_DIR`). `main.R` sources the scripts in numeric order; every script starts with `rm(list = ls())` and communicates with the others only through files. How the scripts fit together is in [Processing pipeline](../pipeline.qmd); how to bring in a new data vintage is in [Updating raw data](../updating-raw-data.qmd).
+
+## main.R
+
+- Purpose: run the full data-processing pipeline for the 2025-2034 period. Produces the four model-input files in `processed/` (`data_targets`, `data_exogenous`, `data_shocks`, `data_params_init`) and the baseline package.
+- Run: `Rscript main.R` from `code/processing/`, or the run scripts. Sets its working directory to its own folder (through `rstudioapi` in RStudio, or the `--file=` argument under `Rscript`).
+- Data root: `BSAT_DATA_DIR` if set, else `<repo>/data`; stored in the option `bsat.data_dir`; `interim/` and `processed/` are created.
+- Order: `00 01 10 11 12 20 21 [22] [23] 24 30 40 50 60`. Script 23 runs only when both large raw files are present; otherwise the shipped interim NTM results are reused, and without those the run stops.
+
+## 00_load_packages.R
+
+- Purpose: check that every package the pipeline uses is installed and attach it; nothing is installed. Sourced first by `main.R`; later scripts clear objects but keep the attached packages. A missing or broken package stops the run with its name.
+- Reads: none.
+- Writes: none.
+- Depends: `dplyr`, `tidyr`, `stringr`, `readr`, `readxl`, `openxlsx`, `zip`, `data.table`, `lfe`, `ggplot2` (from `setup/environment.yml`)
+- Notes: `stringr`, `data.table` and `ggplot2` are loaded but no numbered script currently calls them; `lfe` is used only by 23.
+
+## 01_check_region_commodity_coverage.R
+
+- Purpose: expand the region-commodity list of the USDA baseline to the full region x commodity grid and flag the pairs the baseline does not cover.
+- Reads: `raw/region_commodity_list_2025.xlsx` (sheet `Sheet1`: columns `region`, `commodity`).
+- Writes: `interim/region_commodity_coverage.csv`.
+- Depends: `openxlsx`, `dplyr`, `tidyr`, `readr`.
+- Notes: audit only; no later script reads the output.
+
+## 10_read_baseline_data.R
+
+- Purpose: read the commodity sheets of the USDA International Long-Term Projections workbook and reshape them into one long table (commodity x region x year) holding the baseline variables.
+- Reads: `raw/2025 International Long-Term Projections to 2034.xlsx` (one sheet per commodity, named as in the commodity list); `raw/region_commodity_list_2025.xlsx` (sheet `Sheet1`: region order within each sheet).
+- Writes: `interim/baseline_projections_long.csv`.
+- Depends: `openxlsx`, `dplyr`, `readr`.
+- Notes: source vintage constant `baseline_data <- "2025 International Long-Term Projections to 2034.xlsx"`. The sheet layout is hard-coded: each region block is 25 rows apart and 21 rows tall, starting at row 9 (Poultry) or row 7 (all other commodities); the number and meaning of the columns per commodity group (CL1 to CL8) is fixed in the script; the regions of a sheet are those of the region list, in order, followed by `World`. The string `     --` marks missing values; crop years `2025/26` keep the first year.
+
+## 11_compute_feed_use_decomposition.R
+
+- Purpose: split each region's total feed use of every feed crop across the three livestock products (beef, pork, poultry) in proportion to FAOSTAT livestock value-of-production shares.
+- Reads: `raw/mapping.csv`; `raw/FAOSTAT_total_livestock_value_constant_IntlD.csv` (2015 total livestock value, constant 2014-2016 I$); `raw/FAOSTAT_each_livestock_value_constant_IntlD.csv` (2015 value by livestock item, indigenous meat); `interim/baseline_projections_long.csv` (from 10).
+- Writes: `interim/livestock_value_shares.xlsx`; `interim/feed_use_decomposition.xlsx`.
+- Depends: `dplyr`, `tidyr`, `readr`, `openxlsx`.
+- Notes: `Z_k = feed_only + ind_feed_other + feed_seed_waste` for Barley, Corn, Sorghum, Soybeans, Soybean meal, Soybean oil and Wheat; `Z_ik = Z_k x` value share of livestock `i`. A missing value share is read as no demand (set to 0). FAOSTAT column `Area Code (ISO3)` and the five `(indigenous)` Item labels are matched by name; Myanmar is recoded `MMR` to `BUR`. Only group A regions and years from 2025 are kept.
+
+## 12_generate_data_targets.R
+
+- Purpose: build `data_targets.csv`, the baseline levels the model is calibrated to, from the long baseline table and the feed-use decomposition.
+- Reads: `interim/baseline_projections_long.csv` (from 10); `interim/feed_use_decomposition.xlsx` (from 11); `raw/mapping.csv`; `raw/baseline_units.csv` (unit per commodity x attribute_description).
+- Writes: `processed/data_targets.csv` (overwritten afterwards by 50).
+- Depends: `dplyr`, `tidyr`, `readr`, `readxl`.
+- Notes: `lst_obsv_yr <- 2025` is the first year of the analysis period; keep it equal to `first_yr` in 30. Commodities are renamed to model codes (Beef, SoyMeal, SoyOil, Soybean) and assigned to nests. Soybean-market consistency check: when a region has SoyOil or SoyMeal projections but no soybean market, SoyOil in BGD is reallocated to OAO and SoyOil and SoyMeal in ECO to ONA (see the long note in the script). All quantity attributes are rounded to whole units; yields and extraction rates are not (13 re-derives them).
+
+## 20_compute_ag_expenditure_share.R
+
+- Purpose: compute the agricultural expenditure share (spending on the twelve modeled commodities as a percentage of real GDP) by region for 2025, and save the annual international price series built along the way.
+- Reads: `processed/data_targets.csv` (from 12, before harmonization: food and feed quantities); `raw/2026-06-19 IMF Commodity Prices external-data.xlsx` (sheet `External`: monthly, nine non-meat commodities); `raw/2026-06-19 International Prices FAO Meat.xlsx` (sheet `data`: monthly export prices, beef, pork, poultry); `raw/2026-06-24 CPI_US.xlsx` (sheet `Sheet1`: columns `year`, `CPI_2017`); `raw/Global GDP Shares and GDP Growth Assumptions to 2035.xlsx` (first sheet: USDA real GDP levels and growth); `raw/mapping.csv`.
+- Writes: `interim/international_prices_annual.csv` (marketing-year averages, native units, all years); `interim/ag_expenditure_shares.csv`.
+- Depends: `openxlsx`, `dplyr`, `tidyr`, `readr`.
+- Notes: IMF series are picked by the code in row 1 (`imf_meta`: `PBARL`, `PWHEAMT`, `PCOTTIND`, `PRICENPQ`, `PMAIZMT`, `PSORG`, `PSOYB`, `PSMEA`, `PSOIL`); dates are the `YYYYMm` labels in column 1. FAO meat prices are simple averages of fixed column positions (columns 3-5 beef, 6/8/9 pork, 7/10 poultry; dates `MM/DD/YYYY` in column 2). Prices are deflated to 2017 USD with `CPI_2017` and averaged over USDA marketing years (`start_mo`); an incomplete last year uses the last 12 observed months. The GDP workbook is read by position (column 2 = 2025 level, columns 6-10 = growth 2025-2029, column 13 = 2026-35 average) and its region labels must match `xwalk` plus the OAO and ONA residual definitions. Only year 2025 is exported.
+
+## 21_compute_land_cost_share.R
+
+- Purpose: compute the land cost share of value added (`phi_f`) for every region and crop from U.S. per-acre variable costs, relative yields and the USDA international TFP land cost shares.
+- Reads: `raw/AgTFPInternational2023.xlsx` (sheet `Cost Shares`, rows 3-182, columns 3 and 33: ISO3, `2021-2030`); `raw/variable_costs_2025/*to 2035*.xlsx` (five USDA cost-of-production workbooks); `raw/mapping.csv`; `interim/baseline_projections_long.csv` (from 10: area and yield by region and crop).
+- Writes: `interim/variable_costs_us_2025.csv` (extracted U.S. per-acre variable costs, long); `interim/region_commodity_land_cost_shares.csv`.
+- Depends: `openxlsx`, `dplyr`, `readr`.
+- Notes: vintage constants: `vc_pattern <- "to 2035"` selects the cost workbooks in `raw/variable_costs_2025/`; the land-share column is renamed from its header `2021-2030`. The EUR land share is hard-coded at 0.113. Cost workbooks are parsed by row label: `Table ... U.S. <crop>`, an `Item` header row with the crop years, `Variable costs of production` and the following `Per acre` row. Land rents solve `w * sum_k s_rk / (H_rk + w) = land share` with `uniroot` on [0, 1000]; shares are winsorized at the 5th and 95th percentiles within each year. Years from 2025 are exported. The derivation is in [data/land cost share.md](../data/land%20cost%20share.md).
+
+## 22_compute_tariff_ave.R
+
+- Purpose: compute region-commodity ad valorem import tariffs (simple average of WITS MFN tariffs, latest reported year per product) and a zero export-tax scaffold.
+- Reads: `raw/trade_barriers/tariff_ave_WITS_2023.csv` (WITS TRAINS export: `Reporter`, `Product`, `DutyType`, `Simple Average`, `Tariff Year`); `raw/trade_barriers/country_code_WITS.xlsx` (columns `country`, `ISO3`, `Reporter`); `raw/mapping.csv`.
+- Writes: `interim/tariff_ave_region.csv`; `interim/export_taxes_comm_reg.csv`.
+- Depends: `openxlsx`, `dplyr`, `tidyr`, `readr`.
+- Notes: HS codes are mapped to commodities by fixed 4- and 6-digit lists (0201, 0202, 0207, 1001, 1003, 1005, 1006, 1007, 1201, 1507, 2304, 5201-5203, ...). Missing tariffs are set to 0 (with the current data: all of Iraq, Saudi Arabia pork, Pakistan soybean oil). The EU is one reporter (`EUN`). Export taxes are not observed and are 0 everywhere. The year column of the tariff output is the string `2023 (or last observed)`.
+
+## 23_compute_NTM_ave.R
+
+- Purpose: estimate a model of non-tariff-measure ad valorem equivalents (AVE) on tariffs, GDP per capita and agricultural imports with region x product fixed effects, impute missing AVEs, and aggregate them into GDP-weighted region-commodity import NTMs; export NTMs are a zero scaffold.
+- Reads: `raw/trade_barriers/ave_hs_importer.csv` (World Bank NTM AVEs: `importer`, `hs2code`, `ave1C`, `ave2C`); `raw/trade_barriers/BACI_HS92_Y2014_V202401b.csv` (CEPII bilateral flows 2014: `t`, `i`, `j`, `k`, `v`, `q`; large, not in the repository); `raw/trade_barriers/country_codes_V202401b.csv` (BACI numeric code to `country_iso3`); `raw/trade_barriers/ag_hs_products.csv` (agricultural HS product list, column `Product`); `raw/trade_barriers/ag_tariff_USA_2014.xls` (sheet `Applied_MFN`, column E from row 6: HS6 codes); `raw/trade_barriers/tariff_ave_2014_WITS.csv` (WITS 2014 tariff AVEs; large, not in the repository); `raw/trade_barriers/country_code_WITS.xlsx` (`Reporter` to ISO3); `raw/trade_barriers/country_region_WB.xlsx` (sheet `List of economies`, rows 1-219, columns 2-3: `Code`, `Region`); `raw/current_GDPpc_2014_WB.csv` and `raw/current_GDP_2014_WB.csv` (World Bank, column `2014 [YR2014]`); `raw/current_GDPpc_IMF.xls` and `raw/current_GDP_IMF.xls` (IMF WEO, Taiwan only); `raw/mapping.csv`.
+- Writes: `interim/model_estimates.RData` (`rxp_fe` and the four beta coefficients); `interim/NTM_regression_results.csv` (coefficients, standard errors and fit statistics); `interim/NTM_regression_table.tex` (the same results as a LaTeX table for the paper); `interim/NTM_ave_imputed.RData` (`NTM_ave_imputed`: country x commodity actual and imputed AVE); `interim/NTM_IMP_ave_region.csv`; `interim/NTM_EXP_ave_region.csv`.
+- Depends: `dplyr`, `tidyr`, `readr`, `readxl`, `openxlsx`, `lfe`.
+- Notes: sourced by `main.R` only when both large raw files are present; otherwise the two interim CSVs are reused. Regression: `ave ~ AVE_Tariff + AVE_Tariff_ag + log_GDPpc + log_total_imp_ag | region_geo:product_id` (`felm`). Negative imputations are set to 0; gaps for Barley, Sorghum, Soybeans and Wheat take the country's Corn, Rice and Cotton average; Iraq takes its geographic-region average. EU members plus GBR are pooled as `EUN`; Myanmar `MMR` to `BUR`; Taiwan is BACI code 490. World Bank regions are merged into Euro-MENA and Asia-Pacific for the fixed effects. Reference year of all inputs is 2014. Diagnostics: 25. The regression is described in [data/impute_ave_NTM.R.md](../data/impute_ave_NTM.R.md).
+
+## 24_generate_data_exogenous.R
+
+- Purpose: assemble `data_exogenous.csv`: calibrated parameters, 2025 international prices, population and GDP per capita, unit price normalizations, livestock inventory and slaughter, and the interim results of 20 to 23.
+- Reads: `raw/exogenous_data.csv` (calibrated elasticities and exogenous parameters, model schema); `raw/mapping.csv`; `raw/population_WB_2025.xls` (sheet `Data`, header on row 4, one column per year); `raw/population_IMF_WEO_2025.csv` (IMF WEO, Taiwan only); `raw/Current_GDP_WB_2025.xls` (sheet `Data`, header on row 4); `raw/Current_GDP_IMF_WEO_2025.csv` (Taiwan only); `raw/FAOSTAT_Livestock_Inventory_2024.csv` and `raw/FAOSTAT_Slaughtered Livestock_2024.csv` (`Item`, `Year`, `Value`; `Area Code (ISO3)`); `interim/international_prices_annual.csv` and `interim/ag_expenditure_shares.csv` (from 20); `interim/region_commodity_land_cost_shares.csv` (from 21); `interim/tariff_ave_region.csv` and `interim/export_taxes_comm_reg.csv` (from 22); `interim/NTM_IMP_ave_region.csv` and `interim/NTM_EXP_ave_region.csv` (from 23, or the shipped interim copy).
+- Writes: `processed/data_exogenous.csv`.
+- Depends: `dplyr`, `tidyr`, `readr`, `readxl`.
+- Notes: year constants are hard-coded: prices, population and GDP use 2025; livestock inventory and slaughter use FAOSTAT `Year == 2024`. Population is in 1,000 persons, GDP per capita in current USD. Prices become million 2017 USD per 1,000 native units (cotton: 1,000 480-lb bales). IMF WEO files supply Taiwan only (`COUNTRY == "Taiwan Province of China"`; GDP in billions, population in millions). FAOSTAT Item labels are matched by name. `Land Unavailability` is renamed with a trailing space to match the model. `input_path_units` (`baseline_units.csv`) is declared but not read.
+
+## 25_compare_actual_imputed_NTM.R
+
+- Purpose: diagnostics for the NTM imputation of 23: a scatter plot of actual versus imputed AVE with a fitted line, and Excel tables of the observations that could or could not be imputed.
+- Reads: `interim/NTM_ave_imputed.RData` (object `NTM_ave_imputed`, written by 23).
+- Writes: `outputs/diagnostics/actual_vs_imputed_AVE.pdf`; `outputs/diagnostics/NTM_AVE_diagnostics.xlsx`.
+- Depends: `dplyr`, `openxlsx`; base graphics.
+- Notes: not sourced by `main.R`. Run it manually after 23 has written `interim/NTM_ave_imputed.RData` (which needs the two large raw files): from `code/processing`, `source("R/00_load_packages.R")` and then `source("R/25_compare_actual_imputed_NTM.R")`; set `options(bsat.data_dir = ...)` first if the data live elsewhere. The `outputs/diagnostics` folder is created if needed.
+
+## 30_generate_data_shocks.R
+
+- Purpose: generate `data_shocks.csv`, a zero-filled scaffold of every shock attribute for each region, commodity and year of the analysis period. Levels live in `data_exogenous.csv`; this file holds the deviations.
+- Reads: `raw/mapping.csv` (the 42 model regions).
+- Writes: `processed/data_shocks.csv`.
+- Depends: `dplyr`, `tidyr`, `readr`, `tibble`.
+- Notes: `first_yr <- 2025` and `last_yr <- 2034` define the horizon; keep `first_yr` equal to `lst_obsv_yr` in 12. Ten shock attributes: four trade barriers (all commodities), TFP value added and land productivity (crops), TFP feed use (livestock), TFP intermediates (SoyMeal, SoyOil), and two region-level shocks (ag expenditure share, land supply). Two attribute names contain spaces. Editing these values is how counterfactual scenarios are defined.
+
+## 40_generate_data_params_init.R
+
+- Purpose: generate `data_params_init.csv`, the initial values of the seven commodity-level substitution and transformation elasticities.
+- Reads: none.
+- Writes: `processed/data_params_init.csv`.
+- Depends: `dplyr`, `readr`.
+- Notes: values are hard-coded: `sigma_d` 3.8 (12 commodities), `sigma_f` 1.1 (7 crops), `sigma_c` 5 (SoyMeal, SoyOil), `sigma_l` 0.25, `sigma_z` 0.5 and `sigma_w` 3.8 (livestock), `omega_s` 5 (12 commodities); 42 rows with attribute type `C`.
+
+## 50_harmonize_targets.R
+
+- Purpose: apply to the rounded targets of 12 the same three adjustments the model would make on its own, in the model's order, so that the model finds no residual to repair and the neutral run reproduces every target exactly.
+- Reads: `processed/data_targets.csv` (written by 12).
+- Writes: `processed/data_targets.csv` (overwritten, harmonized); `interim/harmonization_log.csv` (columns `region`, `year`, `commodity`, `check` (`consumption` or `market`), `residual`, `adjusted` (the attribute changed), `delta`, `status`).
+- Depends: `dplyr`, `tidyr`, `readr`.
+- Notes: `COTTON_KG_PER_BALE <- 217.728111162486` is the model's bale-to-kg factor. Three adjustments, all logged, in the model's order. (a) Consumption: a residual `TC - (FOOD + LIV + OTR + CRSH)` within plus or minus 2 is added to the largest of those four components, the first maximum in that order; when the largest is feed to livestock or other feed, the rows are left alone and the residual is left to the model (status `left to the model: feed component`), because the model repairs it in its internal feed totals but reports feed consumption from the unrepaired target (`df_DCFEED1` in `model_core.jl`). (b) Market: a residual of `BS + Q + M - Loss = TC + X + ES` within plus or minus 2 is subtracted from the largest of beginning stocks, production and imports, the first maximum in that order. (c) Derived series: yields as production over area (cotton in kg per hectare) and extraction rates as 100 times production over soybean crushing, both computed from the adjusted values. Residuals outside plus or minus 2 are not adjusted; they are logged with a status containing `outside the model's ±2 window` and raise a `warning()`, and the model refuses that year.
+
+## 60_build_input_package.R
+
+- Purpose: bundle the four processed CSV files and a `METADATA.csv` into the standard model input package (a zip with an `Input/` folder) specified in [Package and file format](../data-format.qmd). The shocks file holds neutral values, so the package is the baseline package.
+- Reads: `processed/data_params_init.csv`; `processed/data_exogenous.csv`; `processed/data_targets.csv`; `processed/data_shocks.csv`.
+- Writes: `packages/baseline_<first year>_Input.zip` (first year = smallest year in `data_targets.csv`).
+- Depends: `readr`, `dplyr`, `zip`, `tibble`.
+- Notes: `METADATA.csv` records `Author`, `Description`, `Comments` and the build timestamp (`Pipeline build`). An existing zip with the same name is replaced.

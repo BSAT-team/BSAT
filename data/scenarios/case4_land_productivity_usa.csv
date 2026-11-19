@@ -1,0 +1,3 @@
+region,year,commodity,attribute,value
+USA,2026,Corn,shock_land_prod,-0.1
+USA,2026,Soybean,shock_land_prod,-0.1

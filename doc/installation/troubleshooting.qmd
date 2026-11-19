@@ -1,0 +1,192 @@
+---
+title: "Troubleshooting"
+---
+
+Entries are grouped by the step at which the problem appears. Paths are written with forward slashes; on Windows read `code\model\path_license.txt` for `code/model/path_license.txt`.
+
+## PATH solver license
+
+The runner reads `code/model/path_license.txt` at every start (or the file given with `--license`). Three messages are possible.
+
+**File missing.** The run scripts stop before starting Julia:
+
+```
+Missing code/model/path_license.txt: paste your PATH license (see path_license.txt.example).
+```
+
+and the runner itself reports `PATH license missing: create <path> with your license string.` Fix: copy `code/model/path_license.txt.example` to `code/model/path_license.txt` and paste your string (installation guides, step 3).
+
+**Placeholder still in the file.** The runner reports
+
+```
+code/model/path_license.txt still contains the placeholder line; paste your PATH license string.
+```
+
+Fix: open <https://pages.cs.wisc.edu/~ferris/path/LICENSE>, copy the "Variable value" string, and replace the line `PASTE-YOUR-PATH-LICENSE-STRING-HERE`.
+
+**Only comments in the file.** The runner reports `... has no license string (only blanks and comments).` Fix: add the license line.
+
+Format: lines beginning with `#` and blank lines are ignored; the first other line is read as the license, without quotes or surrounding spaces.
+
+## The repository folder was moved or renamed
+
+The portable environments under `.bsat_local/envs/` record absolute paths. After moving or renaming the repository folder, the R and Python launchers point at the old location and fail. Fix: delete `.bsat_local/envs/bsat` (and `.bsat_local/envs/bsat-dashboard` if present) and rerun the bootstrap script (`scripts/bootstrap_unix.sh` or `scripts\bootstrap_windows.bat`); the other completed steps are skipped. An install placed elsewhere with `BSAT_LOCAL_DIR` is unaffected by moving the repository, but the same applies if that folder is moved.
+
+## The model refuses a year
+
+The console and `SCENARIO_SOLVER_LOG.txt` show, for one or more years,
+
+```
+All markets:   NOT CLEAR
+...
+Baseline Projections Data DO NOT clear in levels
+No simulation is provided
+```
+
+Cause: in some market of that year, the supply-demand identity of the targets (beginning stocks plus production plus imports minus loss equals total consumption plus exports plus ending stocks) has a residual the model does not repair on its own, that is, one outside plus or minus 2. Within that window the model subtracts the residual from the largest of beginning stocks, production and imports (see [Model](../model.qmd#the-year-loop-and-market-clearing-checks)). The runner skips the year, lists it under "Years skipped" in the log and in `METADATA.csv`, and continues with the next year; the output package holds the solved years only.
+
+Fix: rebuild the targets with the pipeline, whose harmonization step (script 50) applies the model's own three adjustments before the package is built, and inspect `data/interim/harmonization_log.csv` for the offending market-years: the `status` column flags every residual left outside the window. If you edited `data_targets.csv` by hand, restore the identity in that market.
+
+## The solver does not reach a solution
+
+The log shows a termination status other than `LOCALLY_SOLVED` (or `OPTIMAL`) for a year, with the warning `Simulation CANNOT be generated for baseline projections of the year ...`. The year is skipped and reported as above. Large shocks are the usual cause; try a smaller value or fewer simultaneous shocks and read the PATH iteration log in `SCENARIO_SOLVER_LOG.txt`.
+
+## The pipeline stops at the NTM step
+
+`main.R` stops with `The NTM step needs BACI_HS92_Y2014_V202401b.csv, tariff_ave_2014_WITS.csv, ag_hs_products.csv under data/raw/trade_barriers/ ..., or the interim results NTM_IMP_ave_region.csv and NTM_EXP_ave_region.csv under data/interim/. Neither was found.` A similar message for script 22 names `tariff_ave_WITS_2023.csv` and the interim results `tariff_ave_region.csv` and `export_taxes_comm_reg.csv`.
+
+Scripts 22 and 23 need five raw files that are not distributed with the repository: `BACI_HS92_Y2014_V202401b.csv` and `tariff_ave_2014_WITS.csv` (too large), `tariff_ave_WITS_2023.csv`, `ag_hs_products.csv` and `ag_tariff_USA_2014.xls` (source terms). A clone from git ships the derived files in `data/interim/` and skips both scripts, so this message means those derived files are missing (for example after deleting `data/interim/`): restore them with `git checkout -- data/interim`. To rerun the scripts from scratch instead, obtain the raw files (`scripts/fetch_large_raw_data.sh` reports which are present, downloads the CEPII file with `--download`, and prints how to obtain the WITS and WTO files). See [Raw data sources](../data-sources.qmd#large-files).
+
+## Runtime and memory
+
+A ten-year run of the baseline package takes about two minutes and peaks at about 1.6 GB of memory on a workstation. PATH is single-threaded, so a laptop gives similar times; more cores do not help. If the machine swaps, close other applications or, in Docker, raise the container memory limit:
+
+```bash
+docker run --rm -it --memory=4g -v "$(pwd):/workspace" -v bsat-julia-depot:/opt/julia-depot -w /workspace bsat bash
+```
+
+## Locked-down networks and proxy settings
+
+The bootstrap scripts and the Julia package manager contact these domains:
+
+| Purpose | Domain |
+|---|---|
+| micromamba binary | `github.com` |
+| conda packages (R, Python) | `conda.anaconda.org` |
+| Julia binary | `julialang-s3.julialang.org` |
+| Julia package registry and artifacts | `pkg.julialang.org`, `github.com` |
+| PATHSolver native library | artifact resolved via `pkg.julialang.org` |
+| CEPII BACI (optional, large raw file) | `www.cepii.fr` |
+
+Ask your IT help desk to allow outbound HTTPS to these hosts.
+
+### Setting a proxy
+
+Set the variables in the same shell or window before running any script.
+
+```bat
+set HTTP_PROXY=http://proxy.agency.gov:8080
+set HTTPS_PROXY=http://proxy.agency.gov:8080
+scripts\bootstrap_windows.bat
+```
+
+```bash
+export HTTP_PROXY=http://proxy.agency.gov:8080
+export HTTPS_PROXY=http://proxy.agency.gov:8080
+scripts/bootstrap_unix.sh
+```
+
+`curl` (micromamba and Julia downloads) and micromamba honor these variables.
+
+### Julia package server
+
+Julia's package manager reads `HTTP_PROXY` and `HTTPS_PROXY` and also supports a dedicated variable. If your organization mirrors the Julia package server, point Julia at it before bootstrap or `Pkg.instantiate()`:
+
+```bash
+export JULIA_PKG_SERVER=https://pkg.julialang.org
+```
+
+## micromamba cannot solve the environment
+
+Symptom during bootstrap: `critical libmamba Could not solve for environment specs` or a similar conflict.
+
+1. Network timeout during the solve: rerun the bootstrap script; completed steps are skipped and the solve is retried.
+2. Stale package cache: delete `.bsat_local/mamba/pkgs/` and rerun.
+3. Partial environment on disk: delete `.bsat_local/envs/bsat` and rerun (the bootstrap does this itself when `conda-meta/history` is missing from the folder).
+
+## Package cache errors during extraction
+
+Symptom during bootstrap, typically while the optional `bsat-dashboard` environment is being created on Windows:
+
+```
+error libmamba Invalid package cache
+error libmamba Cannot find a valid extracted directory cache for <package>
+```
+
+The package named has been `azure-storage-files-datalake-cpp`, a libarrow dependency of Streamlit and so of the dashboard environment. The `bsat` R environment has no such dependency. Causes seen so far:
+
+- Long paths: some of these packages unpack into folders whose full path exceeds the 260-character Windows limit, and extraction fails silently until libmamba finds the cache incomplete.
+- A download interrupted by a corporate proxy, leaving a truncated archive in the cache.
+- Antivirus software quarantining files while they are being extracted.
+
+Fixes, in order:
+
+1. Rerun the bootstrap. Its environment step removes the partial environment, clears the package cache (`micromamba clean -a` and `.bsat_local/mamba/pkgs`) and retries once.
+2. Install to a short path: `set BSAT_LOCAL_DIR=C:\bsat_local` (Windows) or `export BSAT_LOCAL_DIR=$HOME/bsat_local`, then rerun the bootstrap. The run scripts read the same variable.
+3. Skip the dashboard environment with `scripts\bootstrap_windows.bat --no-dashboard` (or `scripts/bootstrap_unix.sh --no-dashboard`) and use the hosted dashboard at <https://huggingface.co/spaces/bsat-team/BSAT_Viz>. The model and the pipeline do not use this environment; a failure there is reported as a warning and the bootstrap still completes.
+4. Ask IT to enable long paths (a registry setting that needs administrator rights) or to add the install folder to the antivirus allowlist.
+
+## Batch file edits: `was unexpected at this time` {#batch-file-edits-was-unexpected-at-this-time}
+
+A Windows script stops with, for example, `) was unexpected at this time` or `. was unexpected at this time`. In a `.bat` file this means a parenthesis inside an `if ( ... )` block that the command interpreter took as the end of the block; text in `echo` lines is the usual place. The shipped scripts avoid this, so the message points at an edit. Escape parentheses inside blocks with `^`:
+
+```bat
+if not exist "%FILE%" (
+  echo Missing %FILE% ^(see the example file^).
+  exit /b 1
+)
+```
+
+## Julia package instantiation fails
+
+Symptom: bootstrap fails at `Pkg.instantiate()`, or the model stops with a `LoadError` for a missing package.
+
+Reset the portable Julia and its depot, then rerun bootstrap, which reinstalls every package pinned in `code/model/Manifest.toml`:
+
+```bash
+rm -rf .bsat_local/julia
+scripts/bootstrap_unix.sh
+```
+
+```bat
+rmdir /s /q .bsat_local\julia
+scripts\bootstrap_windows.bat
+```
+
+PATHSolver downloads the native PATH library as an artifact during instantiation. If that download is blocked, confirm the artifact host is allowed, set `JULIA_PKG_SERVER` to a mirror, or use the container option ([Cloud and Docker](cloud.qmd)).
+
+## The run script cannot find Julia or micromamba
+
+`Julia not found. Run scripts/bootstrap_unix.sh first (local install), or use the devcontainer.` or `micromamba not found ...`: the Unix scripts look under the install folder first and then on `PATH`; the Windows scripts look under the install folder only. The install folder is `.bsat_local/` inside the repository, or `BSAT_LOCAL_DIR` when that variable is set: if you bootstrapped with `BSAT_LOCAL_DIR` set, set it again in every new window. Run the bootstrap script, or (Unix) put `julia` and `micromamba` on `PATH`. The R environment is resolved as `<install folder>/envs/bsat`, then `$BSAT_ENV`, then `/opt/envs/bsat` (the container); the dashboard environment as `<install folder>/envs/bsat-dashboard`, then `$BSAT_DASHBOARD_ENV`, then `/opt/envs/bsat-dashboard`.
+
+## The dashboard script reports a missing environment
+
+`bsat-dashboard environment not found ...` followed by the hosted URL: the optional Python environment was skipped (`--no-dashboard`) or failed to build (a warning near the end of the bootstrap output). Use the hosted dashboard, or rerun the bootstrap without `--no-dashboard`; see [Package cache errors during extraction](#package-cache-errors-during-extraction) if it fails again.
+
+## Running the R pipeline from another directory
+
+`main.R` sets its own working directory to `code/processing/` whether it is run through `Rscript`, `source()` or RStudio, so relative paths inside the scripts resolve. The data root defaults to `<repo>/data`; to use data elsewhere set `BSAT_DATA_DIR` to a folder containing `raw/` (`interim/` and `processed/` are created there). Running a single numbered script on its own requires `source("R/00_load_packages.R")` first and `code/processing/` as the working directory, or `options(bsat.data_dir = "...")`.
+
+## General reset
+
+Removes all downloaded software and both environments; does not touch code, data or `path_license.txt`. Replace `.bsat_local` with the `BSAT_LOCAL_DIR` folder if you set one:
+
+```bash
+rm -rf .bsat_local
+scripts/bootstrap_unix.sh
+```
+
+```bat
+rmdir /s /q .bsat_local
+scripts\bootstrap_windows.bat
+```

@@ -1,0 +1,113 @@
+---
+title: "Local installation: Windows"
+---
+
+Everything installs under `.bsat_local\` inside the repository folder, or under the folder named by the `BSAT_LOCAL_DIR` environment variable if it is set. Nothing touches the registry, the system `PATH` or any folder outside the install folder; `PATH` changes are made inside each batch script and discarded when the window closes.
+
+Disk space: about 4 to 6 GB. First run: 10 to 30 minutes, depending on network speed.
+
+The batch scripts are exercised end to end on a GitHub-hosted Windows runner (`.github/workflows/windows-check.yml`). Agency laptops add proxies, antivirus and path-length limits that the runner does not have; see [Troubleshooting](troubleshooting.qmd) and please report problems.
+
+## Prerequisites
+
+- Windows 10 build 1803 or later (ships `curl.exe` and PowerShell 5 with `Expand-Archive`).
+- No administrator rights.
+
+## Step 1: get the repository
+
+If you downloaded BSAT as a ZIP file (the green "Code" button on the repository page, then "Download ZIP"), right-click it, choose "Extract All", and pick a folder whose path has no spaces (for example `C:\Users\yourname\bsat`). Then open a Command Prompt (`Win+R`, `cmd`) and change into it:
+
+```bat
+cd C:\Users\yourname\bsat
+```
+
+With Git installed:
+
+```bat
+git clone https://github.com/BSAT-team/BSAT.git
+cd bsat
+```
+
+## Step 2: bootstrap
+
+```bat
+scripts\bootstrap_windows.bat
+```
+
+The script:
+
+1. Downloads `micromamba.exe` (2.8.1) to `.bsat_local\bin\`.
+2. Creates the `bsat` conda environment at `.bsat_local\envs\bsat` from `setup\environment.yml` (R 4.5 and the pipeline's R packages). Required. An existing environment with another R version is recreated.
+3. Downloads Julia 1.12.1 to `.bsat_local\julia\`.
+4. Runs `Pkg.instantiate()` and `Pkg.precompile()` for `code\model\Project.toml`.
+5. Creates the `bsat-dashboard` conda environment at `.bsat_local\envs\bsat-dashboard` from `setup\environment-dashboard.yml` (Python 3.11, pandas, numpy, altair, streamlit). Optional: it is only needed to run the dashboard locally.
+
+The two conda environments are separate on purpose. The model and the pipeline never needed Python; Streamlit pulls in pyarrow and libarrow, a large dependency tree that failed to extract on a locked-down Windows laptop. The bootstrap therefore creates the dashboard environment last, reports a failure there as a warning rather than an error, and finishes with "Bootstrap complete" either way. The hosted dashboard at <https://huggingface.co/spaces/bsat-team/BSAT_Viz> is the default way to view results, so the environment can be skipped:
+
+```bat
+scripts\bootstrap_windows.bat --no-dashboard
+```
+
+Each environment is created in a fresh folder (a partial environment from an interrupted run is removed first). If creation fails, the script clears the package cache (`micromamba clean -a` and `.bsat_local\mamba\pkgs`) and tries once more, then prints hints. An environment counts as already present when `conda-meta\history` exists in its folder.
+
+If a required step fails, the script prints `Bootstrap FAILED` and exits with a non-zero code; see [Troubleshooting](troubleshooting.qmd). Re-running is safe: completed steps are skipped. Do not move or rename the repository folder afterwards (see [Troubleshooting](troubleshooting.qmd#the-repository-folder-was-moved-or-renamed)).
+
+### Choosing the install folder
+
+Windows limits paths to 260 characters unless an administrator enables long paths, and some conda packages unpack into deeply nested folders. If package extraction fails, set `BSAT_LOCAL_DIR` to a short path in the same window before running the bootstrap; the run scripts read the same variable, so set it in every new window:
+
+```bat
+set BSAT_LOCAL_DIR=C:\bsat_local
+scripts\bootstrap_windows.bat
+```
+
+## Step 3: add the PATH solver license
+
+1. Open <https://pages.cs.wisc.edu/~ferris/path/LICENSE> and copy the string in the "Variable value" field.
+2. Copy `code\model\path_license.txt.example` to `code\model\path_license.txt` (no `.example` extension).
+3. Open the new file in a text editor and replace the placeholder line with the string. Lines starting with `#` and blank lines are ignored; the first other line is the license.
+
+The runner stops with a message if the file is missing, holds only comments, or still contains the placeholder.
+
+## Step 4: run the model
+
+```bat
+scripts\run_model_windows.bat
+```
+
+The script checks that `julia.exe` under the install folder and the license file exist, creates the output folder, and runs `code\model\run_model.jl` on `data\packages\baseline_2025_Input.zip` for 2025 to 2034, writing `output\baseline_Output.zip`.
+
+Arguments, all optional and positional:
+
+```bat
+scripts\run_model_windows.bat [Input.zip] [Output.zip] [years]
+scripts\run_model_windows.bat output\my_case_Input.zip output\my_case_Output.zip 2025:2034
+```
+
+A ten-year run takes about two minutes. The solver log is stored as `SCENARIO_SOLVER_LOG.txt` inside the output package.
+
+## Step 5: rebuild the inputs (optional)
+
+```bat
+scripts\run_r_pipeline_windows.bat
+```
+
+Runs `Rscript main.R` from `code\processing\` inside the `bsat` environment. Five raw files are not distributed with the repository; `scripts\fetch_large_raw_data.bat` reports which are present and, with `--download`, fetches the CEPII archive. See [Raw data sources](../data-sources.qmd#large-files).
+
+## Step 6: run the dashboard locally (optional)
+
+The dashboard is hosted online ([Dashboard](../dashboard.qmd)), which needs nothing installed. The hosted copy is the recommended way to view results and accepts output packages produced locally just as it does any other. The script below is only for running the dashboard server on your own computer; it needs the `bsat-dashboard` environment (bootstrap without `--no-dashboard`):
+
+```bat
+scripts\run_dashboard_windows.bat
+```
+
+The script runs `streamlit run app.py` from `code\visualization\` inside the `bsat-dashboard` environment. Open <http://localhost:8501> in a browser. If the environment is absent, the script says so and prints the hosted URL; rerun the bootstrap to create it.
+
+## Notes
+
+- The scripts derive the repository path from their own location, so they can be run from any folder.
+- All scripts honor `BSAT_LOCAL_DIR`; when it is unset they use `.bsat_local\` inside the repository.
+- To reset the environment completely, delete `.bsat_local\` (or the `BSAT_LOCAL_DIR` folder) and rerun `scripts\bootstrap_windows.bat`. This does not affect your code, data or `path_license.txt`.
+- Shock authoring uses the Julia command line directly; with the portable Julia the command is `.bsat_local\julia\bin\julia.exe --project=code\model code\model\make_shock.jl --list`.
+- If you edit a batch script and it stops with `... was unexpected at this time`, a parenthesis inside an `if` block is the usual cause; see [Troubleshooting](troubleshooting.qmd#batch-file-edits-was-unexpected-at-this-time).

@@ -1,0 +1,97 @@
+project:
+  type: website
+  output-dir: _site
+  render:
+    - "*.qmd"
+    - "installation/*.qmd"
+    - "reference/*.qmd"
+  resources:
+    - "data/*"
+    - "assets/*"
+
+execute:
+  enabled: false
+
+website:
+  title: "BSAT"
+  description: "Baseline Scenario Analysis Tool: documentation"
+  site-url: "https://bsat-team.github.io/BSAT/"
+  repo-url: "https://github.com/BSAT-team/BSAT"
+  page-navigation: true
+  search: true
+  navbar:
+    left:
+      - text: "Install"
+        href: installation/local-unix.qmd
+      - text: "Walkthrough"
+        href: walkthrough.qmd
+      - text: "Data"
+        href: data-format.qmd
+      - text: "Model"
+        href: model.qmd
+      - text: "Dashboard"
+        href: dashboard.qmd
+      - text: "Reference"
+        href: reference/index.qmd
+    right:
+      - icon: github
+        href: "https://github.com/BSAT-team/BSAT"
+  sidebar:
+    style: docked
+    collapse-level: 1
+    contents:
+      - href: index.qmd
+        text: "Overview"
+      - section: "Installation"
+        contents:
+          - href: installation/cloud.qmd
+            text: "Cloud and Docker"
+          - href: installation/local-unix.qmd
+            text: "Local: macOS and Linux"
+          - href: installation/local-windows.qmd
+            text: "Local: Windows"
+          - href: installation/troubleshooting.qmd
+            text: "Troubleshooting"
+      - href: walkthrough.qmd
+        text: "Walkthrough"
+      - section: "Data"
+        contents:
+          - href: data-format.qmd
+            text: "Package and file format"
+          - href: data-sources.qmd
+            text: "Raw data sources"
+          - href: pipeline.qmd
+            text: "Processing pipeline"
+          - href: updating-raw-data.qmd
+            text: "Updating raw data"
+      - href: model.qmd
+        text: "Model"
+      - href: dashboard.qmd
+        text: "Dashboard"
+      - section: "Reference"
+        href: reference/index.qmd
+        contents:
+          - href: reference/cli.qmd
+            text: "Command line"
+          - href: reference/julia.qmd
+            text: "Julia: BSATRunner"
+          - href: reference/r.qmd
+            text: "R: pipeline scripts"
+          - href: reference/python.qmd
+            text: "Python: bsat_dashboard"
+      - href: contributing.qmd
+        text: "Contributing"
+  page-footer:
+    left: "BSAT documentation. Code under MIT; documentation and data products under CC BY 4.0."
+    right: "Built with Quarto."
+
+format:
+  html:
+    theme:
+      - flatly
+      - styles.scss
+    toc: true
+    toc-depth: 3
+    code-copy: true
+    code-overflow: wrap
+    link-external-newwindow: true

@@ -1,0 +1,134 @@
+---
+title: "Cloud and Docker installation"
+---
+
+Two options run the same container image, defined in `.devcontainer/Dockerfile`:
+
+- **Option A, GitHub Codespaces**: a browser-based environment, nothing installed locally. Recommended for a first look.
+- **Option B, Docker**: the same image built and run on any Docker host, including internal infrastructure that cannot use public Codespaces.
+
+The image contains micromamba, two conda environments and Julia 1.12.1 at `/opt/julia`. The `bsat` environment (R 4.5 and the pipeline's packages, from `setup/environment.yml`) is installed at `/opt/envs/bsat`; the `bsat-dashboard` environment (Python 3.11, pandas, numpy, altair, streamlit, from `setup/environment-dashboard.yml`) at `/opt/envs/bsat-dashboard`. Both are on `PATH`, `bsat` first. The Julia packages of `code/model/Project.toml` are installed into a shared depot at `/opt/julia-depot` by the container's `postCreateCommand`.
+
+## Option A: GitHub Codespaces
+
+### What you need
+
+- A free account at <https://github.com>.
+- A modern browser.
+- Codespaces quota: free personal accounts receive a monthly allowance of core-hours, enough for several full runs.
+
+### Steps
+
+1. **Fork the repository.** On the repository page (`BSAT-team/BSAT`), click "Fork" to create your own copy.
+
+2. **Create a codespace.** On your fork, click the green "Code" button, open the "Codespaces" tab, and click "Create codespace on main". GitHub builds the container and then runs
+
+   ```bash
+   julia --project=code/model -e 'import Pkg; Pkg.instantiate(); Pkg.precompile()'
+   ```
+
+   The first build takes about 5 to 15 minutes. Wait for the terminal in the bottom panel to report that the command has finished.
+
+   **Install nothing.** VS Code offers to install extensions while the codespace opens, and the R extension in particular asks to install the R language server ("languageserver") and then reports that the installation or the start failed. Decline or close every such prompt and dismiss the error message. The container already has Julia, R and the dashboard environment, and none of the model, the pipeline or the dashboard uses those extensions.
+
+   Commands go into the terminal, the panel at the bottom of the window. It is usually open when the codespace starts; if it is closed, open it from the menu with Terminal > New Terminal (the menu is behind the three-line icon at the top left of the browser window) or with the keyboard shortcut Ctrl+` (the backtick key). The prompt already sits in the repository root, so the commands below can be typed as they are and run with Enter.
+
+3. **Add the PATH license.** In the integrated terminal:
+
+   ```bash
+   cp code/model/path_license.txt.example code/model/path_license.txt
+   ```
+
+   Open `code/model/path_license.txt` in the editor and replace the placeholder line with the string from <https://pages.cs.wisc.edu/~ferris/path/LICENSE> (the "Variable value" field on that page). The runner refuses to start while the placeholder line is still there.
+
+4. **Run the baseline.**
+
+   ```bash
+   scripts/run_model_unix.sh
+   ```
+
+   This runs `data/packages/baseline_2025_Input.zip` for 2025 to 2034 and writes `output/baseline_Output.zip`. Pass other arguments to run a different package: `scripts/run_model_unix.sh <Input.zip> <Output.zip> <from:to>`.
+
+5. **Optional: rebuild the inputs from raw data.**
+
+   ```bash
+   scripts/run_r_pipeline_unix.sh
+   ```
+
+   The non-tariff-measure step needs two raw files that are not in the repository; see `scripts/fetch_large_raw_data.sh` and [Raw data sources](../data-sources.qmd#large-files).
+
+6. **View results in the dashboard.** Use the hosted copy at <https://huggingface.co/spaces/bsat-team/BSAT_Viz>. Download the output package from the codespace to your own computer first: find it under `output/` in the Explorer panel on the left, right-click it and choose "Download...", or drag the file from the Explorer onto your desktop. Then upload it on the hosted page. One package is enough, because it carries the baseline it was solved against; a second is uploaded only to compare two different shocks.
+
+   Running the dashboard server inside a codespace is not supported. `scripts/run_dashboard_unix.sh` is for installs on your own computer, where the server and the browser are on the same machine. See [Dashboard](../dashboard.qmd).
+
+### Saving your work
+
+Changes live on the codespace's disk. To keep them in your fork, commit and push from the terminal:
+
+```bash
+git add .
+git commit -m "my scenario packages"
+git push
+```
+
+Closing the browser tab suspends the codespace; resume it from <https://github.com/codespaces>.
+
+## Option B: Docker
+
+The image uses only public base images and downloads from `conda-forge`, `julialang-s3.julialang.org` and `github.com`. It works on any machine with Docker Engine, including an internal GitHub Enterprise setup without Codespaces.
+
+### Build the image
+
+On a machine with Docker and outbound internet access, from the repository root:
+
+```bash
+docker build -f .devcontainer/Dockerfile -t bsat .
+```
+
+The Julia packages are not part of the image; they are instantiated on first use (below) into a named Docker volume, so they survive when the container is removed.
+
+### Run the container
+
+Mount the repository into the container and open a shell:
+
+```bash
+docker run --rm -it \
+  -v "$(pwd):/workspace" \
+  -v bsat-julia-depot:/opt/julia-depot \
+  -w /workspace \
+  bsat bash
+```
+
+The second `-v` keeps the Julia packages in a Docker volume named `bsat-julia-depot` instead of the container's own disk, which `--rm` discards on exit. Docker creates the volume on first use. Use the same flag on every `docker run` so that every container finds the packages already installed.
+
+Inside the container:
+
+```bash
+julia --project=code/model -e 'import Pkg; Pkg.instantiate(); Pkg.precompile()'   # first container only
+cp code/model/path_license.txt.example code/model/path_license.txt                 # then edit the file
+scripts/run_model_unix.sh
+scripts/run_r_pipeline_unix.sh     # optional
+```
+
+View the results with the hosted dashboard at <https://huggingface.co/spaces/bsat-team/BSAT_Viz> ([Dashboard](../dashboard.qmd)) and upload the output package from `output/`. The repository folder is bind-mounted, so the package the container writes is already on the host; nothing has to be copied out of the container.
+
+The run scripts find the container's tools on their own: Julia on `PATH`, micromamba on `PATH`, the R environment at `/opt/envs/bsat` (or the folder named by `BSAT_ENV`) and the dashboard environment at `/opt/envs/bsat-dashboard` (or `BSAT_DASHBOARD_ENV`). A local install under `.bsat_local/` or `BSAT_LOCAL_DIR`, if present, takes precedence.
+
+### Run a single script non-interactively
+
+`code/model/path_license.txt` must exist on the host, since the repository folder is bind-mounted, and the Julia packages must already be in the `bsat-julia-depot` volume (run the `Pkg.instantiate` line above once):
+
+```bash
+docker run --rm -v "$(pwd):/workspace" -v bsat-julia-depot:/opt/julia-depot -w /workspace bsat bash scripts/run_model_unix.sh
+```
+
+After `code/model/Manifest.toml` changes (for example after pulling a new version of the repository), run the `Pkg.instantiate` line again to update the volume. To start from an empty depot, delete the volume with `docker volume rm bsat-julia-depot`.
+
+### Distributing the image without internet access
+
+```bash
+docker save bsat | gzip > bsat_image.tar.gz     # on the build machine
+docker load < bsat_image.tar.gz                 # on the air-gapped host
+```
+
+Note that `Pkg.instantiate()` still needs access to the Julia package servers the first time it runs on each host, since the `bsat-julia-depot` volume is not part of the saved image; see [Troubleshooting](troubleshooting.qmd#locked-down-networks-and-proxy-settings) for proxies and mirrors.

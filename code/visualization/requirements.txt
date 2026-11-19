@@ -1,0 +1,45 @@
+# Runtime dependencies of the BSAT dashboard, fully pinned (direct and transitive).
+# Hugging Face Spaces installs Streamlit at the sdk_version declared in README.md (1.44.1)
+# on the python_version declared there (3.10), then this file. Every package is pinned
+# because an unpinned transitive dependency broke the Space: pyarrow 26 (Python 3.11+)
+# refuses NumPy 1.x ("pyarrow requires NumPy 2.0 or newer, found 1.26.4").
+# Verified on Python 3.10 and 3.11: tests/ and a full-page render with two Output packages.
+# NumPy 1.26.4 has no wheels for Python 3.13; use Python 3.10 to 3.12 with this file.
+streamlit==1.44.1
+altair==5.5.0
+numpy==1.26.4
+pandas==2.2.3
+pyarrow==19.0.1
+attrs==26.1.0
+blinker==1.9.0
+cachetools==5.5.2
+certifi==2026.10.23
+charset-normalizer==3.5.2
+click==8.5.1
+gitdb==4.0.12
+GitPython==3.2.1
+idna==3.20
+Jinja2==3.1.6
+jsonschema==4.26.0
+jsonschema-specifications==2025.9.1
+MarkupSafe==3.0.4
+narwhals==2.29.0
+packaging==24.2
+pillow==11.3.0
+protobuf==5.29.6
+pydeck==0.9.3
+Pygments==2.21.0
+python-dateutil==3.0.0
+pytz==2026.6
+referencing==0.37.0
+requests==2.34.2
+rpds-py==0.30.0
+six==1.17.0
+smmap==5.0.3
+tenacity==9.2.1
+toml==0.10.2
+tornado==6.5.10
+typing_extensions==4.16.0
+tzdata==2026.6
+urllib3==2.8.0
+watchdog==6.0.0

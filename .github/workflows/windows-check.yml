@@ -1,0 +1,102 @@
+# Exercises the portable Windows install end to end on a GitHub-hosted Windows runner:
+# bootstrap, model run, pipeline, fetch-script status, dashboard tests. Runs on demand and on
+# pushes that touch the scripts, environments, or code. Windows minutes count double on private
+# repositories, so it is not triggered by documentation changes. The model runs need a PATH
+# license: they use code/model/path_license.txt when it is in the tree, or the repository secret
+# PATH_LICENSE (Settings, Secrets and variables, Actions) when it is set. Without either, the
+# three model runs are skipped and the rest of the workflow still runs.
+name: Windows check
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ["scripts/**", "setup/**", "code/**", ".github/workflows/windows-check.yml"]
+
+jobs:
+  windows:
+    runs-on: windows-latest
+    timeout-minutes: 90
+    defaults:
+      run:
+        shell: cmd
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Cache the portable install
+        uses: actions/cache@v4
+        with:
+          path: .bsat_local
+          key: bsat-local-${{ runner.os }}-${{ hashFiles('setup/*.yml', 'code/model/Manifest.toml', 'scripts/bootstrap_windows.bat') }}
+
+      - name: Bootstrap (micromamba, R env, Julia, packages, dashboard env)
+        timeout-minutes: 40
+        run: scripts\bootstrap_windows.bat
+
+      - name: Trim the package cache before it is saved
+        run: |
+          set MAMBA_ROOT_PREFIX=%CD%\.bsat_local\mamba
+          .bsat_local\bin\micromamba.exe clean -a -y
+
+      - name: PATH license (file in the tree, else the PATH_LICENSE secret, else skip the model runs)
+        id: license
+        shell: pwsh
+        env:
+          PATH_LICENSE: ${{ secrets.PATH_LICENSE }}
+        run: |
+          if (Test-Path code/model/path_license.txt) { "present=true" >> $env:GITHUB_OUTPUT }
+          elseif ($env:PATH_LICENSE) {
+            Set-Content -Path code/model/path_license.txt -Value $env:PATH_LICENSE
+            "present=true" >> $env:GITHUB_OUTPUT
+          }
+          else {
+            "present=false" >> $env:GITHUB_OUTPUT
+            Write-Output "::notice::No PATH license available: the three model runs are skipped."
+          }
+
+      - name: Run the model on the baseline package
+        if: steps.license.outputs.present == 'true'
+        timeout-minutes: 15
+        run: scripts\run_model_windows.bat
+
+      - name: Run the model with arguments (case 1)
+        if: steps.license.outputs.present == 'true'
+        timeout-minutes: 15
+        run: scripts\run_model_windows.bat data\packages\case1_land_supply_ukraine_Input.zip output\case1_Output.zip
+
+      - name: Run a scenario from an edited shocks CSV (case 2)
+        if: steps.license.outputs.present == 'true'
+        timeout-minutes: 15
+        run: scripts\run_scenario_windows.bat data\scenarios\case2_export_tax_india.csv output\case2_Output.zip "Case 2 via the scenario command"
+
+      - name: R packages load
+        timeout-minutes: 10
+        run: |
+          set MAMBA_ROOT_PREFIX=%CD%\.bsat_local\mamba
+          .bsat_local\bin\micromamba.exe run -p %CD%\.bsat_local\envs\bsat Rscript code\processing\R\00_load_packages.R
+
+      - name: Run the R pipeline
+        timeout-minutes: 20
+        run: scripts\run_r_pipeline_windows.bat
+
+      - name: Fetch script status
+        run: scripts\fetch_large_raw_data.bat
+
+      - name: Dashboard tests
+        timeout-minutes: 10
+        run: |
+          set MAMBA_ROOT_PREFIX=%CD%\.bsat_local\mamba
+          .bsat_local\bin\micromamba.exe run -p %CD%\.bsat_local\envs\bsat-dashboard python code\visualization\tests\test_loaders.py
+
+      - name: Upload outputs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: windows-outputs
+          path: |
+            output/*.zip
+            data/interim/
+            data/processed/
+            data/packages/baseline_2025_Input.zip
+          if-no-files-found: ignore

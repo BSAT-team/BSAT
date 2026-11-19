@@ -1,0 +1,94 @@
+---
+title: "BSAT: Baseline Scenario Analysis Tool"
+---
+
+BSAT simulates how the USDA 10-year international agricultural baseline responds to policy and productivity shocks. It is a calibrated, multi-region partial-equilibrium model of 12 commodities (barley, beef, corn, cotton, pork, poultry, rice, sorghum, soybeans, soybean meal, soybean oil, wheat) in 42 countries and regions, solved year by year as a mixed complementarity problem with the PATH solver. With no shocks it reproduces the baseline projections exactly; with shocks it reports the new production, consumption, trade, stock and yield paths against that baseline.
+
+The tool is built for analysts who want to ask "what if" questions of the baseline without writing model code. A scenario is a copy of the baseline input package in which one CSV file, `data_shocks.csv`, has been edited. Ten shock attributes are available per region, commodity and year: import tariffs, export taxes, non-tariff import and export measures, land productivity, total factor productivity in value added, in intermediate use and in livestock feed use, land supply, and the agricultural expenditure share. The edit can be made in a spreadsheet (a full or partial copy of the file, applied and run by one command), from the command line, or from Julia. The model turns the package into an output package, and a browser dashboard compares up to two output packages side by side.
+
+## What the package contains
+
+| Part | What it does | Language | Documentation |
+|---|---|---|---|
+| `code/processing/` | Builds the model inputs from public raw data (USDA baseline, World Bank, IMF, FAOSTAT, WITS, CEPII) | R | [Pipeline](pipeline.qmd), [Raw data sources](data-sources.qmd) |
+| `code/model/` | Runs the model on an input package and writes an output package; authors shock packages | Julia (JuMP, PATH) | [Model](model.qmd), [Julia reference](reference/julia.qmd) |
+| `code/visualization/` | Compares up to two output packages in the browser | Python (Streamlit) | [Dashboard](dashboard.qmd) |
+| `data/` | Raw files, processed CSVs, the baseline input package, example output packages | | [Package and file format](data-format.qmd) |
+| `scripts/` | Bootstrap, run and fetch scripts for the portable install | bash, batch | [Command line reference](reference/cli.qmd) |
+| `.devcontainer/` | Container definition for GitHub Codespaces and Docker | | [Cloud and Docker](installation/cloud.qmd) |
+
+Data flow: raw files in `data/raw/` go through the pipeline into four standard CSV files in `data/processed/` and a baseline input package in `data/packages/`. The model turns an input package into an output package (seven files), which the dashboard reads.
+
+## Three ways to install
+
+1. [GitHub Codespaces or Docker](installation/cloud.qmd): a ready-made container, nothing installed on your machine.
+2. [Local install on macOS or Linux](installation/local-unix.qmd): everything under `.bsat_local/` inside the repository folder, no administrator rights.
+3. [Local install on Windows](installation/local-windows.qmd): the same portable layout with batch scripts.
+
+All three need a free PATH solver license string pasted into `code/model/path_license.txt`. Problems are collected in [Troubleshooting](installation/troubleshooting.qmd).
+
+## First run in five commands
+
+From the repository root, after installing and adding the license:
+
+```bash
+scripts/run_model_unix.sh                                        # 1. baseline: output/baseline_Output.zip
+julia --project=code/model code/model/make_shock.jl --list       # 2. the ten shock attributes
+julia --project=code/model code/model/make_shock.jl \
+      --template data/packages/baseline_2025_Input.zip \
+      --inputpkg output/my_case_Input.zip \
+      --shock shock_import_tariff --value 0.10 \
+      --regions CHN --commodities Soybean --years 2026:2034 \
+      --description "China soybean tariff +10 pp"                # 3. author a scenario
+scripts/run_model_unix.sh output/my_case_Input.zip output/my_case_Output.zip   # 4. run it
+# 5. open https://huggingface.co/spaces/bsat-team/BSAT_Viz and upload output/my_case_Output.zip
+```
+
+The output package carries the baseline it was solved against, so the dashboard shows the scenario against the baseline from that one file; a second package can be uploaded to compare two shocks. `scripts/run_dashboard_unix.sh` runs the dashboard server on your own computer and is not needed for this.
+
+On Windows use `scripts\run_model_windows.bat`; the Julia commands are the same. The baseline run takes about two minutes and 1.6 GB of memory for the ten years 2025 to 2034.
+
+## Where to go next
+
+- [Walkthrough](walkthrough.qmd): install, run the baseline, author and run a shock, read the results in the dashboard, layer shocks.
+- [Package and file format](data-format.qmd): what is in an input package and an output package, the 13-column schema, the shock attributes.
+- [Model](model.qmd): sets, inputs, calibration, the year loop, shocks, solver and outputs, written from the code.
+- [Reference](reference/index.qmd): every function and script.
+- [Contributing](contributing.qmd): conventions for code, headers and documentation.
+
+Code is released under the MIT License; documentation and data products under CC BY 4.0. Raw data remain under the terms of their sources, listed in [Raw data sources](data-sources.qmd). The code is the authoritative specification of the model.
+
+## How to cite
+
+Cardoso, D. S., Hillberry, R., Jimenez, M. I., Xiong, H., Li, Y., Peng, Y., & Kwon, J. Y. (2026). *BSAT: Baseline Scenario Analysis Tool* (Version 1.0.0) [Computer software]. https://github.com/BSAT-team/BSAT
+
+{{< var wp.note >}}
+
+```bibtex
+@software{bsat2026,
+  author  = {Cardoso, Diego S. and Hillberry, Russell and Jimenez, Manuel I. and Xiong, Hao and Li, Yuansen and Peng, Yongzhen and Kwon, Ji Yong},
+  title   = {{BSAT}: Baseline Scenario Analysis Tool},
+  version = {1.0.0},
+  year    = {2026},
+  month   = {11},
+  url     = {https://github.com/BSAT-team/BSAT}
+}
+```
+
+The same metadata is in [`CITATION.cff`](https://github.com/BSAT-team/BSAT/blob/main/CITATION.cff) (GitHub's "Cite this repository" button).
+
+## Contributors
+
+| Name | Role | Affiliation |
+|---|---|---|
+| Diego S. Cardoso | Principal investigator, software and model design | University of Illinois Urbana-Champaign |
+| Russell Hillberry | Co-Principal investigator, model design | Purdue University |
+| Manuel I. Jimenez | Technical leader, model design and implementation, calibration, data pipeline | Purdue University |
+| Hao Xiong | Model calibration, data pipeline | Purdue University |
+| Yuansen Li | Data pipeline | Purdue University |
+| Yongzhen Peng | Dashboard design | University of Illinois Urbana-Champaign |
+| Ji Yong Kwon | Data specification, software design | Purdue University |
+
+Funding: U.S. Department of Agriculture, Economic Research Service (Cooperative Agreement 58-3000-2-0085).
+
+The model, pipeline and dashboard were written by the contributors listed above. Claude Code (Anthropic), with several Claude models, assisted the assembly of this release: integrating that code into one package, the installation and run scripts, the tests, and the documentation.

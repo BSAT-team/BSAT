@@ -1,0 +1,22 @@
+# R environment for the data pipeline (code/processing). Precompiled conda-forge builds, no compiler needed.
+# The dashboard's Python environment is separate (environment-dashboard.yml) and optional.
+# R 4.5: under R 4.3 the conda-forge Windows builds of DescTools, vroom and isoband fail to load
+# ("The specified procedure could not be found"), and the loader's error dialog hangs Rscript.
+# r-desctools is left out for the same reason; 21_compute_land_cost_share.R winsorizes in base R.
+# The bootstrap scripts recreate an existing 'bsat' environment whose R version differs from this pin.
+name: bsat
+channels:
+  - conda-forge
+dependencies:
+  - r-base=4.5
+  - r-dplyr
+  - r-tidyr
+  - r-stringr
+  - r-readr
+  - r-readxl
+  - r-openxlsx
+  - r-data.table
+  - r-lfe
+  - r-ggplot2
+  - r-rstudioapi
+  - r-zip

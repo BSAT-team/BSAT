@@ -1,0 +1,199 @@
+group,region_code,region,region_name,country_code,country
+A,ARG,ARGENTINA,Argentina,ARG,Argentina
+A,AUS,AUSTRALIA,Australia,AUS,Australia
+A,BRA,BRAZIL,Brazil,BRA,Brazil
+A,CAN,CANADA,Canada,CAN,Canada
+A,CHN,CHINA,China,CHN,China
+A,EGY,EGYPT,Egypt,EGY,Egypt
+A,EUR,EUROPEAN UNION,European Union,AUT,Austria
+A,EUR,EUROPEAN UNION,European Union,BEL,Belgium
+A,EUR,EUROPEAN UNION,European Union,BGR,Bulgaria
+A,EUR,EUROPEAN UNION,European Union,HRV,Croatia
+A,EUR,EUROPEAN UNION,European Union,CYP,Cyprus
+A,EUR,EUROPEAN UNION,European Union,CZE,Czech Republic
+A,EUR,EUROPEAN UNION,European Union,DNK,Denmark
+A,EUR,EUROPEAN UNION,European Union,EST,Estonia
+A,EUR,EUROPEAN UNION,European Union,FIN,Finland
+A,EUR,EUROPEAN UNION,European Union,FRA,France
+A,EUR,EUROPEAN UNION,European Union,DEU,Germany
+A,EUR,EUROPEAN UNION,European Union,GRC,Greece
+A,EUR,EUROPEAN UNION,European Union,HUN,Hungary
+A,EUR,EUROPEAN UNION,European Union,IRL,Ireland
+A,EUR,EUROPEAN UNION,European Union,ITA,Italy
+A,EUR,EUROPEAN UNION,European Union,LVA,Latvia
+A,EUR,EUROPEAN UNION,European Union,LTU,Lithuania
+A,EUR,EUROPEAN UNION,European Union,LUX,Luxembourg
+A,EUR,EUROPEAN UNION,European Union,MLT,Malta
+A,EUR,EUROPEAN UNION,European Union,NLD,Netherlands
+A,EUR,EUROPEAN UNION,European Union,POL,Poland
+A,EUR,EUROPEAN UNION,European Union,PRT,Portugal
+A,EUR,EUROPEAN UNION,European Union,ROU,Romania
+A,EUR,EUROPEAN UNION,European Union,SVK,Slovakia
+A,EUR,EUROPEAN UNION,European Union,SVN,Slovenia
+A,EUR,EUROPEAN UNION,European Union,ESP,Spain
+A,EUR,EUROPEAN UNION,European Union,SWE,Sweden
+A,EUR,EUROPEAN UNION,European Union,GBR,United Kingdom
+A,IND,INDIA,India,IND,India
+A,IDN,INDONESIA,Indonesia,IDN,Indonesia
+A,JPN,JAPAN,Japan,JPN,Japan
+A,MYS,MALAYSIA,Malaysia,MYS,Malaysia
+A,MEX,MEXICO,Mexico,MEX,Mexico
+A,PHL,PHILIPPINES,Philippines,PHL,Philippines
+A,ZAF,REPUBLIC OF SOUTH AFRICA,Republic of South Africa,ZAF,Republic of South Africa
+A,RUS,RUSSIA,Russia,RUS,Russia
+A,KOR,SOUTH KOREA,South Korea,KOR,South Korea
+A,THA,THAILAND,Thailand,THA,Thailand
+A,UKR,UKRAINE,Ukraine,UKR,Ukraine
+A,USA,UNITED STATES,United States,USA,United States
+A,CAC,CENTRAL AMERICA & CARIBBEAN,Central America & Caribbean,BHS,Bahamas
+A,CAC,CENTRAL AMERICA & CARIBBEAN,Central America & Caribbean,BRB,Barbados
+A,CAC,CENTRAL AMERICA & CARIBBEAN,Central America & Caribbean,BLZ,Belize
+A,CAC,CENTRAL AMERICA & CARIBBEAN,Central America & Caribbean,BMU,Bermuda
+A,CAC,CENTRAL AMERICA & CARIBBEAN,Central America & Caribbean,CRI,Costa Rica
+A,CAC,CENTRAL AMERICA & CARIBBEAN,Central America & Caribbean,DMA,Dominica
+A,CAC,CENTRAL AMERICA & CARIBBEAN,Central America & Caribbean,DOM,Dominican Republic
+A,CAC,CENTRAL AMERICA & CARIBBEAN,Central America & Caribbean,SLV,El Salvador
+A,CAC,CENTRAL AMERICA & CARIBBEAN,Central America & Caribbean,ATF,French West Indies
+A,CAC,CENTRAL AMERICA & CARIBBEAN,Central America & Caribbean,GRL,Greenland
+A,CAC,CENTRAL AMERICA & CARIBBEAN,Central America & Caribbean,GRD,Grenada
+A,CAC,CENTRAL AMERICA & CARIBBEAN,Central America & Caribbean,GLP,Guadeloupe
+A,CAC,CENTRAL AMERICA & CARIBBEAN,Central America & Caribbean,GTM,Guatemala
+A,CAC,CENTRAL AMERICA & CARIBBEAN,Central America & Caribbean,HTI,Haiti
+A,CAC,CENTRAL AMERICA & CARIBBEAN,Central America & Caribbean,HND,Honduras
+A,CAC,CENTRAL AMERICA & CARIBBEAN,Central America & Caribbean,JAM,Jamaica And Dependencies
+A,CAC,CENTRAL AMERICA & CARIBBEAN,Central America & Caribbean,ANT,Netherlands Antilles
+A,CAC,CENTRAL AMERICA & CARIBBEAN,Central America & Caribbean,NIC,Nicaragua
+A,CAC,CENTRAL AMERICA & CARIBBEAN,Central America & Caribbean,PAN,Panama
+A,CAC,CENTRAL AMERICA & CARIBBEAN,Central America & Caribbean,PRI,Puerto Rico
+A,CAC,CENTRAL AMERICA & CARIBBEAN,Central America & Caribbean,KNA,St. Kitts And Nevis
+A,CAC,CENTRAL AMERICA & CARIBBEAN,Central America & Caribbean,LCA,St. Lucia
+A,CAC,CENTRAL AMERICA & CARIBBEAN,Central America & Caribbean,VCT,St. Vincent And Grenadines
+A,CAC,CENTRAL AMERICA & CARIBBEAN,Central America & Caribbean,TTO,Trinidad And Tobago
+A,CAC,CENTRAL AMERICA & CARIBBEAN,Central America & Caribbean,VIR,United States Virgin Islands
+A,IRN,IRAN,Iran,IRN,Iran
+A,OAO,OTHER ASIA & OCEANIA,Other Asia & Oceania,AFG,Afghanistan
+A,OAO,OTHER ASIA & OCEANIA,Other Asia & Oceania,BTN,Bhutan
+A,OAO,OTHER ASIA & OCEANIA,Other Asia & Oceania,BRN,Brunei
+A,OAO,OTHER ASIA & OCEANIA,Other Asia & Oceania,FJI,Fiji
+A,OAO,OTHER ASIA & OCEANIA,Other Asia & Oceania,PYF,French Polynesia
+A,OAO,OTHER ASIA & OCEANIA,Other Asia & Oceania,KIR,Kiribati And Tuvalu Gilbert
+A,OAO,OTHER ASIA & OCEANIA,Other Asia & Oceania,PRK,"Korea, North"
+A,OAO,OTHER ASIA & OCEANIA,Other Asia & Oceania,LAO,Laos
+A,OAO,OTHER ASIA & OCEANIA,Other Asia & Oceania,MAC,Macau
+A,OAO,OTHER ASIA & OCEANIA,Other Asia & Oceania,MDV,Maldives
+A,OAO,OTHER ASIA & OCEANIA,Other Asia & Oceania,MNG,Mongolia
+A,OAO,OTHER ASIA & OCEANIA,Other Asia & Oceania,NPL,Nepal
+A,OAO,OTHER ASIA & OCEANIA,Other Asia & Oceania,NCL,New Caledonia
+A,OAO,OTHER ASIA & OCEANIA,Other Asia & Oceania,PNG,Papua New Guinea
+A,OAO,OTHER ASIA & OCEANIA,Other Asia & Oceania,SGP,Singapore
+A,OAO,OTHER ASIA & OCEANIA,Other Asia & Oceania,SLB,Solomon Islands
+A,OAO,OTHER ASIA & OCEANIA,Other Asia & Oceania,LKA,Sri Lanka
+A,OAO,OTHER ASIA & OCEANIA,Other Asia & Oceania,TON,Tonga
+A,OAO,OTHER ASIA & OCEANIA,Other Asia & Oceania,VUT,Vanuatu
+A,OAO,OTHER ASIA & OCEANIA,Other Asia & Oceania,WSM,Western Samoa
+A,OEU,OTHER EUROPE,Other Europe,ALB,Albania
+A,OEU,OTHER EUROPE,Other Europe,BIH,Bosnia Herzegovina
+A,OEU,OTHER EUROPE,Other Europe,FRO,Faroe Islands
+A,OEU,OTHER EUROPE,Other Europe,GIB,Gibraltar
+A,OEU,OTHER EUROPE,Other Europe,ISL,Iceland
+A,OEU,OTHER EUROPE,Other Europe,MKD,Macedonia
+A,OEU,OTHER EUROPE,Other Europe,MNE,Montenegro
+A,OEU,OTHER EUROPE,Other Europe,NOR,Norway
+A,OEU,OTHER EUROPE,Other Europe,SRB,Serbia
+A,OEU,OTHER EUROPE,Other Europe,CHE,Switzerland
+A,OFS,"OTHER FORMER SOVIET UNION, 10 COUNTRIES","Other Former Soviet Union, 10 Countries",ARM,Armenia
+A,OFS,"OTHER FORMER SOVIET UNION, 10 COUNTRIES","Other Former Soviet Union, 10 Countries",AZE,Azerbaijan
+A,OFS,"OTHER FORMER SOVIET UNION, 10 COUNTRIES","Other Former Soviet Union, 10 Countries",BLR,Belarus
+A,OFS,"OTHER FORMER SOVIET UNION, 10 COUNTRIES","Other Former Soviet Union, 10 Countries",GEO,Georgia
+A,OFS,"OTHER FORMER SOVIET UNION, 10 COUNTRIES","Other Former Soviet Union, 10 Countries",KAZ,Kazakhstan
+A,OFS,"OTHER FORMER SOVIET UNION, 10 COUNTRIES","Other Former Soviet Union, 10 Countries",KGZ,Kyrgyzstan
+A,OFS,"OTHER FORMER SOVIET UNION, 10 COUNTRIES","Other Former Soviet Union, 10 Countries",MDA,Moldova
+A,OFS,"OTHER FORMER SOVIET UNION, 10 COUNTRIES","Other Former Soviet Union, 10 Countries",TJK,Tajikistan
+A,OFS,"OTHER FORMER SOVIET UNION, 10 COUNTRIES","Other Former Soviet Union, 10 Countries",TKM,Turkmenistan
+A,OFS,"OTHER FORMER SOVIET UNION, 10 COUNTRIES","Other Former Soviet Union, 10 Countries",UZB,Uzbekistan
+A,OME,OTHER MIDDLE EAST,Other Middle East,BHR,Bahrain
+A,OME,OTHER MIDDLE EAST,Other Middle East,YEM,Former Yemen North Sanaa
+A,OME,OTHER MIDDLE EAST,Other Middle East,YEM,Former Yemen South Aden
+A,OME,OTHER MIDDLE EAST,Other Middle East,ISR,Israel
+A,OME,OTHER MIDDLE EAST,Other Middle East,JOR,Jordan
+A,OME,OTHER MIDDLE EAST,Other Middle East,KWT,Kuwait
+A,OME,OTHER MIDDLE EAST,Other Middle East,LBN,Lebanon
+A,OME,OTHER MIDDLE EAST,Other Middle East,OMN,Oman
+A,OME,OTHER MIDDLE EAST,Other Middle East,QAT,Qatar
+A,OME,OTHER MIDDLE EAST,Other Middle East,SYR,Syria
+A,OME,OTHER MIDDLE EAST,Other Middle East,ARE,United Arab Emirates
+A,OME,OTHER MIDDLE EAST,Other Middle East,YEM,Yemen
+A,ONA,OTHER NORTH AFRICA,Other North Africa,DZA,Algeria
+A,ONA,OTHER NORTH AFRICA,Other North Africa,LBY,Libya
+A,ONA,OTHER NORTH AFRICA,Other North Africa,TUN,Tunisia
+A,OSA,OTHER SOUTH AMERICA,Other South America,BOL,Bolivia
+A,OSA,OTHER SOUTH AMERICA,Other South America,CHL,Chile
+A,OSA,OTHER SOUTH AMERICA,Other South America,COL,Colombia
+A,OSA,OTHER SOUTH AMERICA,Other South America,ECU,Ecuador
+A,OSA,OTHER SOUTH AMERICA,Other South America,GUY,Guyana
+A,OSA,OTHER SOUTH AMERICA,Other South America,PRY,Paraguay
+A,OSA,OTHER SOUTH AMERICA,Other South America,PER,Peru
+A,OSA,OTHER SOUTH AMERICA,Other South America,SUR,Suriname
+A,OSA,OTHER SOUTH AMERICA,Other South America,URY,Uruguay
+A,OSA,OTHER SOUTH AMERICA,Other South America,VEN,Venezuela
+A,SAU,SAUDI ARABIA,Saudi Arabia,SAU,Saudi Arabia
+A,TUR,TURKEY,Turkey,TUR,Turkey
+A,BGD,BANGLADESH,Bangladesh,BGD,Bangladesh
+A,BUR,BURMA,Burma,BUR,Burma
+A,KHM,CAMBODIA,Cambodia,KHM,Cambodia
+A,HKG,HONG KONG,Hong Kong,HKG,Hong Kong
+A,IRQ,IRAQ,Iraq,IRQ,Iraq
+A,MAR,MOROCCO,Morocco,MAR,Morocco
+A,NZL,NEW ZEALAND,New Zealand,NZL,New Zealand
+A,NGA,NIGERIA,Nigeria,NGA,Nigeria
+A,OSS,OTHER SUB-SAHARAN AFRICA,Other Sub-Saharan Africa,AGO,Angola
+A,OSS,OTHER SUB-SAHARAN AFRICA,Other Sub-Saharan Africa,BWA,Botswana
+A,OSS,OTHER SUB-SAHARAN AFRICA,Other Sub-Saharan Africa,BDI,Burundi
+A,OSS,OTHER SUB-SAHARAN AFRICA,Other Sub-Saharan Africa,CMR,Cameroon
+A,OSS,OTHER SUB-SAHARAN AFRICA,Other Sub-Saharan Africa,CAF,Central African Republic
+A,OSS,OTHER SUB-SAHARAN AFRICA,Other Sub-Saharan Africa,TCD,Chad
+A,OSS,OTHER SUB-SAHARAN AFRICA,Other Sub-Saharan Africa,COM,Comoros Islands
+A,OSS,OTHER SUB-SAHARAN AFRICA,Other Sub-Saharan Africa,COG,Congo (Brazzaville)
+A,OSS,OTHER SUB-SAHARAN AFRICA,Other Sub-Saharan Africa,COD,"Congo (Kinshasa, Formerly Zaire)"
+A,OSS,OTHER SUB-SAHARAN AFRICA,Other Sub-Saharan Africa,DJI,Djibouti
+A,OSS,OTHER SUB-SAHARAN AFRICA,Other Sub-Saharan Africa,GNQ,Equatorial Guinea
+A,OSS,OTHER SUB-SAHARAN AFRICA,Other Sub-Saharan Africa,ERI,Eritrea
+A,OSS,OTHER SUB-SAHARAN AFRICA,Other Sub-Saharan Africa,ETH,Ethiopia
+A,OSS,OTHER SUB-SAHARAN AFRICA,Other Sub-Saharan Africa,GAB,Gabon
+A,OSS,OTHER SUB-SAHARAN AFRICA,Other Sub-Saharan Africa,KEN,Kenya
+A,OSS,OTHER SUB-SAHARAN AFRICA,Other Sub-Saharan Africa,LSO,Lesotho
+A,OSS,OTHER SUB-SAHARAN AFRICA,Other Sub-Saharan Africa,MDG,Madagascar
+A,OSS,OTHER SUB-SAHARAN AFRICA,Other Sub-Saharan Africa,MWI,Malawi
+A,OSS,OTHER SUB-SAHARAN AFRICA,Other Sub-Saharan Africa,MRT,Mauritania
+A,OSS,OTHER SUB-SAHARAN AFRICA,Other Sub-Saharan Africa,MUS,Mauritius
+A,OSS,OTHER SUB-SAHARAN AFRICA,Other Sub-Saharan Africa,MOZ,Mozambique
+A,OSS,OTHER SUB-SAHARAN AFRICA,Other Sub-Saharan Africa,NAM,Namibia
+A,OSS,OTHER SUB-SAHARAN AFRICA,Other Sub-Saharan Africa,REU,Reunion
+A,OSS,OTHER SUB-SAHARAN AFRICA,Other Sub-Saharan Africa,RWA,Rwanda
+A,OSS,OTHER SUB-SAHARAN AFRICA,Other Sub-Saharan Africa,STP,Sao Tome And Principe
+A,OSS,OTHER SUB-SAHARAN AFRICA,Other Sub-Saharan Africa,SYC,Seychelles
+A,OSS,OTHER SUB-SAHARAN AFRICA,Other Sub-Saharan Africa,SOM,Somalia
+A,OSS,OTHER SUB-SAHARAN AFRICA,Other Sub-Saharan Africa,SSD,South Sudan
+A,OSS,OTHER SUB-SAHARAN AFRICA,Other Sub-Saharan Africa,SDN,Sudan
+A,OSS,OTHER SUB-SAHARAN AFRICA,Other Sub-Saharan Africa,SWZ,Swaziland
+A,OSS,OTHER SUB-SAHARAN AFRICA,Other Sub-Saharan Africa,TZA,Tanzania
+A,OSS,OTHER SUB-SAHARAN AFRICA,Other Sub-Saharan Africa,UGA,Uganda
+A,OSS,OTHER SUB-SAHARAN AFRICA,Other Sub-Saharan Africa,ZMB,Zambia
+A,OSS,OTHER SUB-SAHARAN AFRICA,Other Sub-Saharan Africa,ZWE,Zimbabwe
+A,PAK,PAKISTAN,Pakistan,PAK,Pakistan
+A,TWN,TAIWAN,Taiwan,TWN,Taiwan
+A,VNM,VIETNAM,Vietnam,VNM,Vietnam
+A,ECO,WEST AFRICAN COMMUNITY=ECOWAS (minus Nigeria),West African Community=Ecowas (minus Nigeria),BEN,Benin
+A,ECO,WEST AFRICAN COMMUNITY=ECOWAS (minus Nigeria),West African Community=Ecowas (minus Nigeria),BFA,Burkina Faso
+A,ECO,WEST AFRICAN COMMUNITY=ECOWAS (minus Nigeria),West African Community=Ecowas (minus Nigeria),CPV,Cape Verde Islands
+A,ECO,WEST AFRICAN COMMUNITY=ECOWAS (minus Nigeria),West African Community=Ecowas (minus Nigeria),CIV,Cote D'ivoire
+A,ECO,WEST AFRICAN COMMUNITY=ECOWAS (minus Nigeria),West African Community=Ecowas (minus Nigeria),GMB,Gambia
+A,ECO,WEST AFRICAN COMMUNITY=ECOWAS (minus Nigeria),West African Community=Ecowas (minus Nigeria),GHA,Ghana
+A,ECO,WEST AFRICAN COMMUNITY=ECOWAS (minus Nigeria),West African Community=Ecowas (minus Nigeria),GIN,Guinea
+A,ECO,WEST AFRICAN COMMUNITY=ECOWAS (minus Nigeria),West African Community=Ecowas (minus Nigeria),GNB,Guinea Bissau
+A,ECO,WEST AFRICAN COMMUNITY=ECOWAS (minus Nigeria),West African Community=Ecowas (minus Nigeria),LBR,Liberia
+A,ECO,WEST AFRICAN COMMUNITY=ECOWAS (minus Nigeria),West African Community=Ecowas (minus Nigeria),MLI,Mali
+A,ECO,WEST AFRICAN COMMUNITY=ECOWAS (minus Nigeria),West African Community=Ecowas (minus Nigeria),NER,Niger
+A,ECO,WEST AFRICAN COMMUNITY=ECOWAS (minus Nigeria),West African Community=Ecowas (minus Nigeria),SEN,Senegal
+A,ECO,WEST AFRICAN COMMUNITY=ECOWAS (minus Nigeria),West African Community=Ecowas (minus Nigeria),SLE,Sierra Leone
+A,ECO,WEST AFRICAN COMMUNITY=ECOWAS (minus Nigeria),West African Community=Ecowas (minus Nigeria),TGO,Togo

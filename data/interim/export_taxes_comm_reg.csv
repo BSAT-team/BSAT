@@ -1,0 +1,505 @@
+region,region_name,commodity,value,commodity_name,nest,nest_name,attribute,attribute_type,attribute_description,unit
+ARG,Argentina,Barley,0,Barley,Bly_Cereals,Barley Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+ARG,Argentina,Beef,0,Beef and veal,Livestock,Livestock,Export tax,RNC,Ad valorem export tax,decimal form
+ARG,Argentina,Corn,0,Corn,Cereals,Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+ARG,Argentina,Cotton,0,Cotton,Other,Other,Export tax,RNC,Ad valorem export tax,decimal form
+ARG,Argentina,Pork,0,Pork,Livestock,Livestock,Export tax,RNC,Ad valorem export tax,decimal form
+ARG,Argentina,Poultry,0,Poultry,Livestock,Livestock,Export tax,RNC,Ad valorem export tax,decimal form
+ARG,Argentina,Rice,0,Rice,Rce_Cereals,Rice Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+ARG,Argentina,Sorghum,0,Sorghum,Cereals,Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+ARG,Argentina,SoyMeal,0,Soy Meal,Secondary,Soy related Secondary,Export tax,RNC,Ad valorem export tax,decimal form
+ARG,Argentina,SoyOil,0,Soy Oil,Secondary,Soy related Secondary,Export tax,RNC,Ad valorem export tax,decimal form
+ARG,Argentina,Soybean,0,Soybean,Soy_Cereals,Soybean Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+ARG,Argentina,Wheat,0,Wheat,Brd_Cereals,Bread Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+AUS,Australia,Barley,0,Barley,Bly_Cereals,Barley Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+AUS,Australia,Beef,0,Beef and veal,Livestock,Livestock,Export tax,RNC,Ad valorem export tax,decimal form
+AUS,Australia,Corn,0,Corn,Cereals,Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+AUS,Australia,Cotton,0,Cotton,Other,Other,Export tax,RNC,Ad valorem export tax,decimal form
+AUS,Australia,Pork,0,Pork,Livestock,Livestock,Export tax,RNC,Ad valorem export tax,decimal form
+AUS,Australia,Poultry,0,Poultry,Livestock,Livestock,Export tax,RNC,Ad valorem export tax,decimal form
+AUS,Australia,Rice,0,Rice,Rce_Cereals,Rice Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+AUS,Australia,Sorghum,0,Sorghum,Cereals,Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+AUS,Australia,SoyMeal,0,Soy Meal,Secondary,Soy related Secondary,Export tax,RNC,Ad valorem export tax,decimal form
+AUS,Australia,SoyOil,0,Soy Oil,Secondary,Soy related Secondary,Export tax,RNC,Ad valorem export tax,decimal form
+AUS,Australia,Soybean,0,Soybean,Soy_Cereals,Soybean Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+AUS,Australia,Wheat,0,Wheat,Brd_Cereals,Bread Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+BRA,Brazil,Barley,0,Barley,Bly_Cereals,Barley Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+BRA,Brazil,Beef,0,Beef and veal,Livestock,Livestock,Export tax,RNC,Ad valorem export tax,decimal form
+BRA,Brazil,Corn,0,Corn,Cereals,Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+BRA,Brazil,Cotton,0,Cotton,Other,Other,Export tax,RNC,Ad valorem export tax,decimal form
+BRA,Brazil,Pork,0,Pork,Livestock,Livestock,Export tax,RNC,Ad valorem export tax,decimal form
+BRA,Brazil,Poultry,0,Poultry,Livestock,Livestock,Export tax,RNC,Ad valorem export tax,decimal form
+BRA,Brazil,Rice,0,Rice,Rce_Cereals,Rice Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+BRA,Brazil,Sorghum,0,Sorghum,Cereals,Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+BRA,Brazil,SoyMeal,0,Soy Meal,Secondary,Soy related Secondary,Export tax,RNC,Ad valorem export tax,decimal form
+BRA,Brazil,SoyOil,0,Soy Oil,Secondary,Soy related Secondary,Export tax,RNC,Ad valorem export tax,decimal form
+BRA,Brazil,Soybean,0,Soybean,Soy_Cereals,Soybean Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+BRA,Brazil,Wheat,0,Wheat,Brd_Cereals,Bread Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+CAN,Canada,Barley,0,Barley,Bly_Cereals,Barley Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+CAN,Canada,Beef,0,Beef and veal,Livestock,Livestock,Export tax,RNC,Ad valorem export tax,decimal form
+CAN,Canada,Corn,0,Corn,Cereals,Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+CAN,Canada,Cotton,0,Cotton,Other,Other,Export tax,RNC,Ad valorem export tax,decimal form
+CAN,Canada,Pork,0,Pork,Livestock,Livestock,Export tax,RNC,Ad valorem export tax,decimal form
+CAN,Canada,Poultry,0,Poultry,Livestock,Livestock,Export tax,RNC,Ad valorem export tax,decimal form
+CAN,Canada,Rice,0,Rice,Rce_Cereals,Rice Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+CAN,Canada,Sorghum,0,Sorghum,Cereals,Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+CAN,Canada,SoyMeal,0,Soy Meal,Secondary,Soy related Secondary,Export tax,RNC,Ad valorem export tax,decimal form
+CAN,Canada,SoyOil,0,Soy Oil,Secondary,Soy related Secondary,Export tax,RNC,Ad valorem export tax,decimal form
+CAN,Canada,Soybean,0,Soybean,Soy_Cereals,Soybean Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+CAN,Canada,Wheat,0,Wheat,Brd_Cereals,Bread Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+CHN,China,Barley,0,Barley,Bly_Cereals,Barley Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+CHN,China,Beef,0,Beef and veal,Livestock,Livestock,Export tax,RNC,Ad valorem export tax,decimal form
+CHN,China,Corn,0,Corn,Cereals,Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+CHN,China,Cotton,0,Cotton,Other,Other,Export tax,RNC,Ad valorem export tax,decimal form
+CHN,China,Pork,0,Pork,Livestock,Livestock,Export tax,RNC,Ad valorem export tax,decimal form
+CHN,China,Poultry,0,Poultry,Livestock,Livestock,Export tax,RNC,Ad valorem export tax,decimal form
+CHN,China,Rice,0,Rice,Rce_Cereals,Rice Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+CHN,China,Sorghum,0,Sorghum,Cereals,Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+CHN,China,SoyMeal,0,Soy Meal,Secondary,Soy related Secondary,Export tax,RNC,Ad valorem export tax,decimal form
+CHN,China,SoyOil,0,Soy Oil,Secondary,Soy related Secondary,Export tax,RNC,Ad valorem export tax,decimal form
+CHN,China,Soybean,0,Soybean,Soy_Cereals,Soybean Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+CHN,China,Wheat,0,Wheat,Brd_Cereals,Bread Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+EGY,Egypt,Barley,0,Barley,Bly_Cereals,Barley Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+EGY,Egypt,Beef,0,Beef and veal,Livestock,Livestock,Export tax,RNC,Ad valorem export tax,decimal form
+EGY,Egypt,Corn,0,Corn,Cereals,Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+EGY,Egypt,Cotton,0,Cotton,Other,Other,Export tax,RNC,Ad valorem export tax,decimal form
+EGY,Egypt,Pork,0,Pork,Livestock,Livestock,Export tax,RNC,Ad valorem export tax,decimal form
+EGY,Egypt,Poultry,0,Poultry,Livestock,Livestock,Export tax,RNC,Ad valorem export tax,decimal form
+EGY,Egypt,Rice,0,Rice,Rce_Cereals,Rice Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+EGY,Egypt,Sorghum,0,Sorghum,Cereals,Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+EGY,Egypt,SoyMeal,0,Soy Meal,Secondary,Soy related Secondary,Export tax,RNC,Ad valorem export tax,decimal form
+EGY,Egypt,SoyOil,0,Soy Oil,Secondary,Soy related Secondary,Export tax,RNC,Ad valorem export tax,decimal form
+EGY,Egypt,Soybean,0,Soybean,Soy_Cereals,Soybean Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+EGY,Egypt,Wheat,0,Wheat,Brd_Cereals,Bread Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+EUR,European Union,Barley,0,Barley,Bly_Cereals,Barley Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+EUR,European Union,Beef,0,Beef and veal,Livestock,Livestock,Export tax,RNC,Ad valorem export tax,decimal form
+EUR,European Union,Corn,0,Corn,Cereals,Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+EUR,European Union,Cotton,0,Cotton,Other,Other,Export tax,RNC,Ad valorem export tax,decimal form
+EUR,European Union,Pork,0,Pork,Livestock,Livestock,Export tax,RNC,Ad valorem export tax,decimal form
+EUR,European Union,Poultry,0,Poultry,Livestock,Livestock,Export tax,RNC,Ad valorem export tax,decimal form
+EUR,European Union,Rice,0,Rice,Rce_Cereals,Rice Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+EUR,European Union,Sorghum,0,Sorghum,Cereals,Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+EUR,European Union,SoyMeal,0,Soy Meal,Secondary,Soy related Secondary,Export tax,RNC,Ad valorem export tax,decimal form
+EUR,European Union,SoyOil,0,Soy Oil,Secondary,Soy related Secondary,Export tax,RNC,Ad valorem export tax,decimal form
+EUR,European Union,Soybean,0,Soybean,Soy_Cereals,Soybean Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+EUR,European Union,Wheat,0,Wheat,Brd_Cereals,Bread Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+IND,India,Barley,0,Barley,Bly_Cereals,Barley Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+IND,India,Beef,0,Beef and veal,Livestock,Livestock,Export tax,RNC,Ad valorem export tax,decimal form
+IND,India,Corn,0,Corn,Cereals,Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+IND,India,Cotton,0,Cotton,Other,Other,Export tax,RNC,Ad valorem export tax,decimal form
+IND,India,Pork,0,Pork,Livestock,Livestock,Export tax,RNC,Ad valorem export tax,decimal form
+IND,India,Poultry,0,Poultry,Livestock,Livestock,Export tax,RNC,Ad valorem export tax,decimal form
+IND,India,Rice,0,Rice,Rce_Cereals,Rice Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+IND,India,Sorghum,0,Sorghum,Cereals,Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+IND,India,SoyMeal,0,Soy Meal,Secondary,Soy related Secondary,Export tax,RNC,Ad valorem export tax,decimal form
+IND,India,SoyOil,0,Soy Oil,Secondary,Soy related Secondary,Export tax,RNC,Ad valorem export tax,decimal form
+IND,India,Soybean,0,Soybean,Soy_Cereals,Soybean Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+IND,India,Wheat,0,Wheat,Brd_Cereals,Bread Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+IDN,Indonesia,Barley,0,Barley,Bly_Cereals,Barley Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+IDN,Indonesia,Beef,0,Beef and veal,Livestock,Livestock,Export tax,RNC,Ad valorem export tax,decimal form
+IDN,Indonesia,Corn,0,Corn,Cereals,Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+IDN,Indonesia,Cotton,0,Cotton,Other,Other,Export tax,RNC,Ad valorem export tax,decimal form
+IDN,Indonesia,Pork,0,Pork,Livestock,Livestock,Export tax,RNC,Ad valorem export tax,decimal form
+IDN,Indonesia,Poultry,0,Poultry,Livestock,Livestock,Export tax,RNC,Ad valorem export tax,decimal form
+IDN,Indonesia,Rice,0,Rice,Rce_Cereals,Rice Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+IDN,Indonesia,Sorghum,0,Sorghum,Cereals,Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+IDN,Indonesia,SoyMeal,0,Soy Meal,Secondary,Soy related Secondary,Export tax,RNC,Ad valorem export tax,decimal form
+IDN,Indonesia,SoyOil,0,Soy Oil,Secondary,Soy related Secondary,Export tax,RNC,Ad valorem export tax,decimal form
+IDN,Indonesia,Soybean,0,Soybean,Soy_Cereals,Soybean Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+IDN,Indonesia,Wheat,0,Wheat,Brd_Cereals,Bread Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+JPN,Japan,Barley,0,Barley,Bly_Cereals,Barley Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+JPN,Japan,Beef,0,Beef and veal,Livestock,Livestock,Export tax,RNC,Ad valorem export tax,decimal form
+JPN,Japan,Corn,0,Corn,Cereals,Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+JPN,Japan,Cotton,0,Cotton,Other,Other,Export tax,RNC,Ad valorem export tax,decimal form
+JPN,Japan,Pork,0,Pork,Livestock,Livestock,Export tax,RNC,Ad valorem export tax,decimal form
+JPN,Japan,Poultry,0,Poultry,Livestock,Livestock,Export tax,RNC,Ad valorem export tax,decimal form
+JPN,Japan,Rice,0,Rice,Rce_Cereals,Rice Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+JPN,Japan,Sorghum,0,Sorghum,Cereals,Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+JPN,Japan,SoyMeal,0,Soy Meal,Secondary,Soy related Secondary,Export tax,RNC,Ad valorem export tax,decimal form
+JPN,Japan,SoyOil,0,Soy Oil,Secondary,Soy related Secondary,Export tax,RNC,Ad valorem export tax,decimal form
+JPN,Japan,Soybean,0,Soybean,Soy_Cereals,Soybean Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+JPN,Japan,Wheat,0,Wheat,Brd_Cereals,Bread Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+MYS,Malaysia,Barley,0,Barley,Bly_Cereals,Barley Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+MYS,Malaysia,Beef,0,Beef and veal,Livestock,Livestock,Export tax,RNC,Ad valorem export tax,decimal form
+MYS,Malaysia,Corn,0,Corn,Cereals,Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+MYS,Malaysia,Cotton,0,Cotton,Other,Other,Export tax,RNC,Ad valorem export tax,decimal form
+MYS,Malaysia,Pork,0,Pork,Livestock,Livestock,Export tax,RNC,Ad valorem export tax,decimal form
+MYS,Malaysia,Poultry,0,Poultry,Livestock,Livestock,Export tax,RNC,Ad valorem export tax,decimal form
+MYS,Malaysia,Rice,0,Rice,Rce_Cereals,Rice Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+MYS,Malaysia,Sorghum,0,Sorghum,Cereals,Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+MYS,Malaysia,SoyMeal,0,Soy Meal,Secondary,Soy related Secondary,Export tax,RNC,Ad valorem export tax,decimal form
+MYS,Malaysia,SoyOil,0,Soy Oil,Secondary,Soy related Secondary,Export tax,RNC,Ad valorem export tax,decimal form
+MYS,Malaysia,Soybean,0,Soybean,Soy_Cereals,Soybean Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+MYS,Malaysia,Wheat,0,Wheat,Brd_Cereals,Bread Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+MEX,Mexico,Barley,0,Barley,Bly_Cereals,Barley Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+MEX,Mexico,Beef,0,Beef and veal,Livestock,Livestock,Export tax,RNC,Ad valorem export tax,decimal form
+MEX,Mexico,Corn,0,Corn,Cereals,Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+MEX,Mexico,Cotton,0,Cotton,Other,Other,Export tax,RNC,Ad valorem export tax,decimal form
+MEX,Mexico,Pork,0,Pork,Livestock,Livestock,Export tax,RNC,Ad valorem export tax,decimal form
+MEX,Mexico,Poultry,0,Poultry,Livestock,Livestock,Export tax,RNC,Ad valorem export tax,decimal form
+MEX,Mexico,Rice,0,Rice,Rce_Cereals,Rice Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+MEX,Mexico,Sorghum,0,Sorghum,Cereals,Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+MEX,Mexico,SoyMeal,0,Soy Meal,Secondary,Soy related Secondary,Export tax,RNC,Ad valorem export tax,decimal form
+MEX,Mexico,SoyOil,0,Soy Oil,Secondary,Soy related Secondary,Export tax,RNC,Ad valorem export tax,decimal form
+MEX,Mexico,Soybean,0,Soybean,Soy_Cereals,Soybean Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+MEX,Mexico,Wheat,0,Wheat,Brd_Cereals,Bread Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+PHL,Philippines,Barley,0,Barley,Bly_Cereals,Barley Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+PHL,Philippines,Beef,0,Beef and veal,Livestock,Livestock,Export tax,RNC,Ad valorem export tax,decimal form
+PHL,Philippines,Corn,0,Corn,Cereals,Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+PHL,Philippines,Cotton,0,Cotton,Other,Other,Export tax,RNC,Ad valorem export tax,decimal form
+PHL,Philippines,Pork,0,Pork,Livestock,Livestock,Export tax,RNC,Ad valorem export tax,decimal form
+PHL,Philippines,Poultry,0,Poultry,Livestock,Livestock,Export tax,RNC,Ad valorem export tax,decimal form
+PHL,Philippines,Rice,0,Rice,Rce_Cereals,Rice Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+PHL,Philippines,Sorghum,0,Sorghum,Cereals,Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+PHL,Philippines,SoyMeal,0,Soy Meal,Secondary,Soy related Secondary,Export tax,RNC,Ad valorem export tax,decimal form
+PHL,Philippines,SoyOil,0,Soy Oil,Secondary,Soy related Secondary,Export tax,RNC,Ad valorem export tax,decimal form
+PHL,Philippines,Soybean,0,Soybean,Soy_Cereals,Soybean Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+PHL,Philippines,Wheat,0,Wheat,Brd_Cereals,Bread Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+ZAF,Republic of South Africa,Barley,0,Barley,Bly_Cereals,Barley Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+ZAF,Republic of South Africa,Beef,0,Beef and veal,Livestock,Livestock,Export tax,RNC,Ad valorem export tax,decimal form
+ZAF,Republic of South Africa,Corn,0,Corn,Cereals,Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+ZAF,Republic of South Africa,Cotton,0,Cotton,Other,Other,Export tax,RNC,Ad valorem export tax,decimal form
+ZAF,Republic of South Africa,Pork,0,Pork,Livestock,Livestock,Export tax,RNC,Ad valorem export tax,decimal form
+ZAF,Republic of South Africa,Poultry,0,Poultry,Livestock,Livestock,Export tax,RNC,Ad valorem export tax,decimal form
+ZAF,Republic of South Africa,Rice,0,Rice,Rce_Cereals,Rice Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+ZAF,Republic of South Africa,Sorghum,0,Sorghum,Cereals,Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+ZAF,Republic of South Africa,SoyMeal,0,Soy Meal,Secondary,Soy related Secondary,Export tax,RNC,Ad valorem export tax,decimal form
+ZAF,Republic of South Africa,SoyOil,0,Soy Oil,Secondary,Soy related Secondary,Export tax,RNC,Ad valorem export tax,decimal form
+ZAF,Republic of South Africa,Soybean,0,Soybean,Soy_Cereals,Soybean Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+ZAF,Republic of South Africa,Wheat,0,Wheat,Brd_Cereals,Bread Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+RUS,Russia,Barley,0,Barley,Bly_Cereals,Barley Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+RUS,Russia,Beef,0,Beef and veal,Livestock,Livestock,Export tax,RNC,Ad valorem export tax,decimal form
+RUS,Russia,Corn,0,Corn,Cereals,Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+RUS,Russia,Cotton,0,Cotton,Other,Other,Export tax,RNC,Ad valorem export tax,decimal form
+RUS,Russia,Pork,0,Pork,Livestock,Livestock,Export tax,RNC,Ad valorem export tax,decimal form
+RUS,Russia,Poultry,0,Poultry,Livestock,Livestock,Export tax,RNC,Ad valorem export tax,decimal form
+RUS,Russia,Rice,0,Rice,Rce_Cereals,Rice Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+RUS,Russia,Sorghum,0,Sorghum,Cereals,Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+RUS,Russia,SoyMeal,0,Soy Meal,Secondary,Soy related Secondary,Export tax,RNC,Ad valorem export tax,decimal form
+RUS,Russia,SoyOil,0,Soy Oil,Secondary,Soy related Secondary,Export tax,RNC,Ad valorem export tax,decimal form
+RUS,Russia,Soybean,0,Soybean,Soy_Cereals,Soybean Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+RUS,Russia,Wheat,0,Wheat,Brd_Cereals,Bread Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+KOR,South Korea,Barley,0,Barley,Bly_Cereals,Barley Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+KOR,South Korea,Beef,0,Beef and veal,Livestock,Livestock,Export tax,RNC,Ad valorem export tax,decimal form
+KOR,South Korea,Corn,0,Corn,Cereals,Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+KOR,South Korea,Cotton,0,Cotton,Other,Other,Export tax,RNC,Ad valorem export tax,decimal form
+KOR,South Korea,Pork,0,Pork,Livestock,Livestock,Export tax,RNC,Ad valorem export tax,decimal form
+KOR,South Korea,Poultry,0,Poultry,Livestock,Livestock,Export tax,RNC,Ad valorem export tax,decimal form
+KOR,South Korea,Rice,0,Rice,Rce_Cereals,Rice Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+KOR,South Korea,Sorghum,0,Sorghum,Cereals,Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+KOR,South Korea,SoyMeal,0,Soy Meal,Secondary,Soy related Secondary,Export tax,RNC,Ad valorem export tax,decimal form
+KOR,South Korea,SoyOil,0,Soy Oil,Secondary,Soy related Secondary,Export tax,RNC,Ad valorem export tax,decimal form
+KOR,South Korea,Soybean,0,Soybean,Soy_Cereals,Soybean Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+KOR,South Korea,Wheat,0,Wheat,Brd_Cereals,Bread Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+THA,Thailand,Barley,0,Barley,Bly_Cereals,Barley Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+THA,Thailand,Beef,0,Beef and veal,Livestock,Livestock,Export tax,RNC,Ad valorem export tax,decimal form
+THA,Thailand,Corn,0,Corn,Cereals,Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+THA,Thailand,Cotton,0,Cotton,Other,Other,Export tax,RNC,Ad valorem export tax,decimal form
+THA,Thailand,Pork,0,Pork,Livestock,Livestock,Export tax,RNC,Ad valorem export tax,decimal form
+THA,Thailand,Poultry,0,Poultry,Livestock,Livestock,Export tax,RNC,Ad valorem export tax,decimal form
+THA,Thailand,Rice,0,Rice,Rce_Cereals,Rice Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+THA,Thailand,Sorghum,0,Sorghum,Cereals,Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+THA,Thailand,SoyMeal,0,Soy Meal,Secondary,Soy related Secondary,Export tax,RNC,Ad valorem export tax,decimal form
+THA,Thailand,SoyOil,0,Soy Oil,Secondary,Soy related Secondary,Export tax,RNC,Ad valorem export tax,decimal form
+THA,Thailand,Soybean,0,Soybean,Soy_Cereals,Soybean Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+THA,Thailand,Wheat,0,Wheat,Brd_Cereals,Bread Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+UKR,Ukraine,Barley,0,Barley,Bly_Cereals,Barley Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+UKR,Ukraine,Beef,0,Beef and veal,Livestock,Livestock,Export tax,RNC,Ad valorem export tax,decimal form
+UKR,Ukraine,Corn,0,Corn,Cereals,Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+UKR,Ukraine,Cotton,0,Cotton,Other,Other,Export tax,RNC,Ad valorem export tax,decimal form
+UKR,Ukraine,Pork,0,Pork,Livestock,Livestock,Export tax,RNC,Ad valorem export tax,decimal form
+UKR,Ukraine,Poultry,0,Poultry,Livestock,Livestock,Export tax,RNC,Ad valorem export tax,decimal form
+UKR,Ukraine,Rice,0,Rice,Rce_Cereals,Rice Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+UKR,Ukraine,Sorghum,0,Sorghum,Cereals,Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+UKR,Ukraine,SoyMeal,0,Soy Meal,Secondary,Soy related Secondary,Export tax,RNC,Ad valorem export tax,decimal form
+UKR,Ukraine,SoyOil,0,Soy Oil,Secondary,Soy related Secondary,Export tax,RNC,Ad valorem export tax,decimal form
+UKR,Ukraine,Soybean,0,Soybean,Soy_Cereals,Soybean Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+UKR,Ukraine,Wheat,0,Wheat,Brd_Cereals,Bread Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+USA,United States,Barley,0,Barley,Bly_Cereals,Barley Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+USA,United States,Beef,0,Beef and veal,Livestock,Livestock,Export tax,RNC,Ad valorem export tax,decimal form
+USA,United States,Corn,0,Corn,Cereals,Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+USA,United States,Cotton,0,Cotton,Other,Other,Export tax,RNC,Ad valorem export tax,decimal form
+USA,United States,Pork,0,Pork,Livestock,Livestock,Export tax,RNC,Ad valorem export tax,decimal form
+USA,United States,Poultry,0,Poultry,Livestock,Livestock,Export tax,RNC,Ad valorem export tax,decimal form
+USA,United States,Rice,0,Rice,Rce_Cereals,Rice Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+USA,United States,Sorghum,0,Sorghum,Cereals,Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+USA,United States,SoyMeal,0,Soy Meal,Secondary,Soy related Secondary,Export tax,RNC,Ad valorem export tax,decimal form
+USA,United States,SoyOil,0,Soy Oil,Secondary,Soy related Secondary,Export tax,RNC,Ad valorem export tax,decimal form
+USA,United States,Soybean,0,Soybean,Soy_Cereals,Soybean Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+USA,United States,Wheat,0,Wheat,Brd_Cereals,Bread Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+CAC,Central America & Caribbean,Barley,0,Barley,Bly_Cereals,Barley Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+CAC,Central America & Caribbean,Beef,0,Beef and veal,Livestock,Livestock,Export tax,RNC,Ad valorem export tax,decimal form
+CAC,Central America & Caribbean,Corn,0,Corn,Cereals,Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+CAC,Central America & Caribbean,Cotton,0,Cotton,Other,Other,Export tax,RNC,Ad valorem export tax,decimal form
+CAC,Central America & Caribbean,Pork,0,Pork,Livestock,Livestock,Export tax,RNC,Ad valorem export tax,decimal form
+CAC,Central America & Caribbean,Poultry,0,Poultry,Livestock,Livestock,Export tax,RNC,Ad valorem export tax,decimal form
+CAC,Central America & Caribbean,Rice,0,Rice,Rce_Cereals,Rice Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+CAC,Central America & Caribbean,Sorghum,0,Sorghum,Cereals,Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+CAC,Central America & Caribbean,SoyMeal,0,Soy Meal,Secondary,Soy related Secondary,Export tax,RNC,Ad valorem export tax,decimal form
+CAC,Central America & Caribbean,SoyOil,0,Soy Oil,Secondary,Soy related Secondary,Export tax,RNC,Ad valorem export tax,decimal form
+CAC,Central America & Caribbean,Soybean,0,Soybean,Soy_Cereals,Soybean Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+CAC,Central America & Caribbean,Wheat,0,Wheat,Brd_Cereals,Bread Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+IRN,Iran,Barley,0,Barley,Bly_Cereals,Barley Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+IRN,Iran,Beef,0,Beef and veal,Livestock,Livestock,Export tax,RNC,Ad valorem export tax,decimal form
+IRN,Iran,Corn,0,Corn,Cereals,Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+IRN,Iran,Cotton,0,Cotton,Other,Other,Export tax,RNC,Ad valorem export tax,decimal form
+IRN,Iran,Pork,0,Pork,Livestock,Livestock,Export tax,RNC,Ad valorem export tax,decimal form
+IRN,Iran,Poultry,0,Poultry,Livestock,Livestock,Export tax,RNC,Ad valorem export tax,decimal form
+IRN,Iran,Rice,0,Rice,Rce_Cereals,Rice Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+IRN,Iran,Sorghum,0,Sorghum,Cereals,Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+IRN,Iran,SoyMeal,0,Soy Meal,Secondary,Soy related Secondary,Export tax,RNC,Ad valorem export tax,decimal form
+IRN,Iran,SoyOil,0,Soy Oil,Secondary,Soy related Secondary,Export tax,RNC,Ad valorem export tax,decimal form
+IRN,Iran,Soybean,0,Soybean,Soy_Cereals,Soybean Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+IRN,Iran,Wheat,0,Wheat,Brd_Cereals,Bread Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+OAO,Other Asia & Oceania,Barley,0,Barley,Bly_Cereals,Barley Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+OAO,Other Asia & Oceania,Beef,0,Beef and veal,Livestock,Livestock,Export tax,RNC,Ad valorem export tax,decimal form
+OAO,Other Asia & Oceania,Corn,0,Corn,Cereals,Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+OAO,Other Asia & Oceania,Cotton,0,Cotton,Other,Other,Export tax,RNC,Ad valorem export tax,decimal form
+OAO,Other Asia & Oceania,Pork,0,Pork,Livestock,Livestock,Export tax,RNC,Ad valorem export tax,decimal form
+OAO,Other Asia & Oceania,Poultry,0,Poultry,Livestock,Livestock,Export tax,RNC,Ad valorem export tax,decimal form
+OAO,Other Asia & Oceania,Rice,0,Rice,Rce_Cereals,Rice Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+OAO,Other Asia & Oceania,Sorghum,0,Sorghum,Cereals,Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+OAO,Other Asia & Oceania,SoyMeal,0,Soy Meal,Secondary,Soy related Secondary,Export tax,RNC,Ad valorem export tax,decimal form
+OAO,Other Asia & Oceania,SoyOil,0,Soy Oil,Secondary,Soy related Secondary,Export tax,RNC,Ad valorem export tax,decimal form
+OAO,Other Asia & Oceania,Soybean,0,Soybean,Soy_Cereals,Soybean Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+OAO,Other Asia & Oceania,Wheat,0,Wheat,Brd_Cereals,Bread Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+OEU,Other Europe,Barley,0,Barley,Bly_Cereals,Barley Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+OEU,Other Europe,Beef,0,Beef and veal,Livestock,Livestock,Export tax,RNC,Ad valorem export tax,decimal form
+OEU,Other Europe,Corn,0,Corn,Cereals,Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+OEU,Other Europe,Cotton,0,Cotton,Other,Other,Export tax,RNC,Ad valorem export tax,decimal form
+OEU,Other Europe,Pork,0,Pork,Livestock,Livestock,Export tax,RNC,Ad valorem export tax,decimal form
+OEU,Other Europe,Poultry,0,Poultry,Livestock,Livestock,Export tax,RNC,Ad valorem export tax,decimal form
+OEU,Other Europe,Rice,0,Rice,Rce_Cereals,Rice Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+OEU,Other Europe,Sorghum,0,Sorghum,Cereals,Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+OEU,Other Europe,SoyMeal,0,Soy Meal,Secondary,Soy related Secondary,Export tax,RNC,Ad valorem export tax,decimal form
+OEU,Other Europe,SoyOil,0,Soy Oil,Secondary,Soy related Secondary,Export tax,RNC,Ad valorem export tax,decimal form
+OEU,Other Europe,Soybean,0,Soybean,Soy_Cereals,Soybean Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+OEU,Other Europe,Wheat,0,Wheat,Brd_Cereals,Bread Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+OFS,"Other Former Soviet Union, 10 Countries",Barley,0,Barley,Bly_Cereals,Barley Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+OFS,"Other Former Soviet Union, 10 Countries",Beef,0,Beef and veal,Livestock,Livestock,Export tax,RNC,Ad valorem export tax,decimal form
+OFS,"Other Former Soviet Union, 10 Countries",Corn,0,Corn,Cereals,Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+OFS,"Other Former Soviet Union, 10 Countries",Cotton,0,Cotton,Other,Other,Export tax,RNC,Ad valorem export tax,decimal form
+OFS,"Other Former Soviet Union, 10 Countries",Pork,0,Pork,Livestock,Livestock,Export tax,RNC,Ad valorem export tax,decimal form
+OFS,"Other Former Soviet Union, 10 Countries",Poultry,0,Poultry,Livestock,Livestock,Export tax,RNC,Ad valorem export tax,decimal form
+OFS,"Other Former Soviet Union, 10 Countries",Rice,0,Rice,Rce_Cereals,Rice Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+OFS,"Other Former Soviet Union, 10 Countries",Sorghum,0,Sorghum,Cereals,Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+OFS,"Other Former Soviet Union, 10 Countries",SoyMeal,0,Soy Meal,Secondary,Soy related Secondary,Export tax,RNC,Ad valorem export tax,decimal form
+OFS,"Other Former Soviet Union, 10 Countries",SoyOil,0,Soy Oil,Secondary,Soy related Secondary,Export tax,RNC,Ad valorem export tax,decimal form
+OFS,"Other Former Soviet Union, 10 Countries",Soybean,0,Soybean,Soy_Cereals,Soybean Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+OFS,"Other Former Soviet Union, 10 Countries",Wheat,0,Wheat,Brd_Cereals,Bread Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+OME,Other Middle East,Barley,0,Barley,Bly_Cereals,Barley Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+OME,Other Middle East,Beef,0,Beef and veal,Livestock,Livestock,Export tax,RNC,Ad valorem export tax,decimal form
+OME,Other Middle East,Corn,0,Corn,Cereals,Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+OME,Other Middle East,Cotton,0,Cotton,Other,Other,Export tax,RNC,Ad valorem export tax,decimal form
+OME,Other Middle East,Pork,0,Pork,Livestock,Livestock,Export tax,RNC,Ad valorem export tax,decimal form
+OME,Other Middle East,Poultry,0,Poultry,Livestock,Livestock,Export tax,RNC,Ad valorem export tax,decimal form
+OME,Other Middle East,Rice,0,Rice,Rce_Cereals,Rice Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+OME,Other Middle East,Sorghum,0,Sorghum,Cereals,Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+OME,Other Middle East,SoyMeal,0,Soy Meal,Secondary,Soy related Secondary,Export tax,RNC,Ad valorem export tax,decimal form
+OME,Other Middle East,SoyOil,0,Soy Oil,Secondary,Soy related Secondary,Export tax,RNC,Ad valorem export tax,decimal form
+OME,Other Middle East,Soybean,0,Soybean,Soy_Cereals,Soybean Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+OME,Other Middle East,Wheat,0,Wheat,Brd_Cereals,Bread Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+ONA,Other North Africa,Barley,0,Barley,Bly_Cereals,Barley Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+ONA,Other North Africa,Beef,0,Beef and veal,Livestock,Livestock,Export tax,RNC,Ad valorem export tax,decimal form
+ONA,Other North Africa,Corn,0,Corn,Cereals,Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+ONA,Other North Africa,Cotton,0,Cotton,Other,Other,Export tax,RNC,Ad valorem export tax,decimal form
+ONA,Other North Africa,Pork,0,Pork,Livestock,Livestock,Export tax,RNC,Ad valorem export tax,decimal form
+ONA,Other North Africa,Poultry,0,Poultry,Livestock,Livestock,Export tax,RNC,Ad valorem export tax,decimal form
+ONA,Other North Africa,Rice,0,Rice,Rce_Cereals,Rice Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+ONA,Other North Africa,Sorghum,0,Sorghum,Cereals,Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+ONA,Other North Africa,SoyMeal,0,Soy Meal,Secondary,Soy related Secondary,Export tax,RNC,Ad valorem export tax,decimal form
+ONA,Other North Africa,SoyOil,0,Soy Oil,Secondary,Soy related Secondary,Export tax,RNC,Ad valorem export tax,decimal form
+ONA,Other North Africa,Soybean,0,Soybean,Soy_Cereals,Soybean Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+ONA,Other North Africa,Wheat,0,Wheat,Brd_Cereals,Bread Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+OSA,Other South America,Barley,0,Barley,Bly_Cereals,Barley Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+OSA,Other South America,Beef,0,Beef and veal,Livestock,Livestock,Export tax,RNC,Ad valorem export tax,decimal form
+OSA,Other South America,Corn,0,Corn,Cereals,Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+OSA,Other South America,Cotton,0,Cotton,Other,Other,Export tax,RNC,Ad valorem export tax,decimal form
+OSA,Other South America,Pork,0,Pork,Livestock,Livestock,Export tax,RNC,Ad valorem export tax,decimal form
+OSA,Other South America,Poultry,0,Poultry,Livestock,Livestock,Export tax,RNC,Ad valorem export tax,decimal form
+OSA,Other South America,Rice,0,Rice,Rce_Cereals,Rice Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+OSA,Other South America,Sorghum,0,Sorghum,Cereals,Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+OSA,Other South America,SoyMeal,0,Soy Meal,Secondary,Soy related Secondary,Export tax,RNC,Ad valorem export tax,decimal form
+OSA,Other South America,SoyOil,0,Soy Oil,Secondary,Soy related Secondary,Export tax,RNC,Ad valorem export tax,decimal form
+OSA,Other South America,Soybean,0,Soybean,Soy_Cereals,Soybean Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+OSA,Other South America,Wheat,0,Wheat,Brd_Cereals,Bread Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+SAU,Saudi Arabia,Barley,0,Barley,Bly_Cereals,Barley Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+SAU,Saudi Arabia,Beef,0,Beef and veal,Livestock,Livestock,Export tax,RNC,Ad valorem export tax,decimal form
+SAU,Saudi Arabia,Corn,0,Corn,Cereals,Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+SAU,Saudi Arabia,Cotton,0,Cotton,Other,Other,Export tax,RNC,Ad valorem export tax,decimal form
+SAU,Saudi Arabia,Pork,0,Pork,Livestock,Livestock,Export tax,RNC,Ad valorem export tax,decimal form
+SAU,Saudi Arabia,Poultry,0,Poultry,Livestock,Livestock,Export tax,RNC,Ad valorem export tax,decimal form
+SAU,Saudi Arabia,Rice,0,Rice,Rce_Cereals,Rice Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+SAU,Saudi Arabia,Sorghum,0,Sorghum,Cereals,Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+SAU,Saudi Arabia,SoyMeal,0,Soy Meal,Secondary,Soy related Secondary,Export tax,RNC,Ad valorem export tax,decimal form
+SAU,Saudi Arabia,SoyOil,0,Soy Oil,Secondary,Soy related Secondary,Export tax,RNC,Ad valorem export tax,decimal form
+SAU,Saudi Arabia,Soybean,0,Soybean,Soy_Cereals,Soybean Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+SAU,Saudi Arabia,Wheat,0,Wheat,Brd_Cereals,Bread Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+TUR,Turkey,Barley,0,Barley,Bly_Cereals,Barley Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+TUR,Turkey,Beef,0,Beef and veal,Livestock,Livestock,Export tax,RNC,Ad valorem export tax,decimal form
+TUR,Turkey,Corn,0,Corn,Cereals,Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+TUR,Turkey,Cotton,0,Cotton,Other,Other,Export tax,RNC,Ad valorem export tax,decimal form
+TUR,Turkey,Pork,0,Pork,Livestock,Livestock,Export tax,RNC,Ad valorem export tax,decimal form
+TUR,Turkey,Poultry,0,Poultry,Livestock,Livestock,Export tax,RNC,Ad valorem export tax,decimal form
+TUR,Turkey,Rice,0,Rice,Rce_Cereals,Rice Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+TUR,Turkey,Sorghum,0,Sorghum,Cereals,Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+TUR,Turkey,SoyMeal,0,Soy Meal,Secondary,Soy related Secondary,Export tax,RNC,Ad valorem export tax,decimal form
+TUR,Turkey,SoyOil,0,Soy Oil,Secondary,Soy related Secondary,Export tax,RNC,Ad valorem export tax,decimal form
+TUR,Turkey,Soybean,0,Soybean,Soy_Cereals,Soybean Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+TUR,Turkey,Wheat,0,Wheat,Brd_Cereals,Bread Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+BGD,Bangladesh,Barley,0,Barley,Bly_Cereals,Barley Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+BGD,Bangladesh,Beef,0,Beef and veal,Livestock,Livestock,Export tax,RNC,Ad valorem export tax,decimal form
+BGD,Bangladesh,Corn,0,Corn,Cereals,Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+BGD,Bangladesh,Cotton,0,Cotton,Other,Other,Export tax,RNC,Ad valorem export tax,decimal form
+BGD,Bangladesh,Pork,0,Pork,Livestock,Livestock,Export tax,RNC,Ad valorem export tax,decimal form
+BGD,Bangladesh,Poultry,0,Poultry,Livestock,Livestock,Export tax,RNC,Ad valorem export tax,decimal form
+BGD,Bangladesh,Rice,0,Rice,Rce_Cereals,Rice Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+BGD,Bangladesh,Sorghum,0,Sorghum,Cereals,Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+BGD,Bangladesh,SoyMeal,0,Soy Meal,Secondary,Soy related Secondary,Export tax,RNC,Ad valorem export tax,decimal form
+BGD,Bangladesh,SoyOil,0,Soy Oil,Secondary,Soy related Secondary,Export tax,RNC,Ad valorem export tax,decimal form
+BGD,Bangladesh,Soybean,0,Soybean,Soy_Cereals,Soybean Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+BGD,Bangladesh,Wheat,0,Wheat,Brd_Cereals,Bread Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+BUR,Burma,Barley,0,Barley,Bly_Cereals,Barley Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+BUR,Burma,Beef,0,Beef and veal,Livestock,Livestock,Export tax,RNC,Ad valorem export tax,decimal form
+BUR,Burma,Corn,0,Corn,Cereals,Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+BUR,Burma,Cotton,0,Cotton,Other,Other,Export tax,RNC,Ad valorem export tax,decimal form
+BUR,Burma,Pork,0,Pork,Livestock,Livestock,Export tax,RNC,Ad valorem export tax,decimal form
+BUR,Burma,Poultry,0,Poultry,Livestock,Livestock,Export tax,RNC,Ad valorem export tax,decimal form
+BUR,Burma,Rice,0,Rice,Rce_Cereals,Rice Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+BUR,Burma,Sorghum,0,Sorghum,Cereals,Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+BUR,Burma,SoyMeal,0,Soy Meal,Secondary,Soy related Secondary,Export tax,RNC,Ad valorem export tax,decimal form
+BUR,Burma,SoyOil,0,Soy Oil,Secondary,Soy related Secondary,Export tax,RNC,Ad valorem export tax,decimal form
+BUR,Burma,Soybean,0,Soybean,Soy_Cereals,Soybean Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+BUR,Burma,Wheat,0,Wheat,Brd_Cereals,Bread Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+KHM,Cambodia,Barley,0,Barley,Bly_Cereals,Barley Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+KHM,Cambodia,Beef,0,Beef and veal,Livestock,Livestock,Export tax,RNC,Ad valorem export tax,decimal form
+KHM,Cambodia,Corn,0,Corn,Cereals,Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+KHM,Cambodia,Cotton,0,Cotton,Other,Other,Export tax,RNC,Ad valorem export tax,decimal form
+KHM,Cambodia,Pork,0,Pork,Livestock,Livestock,Export tax,RNC,Ad valorem export tax,decimal form
+KHM,Cambodia,Poultry,0,Poultry,Livestock,Livestock,Export tax,RNC,Ad valorem export tax,decimal form
+KHM,Cambodia,Rice,0,Rice,Rce_Cereals,Rice Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+KHM,Cambodia,Sorghum,0,Sorghum,Cereals,Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+KHM,Cambodia,SoyMeal,0,Soy Meal,Secondary,Soy related Secondary,Export tax,RNC,Ad valorem export tax,decimal form
+KHM,Cambodia,SoyOil,0,Soy Oil,Secondary,Soy related Secondary,Export tax,RNC,Ad valorem export tax,decimal form
+KHM,Cambodia,Soybean,0,Soybean,Soy_Cereals,Soybean Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+KHM,Cambodia,Wheat,0,Wheat,Brd_Cereals,Bread Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+HKG,Hong Kong,Barley,0,Barley,Bly_Cereals,Barley Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+HKG,Hong Kong,Beef,0,Beef and veal,Livestock,Livestock,Export tax,RNC,Ad valorem export tax,decimal form
+HKG,Hong Kong,Corn,0,Corn,Cereals,Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+HKG,Hong Kong,Cotton,0,Cotton,Other,Other,Export tax,RNC,Ad valorem export tax,decimal form
+HKG,Hong Kong,Pork,0,Pork,Livestock,Livestock,Export tax,RNC,Ad valorem export tax,decimal form
+HKG,Hong Kong,Poultry,0,Poultry,Livestock,Livestock,Export tax,RNC,Ad valorem export tax,decimal form
+HKG,Hong Kong,Rice,0,Rice,Rce_Cereals,Rice Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+HKG,Hong Kong,Sorghum,0,Sorghum,Cereals,Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+HKG,Hong Kong,SoyMeal,0,Soy Meal,Secondary,Soy related Secondary,Export tax,RNC,Ad valorem export tax,decimal form
+HKG,Hong Kong,SoyOil,0,Soy Oil,Secondary,Soy related Secondary,Export tax,RNC,Ad valorem export tax,decimal form
+HKG,Hong Kong,Soybean,0,Soybean,Soy_Cereals,Soybean Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+HKG,Hong Kong,Wheat,0,Wheat,Brd_Cereals,Bread Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+IRQ,Iraq,Barley,0,Barley,Bly_Cereals,Barley Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+IRQ,Iraq,Beef,0,Beef and veal,Livestock,Livestock,Export tax,RNC,Ad valorem export tax,decimal form
+IRQ,Iraq,Corn,0,Corn,Cereals,Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+IRQ,Iraq,Cotton,0,Cotton,Other,Other,Export tax,RNC,Ad valorem export tax,decimal form
+IRQ,Iraq,Pork,0,Pork,Livestock,Livestock,Export tax,RNC,Ad valorem export tax,decimal form
+IRQ,Iraq,Poultry,0,Poultry,Livestock,Livestock,Export tax,RNC,Ad valorem export tax,decimal form
+IRQ,Iraq,Rice,0,Rice,Rce_Cereals,Rice Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+IRQ,Iraq,Sorghum,0,Sorghum,Cereals,Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+IRQ,Iraq,SoyMeal,0,Soy Meal,Secondary,Soy related Secondary,Export tax,RNC,Ad valorem export tax,decimal form
+IRQ,Iraq,SoyOil,0,Soy Oil,Secondary,Soy related Secondary,Export tax,RNC,Ad valorem export tax,decimal form
+IRQ,Iraq,Soybean,0,Soybean,Soy_Cereals,Soybean Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+IRQ,Iraq,Wheat,0,Wheat,Brd_Cereals,Bread Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+MAR,Morocco,Barley,0,Barley,Bly_Cereals,Barley Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+MAR,Morocco,Beef,0,Beef and veal,Livestock,Livestock,Export tax,RNC,Ad valorem export tax,decimal form
+MAR,Morocco,Corn,0,Corn,Cereals,Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+MAR,Morocco,Cotton,0,Cotton,Other,Other,Export tax,RNC,Ad valorem export tax,decimal form
+MAR,Morocco,Pork,0,Pork,Livestock,Livestock,Export tax,RNC,Ad valorem export tax,decimal form
+MAR,Morocco,Poultry,0,Poultry,Livestock,Livestock,Export tax,RNC,Ad valorem export tax,decimal form
+MAR,Morocco,Rice,0,Rice,Rce_Cereals,Rice Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+MAR,Morocco,Sorghum,0,Sorghum,Cereals,Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+MAR,Morocco,SoyMeal,0,Soy Meal,Secondary,Soy related Secondary,Export tax,RNC,Ad valorem export tax,decimal form
+MAR,Morocco,SoyOil,0,Soy Oil,Secondary,Soy related Secondary,Export tax,RNC,Ad valorem export tax,decimal form
+MAR,Morocco,Soybean,0,Soybean,Soy_Cereals,Soybean Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+MAR,Morocco,Wheat,0,Wheat,Brd_Cereals,Bread Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+NZL,New Zealand,Barley,0,Barley,Bly_Cereals,Barley Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+NZL,New Zealand,Beef,0,Beef and veal,Livestock,Livestock,Export tax,RNC,Ad valorem export tax,decimal form
+NZL,New Zealand,Corn,0,Corn,Cereals,Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+NZL,New Zealand,Cotton,0,Cotton,Other,Other,Export tax,RNC,Ad valorem export tax,decimal form
+NZL,New Zealand,Pork,0,Pork,Livestock,Livestock,Export tax,RNC,Ad valorem export tax,decimal form
+NZL,New Zealand,Poultry,0,Poultry,Livestock,Livestock,Export tax,RNC,Ad valorem export tax,decimal form
+NZL,New Zealand,Rice,0,Rice,Rce_Cereals,Rice Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+NZL,New Zealand,Sorghum,0,Sorghum,Cereals,Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+NZL,New Zealand,SoyMeal,0,Soy Meal,Secondary,Soy related Secondary,Export tax,RNC,Ad valorem export tax,decimal form
+NZL,New Zealand,SoyOil,0,Soy Oil,Secondary,Soy related Secondary,Export tax,RNC,Ad valorem export tax,decimal form
+NZL,New Zealand,Soybean,0,Soybean,Soy_Cereals,Soybean Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+NZL,New Zealand,Wheat,0,Wheat,Brd_Cereals,Bread Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+NGA,Nigeria,Barley,0,Barley,Bly_Cereals,Barley Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+NGA,Nigeria,Beef,0,Beef and veal,Livestock,Livestock,Export tax,RNC,Ad valorem export tax,decimal form
+NGA,Nigeria,Corn,0,Corn,Cereals,Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+NGA,Nigeria,Cotton,0,Cotton,Other,Other,Export tax,RNC,Ad valorem export tax,decimal form
+NGA,Nigeria,Pork,0,Pork,Livestock,Livestock,Export tax,RNC,Ad valorem export tax,decimal form
+NGA,Nigeria,Poultry,0,Poultry,Livestock,Livestock,Export tax,RNC,Ad valorem export tax,decimal form
+NGA,Nigeria,Rice,0,Rice,Rce_Cereals,Rice Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+NGA,Nigeria,Sorghum,0,Sorghum,Cereals,Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+NGA,Nigeria,SoyMeal,0,Soy Meal,Secondary,Soy related Secondary,Export tax,RNC,Ad valorem export tax,decimal form
+NGA,Nigeria,SoyOil,0,Soy Oil,Secondary,Soy related Secondary,Export tax,RNC,Ad valorem export tax,decimal form
+NGA,Nigeria,Soybean,0,Soybean,Soy_Cereals,Soybean Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+NGA,Nigeria,Wheat,0,Wheat,Brd_Cereals,Bread Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+OSS,Other Sub-Saharan Africa,Barley,0,Barley,Bly_Cereals,Barley Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+OSS,Other Sub-Saharan Africa,Beef,0,Beef and veal,Livestock,Livestock,Export tax,RNC,Ad valorem export tax,decimal form
+OSS,Other Sub-Saharan Africa,Corn,0,Corn,Cereals,Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+OSS,Other Sub-Saharan Africa,Cotton,0,Cotton,Other,Other,Export tax,RNC,Ad valorem export tax,decimal form
+OSS,Other Sub-Saharan Africa,Pork,0,Pork,Livestock,Livestock,Export tax,RNC,Ad valorem export tax,decimal form
+OSS,Other Sub-Saharan Africa,Poultry,0,Poultry,Livestock,Livestock,Export tax,RNC,Ad valorem export tax,decimal form
+OSS,Other Sub-Saharan Africa,Rice,0,Rice,Rce_Cereals,Rice Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+OSS,Other Sub-Saharan Africa,Sorghum,0,Sorghum,Cereals,Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+OSS,Other Sub-Saharan Africa,SoyMeal,0,Soy Meal,Secondary,Soy related Secondary,Export tax,RNC,Ad valorem export tax,decimal form
+OSS,Other Sub-Saharan Africa,SoyOil,0,Soy Oil,Secondary,Soy related Secondary,Export tax,RNC,Ad valorem export tax,decimal form
+OSS,Other Sub-Saharan Africa,Soybean,0,Soybean,Soy_Cereals,Soybean Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+OSS,Other Sub-Saharan Africa,Wheat,0,Wheat,Brd_Cereals,Bread Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+PAK,Pakistan,Barley,0,Barley,Bly_Cereals,Barley Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+PAK,Pakistan,Beef,0,Beef and veal,Livestock,Livestock,Export tax,RNC,Ad valorem export tax,decimal form
+PAK,Pakistan,Corn,0,Corn,Cereals,Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+PAK,Pakistan,Cotton,0,Cotton,Other,Other,Export tax,RNC,Ad valorem export tax,decimal form
+PAK,Pakistan,Pork,0,Pork,Livestock,Livestock,Export tax,RNC,Ad valorem export tax,decimal form
+PAK,Pakistan,Poultry,0,Poultry,Livestock,Livestock,Export tax,RNC,Ad valorem export tax,decimal form
+PAK,Pakistan,Rice,0,Rice,Rce_Cereals,Rice Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+PAK,Pakistan,Sorghum,0,Sorghum,Cereals,Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+PAK,Pakistan,SoyMeal,0,Soy Meal,Secondary,Soy related Secondary,Export tax,RNC,Ad valorem export tax,decimal form
+PAK,Pakistan,SoyOil,0,Soy Oil,Secondary,Soy related Secondary,Export tax,RNC,Ad valorem export tax,decimal form
+PAK,Pakistan,Soybean,0,Soybean,Soy_Cereals,Soybean Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+PAK,Pakistan,Wheat,0,Wheat,Brd_Cereals,Bread Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+TWN,Taiwan,Barley,0,Barley,Bly_Cereals,Barley Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+TWN,Taiwan,Beef,0,Beef and veal,Livestock,Livestock,Export tax,RNC,Ad valorem export tax,decimal form
+TWN,Taiwan,Corn,0,Corn,Cereals,Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+TWN,Taiwan,Cotton,0,Cotton,Other,Other,Export tax,RNC,Ad valorem export tax,decimal form
+TWN,Taiwan,Pork,0,Pork,Livestock,Livestock,Export tax,RNC,Ad valorem export tax,decimal form
+TWN,Taiwan,Poultry,0,Poultry,Livestock,Livestock,Export tax,RNC,Ad valorem export tax,decimal form
+TWN,Taiwan,Rice,0,Rice,Rce_Cereals,Rice Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+TWN,Taiwan,Sorghum,0,Sorghum,Cereals,Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+TWN,Taiwan,SoyMeal,0,Soy Meal,Secondary,Soy related Secondary,Export tax,RNC,Ad valorem export tax,decimal form
+TWN,Taiwan,SoyOil,0,Soy Oil,Secondary,Soy related Secondary,Export tax,RNC,Ad valorem export tax,decimal form
+TWN,Taiwan,Soybean,0,Soybean,Soy_Cereals,Soybean Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+TWN,Taiwan,Wheat,0,Wheat,Brd_Cereals,Bread Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+VNM,Vietnam,Barley,0,Barley,Bly_Cereals,Barley Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+VNM,Vietnam,Beef,0,Beef and veal,Livestock,Livestock,Export tax,RNC,Ad valorem export tax,decimal form
+VNM,Vietnam,Corn,0,Corn,Cereals,Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+VNM,Vietnam,Cotton,0,Cotton,Other,Other,Export tax,RNC,Ad valorem export tax,decimal form
+VNM,Vietnam,Pork,0,Pork,Livestock,Livestock,Export tax,RNC,Ad valorem export tax,decimal form
+VNM,Vietnam,Poultry,0,Poultry,Livestock,Livestock,Export tax,RNC,Ad valorem export tax,decimal form
+VNM,Vietnam,Rice,0,Rice,Rce_Cereals,Rice Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+VNM,Vietnam,Sorghum,0,Sorghum,Cereals,Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+VNM,Vietnam,SoyMeal,0,Soy Meal,Secondary,Soy related Secondary,Export tax,RNC,Ad valorem export tax,decimal form
+VNM,Vietnam,SoyOil,0,Soy Oil,Secondary,Soy related Secondary,Export tax,RNC,Ad valorem export tax,decimal form
+VNM,Vietnam,Soybean,0,Soybean,Soy_Cereals,Soybean Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+VNM,Vietnam,Wheat,0,Wheat,Brd_Cereals,Bread Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+ECO,West African Community=Ecowas (minus Nigeria),Barley,0,Barley,Bly_Cereals,Barley Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+ECO,West African Community=Ecowas (minus Nigeria),Beef,0,Beef and veal,Livestock,Livestock,Export tax,RNC,Ad valorem export tax,decimal form
+ECO,West African Community=Ecowas (minus Nigeria),Corn,0,Corn,Cereals,Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+ECO,West African Community=Ecowas (minus Nigeria),Cotton,0,Cotton,Other,Other,Export tax,RNC,Ad valorem export tax,decimal form
+ECO,West African Community=Ecowas (minus Nigeria),Pork,0,Pork,Livestock,Livestock,Export tax,RNC,Ad valorem export tax,decimal form
+ECO,West African Community=Ecowas (minus Nigeria),Poultry,0,Poultry,Livestock,Livestock,Export tax,RNC,Ad valorem export tax,decimal form
+ECO,West African Community=Ecowas (minus Nigeria),Rice,0,Rice,Rce_Cereals,Rice Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+ECO,West African Community=Ecowas (minus Nigeria),Sorghum,0,Sorghum,Cereals,Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+ECO,West African Community=Ecowas (minus Nigeria),SoyMeal,0,Soy Meal,Secondary,Soy related Secondary,Export tax,RNC,Ad valorem export tax,decimal form
+ECO,West African Community=Ecowas (minus Nigeria),SoyOil,0,Soy Oil,Secondary,Soy related Secondary,Export tax,RNC,Ad valorem export tax,decimal form
+ECO,West African Community=Ecowas (minus Nigeria),Soybean,0,Soybean,Soy_Cereals,Soybean Cereals,Export tax,RNC,Ad valorem export tax,decimal form
+ECO,West African Community=Ecowas (minus Nigeria),Wheat,0,Wheat,Brd_Cereals,Bread Cereals,Export tax,RNC,Ad valorem export tax,decimal form

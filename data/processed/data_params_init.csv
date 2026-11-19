@@ -1,0 +1,43 @@
+region,year,nest,commodity,input,attribute,value,unit,attribute_type,attribute_description,region_name,nest_name,commodity_name
+,,Cereals,Corn,,sigma_d,3.8,,C,elasticity of substitution (in demand) between a domestic and an imported product,,Cereals,Corn
+,,Brd_Cereals,Wheat,,sigma_d,3.8,,C,elasticity of substitution (in demand) between a domestic and an imported product,,Bread Cereals,Wheat
+,,Cereals,Sorghum,,sigma_d,3.8,,C,elasticity of substitution (in demand) between a domestic and an imported product,,Cereals,Sorghum
+,,Soy_Cereals,Soybean,,sigma_d,3.8,,C,elasticity of substitution (in demand) between a domestic and an imported product,,Soybean Cereals,Soybean
+,,Secondary,SoyMeal,,sigma_d,3.8,,C,elasticity of substitution (in demand) between a domestic and an imported product,,Soy related Secondary,Soy Meal
+,,Secondary,SoyOil,,sigma_d,3.8,,C,elasticity of substitution (in demand) between a domestic and an imported product,,Soy related Secondary,Soy Oil
+,,Bly_Cereals,Barley,,sigma_d,3.8,,C,elasticity of substitution (in demand) between a domestic and an imported product,,Barley Cereals,Barley
+,,Other,Cotton,,sigma_d,3.8,,C,elasticity of substitution (in demand) between a domestic and an imported product,,Other,Cotton
+,,Rce_Cereals,Rice,,sigma_d,3.8,,C,elasticity of substitution (in demand) between a domestic and an imported product,,Rice Cereals,Rice
+,,Livestock,Beef,,sigma_d,3.8,,C,elasticity of substitution (in demand) between a domestic and an imported product,,Livestock,Beef and veal
+,,Livestock,Poultry,,sigma_d,3.8,,C,elasticity of substitution (in demand) between a domestic and an imported product,,Livestock,Poultry
+,,Livestock,Pork,,sigma_d,3.8,,C,elasticity of substitution (in demand) between a domestic and an imported product,,Livestock,Pork
+,,Cereals,Corn,,sigma_f,1.1,,C,elasticity of substitution (in factors) between land and no land for producing every product,,Cereals,Corn
+,,Brd_Cereals,Wheat,,sigma_f,1.1,,C,elasticity of substitution (in factors) between land and no land for producing every product,,Bread Cereals,Wheat
+,,Cereals,Sorghum,,sigma_f,1.1,,C,elasticity of substitution (in factors) between land and no land for producing every product,,Cereals,Sorghum
+,,Soy_Cereals,Soybean,,sigma_f,1.1,,C,elasticity of substitution (in factors) between land and no land for producing every product,,Soybean Cereals,Soybean
+,,Bly_Cereals,Barley,,sigma_f,1.1,,C,elasticity of substitution (in factors) between land and no land for producing every product,,Barley Cereals,Barley
+,,Other,Cotton,,sigma_f,1.1,,C,elasticity of substitution (in factors) between land and no land for producing every product,,Other,Cotton
+,,Rce_Cereals,Rice,,sigma_f,1.1,,C,elasticity of substitution (in factors) between land and no land for producing every product,,Rice Cereals,Rice
+,,Secondary,SoyOil,,sigma_c,5,,C,elasticity of substitution (in intermediate) between domestic and imported intermediate inputs (crushed soybeans),,Soy related Secondary,Soy Oil
+,,Secondary,SoyMeal,,sigma_c,5,,C,elasticity of substitution (in intermediate) between domestic and imported intermediate inputs (crushed soybeans),,Soy related Secondary,Soy Meal
+,,Livestock,Beef,,sigma_l,0.25,,C,elasticity of substitution (in LIVESTOCK production) between feed and non-feed,,Livestock,Beef and veal
+,,Livestock,Poultry,,sigma_l,0.25,,C,elasticity of substitution (in LIVESTOCK production) between feed and non-feed,,Livestock,Poultry
+,,Livestock,Pork,,sigma_l,0.25,,C,elasticity of substitution (in LIVESTOCK production) between feed and non-feed,,Livestock,Pork
+,,Livestock,Beef,,sigma_z,0.5,,C,elasticity of substitution (in LIVESTOCK production) across commodities used as feed,,Livestock,Beef and veal
+,,Livestock,Poultry,,sigma_z,0.5,,C,elasticity of substitution (in LIVESTOCK production) across commodities used as feed,,Livestock,Poultry
+,,Livestock,Pork,,sigma_z,0.5,,C,elasticity of substitution (in LIVESTOCK production) across commodities used as feed,,Livestock,Pork
+,,Livestock,Beef,,sigma_w,3.8,,C,elasticity of substitution (in LIVESTOCK production) between domestic and imported commodities used as feed,,Livestock,Beef and veal
+,,Livestock,Poultry,,sigma_w,3.8,,C,elasticity of substitution (in LIVESTOCK production) between domestic and imported commodities used as feed,,Livestock,Poultry
+,,Livestock,Pork,,sigma_w,3.8,,C,elasticity of substitution (in LIVESTOCK production) between domestic and imported commodities used as feed,,Livestock,Pork
+,,Cereals,Corn,,omega_s,5,,C,elasticity of transformation (in supply) between domestic and export market,,Cereals,Corn
+,,Brd_Cereals,Wheat,,omega_s,5,,C,elasticity of transformation (in supply) between domestic and export market,,Bread Cereals,Wheat
+,,Cereals,Sorghum,,omega_s,5,,C,elasticity of transformation (in supply) between domestic and export market,,Cereals,Sorghum
+,,Soy_Cereals,Soybean,,omega_s,5,,C,elasticity of transformation (in supply) between domestic and export market,,Soybean Cereals,Soybean
+,,Secondary,SoyMeal,,omega_s,5,,C,elasticity of transformation (in supply) between domestic and export market,,Soy related Secondary,Soy Meal
+,,Secondary,SoyOil,,omega_s,5,,C,elasticity of transformation (in supply) between domestic and export market,,Soy related Secondary,Soy Oil
+,,Bly_Cereals,Barley,,omega_s,5,,C,elasticity of transformation (in supply) between domestic and export market,,Barley Cereals,Barley
+,,Other,Cotton,,omega_s,5,,C,elasticity of transformation (in supply) between domestic and export market,,Other,Cotton
+,,Rce_Cereals,Rice,,omega_s,5,,C,elasticity of transformation (in supply) between domestic and export market,,Rice Cereals,Rice
+,,Livestock,Beef,,omega_s,5,,C,elasticity of transformation (in supply) between domestic and export market,,Livestock,Beef and veal
+,,Livestock,Poultry,,omega_s,5,,C,elasticity of transformation (in supply) between domestic and export market,,Livestock,Poultry
+,,Livestock,Pork,,omega_s,5,,C,elasticity of transformation (in supply) between domestic and export market,,Livestock,Pork

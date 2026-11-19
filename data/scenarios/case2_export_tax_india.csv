@@ -1,0 +1,3 @@
+region,year,commodity,attribute,value
+IND,2026,Rice,shock_export_tax,0.5
+IND,2026,Wheat,shock_export_tax,0.5

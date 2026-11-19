@@ -1,0 +1,136 @@
+---
+title: "Model"
+---
+
+This page describes the BSAT model as implemented in `code/model/src/model_core.jl`, and the runner that wraps it. It is written from the code, without equations. The economic derivation is in the working paper ({{< var wp.cite >}}); where the paper and the code differ, the code is the specification. The core file is not edited in this repository: every change to the model is reviewed by the model authors, and the [regression test](#regression-test) compares the output with archived reference runs.
+
+## Purpose
+
+BSAT is a multi-region partial-equilibrium model of twelve agricultural commodities. It is calibrated so that, with no shocks, it reproduces the USDA international baseline projections exactly, one year at a time. A scenario changes one or more exogenous variables (tariffs, export taxes, non-tariff measures, land supply, land productivity, total factor productivity, the agricultural expenditure share) and the model reports the new levels of production, consumption, trade, stocks, area, yields and crushing for every region and commodity, next to the baseline levels.
+
+The model is formulated in hat calculus in the calibrated share form: variables are ratios to their baseline values, and the distribution parameters of the nested functional forms are the value shares observed in the baseline. It is solved as a mixed complementarity problem with the PATH solver through JuMP.
+
+## Sets
+
+The sets are read from the targets file of the year being solved and from fixed lists in the code.
+
+- **Regions**: the 42 countries and aggregate regions of the USDA baseline, identified by ISO-3 style codes (`USA`, `CHN`, `EUR`, `OAO`, ...). The regions covered by each commodity are those the baseline reports; see [data/Region_list.txt](data/Region_list.txt) and `data/raw/mapping.csv`.
+- **Commodities**: twelve, in three groups.
+  - Primary crops (7): `Barley`, `Corn`, `Cotton`, `Rice`, `Sorghum`, `Soybean`, `Wheat`. Produced from land and a non-land input bundle.
+  - Secondary products (2): `SoyMeal`, `SoyOil`. Produced by crushing soybeans, the only intermediate input.
+  - Livestock (3): `Beef`, `Pork`, `Poultry`. Produced from feed and non-feed inputs; the feed crops are `Barley`, `Corn`, `Sorghum`, `SoyMeal`, `SoyOil`, `Soybean`, `Wheat`.
+- **Nests**: eight demand nests grouping the commodities.
+
+| Nest | Commodities |
+|---|---|
+| `Cereals` | Corn, Sorghum |
+| `Secondary` | SoyMeal, SoyOil |
+| `Livestock` | Beef, Pork, Poultry |
+| `Bly_Cereals` | Barley |
+| `Brd_Cereals` | Wheat |
+| `Rce_Cereals` | Rice |
+| `Soy_Cereals` | Soybean |
+| `Other` | Cotton |
+
+- **Factors**: `Land` and `No_Land`.
+
+## Inputs
+
+The model reads the four files of an input package ([Package and file format](data-format.qmd#input-package)). What each contributes:
+
+- `data_targets.csv`: for the year being solved, the baseline levels of beginning stocks, production, imports, total, food and feed consumption, exports, ending stocks, loss, area, crushing, and feed use of each feed crop by each livestock product (`Total_feed_use_input_to_commodity`). The `Yields` and `Extraction Rate` rows are not used: the code derives both series from production, area and crush.
+- `data_exogenous.csv`: the elasticities and parameters that are not commodity-level initial values (`sigma_t`, `sigma_u`, `sigma_n` per nest, `sigma_a`, `sigma_i`, `phi_i`, `phi_f`, `omega_q`, `omega_c`, `epsilon_l`, `epsilon_q`); international prices; population and GDP per capita; the price normalizations (`Price of No Land Input`, `Price of No AG`, `P_NO_FEED`); livestock inventory and slaughter (`inv_liv`, `slt_liv`); and the baseline levels of the shock variables (`Ag Expenditure Share`, `Import tariff`, `Export tax`, the two NTM attributes, `Land Productivity`, `Land Unavailability `, the three TFP attributes).
+- `data_params_init.csv`: the seven commodity-level elasticities (`sigma_d`, `sigma_f`, `sigma_c`, `sigma_l`, `sigma_z`, `sigma_w`, `omega_s`).
+- `data_shocks.csv`: the ten shock attributes for the year being solved.
+
+## Calibration
+
+Calibration happens inside the year loop, before the equations are built. The distribution parameters of every nested function (the value shares of domestic and imported goods in food and feed demand, of food, feed, crushing and export in supply, of land within value added, of each feed crop in livestock feed, of stocks and current supply, of each commodity within its nest, and of agriculture within total expenditure) are computed from the targets and the exogenous prices, tariffs and NTMs of that year, so that the baseline is an equilibrium of the model. The elasticities are not estimated here: `sigma_t` (substitution between agricultural and non-agricultural consumption, 0.0287) and `sigma_u` (substitution across nests, 0.2747) come from the calibration in the working paper and are entered in `data/raw/exogenous_data.csv`, from which the pipeline copies them into `data_exogenous.csv`; `sigma_n` per nest, `sigma_a`, `sigma_i`, `phi_i`, `omega_q`, `omega_c`, `epsilon_l` and `epsilon_q` are entered in the same file; the land cost shares `phi_f` per region, crop and year are computed by pipeline script 21 from U.S. variable costs, relative yields and the USDA international land cost shares ([data/land cost share.md](data/land%20cost%20share.md)) and read for the year being solved; the seven commodity-level elasticities come from `data_params_init.csv` (values set in pipeline script 40). The output file `data_params_calibrated.csv` collects the parameters the model used. The livestock feed technology is described in [data/Leontief Production Function for Livestock.md](data/Leontief%20Production%20Function%20for%20Livestock.md).
+
+## The year loop and market-clearing checks
+
+The core loops over the requested years (default 2025 to 2034). Each year is solved on its own: the targets and shocks of that year are read, the model is calibrated, built and solved, and the results are written. Years do not feed into each other; beginning stocks of a year are its target values.
+
+Before calibrating, the code checks that the targets are internally consistent, in three steps:
+
+1. **Supply and demand per market.** For every region and commodity, beginning stocks plus production plus imports minus loss must equal total consumption plus exports plus ending stocks. Residuals within plus or minus 2 (in the units of the targets, thousand metric tons for most commodities) are repaired by the code itself: the residual is subtracted from the largest of beginning stocks, production and imports, the first maximum in that order.
+2. **Consumption components.** Food consumption, feed consumption (by livestock and other) and crushing must add up to total consumption. Residuals within plus or minus 2 are added to the largest of those components, the first maximum in the order food consumption, feed to livestock, other feed, crushing, on the assumption that the total is the true value. After both repairs the code recomputes the extraction-rate target from the adjusted production and crush. The pipeline's harmonization step (script 50) applies these same three adjustments, in the same order, before the package is built, and logs each one in `data/interim/harmonization_log.csv`. Residuals that fall on the feed components are left to the code, which repairs them internally but reports feed consumption from the unrepaired target; the pipeline's package and the unharmonized targets therefore give the same solution.
+3. **Import components.** Imports allocated to food, feed, crushing and other uses must add up to total imports.
+
+Each check compares the largest absolute difference across markets with a threshold of 1e-6 and prints `All markets: CLEAR` or `NOT CLEAR`. If any check fails, the code prints `Baseline Projections Data DO NOT clear in levels` and skips the year; the runner records it under "Years skipped". With the pipeline's harmonized targets all ten years clear.
+
+## Shocks and how they are applied
+
+The ten shock attributes and their units are listed in [Package and file format](data-format.qmd#shock-attributes). For the year being solved, the code reads the shock rows and forms the new level of each exogenous variable:
+
+- Import tariff, export tax, import and export non-tariff measures, land productivity, TFP in value added, TFP in intermediates and TFP in livestock feed use, and land supply availability: new level = baseline level + shock value (per region and commodity, or per region for land supply).
+- Agricultural expenditure share: new share = baseline share multiplied by (1 + shock value).
+
+A shock value of 0 leaves the variable at its baseline level. The other exogenous variables (non-land input price, GDP per capita, population, non-agricultural price, non-feed price, beginning stocks) are held at their baseline values in every scenario. The equations then compare the new level with the baseline level; for example, land supply responds to the ratio of new to baseline availability through the land supply elasticity `epsilon_l`, and value added in a crop responds to the ratio of new to baseline TFP through `sigma_i`.
+
+## Solver
+
+The model is a JuMP model with complementarity constraints solved by PATH through `PATHSolver.jl`. The license string is registered by the runner from `code/model/path_license.txt` before the first solve. Data preparation uses `BigFloat` arithmetic at 128-bit precision (`setprecision(128)`) so that the calibrated shares reproduce the targets exactly.
+
+The solver attributes are set in section 5 of the core file. The ones that determine the outcome:
+
+| Attribute | Value |
+|---|---|
+| `convergence_tolerance` | 1e-6 |
+| `major_iterations` | 500 |
+| `minor_iterations` | 17100 |
+| `crash_iteration_limit` | 50 |
+| `cumulative_iteration_limit` | 2147483647 |
+| `time_limit` | 1e10 seconds |
+| `chen_lambda` | 0.8 |
+| `presolve` | yes |
+| `crash_method` | pnewton, with perturbation, line search |
+| `nms` (non-monotone stabilization) | yes, memory 10, 5 watchdogs |
+| `merit_function`, `crash_merit_function` | fischer |
+| `lemke_start` | automatic, slack start |
+| `scale` | 1 |
+| `gradient_searchtype` | arc, step limit 5 |
+
+Output attributes make PATH print major iterations, minor iterations every 500, crash iterations, initial and final statistics and the final summary; this is the text that appears in the console and in `SCENARIO_SOLVER_LOG.txt`.
+
+After `optimize!`, the code accepts the year when the termination status is `OPTIMAL` or `LOCALLY_SOLVED` and the primal status is `FEASIBLE_POINT` or `NEARLY_FEASIBLE_POINT`. A `TIME_LIMIT` termination with a feasible point is accepted with a warning. Any other outcome prints `Simulation CANNOT be generated for baseline projections of the year ...` and the year is skipped. The status pair is written to `Results_<year>/Solver_Status_Model_<year>.txt` and copied into the solver log.
+
+## Outputs and reporting conventions
+
+For each solved year the core writes, in the working folder, `Results_<year>/` (solver status and every model variable in `All Results.csv`) and `Output_<year>/` (the per-year `data_solution.csv`, `data_targets.csv`, `data_params_calibrated.csv`, `data_exogenous.csv`, `data_shocks.csv` and `METADATA.csv`). The runner concatenates the per-year solution and target files into the output package ([Package and file format](data-format.qmd#output-package)).
+
+`data_solution.csv` holds, per region and commodity, the new levels of beginning stocks (target value), production, imports, total, food and feed consumption, exports, ending stocks, loss, area, crushing, and two derived series:
+
+- **Yields** are production over area. For cotton, production in bales is converted to kilograms with the factor 217.728111162486 kg per bale (the conversion implicit in the USDA baseline), so cotton yields are in kg per hectare. Beef, pork and poultry yields are reported as missing, consistent with USDA data.
+- **Extraction rates** are 100 times output over the soybean crush of the region, in percent. The code reports them for soybean meal only (the soybean oil branch of the reporting section is never joined into the output), wherever it has output and crush, including two region-commodity pairs (`OAO` and `ONA` for `SoyMeal`) for which the pipeline has no target. The extraction-rate target is recomputed after the two target repairs, from the adjusted production and crush.
+
+The pipeline's harmonization step derives yields and extraction rates in the targets with these same conventions, which is why the neutral run reproduces them exactly.
+
+## Runner architecture
+
+The core file is the year loop of the original model script, copied verbatim. Everything around it lives in the `BSATRunner` module (`code/model/src/BSATRunner.jl`, `io.jl`, `run.jl`, `shocks.jl`, `scenario.jl`):
+
+1. `run_bsat` registers the PATH license, sets the `BigFloat` precision, creates a working folder (a temporary one by default) and extracts the four input files into `Input/`, matching archive entries by name.
+2. It defines the global `periods` and evaluates the core file inside the module, with the working folder as current directory, exactly as the original script ran in `Main`. Standard output, including the C-level output of PATH, is copied to a console log.
+3. It collects the per-year files into `Output/`, writes `METADATA.csv` (input metadata plus timestamps, model version, years requested and solved) and `SCENARIO_SOLVER_LOG.txt`, and zips the seven files at the archive root.
+
+Wrapper names are prefixed `bsat_` so they cannot collide with the variables the core assigns in the module's global scope. `run_model.jl` is the command-line front end; `make_shock` derives scenario packages by editing `data_shocks.csv`, and `build_scenario` (front end `run_scenario.jl`) does the same from an edited copy of that file. Signatures are in the [Julia reference](reference/julia.qmd).
+
+## Runtime and memory
+
+A run of the baseline package over 2025 to 2034 takes about two minutes and peaks at about 1.6 GB of memory on a workstation. PATH is single-threaded, so more cores do not shorten the run and a laptop gives similar times.
+
+## Regression test
+
+`code/model/test/runtests.jl` runs the model on two fixture packages and compares the SHA-256 of every data CSV in the output package with the checksums in `code/model/test/expected/`:
+
+- `data/packages/baseline_2025_Input.zip` over 2025 to 2034: the package built by the pipeline, the golden reference of this release; the neutral run reproduces every target attribute exactly.
+- `test/fixtures/Input_2025_authors.zip` over 2025 to 2034: the model authors' own input package of July 2026, whose targets are not harmonized, so the model applies its own repairs. Its solution file must be identical to the one of the pipeline's package, which checks that the pipeline's harmonization step mirrors the model.
+
+`METADATA.csv` and `SCENARIO_SOLVER_LOG.txt` carry timestamps and are checked for presence only. The test also exercises `make_shock` (row counts, package contents, error cases) and `build_scenario` (`test/test_scenario.jl`: partial and full CSVs, spreadsheet spellings, skipped rows, the command-line entry points of `run_scenario.jl` and `make_shock.jl`, and that every CSV under `data/scenarios/` rebuilds its committed package byte for byte). Run it with
+
+```bash
+julia --project=code/model code/model/test/runtests.jl
+```
+
+It takes about four minutes. Run it after any change to the wrapper, the packages or the environment.

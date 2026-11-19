@@ -1,0 +1,918 @@
+region,year,nest,commodity,input,attribute,value,unit,attribute_type,attribute_description,region_name,nest_name,commodity_name
+,,,,,sigma_t,0.028689046,,G,elasticity of substitution (in demand) Between Ag y No Ag,,,
+,,,,,sigma_u,0.27470782,,G,elasticity of substitution (in demand) across nests,,,
+,,Cereals,,,sigma_n,0.276159166,,N,elasticity of substitution (in demand) within every nest,,Cereals,
+,,Livestock,,,sigma_n,0.838916088,,N,elasticity of substitution (in demand) within every nest,,Livestock,
+,,Secondary,,,sigma_n,1.822037761,,N,elasticity of substitution (in demand) within every nest,,Soy related Secondary,
+,,Other,,,sigma_n,0,,N,elasticity of substitution (in demand) within every nest,,Other,
+,,Brd_Cereals,,,sigma_n,0,,N,elasticity of substitution (in demand) within every nest,,Bread Cereals,
+,,Bly_Cereals,,,sigma_n,0,,N,elasticity of substitution (in demand) within every nest,,Barley Cereals,
+,,Soy_Cereals,,,sigma_n,0,,N,elasticity of substitution (in demand) within every nest,,Soybean Cereals,
+,,Rce_Cereals,,,sigma_n,0,,N,elasticity of substitution (in demand) within every nest,,Rice Cereals,
+,,Cereals,Corn,,sigma_a,1.1,,NC,elasticity of substitution (in demand) between food and feed,,Cereals,Corn
+,,Brd_Cereals,Wheat,,sigma_a,1.1,,NC,elasticity of substitution (in demand) between food and feed,,Bread Cereals,Wheat
+,,Cereals,Sorghum,,sigma_a,1.1,,NC,elasticity of substitution (in demand) between food and feed,,Cereals,Sorghum
+,,Soy_Cereals,Soybean,,sigma_a,1.1,,NC,elasticity of substitution (in demand) between food and feed,,Soybean Cereals,Soybean
+,,Secondary,SoyMeal,,sigma_a,1.1,,NC,elasticity of substitution (in demand) between food and feed,,Soy related Secondary,Soy Meal
+,,Secondary,SoyOil,,sigma_a,1.1,,NC,elasticity of substitution (in demand) between food and feed,,Soy related Secondary,Soy Oil
+,,Bly_Cereals,Barley,,sigma_a,1.1,,NC,elasticity of substitution (in demand) between food and feed,,Barley Cereals,Barley
+,,Other,Cotton,,sigma_a,0,,NC,elasticity of substitution (in demand) between food and feed,,Other,Cotton
+,,Rce_Cereals,Rice,,sigma_a,0,,NC,elasticity of substitution (in demand) between food and feed,,Rice Cereals,Rice
+,,Livestock,Beef,,sigma_a,0,,NC,elasticity of substitution (in demand) between food and feed,,Livestock,Beef and veal
+,,Livestock,Poultry,,sigma_a,0,,NC,elasticity of substitution (in demand) between food and feed,,Livestock,Poultry
+,,Livestock,Pork,,sigma_a,0,,NC,elasticity of substitution (in demand) between food and feed,,Livestock,Pork
+,,Cereals,Corn,,sigma_i,0,,NC,elasticity of substitution (in crops production) between value added and intermediate inputs,,Cereals,Corn
+,,Brd_Cereals,Wheat,,sigma_i,0,,NC,elasticity of substitution (in crops production) between value added and intermediate inputs,,Bread Cereals,Wheat
+,,Cereals,Sorghum,,sigma_i,0,,NC,elasticity of substitution (in crops production) between value added and intermediate inputs,,Cereals,Sorghum
+,,Soy_Cereals,Soybean,,sigma_i,0,,NC,elasticity of substitution (in crops production) between value added and intermediate inputs,,Soybean Cereals,Soybean
+,,Secondary,SoyMeal,,sigma_i,0,,NC,elasticity of substitution (in crops production) between value added and intermediate inputs,,Soy related Secondary,Soy Meal
+,,Secondary,SoyOil,,sigma_i,0,,NC,elasticity of substitution (in crops production) between value added and intermediate inputs,,Soy related Secondary,Soy Oil
+,,Bly_Cereals,Barley,,sigma_i,0,,NC,elasticity of substitution (in crops production) between value added and intermediate inputs,,Barley Cereals,Barley
+,,Other,Cotton,,sigma_i,0,,NC,elasticity of substitution (in crops production) between value added and intermediate inputs,,Other,Cotton
+,,Rce_Cereals,Rice,,sigma_i,0,,NC,elasticity of substitution (in crops production) between value added and intermediate inputs,,Rice Cereals,Rice
+,,Cereals,Corn,,phi_i,1,,NC,Distribution Parameter of value added of product k in total production,,Cereals,Corn
+,,Brd_Cereals,Wheat,,phi_i,1,,NC,Distribution Parameter of value added of product k in total production,,Bread Cereals,Wheat
+,,Cereals,Sorghum,,phi_i,1,,NC,Distribution Parameter of value added of product k in total production,,Cereals,Sorghum
+,,Soy_Cereals,Soybean,,phi_i,1,,NC,Distribution Parameter of value added of product k in total production,,Soybean Cereals,Soybean
+,,Secondary,SoyMeal,,phi_i,0,,NC,Distribution Parameter of value added of product k in total production,,Soy related Secondary,Soy Meal
+,,Secondary,SoyOil,,phi_i,0,,NC,Distribution Parameter of value added of product k in total production,,Soy related Secondary,Soy Oil
+,,Bly_Cereals,Barley,,phi_i,1,,NC,Distribution Parameter of value added of product k in total production,,Barley Cereals,Barley
+,,Other,Cotton,,phi_i,1,,NC,Distribution Parameter of value added of product k in total production,,Other,Cotton
+,,Rce_Cereals,Rice,,phi_i,1,,NC,Distribution Parameter of value added of product k in total production,,Rice Cereals,Rice
+,,Cereals,Corn,,omega_q,8,,NC,Elasticity of transformation (in supply) between current sales supply and stored ending stocks supply of product k,,Cereals,Corn
+,,Brd_Cereals,Wheat,,omega_q,8,,NC,Elasticity of transformation (in supply) between current sales supply and stored ending stocks supply of product k,,Bread Cereals,Wheat
+,,Cereals,Sorghum,,omega_q,8,,NC,Elasticity of transformation (in supply) between current sales supply and stored ending stocks supply of product k,,Cereals,Sorghum
+,,Soy_Cereals,Soybean,,omega_q,8,,NC,Elasticity of transformation (in supply) between current sales supply and stored ending stocks supply of product k,,Soybean Cereals,Soybean
+,,Secondary,SoyMeal,,omega_q,8,,NC,Elasticity of transformation (in supply) between current sales supply and stored ending stocks supply of product k,,Soy related Secondary,Soy Meal
+,,Secondary,SoyOil,,omega_q,8,,NC,Elasticity of transformation (in supply) between current sales supply and stored ending stocks supply of product k,,Soy related Secondary,Soy Oil
+,,Bly_Cereals,Barley,,omega_q,8,,NC,Elasticity of transformation (in supply) between current sales supply and stored ending stocks supply of product k,,Barley Cereals,Barley
+,,Other,Cotton,,omega_q,8,,NC,Elasticity of transformation (in supply) between current sales supply and stored ending stocks supply of product k,,Other,Cotton
+,,Rce_Cereals,Rice,,omega_q,8,,NC,Elasticity of transformation (in supply) between current sales supply and stored ending stocks supply of product k,,Rice Cereals,Rice
+,,Livestock,Beef,,omega_q,8,,NC,Elasticity of transformation (in supply) between current sales supply and stored ending stocks supply of product k,,Livestock,Beef and veal
+,,Livestock,Poultry,,omega_q,8,,NC,Elasticity of transformation (in supply) between current sales supply and stored ending stocks supply of product k,,Livestock,Poultry
+,,Livestock,Pork,,omega_q,8,,NC,Elasticity of transformation (in supply) between current sales supply and stored ending stocks supply of product k,,Livestock,Pork
+,,Soy_Cereals,Soybean,,omega_c,5,,NC,elasticity of transformation (in supply) across the supply allocated for food feed and crushing,,Soybean Cereals,Soybean
+,,Cereals,Corn,,omega_c,5,,NC,elasticity of transformation (in supply) across the supply allocated for food feed and crushing,,Cereals,Corn
+,,Brd_Cereals,Wheat,,omega_c,5,,NC,elasticity of transformation (in supply) across the supply allocated for food feed and crushing,,Bread Cereals,Wheat
+,,Cereals,Sorghum,,omega_c,5,,NC,elasticity of transformation (in supply) across the supply allocated for food feed and crushing,,Cereals,Sorghum
+,,Secondary,SoyMeal,,omega_c,5,,NC,elasticity of transformation (in supply) across the supply allocated for food feed and crushing,,Soy related Secondary,Soy Meal
+,,Secondary,SoyOil,,omega_c,5,,NC,elasticity of transformation (in supply) across the supply allocated for food feed and crushing,,Soy related Secondary,Soy Oil
+,,Bly_Cereals,Barley,,omega_c,5,,NC,elasticity of transformation (in supply) across the supply allocated for food feed and crushing,,Barley Cereals,Barley
+,,Other,Cotton,,omega_c,0,,NC,elasticity of transformation (in supply) across the supply allocated for food feed and crushing,,Other,Cotton
+,,Rce_Cereals,Rice,,omega_c,0,,NC,elasticity of transformation (in supply) across the supply allocated for food feed and crushing,,Rice Cereals,Rice
+,,Livestock,Beef,,omega_c,0,,NC,elasticity of transformation (in supply) across the supply allocated for food feed and crushing,,Livestock,Beef and veal
+,,Livestock,Poultry,,omega_c,0,,NC,elasticity of transformation (in supply) across the supply allocated for food feed and crushing,,Livestock,Poultry
+,,Livestock,Pork,,omega_c,0,,NC,elasticity of transformation (in supply) across the supply allocated for food feed and crushing,,Livestock,Pork
+,,,,,epsilon_l,0.11,,G,Price supply elasticity of land,,,
+,,Cereals,Corn,,epsilon_q,0.5,,NC,Price elasticity (in demand) of ending stocks,,Cereals,Corn
+,,Brd_Cereals,Wheat,,epsilon_q,0.5,,NC,Price elasticity (in demand) of ending stocks,,Bread Cereals,Wheat
+,,Cereals,Sorghum,,epsilon_q,0.5,,NC,Price elasticity (in demand) of ending stocks,,Cereals,Sorghum
+,,Soy_Cereals,Soybean,,epsilon_q,0.5,,NC,Price elasticity (in demand) of ending stocks,,Soybean Cereals,Soybean
+,,Secondary,SoyMeal,,epsilon_q,0.5,,NC,Price elasticity (in demand) of ending stocks,,Soy related Secondary,Soy Meal
+,,Secondary,SoyOil,,epsilon_q,0.5,,NC,Price elasticity (in demand) of ending stocks,,Soy related Secondary,Soy Oil
+,,Bly_Cereals,Barley,,epsilon_q,0.5,,NC,Price elasticity (in demand) of ending stocks,,Barley Cereals,Barley
+,,Other,Cotton,,epsilon_q,0.5,,NC,Price elasticity (in demand) of ending stocks,,Other,Cotton
+,,Rce_Cereals,Rice,,epsilon_q,0.5,,NC,Price elasticity (in demand) of ending stocks,,Rice Cereals,Rice
+,,Livestock,Beef,,epsilon_q,0.5,,NC,Price elasticity (in demand) of ending stocks,,Livestock,Beef and veal
+,,Livestock,Pork,,epsilon_q,0.5,,NC,Price elasticity (in demand) of ending stocks,,Livestock,Pork
+,,Livestock,Poultry,,epsilon_q,0.5,,NC,Price elasticity (in demand) of ending stocks,,Livestock,Poultry
+ARG,,Bly_Cereals,Barley,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Argentina,Barley Cereals,Barley
+ARG,,Cereals,Corn,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Argentina,Cereals,Corn
+ARG,,Other,Cotton,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Argentina,Other,Cotton
+ARG,,Rce_Cereals,Rice,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Argentina,Rice Cereals,Rice
+ARG,,Cereals,Sorghum,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Argentina,Cereals,Sorghum
+ARG,,Soy_Cereals,Soybean,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Argentina,Soybean Cereals,Soybean
+ARG,,Brd_Cereals,Wheat,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Argentina,Bread Cereals,Wheat
+AUS,,Bly_Cereals,Barley,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Australia,Barley Cereals,Barley
+AUS,,Cereals,Corn,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Australia,Cereals,Corn
+AUS,,Other,Cotton,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Australia,Other,Cotton
+AUS,,Rce_Cereals,Rice,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Australia,Rice Cereals,Rice
+AUS,,Cereals,Sorghum,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Australia,Cereals,Sorghum
+AUS,,Soy_Cereals,Soybean,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Australia,Soybean Cereals,Soybean
+AUS,,Brd_Cereals,Wheat,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Australia,Bread Cereals,Wheat
+BRA,,Bly_Cereals,Barley,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Brazil,Barley Cereals,Barley
+BRA,,Cereals,Corn,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Brazil,Cereals,Corn
+BRA,,Other,Cotton,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Brazil,Other,Cotton
+BRA,,Rce_Cereals,Rice,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Brazil,Rice Cereals,Rice
+BRA,,Cereals,Sorghum,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Brazil,Cereals,Sorghum
+BRA,,Soy_Cereals,Soybean,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Brazil,Soybean Cereals,Soybean
+BRA,,Brd_Cereals,Wheat,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Brazil,Bread Cereals,Wheat
+CAN,,Bly_Cereals,Barley,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Canada,Barley Cereals,Barley
+CAN,,Cereals,Corn,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Canada,Cereals,Corn
+CAN,,Other,Cotton,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Canada,Other,Cotton
+CAN,,Rce_Cereals,Rice,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Canada,Rice Cereals,Rice
+CAN,,Cereals,Sorghum,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Canada,Cereals,Sorghum
+CAN,,Soy_Cereals,Soybean,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Canada,Soybean Cereals,Soybean
+CAN,,Brd_Cereals,Wheat,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Canada,Bread Cereals,Wheat
+CHN,,Bly_Cereals,Barley,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,China,Barley Cereals,Barley
+CHN,,Cereals,Corn,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,China,Cereals,Corn
+CHN,,Other,Cotton,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,China,Other,Cotton
+CHN,,Rce_Cereals,Rice,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,China,Rice Cereals,Rice
+CHN,,Cereals,Sorghum,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,China,Cereals,Sorghum
+CHN,,Soy_Cereals,Soybean,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,China,Soybean Cereals,Soybean
+CHN,,Brd_Cereals,Wheat,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,China,Bread Cereals,Wheat
+EGY,,Bly_Cereals,Barley,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Egypt,Barley Cereals,Barley
+EGY,,Cereals,Corn,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Egypt,Cereals,Corn
+EGY,,Other,Cotton,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Egypt,Other,Cotton
+EGY,,Rce_Cereals,Rice,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Egypt,Rice Cereals,Rice
+EGY,,Cereals,Sorghum,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Egypt,Cereals,Sorghum
+EGY,,Soy_Cereals,Soybean,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Egypt,Soybean Cereals,Soybean
+EGY,,Brd_Cereals,Wheat,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Egypt,Bread Cereals,Wheat
+EUR,,Bly_Cereals,Barley,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,European Union,Barley Cereals,Barley
+EUR,,Cereals,Corn,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,European Union,Cereals,Corn
+EUR,,Other,Cotton,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,European Union,Other,Cotton
+EUR,,Rce_Cereals,Rice,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,European Union,Rice Cereals,Rice
+EUR,,Cereals,Sorghum,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,European Union,Cereals,Sorghum
+EUR,,Soy_Cereals,Soybean,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,European Union,Soybean Cereals,Soybean
+EUR,,Brd_Cereals,Wheat,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,European Union,Bread Cereals,Wheat
+IND,,Bly_Cereals,Barley,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,India,Barley Cereals,Barley
+IND,,Cereals,Corn,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,India,Cereals,Corn
+IND,,Other,Cotton,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,India,Other,Cotton
+IND,,Rce_Cereals,Rice,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,India,Rice Cereals,Rice
+IND,,Cereals,Sorghum,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,India,Cereals,Sorghum
+IND,,Soy_Cereals,Soybean,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,India,Soybean Cereals,Soybean
+IND,,Brd_Cereals,Wheat,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,India,Bread Cereals,Wheat
+IDN,,Bly_Cereals,Barley,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Indonesia,Barley Cereals,Barley
+IDN,,Cereals,Corn,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Indonesia,Cereals,Corn
+IDN,,Other,Cotton,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Indonesia,Other,Cotton
+IDN,,Rce_Cereals,Rice,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Indonesia,Rice Cereals,Rice
+IDN,,Cereals,Sorghum,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Indonesia,Cereals,Sorghum
+IDN,,Soy_Cereals,Soybean,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Indonesia,Soybean Cereals,Soybean
+IDN,,Brd_Cereals,Wheat,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Indonesia,Bread Cereals,Wheat
+JPN,,Bly_Cereals,Barley,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Japan,Barley Cereals,Barley
+JPN,,Cereals,Corn,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Japan,Cereals,Corn
+JPN,,Other,Cotton,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Japan,Other,Cotton
+JPN,,Rce_Cereals,Rice,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Japan,Rice Cereals,Rice
+JPN,,Cereals,Sorghum,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Japan,Cereals,Sorghum
+JPN,,Soy_Cereals,Soybean,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Japan,Soybean Cereals,Soybean
+JPN,,Brd_Cereals,Wheat,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Japan,Bread Cereals,Wheat
+MYS,,Bly_Cereals,Barley,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Malaysia,Barley Cereals,Barley
+MYS,,Cereals,Corn,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Malaysia,Cereals,Corn
+MYS,,Other,Cotton,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Malaysia,Other,Cotton
+MYS,,Rce_Cereals,Rice,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Malaysia,Rice Cereals,Rice
+MYS,,Cereals,Sorghum,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Malaysia,Cereals,Sorghum
+MYS,,Soy_Cereals,Soybean,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Malaysia,Soybean Cereals,Soybean
+MYS,,Brd_Cereals,Wheat,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Malaysia,Bread Cereals,Wheat
+MEX,,Bly_Cereals,Barley,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Mexico,Barley Cereals,Barley
+MEX,,Cereals,Corn,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Mexico,Cereals,Corn
+MEX,,Other,Cotton,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Mexico,Other,Cotton
+MEX,,Rce_Cereals,Rice,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Mexico,Rice Cereals,Rice
+MEX,,Cereals,Sorghum,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Mexico,Cereals,Sorghum
+MEX,,Soy_Cereals,Soybean,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Mexico,Soybean Cereals,Soybean
+MEX,,Brd_Cereals,Wheat,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Mexico,Bread Cereals,Wheat
+PHL,,Bly_Cereals,Barley,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Philippines,Barley Cereals,Barley
+PHL,,Cereals,Corn,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Philippines,Cereals,Corn
+PHL,,Other,Cotton,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Philippines,Other,Cotton
+PHL,,Rce_Cereals,Rice,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Philippines,Rice Cereals,Rice
+PHL,,Cereals,Sorghum,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Philippines,Cereals,Sorghum
+PHL,,Soy_Cereals,Soybean,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Philippines,Soybean Cereals,Soybean
+PHL,,Brd_Cereals,Wheat,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Philippines,Bread Cereals,Wheat
+ZAF,,Bly_Cereals,Barley,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Republic of South Africa,Barley Cereals,Barley
+ZAF,,Cereals,Corn,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Republic of South Africa,Cereals,Corn
+ZAF,,Other,Cotton,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Republic of South Africa,Other,Cotton
+ZAF,,Rce_Cereals,Rice,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Republic of South Africa,Rice Cereals,Rice
+ZAF,,Cereals,Sorghum,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Republic of South Africa,Cereals,Sorghum
+ZAF,,Soy_Cereals,Soybean,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Republic of South Africa,Soybean Cereals,Soybean
+ZAF,,Brd_Cereals,Wheat,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Republic of South Africa,Bread Cereals,Wheat
+RUS,,Bly_Cereals,Barley,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Russia,Barley Cereals,Barley
+RUS,,Cereals,Corn,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Russia,Cereals,Corn
+RUS,,Other,Cotton,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Russia,Other,Cotton
+RUS,,Rce_Cereals,Rice,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Russia,Rice Cereals,Rice
+RUS,,Cereals,Sorghum,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Russia,Cereals,Sorghum
+RUS,,Soy_Cereals,Soybean,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Russia,Soybean Cereals,Soybean
+RUS,,Brd_Cereals,Wheat,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Russia,Bread Cereals,Wheat
+KOR,,Bly_Cereals,Barley,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,South Korea,Barley Cereals,Barley
+KOR,,Cereals,Corn,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,South Korea,Cereals,Corn
+KOR,,Other,Cotton,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,South Korea,Other,Cotton
+KOR,,Rce_Cereals,Rice,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,South Korea,Rice Cereals,Rice
+KOR,,Cereals,Sorghum,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,South Korea,Cereals,Sorghum
+KOR,,Soy_Cereals,Soybean,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,South Korea,Soybean Cereals,Soybean
+KOR,,Brd_Cereals,Wheat,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,South Korea,Bread Cereals,Wheat
+THA,,Bly_Cereals,Barley,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Thailand,Barley Cereals,Barley
+THA,,Cereals,Corn,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Thailand,Cereals,Corn
+THA,,Other,Cotton,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Thailand,Other,Cotton
+THA,,Rce_Cereals,Rice,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Thailand,Rice Cereals,Rice
+THA,,Cereals,Sorghum,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Thailand,Cereals,Sorghum
+THA,,Soy_Cereals,Soybean,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Thailand,Soybean Cereals,Soybean
+THA,,Brd_Cereals,Wheat,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Thailand,Bread Cereals,Wheat
+UKR,,Bly_Cereals,Barley,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Ukraine,Barley Cereals,Barley
+UKR,,Cereals,Corn,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Ukraine,Cereals,Corn
+UKR,,Other,Cotton,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Ukraine,Other,Cotton
+UKR,,Rce_Cereals,Rice,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Ukraine,Rice Cereals,Rice
+UKR,,Cereals,Sorghum,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Ukraine,Cereals,Sorghum
+UKR,,Soy_Cereals,Soybean,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Ukraine,Soybean Cereals,Soybean
+UKR,,Brd_Cereals,Wheat,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Ukraine,Bread Cereals,Wheat
+USA,,Bly_Cereals,Barley,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,United States,Barley Cereals,Barley
+USA,,Cereals,Corn,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,United States,Cereals,Corn
+USA,,Other,Cotton,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,United States,Other,Cotton
+USA,,Rce_Cereals,Rice,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,United States,Rice Cereals,Rice
+USA,,Cereals,Sorghum,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,United States,Cereals,Sorghum
+USA,,Soy_Cereals,Soybean,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,United States,Soybean Cereals,Soybean
+USA,,Brd_Cereals,Wheat,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,United States,Bread Cereals,Wheat
+CAC,,Bly_Cereals,Barley,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Central America & Caribbean,Barley Cereals,Barley
+CAC,,Cereals,Corn,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Central America & Caribbean,Cereals,Corn
+CAC,,Other,Cotton,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Central America & Caribbean,Other,Cotton
+CAC,,Rce_Cereals,Rice,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Central America & Caribbean,Rice Cereals,Rice
+CAC,,Cereals,Sorghum,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Central America & Caribbean,Cereals,Sorghum
+CAC,,Soy_Cereals,Soybean,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Central America & Caribbean,Soybean Cereals,Soybean
+CAC,,Brd_Cereals,Wheat,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Central America & Caribbean,Bread Cereals,Wheat
+IRN,,Bly_Cereals,Barley,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Iran,Barley Cereals,Barley
+IRN,,Cereals,Corn,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Iran,Cereals,Corn
+IRN,,Other,Cotton,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Iran,Other,Cotton
+IRN,,Rce_Cereals,Rice,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Iran,Rice Cereals,Rice
+IRN,,Cereals,Sorghum,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Iran,Cereals,Sorghum
+IRN,,Soy_Cereals,Soybean,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Iran,Soybean Cereals,Soybean
+IRN,,Brd_Cereals,Wheat,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Iran,Bread Cereals,Wheat
+OAO,,Bly_Cereals,Barley,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Other Asia & Oceania,Barley Cereals,Barley
+OAO,,Cereals,Corn,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Other Asia & Oceania,Cereals,Corn
+OAO,,Other,Cotton,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Other Asia & Oceania,Other,Cotton
+OAO,,Rce_Cereals,Rice,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Other Asia & Oceania,Rice Cereals,Rice
+OAO,,Cereals,Sorghum,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Other Asia & Oceania,Cereals,Sorghum
+OAO,,Soy_Cereals,Soybean,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Other Asia & Oceania,Soybean Cereals,Soybean
+OAO,,Brd_Cereals,Wheat,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Other Asia & Oceania,Bread Cereals,Wheat
+OEU,,Bly_Cereals,Barley,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Other Europe,Barley Cereals,Barley
+OEU,,Cereals,Corn,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Other Europe,Cereals,Corn
+OEU,,Other,Cotton,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Other Europe,Other,Cotton
+OEU,,Rce_Cereals,Rice,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Other Europe,Rice Cereals,Rice
+OEU,,Cereals,Sorghum,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Other Europe,Cereals,Sorghum
+OEU,,Soy_Cereals,Soybean,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Other Europe,Soybean Cereals,Soybean
+OEU,,Brd_Cereals,Wheat,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Other Europe,Bread Cereals,Wheat
+OFS,,Bly_Cereals,Barley,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,"Other Former Soviet Union, 10 Countries",Barley Cereals,Barley
+OFS,,Cereals,Corn,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,"Other Former Soviet Union, 10 Countries",Cereals,Corn
+OFS,,Other,Cotton,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,"Other Former Soviet Union, 10 Countries",Other,Cotton
+OFS,,Rce_Cereals,Rice,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,"Other Former Soviet Union, 10 Countries",Rice Cereals,Rice
+OFS,,Cereals,Sorghum,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,"Other Former Soviet Union, 10 Countries",Cereals,Sorghum
+OFS,,Soy_Cereals,Soybean,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,"Other Former Soviet Union, 10 Countries",Soybean Cereals,Soybean
+OFS,,Brd_Cereals,Wheat,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,"Other Former Soviet Union, 10 Countries",Bread Cereals,Wheat
+OME,,Bly_Cereals,Barley,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Other Middle East,Barley Cereals,Barley
+OME,,Cereals,Corn,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Other Middle East,Cereals,Corn
+OME,,Other,Cotton,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Other Middle East,Other,Cotton
+OME,,Rce_Cereals,Rice,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Other Middle East,Rice Cereals,Rice
+OME,,Cereals,Sorghum,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Other Middle East,Cereals,Sorghum
+OME,,Soy_Cereals,Soybean,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Other Middle East,Soybean Cereals,Soybean
+OME,,Brd_Cereals,Wheat,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Other Middle East,Bread Cereals,Wheat
+ONA,,Bly_Cereals,Barley,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Other North Africa,Barley Cereals,Barley
+ONA,,Cereals,Corn,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Other North Africa,Cereals,Corn
+ONA,,Other,Cotton,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Other North Africa,Other,Cotton
+ONA,,Rce_Cereals,Rice,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Other North Africa,Rice Cereals,Rice
+ONA,,Cereals,Sorghum,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Other North Africa,Cereals,Sorghum
+ONA,,Soy_Cereals,Soybean,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Other North Africa,Soybean Cereals,Soybean
+ONA,,Brd_Cereals,Wheat,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Other North Africa,Bread Cereals,Wheat
+OSA,,Bly_Cereals,Barley,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Other South America,Barley Cereals,Barley
+OSA,,Cereals,Corn,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Other South America,Cereals,Corn
+OSA,,Other,Cotton,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Other South America,Other,Cotton
+OSA,,Rce_Cereals,Rice,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Other South America,Rice Cereals,Rice
+OSA,,Cereals,Sorghum,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Other South America,Cereals,Sorghum
+OSA,,Soy_Cereals,Soybean,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Other South America,Soybean Cereals,Soybean
+OSA,,Brd_Cereals,Wheat,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Other South America,Bread Cereals,Wheat
+SAU,,Bly_Cereals,Barley,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Saudi Arabia,Barley Cereals,Barley
+SAU,,Cereals,Corn,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Saudi Arabia,Cereals,Corn
+SAU,,Other,Cotton,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Saudi Arabia,Other,Cotton
+SAU,,Rce_Cereals,Rice,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Saudi Arabia,Rice Cereals,Rice
+SAU,,Cereals,Sorghum,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Saudi Arabia,Cereals,Sorghum
+SAU,,Soy_Cereals,Soybean,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Saudi Arabia,Soybean Cereals,Soybean
+SAU,,Brd_Cereals,Wheat,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Saudi Arabia,Bread Cereals,Wheat
+TUR,,Bly_Cereals,Barley,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Turkey,Barley Cereals,Barley
+TUR,,Cereals,Corn,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Turkey,Cereals,Corn
+TUR,,Other,Cotton,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Turkey,Other,Cotton
+TUR,,Rce_Cereals,Rice,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Turkey,Rice Cereals,Rice
+TUR,,Cereals,Sorghum,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Turkey,Cereals,Sorghum
+TUR,,Soy_Cereals,Soybean,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Turkey,Soybean Cereals,Soybean
+TUR,,Brd_Cereals,Wheat,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Turkey,Bread Cereals,Wheat
+BGD,,Bly_Cereals,Barley,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Bangladesh,Barley Cereals,Barley
+BGD,,Cereals,Corn,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Bangladesh,Cereals,Corn
+BGD,,Other,Cotton,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Bangladesh,Other,Cotton
+BGD,,Rce_Cereals,Rice,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Bangladesh,Rice Cereals,Rice
+BGD,,Cereals,Sorghum,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Bangladesh,Cereals,Sorghum
+BGD,,Soy_Cereals,Soybean,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Bangladesh,Soybean Cereals,Soybean
+BGD,,Brd_Cereals,Wheat,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Bangladesh,Bread Cereals,Wheat
+BUR,,Bly_Cereals,Barley,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Burma,Barley Cereals,Barley
+BUR,,Cereals,Corn,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Burma,Cereals,Corn
+BUR,,Other,Cotton,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Burma,Other,Cotton
+BUR,,Rce_Cereals,Rice,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Burma,Rice Cereals,Rice
+BUR,,Cereals,Sorghum,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Burma,Cereals,Sorghum
+BUR,,Soy_Cereals,Soybean,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Burma,Soybean Cereals,Soybean
+BUR,,Brd_Cereals,Wheat,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Burma,Bread Cereals,Wheat
+KHM,,Bly_Cereals,Barley,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Cambodia,Barley Cereals,Barley
+KHM,,Cereals,Corn,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Cambodia,Cereals,Corn
+KHM,,Other,Cotton,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Cambodia,Other,Cotton
+KHM,,Rce_Cereals,Rice,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Cambodia,Rice Cereals,Rice
+KHM,,Cereals,Sorghum,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Cambodia,Cereals,Sorghum
+KHM,,Soy_Cereals,Soybean,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Cambodia,Soybean Cereals,Soybean
+KHM,,Brd_Cereals,Wheat,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Cambodia,Bread Cereals,Wheat
+HKG,,Bly_Cereals,Barley,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Hong Kong,Barley Cereals,Barley
+HKG,,Cereals,Corn,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Hong Kong,Cereals,Corn
+HKG,,Other,Cotton,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Hong Kong,Other,Cotton
+HKG,,Rce_Cereals,Rice,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Hong Kong,Rice Cereals,Rice
+HKG,,Cereals,Sorghum,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Hong Kong,Cereals,Sorghum
+HKG,,Soy_Cereals,Soybean,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Hong Kong,Soybean Cereals,Soybean
+HKG,,Brd_Cereals,Wheat,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Hong Kong,Bread Cereals,Wheat
+IRQ,,Bly_Cereals,Barley,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Iraq,Barley Cereals,Barley
+IRQ,,Cereals,Corn,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Iraq,Cereals,Corn
+IRQ,,Other,Cotton,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Iraq,Other,Cotton
+IRQ,,Rce_Cereals,Rice,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Iraq,Rice Cereals,Rice
+IRQ,,Cereals,Sorghum,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Iraq,Cereals,Sorghum
+IRQ,,Soy_Cereals,Soybean,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Iraq,Soybean Cereals,Soybean
+IRQ,,Brd_Cereals,Wheat,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Iraq,Bread Cereals,Wheat
+MAR,,Bly_Cereals,Barley,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Morocco,Barley Cereals,Barley
+MAR,,Cereals,Corn,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Morocco,Cereals,Corn
+MAR,,Other,Cotton,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Morocco,Other,Cotton
+MAR,,Rce_Cereals,Rice,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Morocco,Rice Cereals,Rice
+MAR,,Cereals,Sorghum,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Morocco,Cereals,Sorghum
+MAR,,Soy_Cereals,Soybean,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Morocco,Soybean Cereals,Soybean
+MAR,,Brd_Cereals,Wheat,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Morocco,Bread Cereals,Wheat
+NZL,,Bly_Cereals,Barley,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,New Zealand,Barley Cereals,Barley
+NZL,,Cereals,Corn,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,New Zealand,Cereals,Corn
+NZL,,Other,Cotton,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,New Zealand,Other,Cotton
+NZL,,Rce_Cereals,Rice,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,New Zealand,Rice Cereals,Rice
+NZL,,Cereals,Sorghum,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,New Zealand,Cereals,Sorghum
+NZL,,Soy_Cereals,Soybean,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,New Zealand,Soybean Cereals,Soybean
+NZL,,Brd_Cereals,Wheat,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,New Zealand,Bread Cereals,Wheat
+NGA,,Bly_Cereals,Barley,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Nigeria,Barley Cereals,Barley
+NGA,,Cereals,Corn,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Nigeria,Cereals,Corn
+NGA,,Other,Cotton,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Nigeria,Other,Cotton
+NGA,,Rce_Cereals,Rice,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Nigeria,Rice Cereals,Rice
+NGA,,Cereals,Sorghum,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Nigeria,Cereals,Sorghum
+NGA,,Soy_Cereals,Soybean,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Nigeria,Soybean Cereals,Soybean
+NGA,,Brd_Cereals,Wheat,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Nigeria,Bread Cereals,Wheat
+OSS,,Bly_Cereals,Barley,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Other Sub-Saharan Africa,Barley Cereals,Barley
+OSS,,Cereals,Corn,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Other Sub-Saharan Africa,Cereals,Corn
+OSS,,Other,Cotton,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Other Sub-Saharan Africa,Other,Cotton
+OSS,,Rce_Cereals,Rice,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Other Sub-Saharan Africa,Rice Cereals,Rice
+OSS,,Cereals,Sorghum,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Other Sub-Saharan Africa,Cereals,Sorghum
+OSS,,Soy_Cereals,Soybean,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Other Sub-Saharan Africa,Soybean Cereals,Soybean
+OSS,,Brd_Cereals,Wheat,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Other Sub-Saharan Africa,Bread Cereals,Wheat
+PAK,,Bly_Cereals,Barley,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Pakistan,Barley Cereals,Barley
+PAK,,Cereals,Corn,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Pakistan,Cereals,Corn
+PAK,,Other,Cotton,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Pakistan,Other,Cotton
+PAK,,Rce_Cereals,Rice,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Pakistan,Rice Cereals,Rice
+PAK,,Cereals,Sorghum,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Pakistan,Cereals,Sorghum
+PAK,,Soy_Cereals,Soybean,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Pakistan,Soybean Cereals,Soybean
+PAK,,Brd_Cereals,Wheat,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Pakistan,Bread Cereals,Wheat
+TWN,,Bly_Cereals,Barley,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Taiwan,Barley Cereals,Barley
+TWN,,Cereals,Corn,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Taiwan,Cereals,Corn
+TWN,,Other,Cotton,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Taiwan,Other,Cotton
+TWN,,Rce_Cereals,Rice,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Taiwan,Rice Cereals,Rice
+TWN,,Cereals,Sorghum,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Taiwan,Cereals,Sorghum
+TWN,,Soy_Cereals,Soybean,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Taiwan,Soybean Cereals,Soybean
+TWN,,Brd_Cereals,Wheat,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Taiwan,Bread Cereals,Wheat
+VNM,,Bly_Cereals,Barley,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Vietnam,Barley Cereals,Barley
+VNM,,Cereals,Corn,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Vietnam,Cereals,Corn
+VNM,,Other,Cotton,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Vietnam,Other,Cotton
+VNM,,Rce_Cereals,Rice,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Vietnam,Rice Cereals,Rice
+VNM,,Cereals,Sorghum,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Vietnam,Cereals,Sorghum
+VNM,,Soy_Cereals,Soybean,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Vietnam,Soybean Cereals,Soybean
+VNM,,Brd_Cereals,Wheat,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,Vietnam,Bread Cereals,Wheat
+ECO,,Bly_Cereals,Barley,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,West African Community=Ecowas (minus Nigeria),Barley Cereals,Barley
+ECO,,Cereals,Corn,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,West African Community=Ecowas (minus Nigeria),Cereals,Corn
+ECO,,Other,Cotton,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,West African Community=Ecowas (minus Nigeria),Other,Cotton
+ECO,,Rce_Cereals,Rice,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,West African Community=Ecowas (minus Nigeria),Rice Cereals,Rice
+ECO,,Cereals,Sorghum,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,West African Community=Ecowas (minus Nigeria),Cereals,Sorghum
+ECO,,Soy_Cereals,Soybean,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,West African Community=Ecowas (minus Nigeria),Soybean Cereals,Soybean
+ECO,,Brd_Cereals,Wheat,,Land Productivity,0,decimal form,RNC,Land Productivity of PRIMARY crop product k in region r,West African Community=Ecowas (minus Nigeria),Bread Cereals,Wheat
+ARG,,,,,Land Unavailability ,0,decimal form,R,Land Unavailability ,Argentina,,
+AUS,,,,,Land Unavailability ,0,decimal form,R,Land Unavailability ,Australia,,
+BGD,,,,,Land Unavailability ,0,decimal form,R,Land Unavailability ,Bangladesh,,
+BRA,,,,,Land Unavailability ,0,decimal form,R,Land Unavailability ,Brazil,,
+BUR,,,,,Land Unavailability ,0,decimal form,R,Land Unavailability ,Burma,,
+CAC,,,,,Land Unavailability ,0,decimal form,R,Land Unavailability ,Central America & Caribbean,,
+CAN,,,,,Land Unavailability ,0,decimal form,R,Land Unavailability ,Canada,,
+CHN,,,,,Land Unavailability ,0,decimal form,R,Land Unavailability ,China,,
+ECO,,,,,Land Unavailability ,0,decimal form,R,Land Unavailability ,West African Community=Ecowas (minus Nigeria),,
+EGY,,,,,Land Unavailability ,0,decimal form,R,Land Unavailability ,Egypt,,
+EUR,,,,,Land Unavailability ,0,decimal form,R,Land Unavailability ,European Union,,
+HKG,,,,,Land Unavailability ,0,decimal form,R,Land Unavailability ,Hong Kong,,
+IDN,,,,,Land Unavailability ,0,decimal form,R,Land Unavailability ,Indonesia,,
+IND,,,,,Land Unavailability ,0,decimal form,R,Land Unavailability ,India,,
+IRN,,,,,Land Unavailability ,0,decimal form,R,Land Unavailability ,Iran,,
+IRQ,,,,,Land Unavailability ,0,decimal form,R,Land Unavailability ,Iraq,,
+JPN,,,,,Land Unavailability ,0,decimal form,R,Land Unavailability ,Japan,,
+KHM,,,,,Land Unavailability ,0,decimal form,R,Land Unavailability ,Cambodia,,
+KOR,,,,,Land Unavailability ,0,decimal form,R,Land Unavailability ,South Korea,,
+MAR,,,,,Land Unavailability ,0,decimal form,R,Land Unavailability ,Morocco,,
+MEX,,,,,Land Unavailability ,0,decimal form,R,Land Unavailability ,Mexico,,
+MYS,,,,,Land Unavailability ,0,decimal form,R,Land Unavailability ,Malaysia,,
+NGA,,,,,Land Unavailability ,0,decimal form,R,Land Unavailability ,Nigeria,,
+NZL,,,,,Land Unavailability ,0,decimal form,R,Land Unavailability ,New Zealand,,
+OAO,,,,,Land Unavailability ,0,decimal form,R,Land Unavailability ,Other Asia & Oceania,,
+OEU,,,,,Land Unavailability ,0,decimal form,R,Land Unavailability ,Other Europe,,
+OFS,,,,,Land Unavailability ,0,decimal form,R,Land Unavailability ,"Other Former Soviet Union, 10 Countries",,
+OME,,,,,Land Unavailability ,0,decimal form,R,Land Unavailability ,Other Middle East,,
+ONA,,,,,Land Unavailability ,0,decimal form,R,Land Unavailability ,Other North Africa,,
+OSA,,,,,Land Unavailability ,0,decimal form,R,Land Unavailability ,Other South America,,
+OSS,,,,,Land Unavailability ,0,decimal form,R,Land Unavailability ,Other Sub-Saharan Africa,,
+PAK,,,,,Land Unavailability ,0,decimal form,R,Land Unavailability ,Pakistan,,
+PHL,,,,,Land Unavailability ,0,decimal form,R,Land Unavailability ,Philippines,,
+RUS,,,,,Land Unavailability ,0,decimal form,R,Land Unavailability ,Russia,,
+SAU,,,,,Land Unavailability ,0,decimal form,R,Land Unavailability ,Saudi Arabia,,
+THA,,,,,Land Unavailability ,0,decimal form,R,Land Unavailability ,Thailand,,
+TUR,,,,,Land Unavailability ,0,decimal form,R,Land Unavailability ,Turkey,,
+TWN,,,,,Land Unavailability ,0,decimal form,R,Land Unavailability ,Taiwan,,
+UKR,,,,,Land Unavailability ,0,decimal form,R,Land Unavailability ,Ukraine,,
+USA,,,,,Land Unavailability ,0,decimal form,R,Land Unavailability ,United States,,
+VNM,,,,,Land Unavailability ,0,decimal form,R,Land Unavailability ,Vietnam,,
+ZAF,,,,,Land Unavailability ,0,decimal form,R,Land Unavailability ,Republic of South Africa,,
+ARG,,Bly_Cereals,Barley,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Argentina,Barley Cereals,Barley
+ARG,,Cereals,Corn,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Argentina,Cereals,Corn
+ARG,,Other,Cotton,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Argentina,Other,Cotton
+ARG,,Rce_Cereals,Rice,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Argentina,Rice Cereals,Rice
+ARG,,Cereals,Sorghum,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Argentina,Cereals,Sorghum
+ARG,,Soy_Cereals,Soybean,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Argentina,Soybean Cereals,Soybean
+ARG,,Brd_Cereals,Wheat,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Argentina,Bread Cereals,Wheat
+AUS,,Bly_Cereals,Barley,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Australia,Barley Cereals,Barley
+AUS,,Cereals,Corn,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Australia,Cereals,Corn
+AUS,,Other,Cotton,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Australia,Other,Cotton
+AUS,,Rce_Cereals,Rice,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Australia,Rice Cereals,Rice
+AUS,,Cereals,Sorghum,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Australia,Cereals,Sorghum
+AUS,,Soy_Cereals,Soybean,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Australia,Soybean Cereals,Soybean
+AUS,,Brd_Cereals,Wheat,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Australia,Bread Cereals,Wheat
+BRA,,Bly_Cereals,Barley,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Brazil,Barley Cereals,Barley
+BRA,,Cereals,Corn,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Brazil,Cereals,Corn
+BRA,,Other,Cotton,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Brazil,Other,Cotton
+BRA,,Rce_Cereals,Rice,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Brazil,Rice Cereals,Rice
+BRA,,Cereals,Sorghum,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Brazil,Cereals,Sorghum
+BRA,,Soy_Cereals,Soybean,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Brazil,Soybean Cereals,Soybean
+BRA,,Brd_Cereals,Wheat,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Brazil,Bread Cereals,Wheat
+CAN,,Bly_Cereals,Barley,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Canada,Barley Cereals,Barley
+CAN,,Cereals,Corn,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Canada,Cereals,Corn
+CAN,,Other,Cotton,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Canada,Other,Cotton
+CAN,,Rce_Cereals,Rice,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Canada,Rice Cereals,Rice
+CAN,,Cereals,Sorghum,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Canada,Cereals,Sorghum
+CAN,,Soy_Cereals,Soybean,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Canada,Soybean Cereals,Soybean
+CAN,,Brd_Cereals,Wheat,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Canada,Bread Cereals,Wheat
+CHN,,Bly_Cereals,Barley,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,China,Barley Cereals,Barley
+CHN,,Cereals,Corn,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,China,Cereals,Corn
+CHN,,Other,Cotton,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,China,Other,Cotton
+CHN,,Rce_Cereals,Rice,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,China,Rice Cereals,Rice
+CHN,,Cereals,Sorghum,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,China,Cereals,Sorghum
+CHN,,Soy_Cereals,Soybean,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,China,Soybean Cereals,Soybean
+CHN,,Brd_Cereals,Wheat,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,China,Bread Cereals,Wheat
+EGY,,Bly_Cereals,Barley,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Egypt,Barley Cereals,Barley
+EGY,,Cereals,Corn,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Egypt,Cereals,Corn
+EGY,,Other,Cotton,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Egypt,Other,Cotton
+EGY,,Rce_Cereals,Rice,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Egypt,Rice Cereals,Rice
+EGY,,Cereals,Sorghum,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Egypt,Cereals,Sorghum
+EGY,,Soy_Cereals,Soybean,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Egypt,Soybean Cereals,Soybean
+EGY,,Brd_Cereals,Wheat,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Egypt,Bread Cereals,Wheat
+EUR,,Bly_Cereals,Barley,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,European Union,Barley Cereals,Barley
+EUR,,Cereals,Corn,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,European Union,Cereals,Corn
+EUR,,Other,Cotton,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,European Union,Other,Cotton
+EUR,,Rce_Cereals,Rice,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,European Union,Rice Cereals,Rice
+EUR,,Cereals,Sorghum,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,European Union,Cereals,Sorghum
+EUR,,Soy_Cereals,Soybean,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,European Union,Soybean Cereals,Soybean
+EUR,,Brd_Cereals,Wheat,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,European Union,Bread Cereals,Wheat
+IND,,Bly_Cereals,Barley,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,India,Barley Cereals,Barley
+IND,,Cereals,Corn,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,India,Cereals,Corn
+IND,,Other,Cotton,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,India,Other,Cotton
+IND,,Rce_Cereals,Rice,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,India,Rice Cereals,Rice
+IND,,Cereals,Sorghum,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,India,Cereals,Sorghum
+IND,,Soy_Cereals,Soybean,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,India,Soybean Cereals,Soybean
+IND,,Brd_Cereals,Wheat,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,India,Bread Cereals,Wheat
+IDN,,Bly_Cereals,Barley,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Indonesia,Barley Cereals,Barley
+IDN,,Cereals,Corn,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Indonesia,Cereals,Corn
+IDN,,Other,Cotton,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Indonesia,Other,Cotton
+IDN,,Rce_Cereals,Rice,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Indonesia,Rice Cereals,Rice
+IDN,,Cereals,Sorghum,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Indonesia,Cereals,Sorghum
+IDN,,Soy_Cereals,Soybean,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Indonesia,Soybean Cereals,Soybean
+IDN,,Brd_Cereals,Wheat,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Indonesia,Bread Cereals,Wheat
+JPN,,Bly_Cereals,Barley,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Japan,Barley Cereals,Barley
+JPN,,Cereals,Corn,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Japan,Cereals,Corn
+JPN,,Other,Cotton,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Japan,Other,Cotton
+JPN,,Rce_Cereals,Rice,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Japan,Rice Cereals,Rice
+JPN,,Cereals,Sorghum,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Japan,Cereals,Sorghum
+JPN,,Soy_Cereals,Soybean,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Japan,Soybean Cereals,Soybean
+JPN,,Brd_Cereals,Wheat,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Japan,Bread Cereals,Wheat
+MYS,,Bly_Cereals,Barley,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Malaysia,Barley Cereals,Barley
+MYS,,Cereals,Corn,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Malaysia,Cereals,Corn
+MYS,,Other,Cotton,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Malaysia,Other,Cotton
+MYS,,Rce_Cereals,Rice,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Malaysia,Rice Cereals,Rice
+MYS,,Cereals,Sorghum,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Malaysia,Cereals,Sorghum
+MYS,,Soy_Cereals,Soybean,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Malaysia,Soybean Cereals,Soybean
+MYS,,Brd_Cereals,Wheat,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Malaysia,Bread Cereals,Wheat
+MEX,,Bly_Cereals,Barley,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Mexico,Barley Cereals,Barley
+MEX,,Cereals,Corn,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Mexico,Cereals,Corn
+MEX,,Other,Cotton,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Mexico,Other,Cotton
+MEX,,Rce_Cereals,Rice,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Mexico,Rice Cereals,Rice
+MEX,,Cereals,Sorghum,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Mexico,Cereals,Sorghum
+MEX,,Soy_Cereals,Soybean,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Mexico,Soybean Cereals,Soybean
+MEX,,Brd_Cereals,Wheat,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Mexico,Bread Cereals,Wheat
+PHL,,Bly_Cereals,Barley,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Philippines,Barley Cereals,Barley
+PHL,,Cereals,Corn,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Philippines,Cereals,Corn
+PHL,,Other,Cotton,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Philippines,Other,Cotton
+PHL,,Rce_Cereals,Rice,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Philippines,Rice Cereals,Rice
+PHL,,Cereals,Sorghum,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Philippines,Cereals,Sorghum
+PHL,,Soy_Cereals,Soybean,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Philippines,Soybean Cereals,Soybean
+PHL,,Brd_Cereals,Wheat,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Philippines,Bread Cereals,Wheat
+ZAF,,Bly_Cereals,Barley,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Republic of South Africa,Barley Cereals,Barley
+ZAF,,Cereals,Corn,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Republic of South Africa,Cereals,Corn
+ZAF,,Other,Cotton,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Republic of South Africa,Other,Cotton
+ZAF,,Rce_Cereals,Rice,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Republic of South Africa,Rice Cereals,Rice
+ZAF,,Cereals,Sorghum,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Republic of South Africa,Cereals,Sorghum
+ZAF,,Soy_Cereals,Soybean,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Republic of South Africa,Soybean Cereals,Soybean
+ZAF,,Brd_Cereals,Wheat,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Republic of South Africa,Bread Cereals,Wheat
+RUS,,Bly_Cereals,Barley,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Russia,Barley Cereals,Barley
+RUS,,Cereals,Corn,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Russia,Cereals,Corn
+RUS,,Other,Cotton,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Russia,Other,Cotton
+RUS,,Rce_Cereals,Rice,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Russia,Rice Cereals,Rice
+RUS,,Cereals,Sorghum,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Russia,Cereals,Sorghum
+RUS,,Soy_Cereals,Soybean,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Russia,Soybean Cereals,Soybean
+RUS,,Brd_Cereals,Wheat,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Russia,Bread Cereals,Wheat
+KOR,,Bly_Cereals,Barley,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,South Korea,Barley Cereals,Barley
+KOR,,Cereals,Corn,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,South Korea,Cereals,Corn
+KOR,,Other,Cotton,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,South Korea,Other,Cotton
+KOR,,Rce_Cereals,Rice,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,South Korea,Rice Cereals,Rice
+KOR,,Cereals,Sorghum,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,South Korea,Cereals,Sorghum
+KOR,,Soy_Cereals,Soybean,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,South Korea,Soybean Cereals,Soybean
+KOR,,Brd_Cereals,Wheat,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,South Korea,Bread Cereals,Wheat
+THA,,Bly_Cereals,Barley,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Thailand,Barley Cereals,Barley
+THA,,Cereals,Corn,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Thailand,Cereals,Corn
+THA,,Other,Cotton,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Thailand,Other,Cotton
+THA,,Rce_Cereals,Rice,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Thailand,Rice Cereals,Rice
+THA,,Cereals,Sorghum,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Thailand,Cereals,Sorghum
+THA,,Soy_Cereals,Soybean,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Thailand,Soybean Cereals,Soybean
+THA,,Brd_Cereals,Wheat,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Thailand,Bread Cereals,Wheat
+UKR,,Bly_Cereals,Barley,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Ukraine,Barley Cereals,Barley
+UKR,,Cereals,Corn,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Ukraine,Cereals,Corn
+UKR,,Other,Cotton,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Ukraine,Other,Cotton
+UKR,,Rce_Cereals,Rice,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Ukraine,Rice Cereals,Rice
+UKR,,Cereals,Sorghum,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Ukraine,Cereals,Sorghum
+UKR,,Soy_Cereals,Soybean,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Ukraine,Soybean Cereals,Soybean
+UKR,,Brd_Cereals,Wheat,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Ukraine,Bread Cereals,Wheat
+USA,,Bly_Cereals,Barley,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,United States,Barley Cereals,Barley
+USA,,Cereals,Corn,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,United States,Cereals,Corn
+USA,,Other,Cotton,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,United States,Other,Cotton
+USA,,Rce_Cereals,Rice,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,United States,Rice Cereals,Rice
+USA,,Cereals,Sorghum,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,United States,Cereals,Sorghum
+USA,,Soy_Cereals,Soybean,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,United States,Soybean Cereals,Soybean
+USA,,Brd_Cereals,Wheat,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,United States,Bread Cereals,Wheat
+CAC,,Bly_Cereals,Barley,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Central America & Caribbean,Barley Cereals,Barley
+CAC,,Cereals,Corn,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Central America & Caribbean,Cereals,Corn
+CAC,,Other,Cotton,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Central America & Caribbean,Other,Cotton
+CAC,,Rce_Cereals,Rice,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Central America & Caribbean,Rice Cereals,Rice
+CAC,,Cereals,Sorghum,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Central America & Caribbean,Cereals,Sorghum
+CAC,,Soy_Cereals,Soybean,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Central America & Caribbean,Soybean Cereals,Soybean
+CAC,,Brd_Cereals,Wheat,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Central America & Caribbean,Bread Cereals,Wheat
+IRN,,Bly_Cereals,Barley,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Iran,Barley Cereals,Barley
+IRN,,Cereals,Corn,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Iran,Cereals,Corn
+IRN,,Other,Cotton,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Iran,Other,Cotton
+IRN,,Rce_Cereals,Rice,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Iran,Rice Cereals,Rice
+IRN,,Cereals,Sorghum,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Iran,Cereals,Sorghum
+IRN,,Soy_Cereals,Soybean,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Iran,Soybean Cereals,Soybean
+IRN,,Brd_Cereals,Wheat,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Iran,Bread Cereals,Wheat
+OAO,,Bly_Cereals,Barley,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Other Asia & Oceania,Barley Cereals,Barley
+OAO,,Cereals,Corn,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Other Asia & Oceania,Cereals,Corn
+OAO,,Other,Cotton,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Other Asia & Oceania,Other,Cotton
+OAO,,Rce_Cereals,Rice,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Other Asia & Oceania,Rice Cereals,Rice
+OAO,,Cereals,Sorghum,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Other Asia & Oceania,Cereals,Sorghum
+OAO,,Soy_Cereals,Soybean,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Other Asia & Oceania,Soybean Cereals,Soybean
+OAO,,Brd_Cereals,Wheat,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Other Asia & Oceania,Bread Cereals,Wheat
+OEU,,Bly_Cereals,Barley,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Other Europe,Barley Cereals,Barley
+OEU,,Cereals,Corn,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Other Europe,Cereals,Corn
+OEU,,Other,Cotton,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Other Europe,Other,Cotton
+OEU,,Rce_Cereals,Rice,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Other Europe,Rice Cereals,Rice
+OEU,,Cereals,Sorghum,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Other Europe,Cereals,Sorghum
+OEU,,Soy_Cereals,Soybean,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Other Europe,Soybean Cereals,Soybean
+OEU,,Brd_Cereals,Wheat,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Other Europe,Bread Cereals,Wheat
+OFS,,Bly_Cereals,Barley,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,"Other Former Soviet Union, 10 Countries",Barley Cereals,Barley
+OFS,,Cereals,Corn,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,"Other Former Soviet Union, 10 Countries",Cereals,Corn
+OFS,,Other,Cotton,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,"Other Former Soviet Union, 10 Countries",Other,Cotton
+OFS,,Rce_Cereals,Rice,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,"Other Former Soviet Union, 10 Countries",Rice Cereals,Rice
+OFS,,Cereals,Sorghum,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,"Other Former Soviet Union, 10 Countries",Cereals,Sorghum
+OFS,,Soy_Cereals,Soybean,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,"Other Former Soviet Union, 10 Countries",Soybean Cereals,Soybean
+OFS,,Brd_Cereals,Wheat,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,"Other Former Soviet Union, 10 Countries",Bread Cereals,Wheat
+OME,,Bly_Cereals,Barley,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Other Middle East,Barley Cereals,Barley
+OME,,Cereals,Corn,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Other Middle East,Cereals,Corn
+OME,,Other,Cotton,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Other Middle East,Other,Cotton
+OME,,Rce_Cereals,Rice,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Other Middle East,Rice Cereals,Rice
+OME,,Cereals,Sorghum,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Other Middle East,Cereals,Sorghum
+OME,,Soy_Cereals,Soybean,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Other Middle East,Soybean Cereals,Soybean
+OME,,Brd_Cereals,Wheat,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Other Middle East,Bread Cereals,Wheat
+ONA,,Bly_Cereals,Barley,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Other North Africa,Barley Cereals,Barley
+ONA,,Cereals,Corn,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Other North Africa,Cereals,Corn
+ONA,,Other,Cotton,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Other North Africa,Other,Cotton
+ONA,,Rce_Cereals,Rice,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Other North Africa,Rice Cereals,Rice
+ONA,,Cereals,Sorghum,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Other North Africa,Cereals,Sorghum
+ONA,,Soy_Cereals,Soybean,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Other North Africa,Soybean Cereals,Soybean
+ONA,,Brd_Cereals,Wheat,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Other North Africa,Bread Cereals,Wheat
+OSA,,Bly_Cereals,Barley,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Other South America,Barley Cereals,Barley
+OSA,,Cereals,Corn,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Other South America,Cereals,Corn
+OSA,,Other,Cotton,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Other South America,Other,Cotton
+OSA,,Rce_Cereals,Rice,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Other South America,Rice Cereals,Rice
+OSA,,Cereals,Sorghum,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Other South America,Cereals,Sorghum
+OSA,,Soy_Cereals,Soybean,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Other South America,Soybean Cereals,Soybean
+OSA,,Brd_Cereals,Wheat,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Other South America,Bread Cereals,Wheat
+SAU,,Bly_Cereals,Barley,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Saudi Arabia,Barley Cereals,Barley
+SAU,,Cereals,Corn,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Saudi Arabia,Cereals,Corn
+SAU,,Other,Cotton,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Saudi Arabia,Other,Cotton
+SAU,,Rce_Cereals,Rice,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Saudi Arabia,Rice Cereals,Rice
+SAU,,Cereals,Sorghum,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Saudi Arabia,Cereals,Sorghum
+SAU,,Soy_Cereals,Soybean,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Saudi Arabia,Soybean Cereals,Soybean
+SAU,,Brd_Cereals,Wheat,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Saudi Arabia,Bread Cereals,Wheat
+TUR,,Bly_Cereals,Barley,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Turkey,Barley Cereals,Barley
+TUR,,Cereals,Corn,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Turkey,Cereals,Corn
+TUR,,Other,Cotton,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Turkey,Other,Cotton
+TUR,,Rce_Cereals,Rice,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Turkey,Rice Cereals,Rice
+TUR,,Cereals,Sorghum,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Turkey,Cereals,Sorghum
+TUR,,Soy_Cereals,Soybean,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Turkey,Soybean Cereals,Soybean
+TUR,,Brd_Cereals,Wheat,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Turkey,Bread Cereals,Wheat
+BGD,,Bly_Cereals,Barley,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Bangladesh,Barley Cereals,Barley
+BGD,,Cereals,Corn,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Bangladesh,Cereals,Corn
+BGD,,Other,Cotton,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Bangladesh,Other,Cotton
+BGD,,Rce_Cereals,Rice,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Bangladesh,Rice Cereals,Rice
+BGD,,Cereals,Sorghum,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Bangladesh,Cereals,Sorghum
+BGD,,Soy_Cereals,Soybean,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Bangladesh,Soybean Cereals,Soybean
+BGD,,Brd_Cereals,Wheat,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Bangladesh,Bread Cereals,Wheat
+BUR,,Bly_Cereals,Barley,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Burma,Barley Cereals,Barley
+BUR,,Cereals,Corn,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Burma,Cereals,Corn
+BUR,,Other,Cotton,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Burma,Other,Cotton
+BUR,,Rce_Cereals,Rice,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Burma,Rice Cereals,Rice
+BUR,,Cereals,Sorghum,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Burma,Cereals,Sorghum
+BUR,,Soy_Cereals,Soybean,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Burma,Soybean Cereals,Soybean
+BUR,,Brd_Cereals,Wheat,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Burma,Bread Cereals,Wheat
+KHM,,Bly_Cereals,Barley,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Cambodia,Barley Cereals,Barley
+KHM,,Cereals,Corn,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Cambodia,Cereals,Corn
+KHM,,Other,Cotton,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Cambodia,Other,Cotton
+KHM,,Rce_Cereals,Rice,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Cambodia,Rice Cereals,Rice
+KHM,,Cereals,Sorghum,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Cambodia,Cereals,Sorghum
+KHM,,Soy_Cereals,Soybean,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Cambodia,Soybean Cereals,Soybean
+KHM,,Brd_Cereals,Wheat,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Cambodia,Bread Cereals,Wheat
+HKG,,Bly_Cereals,Barley,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Hong Kong,Barley Cereals,Barley
+HKG,,Cereals,Corn,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Hong Kong,Cereals,Corn
+HKG,,Other,Cotton,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Hong Kong,Other,Cotton
+HKG,,Rce_Cereals,Rice,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Hong Kong,Rice Cereals,Rice
+HKG,,Cereals,Sorghum,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Hong Kong,Cereals,Sorghum
+HKG,,Soy_Cereals,Soybean,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Hong Kong,Soybean Cereals,Soybean
+HKG,,Brd_Cereals,Wheat,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Hong Kong,Bread Cereals,Wheat
+IRQ,,Bly_Cereals,Barley,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Iraq,Barley Cereals,Barley
+IRQ,,Cereals,Corn,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Iraq,Cereals,Corn
+IRQ,,Other,Cotton,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Iraq,Other,Cotton
+IRQ,,Rce_Cereals,Rice,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Iraq,Rice Cereals,Rice
+IRQ,,Cereals,Sorghum,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Iraq,Cereals,Sorghum
+IRQ,,Soy_Cereals,Soybean,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Iraq,Soybean Cereals,Soybean
+IRQ,,Brd_Cereals,Wheat,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Iraq,Bread Cereals,Wheat
+MAR,,Bly_Cereals,Barley,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Morocco,Barley Cereals,Barley
+MAR,,Cereals,Corn,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Morocco,Cereals,Corn
+MAR,,Other,Cotton,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Morocco,Other,Cotton
+MAR,,Rce_Cereals,Rice,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Morocco,Rice Cereals,Rice
+MAR,,Cereals,Sorghum,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Morocco,Cereals,Sorghum
+MAR,,Soy_Cereals,Soybean,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Morocco,Soybean Cereals,Soybean
+MAR,,Brd_Cereals,Wheat,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Morocco,Bread Cereals,Wheat
+NZL,,Bly_Cereals,Barley,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,New Zealand,Barley Cereals,Barley
+NZL,,Cereals,Corn,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,New Zealand,Cereals,Corn
+NZL,,Other,Cotton,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,New Zealand,Other,Cotton
+NZL,,Rce_Cereals,Rice,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,New Zealand,Rice Cereals,Rice
+NZL,,Cereals,Sorghum,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,New Zealand,Cereals,Sorghum
+NZL,,Soy_Cereals,Soybean,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,New Zealand,Soybean Cereals,Soybean
+NZL,,Brd_Cereals,Wheat,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,New Zealand,Bread Cereals,Wheat
+NGA,,Bly_Cereals,Barley,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Nigeria,Barley Cereals,Barley
+NGA,,Cereals,Corn,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Nigeria,Cereals,Corn
+NGA,,Other,Cotton,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Nigeria,Other,Cotton
+NGA,,Rce_Cereals,Rice,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Nigeria,Rice Cereals,Rice
+NGA,,Cereals,Sorghum,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Nigeria,Cereals,Sorghum
+NGA,,Soy_Cereals,Soybean,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Nigeria,Soybean Cereals,Soybean
+NGA,,Brd_Cereals,Wheat,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Nigeria,Bread Cereals,Wheat
+OSS,,Bly_Cereals,Barley,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Other Sub-Saharan Africa,Barley Cereals,Barley
+OSS,,Cereals,Corn,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Other Sub-Saharan Africa,Cereals,Corn
+OSS,,Other,Cotton,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Other Sub-Saharan Africa,Other,Cotton
+OSS,,Rce_Cereals,Rice,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Other Sub-Saharan Africa,Rice Cereals,Rice
+OSS,,Cereals,Sorghum,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Other Sub-Saharan Africa,Cereals,Sorghum
+OSS,,Soy_Cereals,Soybean,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Other Sub-Saharan Africa,Soybean Cereals,Soybean
+OSS,,Brd_Cereals,Wheat,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Other Sub-Saharan Africa,Bread Cereals,Wheat
+PAK,,Bly_Cereals,Barley,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Pakistan,Barley Cereals,Barley
+PAK,,Cereals,Corn,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Pakistan,Cereals,Corn
+PAK,,Other,Cotton,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Pakistan,Other,Cotton
+PAK,,Rce_Cereals,Rice,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Pakistan,Rice Cereals,Rice
+PAK,,Cereals,Sorghum,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Pakistan,Cereals,Sorghum
+PAK,,Soy_Cereals,Soybean,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Pakistan,Soybean Cereals,Soybean
+PAK,,Brd_Cereals,Wheat,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Pakistan,Bread Cereals,Wheat
+TWN,,Bly_Cereals,Barley,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Taiwan,Barley Cereals,Barley
+TWN,,Cereals,Corn,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Taiwan,Cereals,Corn
+TWN,,Other,Cotton,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Taiwan,Other,Cotton
+TWN,,Rce_Cereals,Rice,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Taiwan,Rice Cereals,Rice
+TWN,,Cereals,Sorghum,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Taiwan,Cereals,Sorghum
+TWN,,Soy_Cereals,Soybean,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Taiwan,Soybean Cereals,Soybean
+TWN,,Brd_Cereals,Wheat,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Taiwan,Bread Cereals,Wheat
+VNM,,Bly_Cereals,Barley,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Vietnam,Barley Cereals,Barley
+VNM,,Cereals,Corn,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Vietnam,Cereals,Corn
+VNM,,Other,Cotton,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Vietnam,Other,Cotton
+VNM,,Rce_Cereals,Rice,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Vietnam,Rice Cereals,Rice
+VNM,,Cereals,Sorghum,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Vietnam,Cereals,Sorghum
+VNM,,Soy_Cereals,Soybean,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Vietnam,Soybean Cereals,Soybean
+VNM,,Brd_Cereals,Wheat,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,Vietnam,Bread Cereals,Wheat
+ECO,,Bly_Cereals,Barley,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,West African Community=Ecowas (minus Nigeria),Barley Cereals,Barley
+ECO,,Cereals,Corn,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,West African Community=Ecowas (minus Nigeria),Cereals,Corn
+ECO,,Other,Cotton,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,West African Community=Ecowas (minus Nigeria),Other,Cotton
+ECO,,Rce_Cereals,Rice,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,West African Community=Ecowas (minus Nigeria),Rice Cereals,Rice
+ECO,,Cereals,Sorghum,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,West African Community=Ecowas (minus Nigeria),Cereals,Sorghum
+ECO,,Soy_Cereals,Soybean,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,West African Community=Ecowas (minus Nigeria),Soybean Cereals,Soybean
+ECO,,Brd_Cereals,Wheat,,TFP Productivity Value Added,0,decimal form,RNC,TFP Productivity Value Added,West African Community=Ecowas (minus Nigeria),Bread Cereals,Wheat
+ARG,,Secondary,SoyMeal,,TFP Productivity Intermediates,0,decimal form,RNC,TFP Productivity Intermediates,Argentina,Soy related Secondary,Soy Meal
+AUS,,Secondary,SoyMeal,,TFP Productivity Intermediates,0,decimal form,RNC,TFP Productivity Intermediates,Australia,Soy related Secondary,Soy Meal
+BGD,,Secondary,SoyMeal,,TFP Productivity Intermediates,0,decimal form,RNC,TFP Productivity Intermediates,Bangladesh,Soy related Secondary,Soy Meal
+BRA,,Secondary,SoyMeal,,TFP Productivity Intermediates,0,decimal form,RNC,TFP Productivity Intermediates,Brazil,Soy related Secondary,Soy Meal
+BUR,,Secondary,SoyMeal,,TFP Productivity Intermediates,0,decimal form,RNC,TFP Productivity Intermediates,Burma,Soy related Secondary,Soy Meal
+CAC,,Secondary,SoyMeal,,TFP Productivity Intermediates,0,decimal form,RNC,TFP Productivity Intermediates,Central America & Caribbean,Soy related Secondary,Soy Meal
+CAN,,Secondary,SoyMeal,,TFP Productivity Intermediates,0,decimal form,RNC,TFP Productivity Intermediates,Canada,Soy related Secondary,Soy Meal
+CHN,,Secondary,SoyMeal,,TFP Productivity Intermediates,0,decimal form,RNC,TFP Productivity Intermediates,China,Soy related Secondary,Soy Meal
+ECO,,Secondary,SoyMeal,,TFP Productivity Intermediates,0,decimal form,RNC,TFP Productivity Intermediates,West African Community=Ecowas (minus Nigeria),Soy related Secondary,Soy Meal
+EGY,,Secondary,SoyMeal,,TFP Productivity Intermediates,0,decimal form,RNC,TFP Productivity Intermediates,Egypt,Soy related Secondary,Soy Meal
+EUR,,Secondary,SoyMeal,,TFP Productivity Intermediates,0,decimal form,RNC,TFP Productivity Intermediates,European Union,Soy related Secondary,Soy Meal
+HKG,,Secondary,SoyMeal,,TFP Productivity Intermediates,0,decimal form,RNC,TFP Productivity Intermediates,Hong Kong,Soy related Secondary,Soy Meal
+IDN,,Secondary,SoyMeal,,TFP Productivity Intermediates,0,decimal form,RNC,TFP Productivity Intermediates,Indonesia,Soy related Secondary,Soy Meal
+IND,,Secondary,SoyMeal,,TFP Productivity Intermediates,0,decimal form,RNC,TFP Productivity Intermediates,India,Soy related Secondary,Soy Meal
+IRN,,Secondary,SoyMeal,,TFP Productivity Intermediates,0,decimal form,RNC,TFP Productivity Intermediates,Iran,Soy related Secondary,Soy Meal
+IRQ,,Secondary,SoyMeal,,TFP Productivity Intermediates,0,decimal form,RNC,TFP Productivity Intermediates,Iraq,Soy related Secondary,Soy Meal
+JPN,,Secondary,SoyMeal,,TFP Productivity Intermediates,0,decimal form,RNC,TFP Productivity Intermediates,Japan,Soy related Secondary,Soy Meal
+KHM,,Secondary,SoyMeal,,TFP Productivity Intermediates,0,decimal form,RNC,TFP Productivity Intermediates,Cambodia,Soy related Secondary,Soy Meal
+KOR,,Secondary,SoyMeal,,TFP Productivity Intermediates,0,decimal form,RNC,TFP Productivity Intermediates,South Korea,Soy related Secondary,Soy Meal
+MAR,,Secondary,SoyMeal,,TFP Productivity Intermediates,0,decimal form,RNC,TFP Productivity Intermediates,Morocco,Soy related Secondary,Soy Meal
+MEX,,Secondary,SoyMeal,,TFP Productivity Intermediates,0,decimal form,RNC,TFP Productivity Intermediates,Mexico,Soy related Secondary,Soy Meal
+MYS,,Secondary,SoyMeal,,TFP Productivity Intermediates,0,decimal form,RNC,TFP Productivity Intermediates,Malaysia,Soy related Secondary,Soy Meal
+NGA,,Secondary,SoyMeal,,TFP Productivity Intermediates,0,decimal form,RNC,TFP Productivity Intermediates,Nigeria,Soy related Secondary,Soy Meal
+NZL,,Secondary,SoyMeal,,TFP Productivity Intermediates,0,decimal form,RNC,TFP Productivity Intermediates,New Zealand,Soy related Secondary,Soy Meal
+OAO,,Secondary,SoyMeal,,TFP Productivity Intermediates,0,decimal form,RNC,TFP Productivity Intermediates,Other Asia & Oceania,Soy related Secondary,Soy Meal
+OEU,,Secondary,SoyMeal,,TFP Productivity Intermediates,0,decimal form,RNC,TFP Productivity Intermediates,Other Europe,Soy related Secondary,Soy Meal
+OFS,,Secondary,SoyMeal,,TFP Productivity Intermediates,0,decimal form,RNC,TFP Productivity Intermediates,"Other Former Soviet Union, 10 Countries",Soy related Secondary,Soy Meal
+OME,,Secondary,SoyMeal,,TFP Productivity Intermediates,0,decimal form,RNC,TFP Productivity Intermediates,Other Middle East,Soy related Secondary,Soy Meal
+ONA,,Secondary,SoyMeal,,TFP Productivity Intermediates,0,decimal form,RNC,TFP Productivity Intermediates,Other North Africa,Soy related Secondary,Soy Meal
+OSA,,Secondary,SoyMeal,,TFP Productivity Intermediates,0,decimal form,RNC,TFP Productivity Intermediates,Other South America,Soy related Secondary,Soy Meal
+OSS,,Secondary,SoyMeal,,TFP Productivity Intermediates,0,decimal form,RNC,TFP Productivity Intermediates,Other Sub-Saharan Africa,Soy related Secondary,Soy Meal
+PAK,,Secondary,SoyMeal,,TFP Productivity Intermediates,0,decimal form,RNC,TFP Productivity Intermediates,Pakistan,Soy related Secondary,Soy Meal
+PHL,,Secondary,SoyMeal,,TFP Productivity Intermediates,0,decimal form,RNC,TFP Productivity Intermediates,Philippines,Soy related Secondary,Soy Meal
+RUS,,Secondary,SoyMeal,,TFP Productivity Intermediates,0,decimal form,RNC,TFP Productivity Intermediates,Russia,Soy related Secondary,Soy Meal
+SAU,,Secondary,SoyMeal,,TFP Productivity Intermediates,0,decimal form,RNC,TFP Productivity Intermediates,Saudi Arabia,Soy related Secondary,Soy Meal
+THA,,Secondary,SoyMeal,,TFP Productivity Intermediates,0,decimal form,RNC,TFP Productivity Intermediates,Thailand,Soy related Secondary,Soy Meal
+TUR,,Secondary,SoyMeal,,TFP Productivity Intermediates,0,decimal form,RNC,TFP Productivity Intermediates,Turkey,Soy related Secondary,Soy Meal
+TWN,,Secondary,SoyMeal,,TFP Productivity Intermediates,0,decimal form,RNC,TFP Productivity Intermediates,Taiwan,Soy related Secondary,Soy Meal
+UKR,,Secondary,SoyMeal,,TFP Productivity Intermediates,0,decimal form,RNC,TFP Productivity Intermediates,Ukraine,Soy related Secondary,Soy Meal
+USA,,Secondary,SoyMeal,,TFP Productivity Intermediates,0,decimal form,RNC,TFP Productivity Intermediates,United States,Soy related Secondary,Soy Meal
+VNM,,Secondary,SoyMeal,,TFP Productivity Intermediates,0,decimal form,RNC,TFP Productivity Intermediates,Vietnam,Soy related Secondary,Soy Meal
+ZAF,,Secondary,SoyMeal,,TFP Productivity Intermediates,0,decimal form,RNC,TFP Productivity Intermediates,Republic of South Africa,Soy related Secondary,Soy Meal
+ARG,,Secondary,SoyOil,,TFP Productivity Intermediates,0,decimal form,RNC,TFP Productivity Intermediates,Argentina,Soy related Secondary,Soy Oil
+AUS,,Secondary,SoyOil,,TFP Productivity Intermediates,0,decimal form,RNC,TFP Productivity Intermediates,Australia,Soy related Secondary,Soy Oil
+BGD,,Secondary,SoyOil,,TFP Productivity Intermediates,0,decimal form,RNC,TFP Productivity Intermediates,Bangladesh,Soy related Secondary,Soy Oil
+BRA,,Secondary,SoyOil,,TFP Productivity Intermediates,0,decimal form,RNC,TFP Productivity Intermediates,Brazil,Soy related Secondary,Soy Oil
+BUR,,Secondary,SoyOil,,TFP Productivity Intermediates,0,decimal form,RNC,TFP Productivity Intermediates,Burma,Soy related Secondary,Soy Oil
+CAC,,Secondary,SoyOil,,TFP Productivity Intermediates,0,decimal form,RNC,TFP Productivity Intermediates,Central America & Caribbean,Soy related Secondary,Soy Oil
+CAN,,Secondary,SoyOil,,TFP Productivity Intermediates,0,decimal form,RNC,TFP Productivity Intermediates,Canada,Soy related Secondary,Soy Oil
+CHN,,Secondary,SoyOil,,TFP Productivity Intermediates,0,decimal form,RNC,TFP Productivity Intermediates,China,Soy related Secondary,Soy Oil
+ECO,,Secondary,SoyOil,,TFP Productivity Intermediates,0,decimal form,RNC,TFP Productivity Intermediates,West African Community=Ecowas (minus Nigeria),Soy related Secondary,Soy Oil
+EGY,,Secondary,SoyOil,,TFP Productivity Intermediates,0,decimal form,RNC,TFP Productivity Intermediates,Egypt,Soy related Secondary,Soy Oil
+EUR,,Secondary,SoyOil,,TFP Productivity Intermediates,0,decimal form,RNC,TFP Productivity Intermediates,European Union,Soy related Secondary,Soy Oil
+HKG,,Secondary,SoyOil,,TFP Productivity Intermediates,0,decimal form,RNC,TFP Productivity Intermediates,Hong Kong,Soy related Secondary,Soy Oil
+IDN,,Secondary,SoyOil,,TFP Productivity Intermediates,0,decimal form,RNC,TFP Productivity Intermediates,Indonesia,Soy related Secondary,Soy Oil
+IND,,Secondary,SoyOil,,TFP Productivity Intermediates,0,decimal form,RNC,TFP Productivity Intermediates,India,Soy related Secondary,Soy Oil
+IRN,,Secondary,SoyOil,,TFP Productivity Intermediates,0,decimal form,RNC,TFP Productivity Intermediates,Iran,Soy related Secondary,Soy Oil
+IRQ,,Secondary,SoyOil,,TFP Productivity Intermediates,0,decimal form,RNC,TFP Productivity Intermediates,Iraq,Soy related Secondary,Soy Oil
+JPN,,Secondary,SoyOil,,TFP Productivity Intermediates,0,decimal form,RNC,TFP Productivity Intermediates,Japan,Soy related Secondary,Soy Oil
+KHM,,Secondary,SoyOil,,TFP Productivity Intermediates,0,decimal form,RNC,TFP Productivity Intermediates,Cambodia,Soy related Secondary,Soy Oil
+KOR,,Secondary,SoyOil,,TFP Productivity Intermediates,0,decimal form,RNC,TFP Productivity Intermediates,South Korea,Soy related Secondary,Soy Oil
+MAR,,Secondary,SoyOil,,TFP Productivity Intermediates,0,decimal form,RNC,TFP Productivity Intermediates,Morocco,Soy related Secondary,Soy Oil
+MEX,,Secondary,SoyOil,,TFP Productivity Intermediates,0,decimal form,RNC,TFP Productivity Intermediates,Mexico,Soy related Secondary,Soy Oil
+MYS,,Secondary,SoyOil,,TFP Productivity Intermediates,0,decimal form,RNC,TFP Productivity Intermediates,Malaysia,Soy related Secondary,Soy Oil
+NGA,,Secondary,SoyOil,,TFP Productivity Intermediates,0,decimal form,RNC,TFP Productivity Intermediates,Nigeria,Soy related Secondary,Soy Oil
+NZL,,Secondary,SoyOil,,TFP Productivity Intermediates,0,decimal form,RNC,TFP Productivity Intermediates,New Zealand,Soy related Secondary,Soy Oil
+OAO,,Secondary,SoyOil,,TFP Productivity Intermediates,0,decimal form,RNC,TFP Productivity Intermediates,Other Asia & Oceania,Soy related Secondary,Soy Oil
+OEU,,Secondary,SoyOil,,TFP Productivity Intermediates,0,decimal form,RNC,TFP Productivity Intermediates,Other Europe,Soy related Secondary,Soy Oil
+OFS,,Secondary,SoyOil,,TFP Productivity Intermediates,0,decimal form,RNC,TFP Productivity Intermediates,"Other Former Soviet Union, 10 Countries",Soy related Secondary,Soy Oil
+OME,,Secondary,SoyOil,,TFP Productivity Intermediates,0,decimal form,RNC,TFP Productivity Intermediates,Other Middle East,Soy related Secondary,Soy Oil
+ONA,,Secondary,SoyOil,,TFP Productivity Intermediates,0,decimal form,RNC,TFP Productivity Intermediates,Other North Africa,Soy related Secondary,Soy Oil
+OSA,,Secondary,SoyOil,,TFP Productivity Intermediates,0,decimal form,RNC,TFP Productivity Intermediates,Other South America,Soy related Secondary,Soy Oil
+OSS,,Secondary,SoyOil,,TFP Productivity Intermediates,0,decimal form,RNC,TFP Productivity Intermediates,Other Sub-Saharan Africa,Soy related Secondary,Soy Oil
+PAK,,Secondary,SoyOil,,TFP Productivity Intermediates,0,decimal form,RNC,TFP Productivity Intermediates,Pakistan,Soy related Secondary,Soy Oil
+PHL,,Secondary,SoyOil,,TFP Productivity Intermediates,0,decimal form,RNC,TFP Productivity Intermediates,Philippines,Soy related Secondary,Soy Oil
+RUS,,Secondary,SoyOil,,TFP Productivity Intermediates,0,decimal form,RNC,TFP Productivity Intermediates,Russia,Soy related Secondary,Soy Oil
+SAU,,Secondary,SoyOil,,TFP Productivity Intermediates,0,decimal form,RNC,TFP Productivity Intermediates,Saudi Arabia,Soy related Secondary,Soy Oil
+THA,,Secondary,SoyOil,,TFP Productivity Intermediates,0,decimal form,RNC,TFP Productivity Intermediates,Thailand,Soy related Secondary,Soy Oil
+TUR,,Secondary,SoyOil,,TFP Productivity Intermediates,0,decimal form,RNC,TFP Productivity Intermediates,Turkey,Soy related Secondary,Soy Oil
+TWN,,Secondary,SoyOil,,TFP Productivity Intermediates,0,decimal form,RNC,TFP Productivity Intermediates,Taiwan,Soy related Secondary,Soy Oil
+UKR,,Secondary,SoyOil,,TFP Productivity Intermediates,0,decimal form,RNC,TFP Productivity Intermediates,Ukraine,Soy related Secondary,Soy Oil
+USA,,Secondary,SoyOil,,TFP Productivity Intermediates,0,decimal form,RNC,TFP Productivity Intermediates,United States,Soy related Secondary,Soy Oil
+VNM,,Secondary,SoyOil,,TFP Productivity Intermediates,0,decimal form,RNC,TFP Productivity Intermediates,Vietnam,Soy related Secondary,Soy Oil
+ZAF,,Secondary,SoyOil,,TFP Productivity Intermediates,0,decimal form,RNC,TFP Productivity Intermediates,Republic of South Africa,Soy related Secondary,Soy Oil
+ARG,,Livestock,Beef,,TFP Productivity Feed Use,0,decimal form,RNC,TFP Productivity Feed Use,Argentina,Livestock,Beef and veal
+AUS,,Livestock,Beef,,TFP Productivity Feed Use,0,decimal form,RNC,TFP Productivity Feed Use,Australia,Livestock,Beef and veal
+BGD,,Livestock,Beef,,TFP Productivity Feed Use,0,decimal form,RNC,TFP Productivity Feed Use,Bangladesh,Livestock,Beef and veal
+BRA,,Livestock,Beef,,TFP Productivity Feed Use,0,decimal form,RNC,TFP Productivity Feed Use,Brazil,Livestock,Beef and veal
+BUR,,Livestock,Beef,,TFP Productivity Feed Use,0,decimal form,RNC,TFP Productivity Feed Use,Burma,Livestock,Beef and veal
+CAC,,Livestock,Beef,,TFP Productivity Feed Use,0,decimal form,RNC,TFP Productivity Feed Use,Central America & Caribbean,Livestock,Beef and veal
+CAN,,Livestock,Beef,,TFP Productivity Feed Use,0,decimal form,RNC,TFP Productivity Feed Use,Canada,Livestock,Beef and veal
+CHN,,Livestock,Beef,,TFP Productivity Feed Use,0,decimal form,RNC,TFP Productivity Feed Use,China,Livestock,Beef and veal
+ECO,,Livestock,Beef,,TFP Productivity Feed Use,0,decimal form,RNC,TFP Productivity Feed Use,West African Community=Ecowas (minus Nigeria),Livestock,Beef and veal
+EGY,,Livestock,Beef,,TFP Productivity Feed Use,0,decimal form,RNC,TFP Productivity Feed Use,Egypt,Livestock,Beef and veal
+EUR,,Livestock,Beef,,TFP Productivity Feed Use,0,decimal form,RNC,TFP Productivity Feed Use,European Union,Livestock,Beef and veal
+HKG,,Livestock,Beef,,TFP Productivity Feed Use,0,decimal form,RNC,TFP Productivity Feed Use,Hong Kong,Livestock,Beef and veal
+IDN,,Livestock,Beef,,TFP Productivity Feed Use,0,decimal form,RNC,TFP Productivity Feed Use,Indonesia,Livestock,Beef and veal
+IND,,Livestock,Beef,,TFP Productivity Feed Use,0,decimal form,RNC,TFP Productivity Feed Use,India,Livestock,Beef and veal
+IRN,,Livestock,Beef,,TFP Productivity Feed Use,0,decimal form,RNC,TFP Productivity Feed Use,Iran,Livestock,Beef and veal
+IRQ,,Livestock,Beef,,TFP Productivity Feed Use,0,decimal form,RNC,TFP Productivity Feed Use,Iraq,Livestock,Beef and veal
+JPN,,Livestock,Beef,,TFP Productivity Feed Use,0,decimal form,RNC,TFP Productivity Feed Use,Japan,Livestock,Beef and veal
+KHM,,Livestock,Beef,,TFP Productivity Feed Use,0,decimal form,RNC,TFP Productivity Feed Use,Cambodia,Livestock,Beef and veal
+KOR,,Livestock,Beef,,TFP Productivity Feed Use,0,decimal form,RNC,TFP Productivity Feed Use,South Korea,Livestock,Beef and veal
+MAR,,Livestock,Beef,,TFP Productivity Feed Use,0,decimal form,RNC,TFP Productivity Feed Use,Morocco,Livestock,Beef and veal
+MEX,,Livestock,Beef,,TFP Productivity Feed Use,0,decimal form,RNC,TFP Productivity Feed Use,Mexico,Livestock,Beef and veal
+MYS,,Livestock,Beef,,TFP Productivity Feed Use,0,decimal form,RNC,TFP Productivity Feed Use,Malaysia,Livestock,Beef and veal
+NGA,,Livestock,Beef,,TFP Productivity Feed Use,0,decimal form,RNC,TFP Productivity Feed Use,Nigeria,Livestock,Beef and veal
+NZL,,Livestock,Beef,,TFP Productivity Feed Use,0,decimal form,RNC,TFP Productivity Feed Use,New Zealand,Livestock,Beef and veal
+OAO,,Livestock,Beef,,TFP Productivity Feed Use,0,decimal form,RNC,TFP Productivity Feed Use,Other Asia & Oceania,Livestock,Beef and veal
+OEU,,Livestock,Beef,,TFP Productivity Feed Use,0,decimal form,RNC,TFP Productivity Feed Use,Other Europe,Livestock,Beef and veal
+OFS,,Livestock,Beef,,TFP Productivity Feed Use,0,decimal form,RNC,TFP Productivity Feed Use,"Other Former Soviet Union, 10 Countries",Livestock,Beef and veal
+OME,,Livestock,Beef,,TFP Productivity Feed Use,0,decimal form,RNC,TFP Productivity Feed Use,Other Middle East,Livestock,Beef and veal
+ONA,,Livestock,Beef,,TFP Productivity Feed Use,0,decimal form,RNC,TFP Productivity Feed Use,Other North Africa,Livestock,Beef and veal
+OSA,,Livestock,Beef,,TFP Productivity Feed Use,0,decimal form,RNC,TFP Productivity Feed Use,Other South America,Livestock,Beef and veal
+OSS,,Livestock,Beef,,TFP Productivity Feed Use,0,decimal form,RNC,TFP Productivity Feed Use,Other Sub-Saharan Africa,Livestock,Beef and veal
+PAK,,Livestock,Beef,,TFP Productivity Feed Use,0,decimal form,RNC,TFP Productivity Feed Use,Pakistan,Livestock,Beef and veal
+PHL,,Livestock,Beef,,TFP Productivity Feed Use,0,decimal form,RNC,TFP Productivity Feed Use,Philippines,Livestock,Beef and veal
+RUS,,Livestock,Beef,,TFP Productivity Feed Use,0,decimal form,RNC,TFP Productivity Feed Use,Russia,Livestock,Beef and veal
+SAU,,Livestock,Beef,,TFP Productivity Feed Use,0,decimal form,RNC,TFP Productivity Feed Use,Saudi Arabia,Livestock,Beef and veal
+THA,,Livestock,Beef,,TFP Productivity Feed Use,0,decimal form,RNC,TFP Productivity Feed Use,Thailand,Livestock,Beef and veal
+TUR,,Livestock,Beef,,TFP Productivity Feed Use,0,decimal form,RNC,TFP Productivity Feed Use,Turkey,Livestock,Beef and veal
+TWN,,Livestock,Beef,,TFP Productivity Feed Use,0,decimal form,RNC,TFP Productivity Feed Use,Taiwan,Livestock,Beef and veal
+UKR,,Livestock,Beef,,TFP Productivity Feed Use,0,decimal form,RNC,TFP Productivity Feed Use,Ukraine,Livestock,Beef and veal
+USA,,Livestock,Beef,,TFP Productivity Feed Use,0,decimal form,RNC,TFP Productivity Feed Use,United States,Livestock,Beef and veal
+VNM,,Livestock,Beef,,TFP Productivity Feed Use,0,decimal form,RNC,TFP Productivity Feed Use,Vietnam,Livestock,Beef and veal
+ZAF,,Livestock,Beef,,TFP Productivity Feed Use,0,decimal form,RNC,TFP Productivity Feed Use,Republic of South Africa,Livestock,Beef and veal
+ARG,,Livestock,Pork,,TFP Productivity Feed Use,0,decimal form,RNC,TFP Productivity Feed Use,Argentina,Livestock,Pork
+AUS,,Livestock,Pork,,TFP Productivity Feed Use,0,decimal form,RNC,TFP Productivity Feed Use,Australia,Livestock,Pork
+BGD,,Livestock,Pork,,TFP Productivity Feed Use,0,decimal form,RNC,TFP Productivity Feed Use,Bangladesh,Livestock,Pork
+BRA,,Livestock,Pork,,TFP Productivity Feed Use,0,decimal form,RNC,TFP Productivity Feed Use,Brazil,Livestock,Pork
+BUR,,Livestock,Pork,,TFP Productivity Feed Use,0,decimal form,RNC,TFP Productivity Feed Use,Burma,Livestock,Pork
+CAC,,Livestock,Pork,,TFP Productivity Feed Use,0,decimal form,RNC,TFP Productivity Feed Use,Central America & Caribbean,Livestock,Pork
+CAN,,Livestock,Pork,,TFP Productivity Feed Use,0,decimal form,RNC,TFP Productivity Feed Use,Canada,Livestock,Pork
+CHN,,Livestock,Pork,,TFP Productivity Feed Use,0,decimal form,RNC,TFP Productivity Feed Use,China,Livestock,Pork
+ECO,,Livestock,Pork,,TFP Productivity Feed Use,0,decimal form,RNC,TFP Productivity Feed Use,West African Community=Ecowas (minus Nigeria),Livestock,Pork
+EGY,,Livestock,Pork,,TFP Productivity Feed Use,0,decimal form,RNC,TFP Productivity Feed Use,Egypt,Livestock,Pork
+EUR,,Livestock,Pork,,TFP Productivity Feed Use,0,decimal form,RNC,TFP Productivity Feed Use,European Union,Livestock,Pork
+HKG,,Livestock,Pork,,TFP Productivity Feed Use,0,decimal form,RNC,TFP Productivity Feed Use,Hong Kong,Livestock,Pork
+IDN,,Livestock,Pork,,TFP Productivity Feed Use,0,decimal form,RNC,TFP Productivity Feed Use,Indonesia,Livestock,Pork
+IND,,Livestock,Pork,,TFP Productivity Feed Use,0,decimal form,RNC,TFP Productivity Feed Use,India,Livestock,Pork
+IRN,,Livestock,Pork,,TFP Productivity Feed Use,0,decimal form,RNC,TFP Productivity Feed Use,Iran,Livestock,Pork
+IRQ,,Livestock,Pork,,TFP Productivity Feed Use,0,decimal form,RNC,TFP Productivity Feed Use,Iraq,Livestock,Pork
+JPN,,Livestock,Pork,,TFP Productivity Feed Use,0,decimal form,RNC,TFP Productivity Feed Use,Japan,Livestock,Pork
+KHM,,Livestock,Pork,,TFP Productivity Feed Use,0,decimal form,RNC,TFP Productivity Feed Use,Cambodia,Livestock,Pork
+KOR,,Livestock,Pork,,TFP Productivity Feed Use,0,decimal form,RNC,TFP Productivity Feed Use,South Korea,Livestock,Pork
+MAR,,Livestock,Pork,,TFP Productivity Feed Use,0,decimal form,RNC,TFP Productivity Feed Use,Morocco,Livestock,Pork
+MEX,,Livestock,Pork,,TFP Productivity Feed Use,0,decimal form,RNC,TFP Productivity Feed Use,Mexico,Livestock,Pork
+MYS,,Livestock,Pork,,TFP Productivity Feed Use,0,decimal form,RNC,TFP Productivity Feed Use,Malaysia,Livestock,Pork
+NGA,,Livestock,Pork,,TFP Productivity Feed Use,0,decimal form,RNC,TFP Productivity Feed Use,Nigeria,Livestock,Pork
+NZL,,Livestock,Pork,,TFP Productivity Feed Use,0,decimal form,RNC,TFP Productivity Feed Use,New Zealand,Livestock,Pork
+OAO,,Livestock,Pork,,TFP Productivity Feed Use,0,decimal form,RNC,TFP Productivity Feed Use,Other Asia & Oceania,Livestock,Pork
+OEU,,Livestock,Pork,,TFP Productivity Feed Use,0,decimal form,RNC,TFP Productivity Feed Use,Other Europe,Livestock,Pork
+OFS,,Livestock,Pork,,TFP Productivity Feed Use,0,decimal form,RNC,TFP Productivity Feed Use,"Other Former Soviet Union, 10 Countries",Livestock,Pork
+OME,,Livestock,Pork,,TFP Productivity Feed Use,0,decimal form,RNC,TFP Productivity Feed Use,Other Middle East,Livestock,Pork
+ONA,,Livestock,Pork,,TFP Productivity Feed Use,0,decimal form,RNC,TFP Productivity Feed Use,Other North Africa,Livestock,Pork
+OSA,,Livestock,Pork,,TFP Productivity Feed Use,0,decimal form,RNC,TFP Productivity Feed Use,Other South America,Livestock,Pork
+OSS,,Livestock,Pork,,TFP Productivity Feed Use,0,decimal form,RNC,TFP Productivity Feed Use,Other Sub-Saharan Africa,Livestock,Pork
+PAK,,Livestock,Pork,,TFP Productivity Feed Use,0,decimal form,RNC,TFP Productivity Feed Use,Pakistan,Livestock,Pork
+PHL,,Livestock,Pork,,TFP Productivity Feed Use,0,decimal form,RNC,TFP Productivity Feed Use,Philippines,Livestock,Pork
+RUS,,Livestock,Pork,,TFP Productivity Feed Use,0,decimal form,RNC,TFP Productivity Feed Use,Russia,Livestock,Pork
+SAU,,Livestock,Pork,,TFP Productivity Feed Use,0,decimal form,RNC,TFP Productivity Feed Use,Saudi Arabia,Livestock,Pork
+THA,,Livestock,Pork,,TFP Productivity Feed Use,0,decimal form,RNC,TFP Productivity Feed Use,Thailand,Livestock,Pork
+TUR,,Livestock,Pork,,TFP Productivity Feed Use,0,decimal form,RNC,TFP Productivity Feed Use,Turkey,Livestock,Pork
+TWN,,Livestock,Pork,,TFP Productivity Feed Use,0,decimal form,RNC,TFP Productivity Feed Use,Taiwan,Livestock,Pork
+UKR,,Livestock,Pork,,TFP Productivity Feed Use,0,decimal form,RNC,TFP Productivity Feed Use,Ukraine,Livestock,Pork
+USA,,Livestock,Pork,,TFP Productivity Feed Use,0,decimal form,RNC,TFP Productivity Feed Use,United States,Livestock,Pork
+VNM,,Livestock,Pork,,TFP Productivity Feed Use,0,decimal form,RNC,TFP Productivity Feed Use,Vietnam,Livestock,Pork
+ZAF,,Livestock,Pork,,TFP Productivity Feed Use,0,decimal form,RNC,TFP Productivity Feed Use,Republic of South Africa,Livestock,Pork
+ARG,,Livestock,Poultry,,TFP Productivity Feed Use,0,decimal form,RNC,TFP Productivity Feed Use,Argentina,Livestock,Poultry
+AUS,,Livestock,Poultry,,TFP Productivity Feed Use,0,decimal form,RNC,TFP Productivity Feed Use,Australia,Livestock,Poultry
+BGD,,Livestock,Poultry,,TFP Productivity Feed Use,0,decimal form,RNC,TFP Productivity Feed Use,Bangladesh,Livestock,Poultry
+BRA,,Livestock,Poultry,,TFP Productivity Feed Use,0,decimal form,RNC,TFP Productivity Feed Use,Brazil,Livestock,Poultry
+BUR,,Livestock,Poultry,,TFP Productivity Feed Use,0,decimal form,RNC,TFP Productivity Feed Use,Burma,Livestock,Poultry
+CAC,,Livestock,Poultry,,TFP Productivity Feed Use,0,decimal form,RNC,TFP Productivity Feed Use,Central America & Caribbean,Livestock,Poultry
+CAN,,Livestock,Poultry,,TFP Productivity Feed Use,0,decimal form,RNC,TFP Productivity Feed Use,Canada,Livestock,Poultry
+CHN,,Livestock,Poultry,,TFP Productivity Feed Use,0,decimal form,RNC,TFP Productivity Feed Use,China,Livestock,Poultry
+ECO,,Livestock,Poultry,,TFP Productivity Feed Use,0,decimal form,RNC,TFP Productivity Feed Use,West African Community=Ecowas (minus Nigeria),Livestock,Poultry
+EGY,,Livestock,Poultry,,TFP Productivity Feed Use,0,decimal form,RNC,TFP Productivity Feed Use,Egypt,Livestock,Poultry
+EUR,,Livestock,Poultry,,TFP Productivity Feed Use,0,decimal form,RNC,TFP Productivity Feed Use,European Union,Livestock,Poultry
+HKG,,Livestock,Poultry,,TFP Productivity Feed Use,0,decimal form,RNC,TFP Productivity Feed Use,Hong Kong,Livestock,Poultry
+IDN,,Livestock,Poultry,,TFP Productivity Feed Use,0,decimal form,RNC,TFP Productivity Feed Use,Indonesia,Livestock,Poultry
+IND,,Livestock,Poultry,,TFP Productivity Feed Use,0,decimal form,RNC,TFP Productivity Feed Use,India,Livestock,Poultry
+IRN,,Livestock,Poultry,,TFP Productivity Feed Use,0,decimal form,RNC,TFP Productivity Feed Use,Iran,Livestock,Poultry
+IRQ,,Livestock,Poultry,,TFP Productivity Feed Use,0,decimal form,RNC,TFP Productivity Feed Use,Iraq,Livestock,Poultry
+JPN,,Livestock,Poultry,,TFP Productivity Feed Use,0,decimal form,RNC,TFP Productivity Feed Use,Japan,Livestock,Poultry
+KHM,,Livestock,Poultry,,TFP Productivity Feed Use,0,decimal form,RNC,TFP Productivity Feed Use,Cambodia,Livestock,Poultry
+KOR,,Livestock,Poultry,,TFP Productivity Feed Use,0,decimal form,RNC,TFP Productivity Feed Use,South Korea,Livestock,Poultry
+MAR,,Livestock,Poultry,,TFP Productivity Feed Use,0,decimal form,RNC,TFP Productivity Feed Use,Morocco,Livestock,Poultry
+MEX,,Livestock,Poultry,,TFP Productivity Feed Use,0,decimal form,RNC,TFP Productivity Feed Use,Mexico,Livestock,Poultry
+MYS,,Livestock,Poultry,,TFP Productivity Feed Use,0,decimal form,RNC,TFP Productivity Feed Use,Malaysia,Livestock,Poultry
+NGA,,Livestock,Poultry,,TFP Productivity Feed Use,0,decimal form,RNC,TFP Productivity Feed Use,Nigeria,Livestock,Poultry
+NZL,,Livestock,Poultry,,TFP Productivity Feed Use,0,decimal form,RNC,TFP Productivity Feed Use,New Zealand,Livestock,Poultry
+OAO,,Livestock,Poultry,,TFP Productivity Feed Use,0,decimal form,RNC,TFP Productivity Feed Use,Other Asia & Oceania,Livestock,Poultry
+OEU,,Livestock,Poultry,,TFP Productivity Feed Use,0,decimal form,RNC,TFP Productivity Feed Use,Other Europe,Livestock,Poultry
+OFS,,Livestock,Poultry,,TFP Productivity Feed Use,0,decimal form,RNC,TFP Productivity Feed Use,"Other Former Soviet Union, 10 Countries",Livestock,Poultry
+OME,,Livestock,Poultry,,TFP Productivity Feed Use,0,decimal form,RNC,TFP Productivity Feed Use,Other Middle East,Livestock,Poultry
+ONA,,Livestock,Poultry,,TFP Productivity Feed Use,0,decimal form,RNC,TFP Productivity Feed Use,Other North Africa,Livestock,Poultry
+OSA,,Livestock,Poultry,,TFP Productivity Feed Use,0,decimal form,RNC,TFP Productivity Feed Use,Other South America,Livestock,Poultry
+OSS,,Livestock,Poultry,,TFP Productivity Feed Use,0,decimal form,RNC,TFP Productivity Feed Use,Other Sub-Saharan Africa,Livestock,Poultry
+PAK,,Livestock,Poultry,,TFP Productivity Feed Use,0,decimal form,RNC,TFP Productivity Feed Use,Pakistan,Livestock,Poultry
+PHL,,Livestock,Poultry,,TFP Productivity Feed Use,0,decimal form,RNC,TFP Productivity Feed Use,Philippines,Livestock,Poultry
+RUS,,Livestock,Poultry,,TFP Productivity Feed Use,0,decimal form,RNC,TFP Productivity Feed Use,Russia,Livestock,Poultry
+SAU,,Livestock,Poultry,,TFP Productivity Feed Use,0,decimal form,RNC,TFP Productivity Feed Use,Saudi Arabia,Livestock,Poultry
+THA,,Livestock,Poultry,,TFP Productivity Feed Use,0,decimal form,RNC,TFP Productivity Feed Use,Thailand,Livestock,Poultry
+TUR,,Livestock,Poultry,,TFP Productivity Feed Use,0,decimal form,RNC,TFP Productivity Feed Use,Turkey,Livestock,Poultry
+TWN,,Livestock,Poultry,,TFP Productivity Feed Use,0,decimal form,RNC,TFP Productivity Feed Use,Taiwan,Livestock,Poultry
+UKR,,Livestock,Poultry,,TFP Productivity Feed Use,0,decimal form,RNC,TFP Productivity Feed Use,Ukraine,Livestock,Poultry
+USA,,Livestock,Poultry,,TFP Productivity Feed Use,0,decimal form,RNC,TFP Productivity Feed Use,United States,Livestock,Poultry
+VNM,,Livestock,Poultry,,TFP Productivity Feed Use,0,decimal form,RNC,TFP Productivity Feed Use,Vietnam,Livestock,Poultry
+ZAF,,Livestock,Poultry,,TFP Productivity Feed Use,0,decimal form,RNC,TFP Productivity Feed Use,Republic of South Africa,Livestock,Poultry

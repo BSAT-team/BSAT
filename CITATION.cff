@@ -1,0 +1,37 @@
+cff-version: 1.2.0
+title: "BSAT: Baseline Scenario Analysis Tool"
+message: "If you use this software, please cite it as below."
+type: software
+version: 1.0.0
+date-released: 2026-11-19
+repository-code: "https://github.com/BSAT-team/BSAT"
+license: MIT
+authors:
+  - family-names: Cardoso
+    given-names: Diego S.
+    affiliation: "University of Illinois Urbana-Champaign"
+  - family-names: Hillberry
+    given-names: Russell
+    affiliation: "Purdue University"
+  - family-names: Jimenez
+    given-names: Manuel I.
+    affiliation: "Purdue University"
+  - family-names: Xiong
+    given-names: Hao
+    affiliation: "Purdue University"
+  - family-names: Li
+    given-names: Yuansen
+    affiliation: "Purdue University"
+  - family-names: Peng
+    given-names: Yongzhen
+    affiliation: "University of Illinois Urbana-Champaign"
+  - family-names: Kwon
+    given-names: Ji Yong
+    affiliation: "Purdue University"
+abstract: "Calibrated multi-region partial-equilibrium model of 12 agricultural commodities reproducing the USDA international baseline projections, with a data pipeline and a scenario dashboard. Developed under USDA Economic Research Service Cooperative Agreement 58-3000-2-0085."
+keywords:
+  - agricultural economics
+  - partial equilibrium
+  - USDA baseline
+  - JuMP
+  - PATH solver

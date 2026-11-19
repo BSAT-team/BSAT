@@ -1,0 +1,151 @@
+---
+title: "Command line reference"
+---
+
+All commands are run from the repository root. The scripts in `scripts/` locate the repository from their own path, so they can also be run from any directory. `julia` means the portable Julia installed by the bootstrap (`.bsat_local/julia/bin/julia`, or `.bsat_local\julia\bin\julia.exe` on Windows) or, in the container, the `julia` on `PATH`.
+
+## run_model.jl
+
+Runs the model on an input package and writes an output package.
+
+```bash
+julia --project=code/model code/model/run_model.jl --input <Input.zip> [options]
+```
+
+| Option | Meaning | Default |
+|---|---|---|
+| `--input <Input.zip>` | input package (required) | |
+| `--output <Output.zip>` | output package | `Output.zip` in the current directory |
+| `--years <from:to>` | years to simulate; a comma list such as `2025,2026` also works | `2025:2034` |
+| `--workdir <folder>` | working folder for the per-year files | a temporary folder |
+| `--keep-workdir` | keep the working folder after the run | deleted |
+| `--license <path>` | PATH license file | `code/model/path_license.txt` |
+| `-h`, `--help` | print usage and exit | |
+
+Paths are resolved relative to the current directory. On exit the command prints the years solved, the years skipped (if any) and the elapsed time. It calls [`run_bsat`](julia.qmd#run_bsat).
+
+## make_shock.jl
+
+Derives a scenario input package from a template package by editing `data_shocks.csv`.
+
+```bash
+julia --project=code/model code/model/make_shock.jl --template <Input.zip> --inputpkg <Input.zip> \
+      --shock <attribute> --value <decimal> [options]
+julia --project=code/model code/model/make_shock.jl --list
+```
+
+| Option | Meaning | Default |
+|---|---|---|
+| `--template <Input.zip>` | package to start from (required) | |
+| `--inputpkg <Input.zip>` | scenario input package to write (required); it is the input of the next step, `run_model.jl --input` | |
+| `--shock <attribute>` | one of the ten shock attributes, quoted if it contains spaces (required) | |
+| `--value <decimal>` | the shock in decimal form (required) | |
+| `--regions A,B,C` | ISO-3 region codes | all |
+| `--commodities A,B` | commodity codes; ignored for region-level shocks | all |
+| `--years 2026:2034` | a range or a comma list | all |
+| `--add` | add the value to the existing one instead of replacing it | replace |
+| `--description "text"` | scenario description written to `METADATA.csv` | unchanged |
+| `--list` | print the ten shock attributes and their meaning, then exit | |
+| `-h`, `--help` | print usage and exit | |
+
+Prints `Wrote <path>: <n> rows of "<attribute>" set to <value>`. Errors if a required option is missing, the attribute is unknown, or no row matches the selection. `--output` is rejected with a message pointing to `--inputpkg`, because the package this command writes is an input package. It calls [`make_shock`](julia.qmd#make_shock).
+
+## run_scenario.jl
+
+Builds a scenario input package from an edited shocks CSV, prints the rows that differ from the template, runs the model and writes the output package.
+
+```bash
+julia --project=code/model code/model/run_scenario.jl --shocks <edited.csv> [options]
+```
+
+| Option | Meaning | Default |
+|---|---|---|
+| `--shocks <edited.csv>` | a copy of `data_shocks.csv` with edited values, or only the rows to change; columns `region`, `year`, `commodity`, `attribute`, `value` (required) | |
+| `--output <Output.zip>` | output package; the input package is written beside it as `<stem>_Input.zip` | `output/<csv name>_Output.zip` |
+| `--description "text"` | scenario description written to `METADATA.csv` | `Scenario from <csv name>` |
+| `--template <Input.zip>` | package whose `data_shocks.csv` is edited | `data/packages/baseline_2025_Input.zip` |
+| `--years <from:to>` | years to simulate; a comma list also works | `2025:2034` |
+| `--build-only` | write the input package and print the changes; do not run the model | run |
+| `--license <path>` | PATH license file | `code/model/path_license.txt` |
+| `-h`, `--help` | print usage and exit | |
+
+Rows that cannot be applied are reported in warnings (line numbers and reason) and skipped; the command errors if no row can be applied or a required column is missing. After the build it prints the input package path with the counts of rows applied, skipped and changed, then the model summary of `run_model.jl`. It calls [`build_scenario`](julia.qmd#build_scenario) and [`run_bsat`](julia.qmd#run_bsat). The CSV rules are in `data/scenarios/README.md`.
+
+## Regression test
+
+```bash
+julia --project=code/model code/model/test/runtests.jl
+```
+
+No arguments. Runs the `make_shock` and `build_scenario` checks (`test/test_scenario.jl`, also runnable on its own, about a minute) and the two model regression cases (about four minutes); see [Model](../model.qmd#regression-test).
+
+## scripts/bootstrap_unix.sh and scripts\bootstrap_windows.bat
+
+```bash
+scripts/bootstrap_unix.sh [--no-dashboard]
+scripts\bootstrap_windows.bat [--no-dashboard]
+```
+
+One-time portable install under `.bsat_local/` (or `BSAT_LOCAL_DIR`): micromamba, the `bsat` conda environment from `setup/environment.yml` (R), Julia 1.12.1, the Julia packages of `code/model/Project.toml`, and last the optional `bsat-dashboard` conda environment from `setup/environment-dashboard.yml` (Python 3.11, pandas, numpy, altair, streamlit).
+
+| Option or variable | Meaning | Default |
+|---|---|---|
+| `--no-dashboard` | skip the `bsat-dashboard` environment; the dashboard is then used hosted | created |
+| `BSAT_LOCAL_DIR` | install folder, read by the bootstrap and every run script | `.bsat_local` inside the repository |
+
+Re-running skips completed steps; an environment counts as present when its `conda-meta/history` file exists. Each environment is created in a fresh folder and, on failure, retried once after `micromamba clean -a` and removal of `<install folder>/mamba/pkgs`. A failure of the `bsat` environment, Julia or the Julia packages is fatal (the Windows script exits with code 1 and `Bootstrap FAILED`); a failure of the `bsat-dashboard` environment prints a warning and the bootstrap completes. On Windows, set `BSAT_LOCAL_DIR` to a short path such as `C:\bsat_local` when package extraction fails ([Troubleshooting](../installation/troubleshooting.qmd#package-cache-errors-during-extraction)).
+
+## scripts/run_model_unix.sh and scripts\run_model_windows.bat
+
+```bash
+scripts/run_model_unix.sh [Input.zip] [Output.zip] [years]
+scripts\run_model_windows.bat [Input.zip] [Output.zip] [years]
+```
+
+| Argument | Default |
+|---|---|
+| `Input.zip` | `data/packages/baseline_2025_Input.zip` |
+| `Output.zip` | `output/baseline_Output.zip` |
+| `years` | `2025:2034` |
+
+Checks that Julia and `code/model/path_license.txt` exist and that the input package is found, creates the output folder, then runs `run_model.jl` with `--input`, `--output` and `--years`. The Unix script uses `<install folder>/julia/bin/julia` when present and otherwise the `julia` on `PATH`; the Windows script requires the portable Julia. The install folder is `.bsat_local/` or `BSAT_LOCAL_DIR`.
+
+## scripts/run_scenario_unix.sh and scripts\run_scenario_windows.bat
+
+```bash
+scripts/run_scenario_unix.sh <edited.csv> [Output.zip] [description]
+scripts\run_scenario_windows.bat <edited.csv> [Output.zip] [description]
+```
+
+| Argument | Default |
+|---|---|
+| `edited.csv` | required |
+| `Output.zip` | `output/<csv name>_Output.zip` |
+| `description` | `Scenario from <csv name>` |
+
+Same checks and Julia lookup as the run scripts, then `run_scenario.jl` with `--shocks`, `--output` and, when given, `--description`. The input package lands beside the output as `<stem>_Input.zip`.
+
+## scripts/run_r_pipeline_unix.sh and scripts\run_r_pipeline_windows.bat
+
+No arguments. Runs `Rscript main.R` from `code/processing/` inside the `bsat` environment. Set `BSAT_DATA_DIR` to use a data folder other than `<repo>/data`. The Unix script finds micromamba under `<install folder>/bin/` or on `PATH`, and the environment at `<install folder>/envs/bsat`, `$BSAT_ENV` or `/opt/envs/bsat` (the container); the Windows script requires the portable install. The install folder is `.bsat_local/` or `BSAT_LOCAL_DIR`.
+
+## scripts/run_dashboard_unix.sh and scripts\run_dashboard_windows.bat
+
+No arguments. Runs `streamlit run app.py` from `code/visualization/` inside the `bsat-dashboard` environment, found at `<install folder>/envs/bsat-dashboard`, `$BSAT_DASHBOARD_ENV` or `/opt/envs/bsat-dashboard` (the container); the Windows script looks under the install folder only. If the environment is absent (bootstrap run with `--no-dashboard`, or its creation failed), the script exits with a message naming the hosted dashboard, <https://huggingface.co/spaces/bsat-team/BSAT_Viz>. The dashboard listens on <http://localhost:8501>.
+
+## scripts/fetch_large_raw_data.sh and scripts\fetch_large_raw_data.bat
+
+```bash
+scripts/fetch_large_raw_data.sh              # report which of the five undistributed raw files are present
+scripts/fetch_large_raw_data.sh --download   # download the CEPII BACI archive and extract the 2014 file
+```
+
+Concerns the five files under `data/raw/trade_barriers/` that are not distributed with the repository: `BACI_HS92_Y2014_V202401b.csv` (CEPII, about 460 MB, extracted from a 2.4 GB archive downloaded with `curl`, resumable on Unix), `tariff_ave_2014_WITS.csv` (WITS, about 245 MB), `tariff_ave_WITS_2023.csv` and `ag_hs_products.csv` (WITS, UNCTAD TRAINS terms) and `ag_tariff_USA_2014.xls` (WTO Tariff and Trade Data, WTO terms). The script reports the status of all five; only the CEPII file is downloaded, with `--download`. For the WITS and WTO files it prints how to obtain them from the source (WITS Advanced Query, TRAINS, all reporters, all partners, all HS6 products, year 2014 or 2023, AVE of applied tariff, CSV export; the `WTO_HS_Aggri` product group as CSV; the WTO export of the United States applied MFN schedule for 2014) and the names to save them under. None of the five is needed to run the pipeline: `main.R` reuses the derived files shipped in `data/interim/` when they are absent. The Unix script needs `unzip`. See [Raw data sources](../data-sources.qmd#large-files).
+
+## Rscript main.R
+
+```bash
+cd code/processing && Rscript main.R
+```
+
+Equivalent to the run scripts without the environment activation; needs R 4.4 or later with the packages listed in `R/00_load_packages.R` (nothing is installed; a missing package stops the run with its name). `main.R` sets its own working directory, reads `BSAT_DATA_DIR`, creates `interim/` and `processed/` under the data root, and sources the numbered scripts in order. Details in [Processing pipeline](../pipeline.qmd).

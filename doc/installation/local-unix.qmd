@@ -1,0 +1,117 @@
+---
+title: "Local installation: macOS and Linux"
+---
+
+Everything installs under `.bsat_local/` inside the repository folder, or under the folder named by the `BSAT_LOCAL_DIR` environment variable if it is set. Nothing touches system directories, shell configuration files or package managers; `PATH` changes are made inside each script and discarded when it exits.
+
+Disk space: about 4 to 6 GB. First run: 10 to 30 minutes, depending on network speed.
+
+## Prerequisites
+
+- macOS 12 or later, or a current Linux distribution (x86_64 or aarch64).
+- `bash`, `curl` and `tar` on your `PATH` (pre-installed on macOS and most Linux distributions).
+- No administrator or `sudo` rights.
+
+## Step 1: get the repository
+
+```bash
+git clone https://github.com/BSAT-team/BSAT.git
+cd bsat
+```
+
+If you downloaded BSAT as a ZIP file instead (the green "Code" button on the repository page, then "Download ZIP"), unpack it, open your terminal application (macOS: Applications > Utilities > Terminal, or search "Terminal" in Spotlight; Linux: your usual terminal application) and `cd` into the unpacked folder. If the execute bit was stripped from the scripts:
+
+```bash
+chmod +x scripts/*.sh
+```
+
+## Step 2: bootstrap
+
+From the repository root:
+
+```bash
+scripts/bootstrap_unix.sh
+```
+
+The script:
+
+1. Detects the platform (Linux x86_64, Linux aarch64, macOS Intel, macOS Apple Silicon).
+2. Downloads micromamba 2.8.1 to `.bsat_local/bin/`.
+3. Creates the `bsat` conda environment at `.bsat_local/envs/bsat` from `setup/environment.yml` (R 4.5 and the pipeline's R packages). Required. An existing environment with another R version is recreated.
+4. Downloads Julia 1.12.1 to `.bsat_local/julia/`.
+5. Runs `Pkg.instantiate()` and `Pkg.precompile()` for `code/model/Project.toml` (JuMP, PATHSolver, CSV, DataFrames and the rest of the manifest).
+6. Creates the `bsat-dashboard` conda environment at `.bsat_local/envs/bsat-dashboard` from `setup/environment-dashboard.yml` (Python 3.11, pandas, numpy, altair, streamlit). Optional: it is only needed to run the dashboard locally.
+
+The two conda environments are separate on purpose. The model and the pipeline never needed Python; Streamlit pulls in pyarrow and libarrow, a large dependency tree that failed to extract on a locked-down Windows laptop. The bootstrap therefore creates the dashboard environment last, reports a failure there as a warning rather than an error, and finishes with "Bootstrap complete" either way. The hosted dashboard at <https://huggingface.co/spaces/bsat-team/BSAT_Viz> is the default way to view results, so the environment can be skipped:
+
+```bash
+scripts/bootstrap_unix.sh --no-dashboard
+```
+
+Each environment is created in a fresh folder (a partial environment from an interrupted run is removed first). If creation fails, the script clears the package cache (`micromamba clean -a` and `.bsat_local/mamba/pkgs`) and tries once more. An environment counts as already present when `conda-meta/history` exists in its folder.
+
+To install somewhere other than `.bsat_local/`, set `BSAT_LOCAL_DIR` before the bootstrap and before every run script:
+
+```bash
+export BSAT_LOCAL_DIR=$HOME/bsat_local
+scripts/bootstrap_unix.sh
+```
+
+Re-running the script is safe: completed steps are skipped. Do not move or rename the repository folder afterwards; the environment records absolute paths (see [Troubleshooting](troubleshooting.qmd#the-repository-folder-was-moved-or-renamed)).
+
+## Step 3: add the PATH solver license
+
+The PATH solver needs a free license string at run time.
+
+1. Open <https://pages.cs.wisc.edu/~ferris/path/LICENSE> and copy the string in the "Variable value" field.
+2. Create the license file from the template:
+
+   ```bash
+   cp code/model/path_license.txt.example code/model/path_license.txt
+   ```
+
+3. Edit `code/model/path_license.txt` and replace the placeholder line with the string. Lines starting with `#` and blank lines are ignored; the first other line is the license. Do not add quotes or extra spaces.
+
+The runner reads this file at every start. It stops with a message if the file is missing, holds only comments, or still contains the placeholder.
+
+## Step 4: run the model
+
+```bash
+scripts/run_model_unix.sh
+```
+
+The script checks that Julia and the license file exist, creates the output folder, and runs `code/model/run_model.jl` on `data/packages/baseline_2025_Input.zip` for 2025 to 2034, writing `output/baseline_Output.zip`. It uses the portable Julia under `.bsat_local/` when present and otherwise the `julia` on your `PATH`.
+
+Arguments, all optional and positional:
+
+```bash
+scripts/run_model_unix.sh [Input.zip] [Output.zip] [years]
+scripts/run_model_unix.sh output/my_case_Input.zip output/my_case_Output.zip 2025:2034
+```
+
+Progress and the PATH solver log print to the terminal and are also stored in `SCENARIO_SOLVER_LOG.txt` inside the output package. A ten-year run takes about two minutes.
+
+## Step 5: rebuild the inputs (optional)
+
+```bash
+scripts/run_r_pipeline_unix.sh
+```
+
+Runs `Rscript main.R` from `code/processing/` inside the `bsat` environment. The pipeline rebuilds `data/processed/*.csv` and `data/packages/baseline_2025_Input.zip` from `data/raw/`. Two raw files are too large for the repository; see [Raw data sources](../data-sources.qmd#large-files) and `scripts/fetch_large_raw_data.sh`.
+
+## Step 6: run the dashboard locally (optional)
+
+The dashboard is hosted online ([Dashboard](../dashboard.qmd)), which needs nothing installed. The hosted copy is the recommended way to view results and accepts output packages produced locally just as it does any other. The script below is only for running the dashboard server on your own computer; it needs the `bsat-dashboard` environment (bootstrap without `--no-dashboard`):
+
+```bash
+scripts/run_dashboard_unix.sh
+```
+
+This runs `streamlit run app.py` from `code/visualization/` inside the `bsat-dashboard` environment (`.bsat_local/envs/bsat-dashboard`, then `$BSAT_DASHBOARD_ENV`, then `/opt/envs/bsat-dashboard` in the container). Open <http://localhost:8501> and upload one or two output packages. If the environment is absent, the script says so and prints the hosted URL; rerun the bootstrap to create it.
+
+## Notes
+
+- The scripts derive the repository path from their own location, so they can be run from any working directory.
+- All scripts honor `BSAT_LOCAL_DIR`; when it is unset they use `.bsat_local/` inside the repository.
+- To reset the environment completely, delete `.bsat_local/` (or the `BSAT_LOCAL_DIR` folder) and rerun `scripts/bootstrap_unix.sh`. This does not affect your code, data or `path_license.txt`.
+- To verify the installation end to end, run the model regression test (about four minutes): `julia --project=code/model code/model/test/runtests.jl`.

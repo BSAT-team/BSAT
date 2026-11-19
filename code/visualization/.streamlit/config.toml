@@ -1,0 +1,3 @@
+[server]
+# Upload limit per package in MB; must match MAX_UPLOAD_MB in bsat_dashboard.py (Hugging Face Spaces honors this file).
+maxUploadSize = 20

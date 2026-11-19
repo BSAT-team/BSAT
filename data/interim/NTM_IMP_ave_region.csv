@@ -1,0 +1,505 @@
+region,commodity,commodity_name,nest,nest_name,attribute,attribute_type,attribute_description,unit,value,region_name
+ARG,Barley,Barley,Bly_Cereals,Barley Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.3616462000000001,Argentina
+ARG,Beef,Beef and veal,Livestock,Livestock,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.07581231895061555,Argentina
+ARG,Corn,Corn,Cereals,Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0,Argentina
+ARG,Cotton,Cotton,Other,Other,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0,Argentina
+ARG,Pork,Pork,Livestock,Livestock,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.055546347999999995,Argentina
+ARG,Poultry,Poultry,Livestock,Livestock,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.0525688,Argentina
+ARG,Rice,Rice,Rce_Cereals,Rice Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,1.0849386,Argentina
+ARG,Sorghum,Sorghum,Cereals,Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.3616462000000001,Argentina
+ARG,SoyMeal,Soy Meal,Secondary,Soy related Secondary,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0,Argentina
+ARG,SoyOil,Soy Oil,Secondary,Soy related Secondary,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.014871414999999999,Argentina
+ARG,Soybean,Soybean,Soy_Cereals,Soybean Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.3616462000000001,Argentina
+ARG,Wheat,Wheat,Brd_Cereals,Bread Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.3616462000000001,Argentina
+AUS,Barley,Barley,Bly_Cereals,Barley Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.17803886777777778,Australia
+AUS,Beef,Beef and veal,Livestock,Livestock,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.874736638,Australia
+AUS,Corn,Corn,Cereals,Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0,Australia
+AUS,Cotton,Cotton,Other,Other,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.003749103333333333,Australia
+AUS,Pork,Pork,Livestock,Livestock,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.061814216666666665,Australia
+AUS,Poultry,Poultry,Livestock,Livestock,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0,Australia
+AUS,Rice,Rice,Rce_Cereals,Rice Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.5303675,Australia
+AUS,Sorghum,Sorghum,Cereals,Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.17803886777777778,Australia
+AUS,SoyMeal,Soy Meal,Secondary,Soy related Secondary,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.026884784000000002,Australia
+AUS,SoyOil,Soy Oil,Secondary,Soy related Secondary,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.01298907,Australia
+AUS,Soybean,Soybean,Soy_Cereals,Soybean Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.17803886777777778,Australia
+AUS,Wheat,Wheat,Brd_Cereals,Bread Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.17803886777777778,Australia
+BGD,Barley,Barley,Bly_Cereals,Barley Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.11653953593514023,Bangladesh
+BGD,Beef,Beef and veal,Livestock,Livestock,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.21462772192786272,Bangladesh
+BGD,Corn,Corn,Cereals,Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0,Bangladesh
+BGD,Cotton,Cotton,Other,Other,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0,Bangladesh
+BGD,Pork,Pork,Livestock,Livestock,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.05265662430403673,Bangladesh
+BGD,Poultry,Poultry,Livestock,Livestock,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.036266715154120784,Bangladesh
+BGD,Rice,Rice,Rce_Cereals,Rice Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.3496186078054207,Bangladesh
+BGD,Sorghum,Sorghum,Cereals,Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.11653953593514023,Bangladesh
+BGD,SoyMeal,Soy Meal,Secondary,Soy related Secondary,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0,Bangladesh
+BGD,SoyOil,Soy Oil,Secondary,Soy related Secondary,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.0015427446061756101,Bangladesh
+BGD,Soybean,Soybean,Soy_Cereals,Soybean Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.11653953593514023,Bangladesh
+BGD,Wheat,Wheat,Brd_Cereals,Bread Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.11653953593514023,Bangladesh
+BRA,Barley,Barley,Bly_Cereals,Barley Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.17500145026666666,Brazil
+BRA,Beef,Beef and veal,Livestock,Livestock,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.024588313333333334,Brazil
+BRA,Corn,Corn,Cereals,Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0,Brazil
+BRA,Cotton,Cotton,Other,Other,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.0034098508,Brazil
+BRA,Pork,Pork,Livestock,Livestock,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.051697320000000005,Brazil
+BRA,Poultry,Poultry,Livestock,Livestock,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.03300736,Brazil
+BRA,Rice,Rice,Rce_Cereals,Rice Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.5215945,Brazil
+BRA,Sorghum,Sorghum,Cereals,Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.17500145026666666,Brazil
+BRA,SoyMeal,Soy Meal,Secondary,Soy related Secondary,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.00661359,Brazil
+BRA,SoyOil,Soy Oil,Secondary,Soy related Secondary,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.029527190000000002,Brazil
+BRA,Soybean,Soybean,Soy_Cereals,Soybean Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.17500145026666666,Brazil
+BRA,Wheat,Wheat,Brd_Cereals,Bread Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.17500145026666666,Brazil
+BUR,Barley,Barley,Bly_Cereals,Barley Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.12035662098959563,Burma
+BUR,Beef,Beef and veal,Livestock,Livestock,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.2271238466299972,Burma
+BUR,Corn,Corn,Cereals,Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0,Burma
+BUR,Cotton,Cotton,Other,Other,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0,Burma
+BUR,Pork,Pork,Livestock,Livestock,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.06542357047202152,Burma
+BUR,Poultry,Poultry,Livestock,Livestock,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.048692001243457475,Burma
+BUR,Rice,Rice,Rce_Cereals,Rice Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.3610698629687869,Burma
+BUR,Sorghum,Sorghum,Cereals,Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.12035662098959563,Burma
+BUR,SoyMeal,Soy Meal,Secondary,Soy related Secondary,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.007252021582177708,Burma
+BUR,SoyOil,Soy Oil,Secondary,Soy related Secondary,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.012448542450998357,Burma
+BUR,Soybean,Soybean,Soy_Cereals,Soybean Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.12035662098959563,Burma
+BUR,Wheat,Wheat,Brd_Cereals,Bread Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.12035662098959563,Burma
+CAC,Barley,Barley,Bly_Cereals,Barley Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.08899152745654798,Central America & Caribbean
+CAC,Beef,Beef and veal,Livestock,Livestock,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.046568401351768124,Central America & Caribbean
+CAC,Corn,Corn,Cereals,Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.0025216792745591564,Central America & Caribbean
+CAC,Cotton,Cotton,Other,Other,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.004181152933281276,Central America & Caribbean
+CAC,Pork,Pork,Livestock,Livestock,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.1183280179735233,Central America & Caribbean
+CAC,Poultry,Poultry,Livestock,Livestock,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.013753950689672188,Central America & Caribbean
+CAC,Rice,Rice,Rce_Cereals,Rice Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.26027175016180354,Central America & Caribbean
+CAC,Sorghum,Sorghum,Cereals,Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.08899152745654798,Central America & Caribbean
+CAC,SoyMeal,Soy Meal,Secondary,Soy related Secondary,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.005475610732199471,Central America & Caribbean
+CAC,SoyOil,Soy Oil,Secondary,Soy related Secondary,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.010121935077570312,Central America & Caribbean
+CAC,Soybean,Soybean,Soy_Cereals,Soybean Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.08899152745654798,Central America & Caribbean
+CAC,Wheat,Wheat,Brd_Cereals,Bread Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.08899152745654798,Central America & Caribbean
+CAN,Barley,Barley,Bly_Cereals,Barley Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.8440037228666667,Canada
+CAN,Beef,Beef and veal,Livestock,Livestock,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.42235428811111114,Canada
+CAN,Corn,Corn,Cereals,Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0,Canada
+CAN,Cotton,Cotton,Other,Other,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.0066036686,Canada
+CAN,Pork,Pork,Livestock,Livestock,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.07701621141666666,Canada
+CAN,Poultry,Poultry,Livestock,Livestock,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.01311612,Canada
+CAN,Rice,Rice,Rce_Cereals,Rice Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,2.5254075,Canada
+CAN,Sorghum,Sorghum,Cereals,Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.8440037228666667,Canada
+CAN,SoyMeal,Soy Meal,Secondary,Soy related Secondary,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.006504002,Canada
+CAN,SoyOil,Soy Oil,Secondary,Soy related Secondary,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.012721905,Canada
+CAN,Soybean,Soybean,Soy_Cereals,Soybean Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.8440037228666667,Canada
+CAN,Wheat,Wheat,Brd_Cereals,Bread Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.8440037228666667,Canada
+CHN,Barley,Barley,Bly_Cereals,Barley Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.11413534754280841,China
+CHN,Beef,Beef and veal,Livestock,Livestock,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.21293348468782,China
+CHN,Corn,Corn,Cereals,Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0,China
+CHN,Cotton,Cotton,Other,Other,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0,China
+CHN,Pork,Pork,Livestock,Livestock,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.05040112728567256,China
+CHN,Poultry,Poultry,Livestock,Livestock,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.034100655469363944,China
+CHN,Rice,Rice,Rce_Cereals,Rice Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.3424060426284252,China
+CHN,Sorghum,Sorghum,Cereals,Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.11413534754280841,China
+CHN,SoyMeal,Soy Meal,Secondary,Soy related Secondary,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0,China
+CHN,SoyOil,Soy Oil,Secondary,Soy related Secondary,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0,China
+CHN,Soybean,Soybean,Soy_Cereals,Soybean Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.11413534754280841,China
+CHN,Wheat,Wheat,Brd_Cereals,Bread Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.11413534754280841,China
+ECO,Barley,Barley,Bly_Cereals,Barley Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.10403211704351545,West African Community=Ecowas (minus Nigeria)
+ECO,Beef,Beef and veal,Livestock,Livestock,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.18174974097770225,West African Community=Ecowas (minus Nigeria)
+ECO,Corn,Corn,Cereals,Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.0022299280087387813,West African Community=Ecowas (minus Nigeria)
+ECO,Cotton,Cotton,Other,Other,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.004888957614371092,West African Community=Ecowas (minus Nigeria)
+ECO,Pork,Pork,Livestock,Livestock,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.04970294726824337,West African Community=Ecowas (minus Nigeria)
+ECO,Poultry,Poultry,Livestock,Livestock,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.03498905520626222,West African Community=Ecowas (minus Nigeria)
+ECO,Rice,Rice,Rce_Cereals,Rice Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.3049774655074365,West African Community=Ecowas (minus Nigeria)
+ECO,Sorghum,Sorghum,Cereals,Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.10403211704351545,West African Community=Ecowas (minus Nigeria)
+ECO,SoyMeal,Soy Meal,Secondary,Soy related Secondary,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.02436333638417911,West African Community=Ecowas (minus Nigeria)
+ECO,SoyOil,Soy Oil,Secondary,Soy related Secondary,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.019718725407612242,West African Community=Ecowas (minus Nigeria)
+ECO,Soybean,Soybean,Soy_Cereals,Soybean Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.10403211704351545,West African Community=Ecowas (minus Nigeria)
+ECO,Wheat,Wheat,Brd_Cereals,Bread Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.10403211704351545,West African Community=Ecowas (minus Nigeria)
+EGY,Barley,Barley,Bly_Cereals,Barley Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.10605508489742023,Egypt
+EGY,Beef,Beef and veal,Livestock,Livestock,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.19168907729001428,Egypt
+EGY,Corn,Corn,Cereals,Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0,Egypt
+EGY,Cotton,Cotton,Other,Other,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0,Egypt
+EGY,Pork,Pork,Livestock,Livestock,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.09291177644663944,Egypt
+EGY,Poultry,Poultry,Livestock,Livestock,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.059092078548837336,Egypt
+EGY,Rice,Rice,Rce_Cereals,Rice Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.31816525469226076,Egypt
+EGY,Sorghum,Sorghum,Cereals,Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.10605508489742023,Egypt
+EGY,SoyMeal,Soy Meal,Secondary,Soy related Secondary,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0,Egypt
+EGY,SoyOil,Soy Oil,Secondary,Soy related Secondary,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0,Egypt
+EGY,Soybean,Soybean,Soy_Cereals,Soybean Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.10605508489742023,Egypt
+EGY,Wheat,Wheat,Brd_Cereals,Bread Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.10605508489742023,Egypt
+EUR,Barley,Barley,Bly_Cereals,Barley Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.0921677594,European Union
+EUR,Beef,Beef and veal,Livestock,Livestock,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.35819904700000005,European Union
+EUR,Corn,Corn,Cereals,Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0,European Union
+EUR,Cotton,Cotton,Other,Other,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.0015018032,European Union
+EUR,Pork,Pork,Livestock,Livestock,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.2596496476666667,European Union
+EUR,Poultry,Poultry,Livestock,Livestock,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.07893654,European Union
+EUR,Rice,Rice,Rce_Cereals,Rice Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.275001475,European Union
+EUR,Sorghum,Sorghum,Cereals,Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.0921677594,European Union
+EUR,SoyMeal,Soy Meal,Secondary,Soy related Secondary,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.00361138,European Union
+EUR,SoyOil,Soy Oil,Secondary,Soy related Secondary,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.007867515,European Union
+EUR,Soybean,Soybean,Soy_Cereals,Soybean Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.0921677594,European Union
+EUR,Wheat,Wheat,Brd_Cereals,Bread Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.0921677594,European Union
+HKG,Barley,Barley,Bly_Cereals,Barley Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.13018130386075485,Hong Kong
+HKG,Beef,Beef and veal,Livestock,Livestock,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.24258797249225367,Hong Kong
+HKG,Corn,Corn,Cereals,Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.007249348168316523,Hong Kong
+HKG,Cotton,Cotton,Other,Other,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.008442991636853811,Hong Kong
+HKG,Pork,Pork,Livestock,Livestock,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.08061687486842768,Hong Kong
+HKG,Poultry,Poultry,Livestock,Livestock,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.06422696571851173,Hong Kong
+HKG,Rice,Rice,Rce_Cereals,Rice Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.3748515717770943,Hong Kong
+HKG,Sorghum,Sorghum,Cereals,Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.13018130386075485,Hong Kong
+HKG,SoyMeal,Soy Meal,Secondary,Soy related Secondary,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.02068307925713574,Hong Kong
+HKG,SoyOil,Soy Oil,Secondary,Soy related Secondary,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.02580167765187875,Hong Kong
+HKG,Soybean,Soybean,Soy_Cereals,Soybean Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.13018130386075485,Hong Kong
+HKG,Wheat,Wheat,Brd_Cereals,Bread Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.13018130386075485,Hong Kong
+IDN,Barley,Barley,Bly_Cereals,Barley Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.026254032499999996,Indonesia
+IDN,Beef,Beef and veal,Livestock,Livestock,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.079284070375,Indonesia
+IDN,Corn,Corn,Cereals,Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0,Indonesia
+IDN,Cotton,Cotton,Other,Other,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.0018240974999999997,Indonesia
+IDN,Pork,Pork,Livestock,Livestock,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.03830707333333334,Indonesia
+IDN,Poultry,Poultry,Livestock,Livestock,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.02143257,Indonesia
+IDN,Rice,Rice,Rce_Cereals,Rice Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.07693799999999999,Indonesia
+IDN,Sorghum,Sorghum,Cereals,Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.026254032499999996,Indonesia
+IDN,SoyMeal,Soy Meal,Secondary,Soy related Secondary,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.001695763,Indonesia
+IDN,SoyOil,Soy Oil,Secondary,Soy related Secondary,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.01262525,Indonesia
+IDN,Soybean,Soybean,Soy_Cereals,Soybean Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.026254032499999996,Indonesia
+IDN,Wheat,Wheat,Brd_Cereals,Bread Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.026254032499999996,Indonesia
+IND,Barley,Barley,Bly_Cereals,Barley Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.10868644596285067,India
+IND,Beef,Beef and veal,Livestock,Livestock,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.20119837364108706,India
+IND,Corn,Corn,Cereals,Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0,India
+IND,Cotton,Cotton,Other,Other,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0,India
+IND,Pork,Pork,Livestock,Livestock,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.03922727601726105,India
+IND,Poultry,Poultry,Livestock,Livestock,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.021689035670411486,India
+IND,Rice,Rice,Rce_Cereals,Rice Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.326059337888552,India
+IND,Sorghum,Sorghum,Cereals,Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.10868644596285067,India
+IND,SoyMeal,Soy Meal,Secondary,Soy related Secondary,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0,India
+IND,SoyOil,Soy Oil,Secondary,Soy related Secondary,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0,India
+IND,Soybean,Soybean,Soy_Cereals,Soybean Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.10868644596285067,India
+IND,Wheat,Wheat,Brd_Cereals,Bread Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.10868644596285067,India
+IRN,Barley,Barley,Bly_Cereals,Barley Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.11079028860922127,Iran
+IRN,Beef,Beef and veal,Livestock,Livestock,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.2084909235844587,Iran
+IRN,Corn,Corn,Cereals,Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0,Iran
+IRN,Cotton,Cotton,Other,Other,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0,Iran
+IRN,Pork,Pork,Livestock,Livestock,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.1162253259944249,Iran
+IRN,Poultry,Poultry,Livestock,Livestock,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.0767067979251371,Iran
+IRN,Rice,Rice,Rce_Cereals,Rice Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.3323708658276638,Iran
+IRN,Sorghum,Sorghum,Cereals,Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.11079028860922127,Iran
+IRN,SoyMeal,Soy Meal,Secondary,Soy related Secondary,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0,Iran
+IRN,SoyOil,Soy Oil,Secondary,Soy related Secondary,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,5.842028411672295e-4,Iran
+IRN,Soybean,Soybean,Soy_Cereals,Soybean Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.11079028860922127,Iran
+IRN,Wheat,Wheat,Brd_Cereals,Bread Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.11079028860922127,Iran
+IRQ,Barley,Barley,Bly_Cereals,Barley Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.12668122700969275,Iraq
+IRQ,Beef,Beef and veal,Livestock,Livestock,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.22630204214534572,Iraq
+IRQ,Corn,Corn,Cereals,Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.011099036758024367,Iraq
+IRQ,Cotton,Cotton,Other,Other,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.013273690822206929,Iraq
+IRQ,Pork,Pork,Livestock,Livestock,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.13076347087025245,Iraq
+IRQ,Poultry,Poultry,Livestock,Livestock,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.09725459458141895,Iraq
+IRQ,Rice,Rice,Rce_Cereals,Rice Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.35567095344884686,Iraq
+IRQ,Sorghum,Sorghum,Cereals,Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.12668122700969275,Iraq
+IRQ,SoyMeal,Soy Meal,Secondary,Soy related Secondary,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.01923499324244248,Iraq
+IRQ,SoyOil,Soy Oil,Secondary,Soy related Secondary,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.020685159943024917,Iraq
+IRQ,Soybean,Soybean,Soy_Cereals,Soybean Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.12668122700969275,Iraq
+IRQ,Wheat,Wheat,Brd_Cereals,Bread Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.12668122700969275,Iraq
+JPN,Barley,Barley,Bly_Cereals,Barley Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.028644341333333333,Japan
+JPN,Beef,Beef and veal,Livestock,Livestock,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.020194065625,Japan
+JPN,Corn,Corn,Cereals,Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0,Japan
+JPN,Cotton,Cotton,Other,Other,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.0023431240000000002,Japan
+JPN,Pork,Pork,Livestock,Livestock,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.06494917258333334,Japan
+JPN,Poultry,Poultry,Livestock,Livestock,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0,Japan
+JPN,Rice,Rice,Rce_Cereals,Rice Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.08358990000000001,Japan
+JPN,Sorghum,Sorghum,Cereals,Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.028644341333333333,Japan
+JPN,SoyMeal,Soy Meal,Secondary,Soy related Secondary,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.016076519,Japan
+JPN,SoyOil,Soy Oil,Secondary,Soy related Secondary,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.01395273,Japan
+JPN,Soybean,Soybean,Soy_Cereals,Soybean Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.028644341333333333,Japan
+JPN,Wheat,Wheat,Brd_Cereals,Bread Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.028644341333333333,Japan
+KHM,Barley,Barley,Bly_Cereals,Barley Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.11149826666666668,Cambodia
+KHM,Beef,Beef and veal,Livestock,Livestock,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.04110524199999999,Cambodia
+KHM,Corn,Corn,Cereals,Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0,Cambodia
+KHM,Cotton,Cotton,Other,Other,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0,Cambodia
+KHM,Pork,Pork,Livestock,Livestock,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.02250381,Cambodia
+KHM,Poultry,Poultry,Livestock,Livestock,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.008665127500000001,Cambodia
+KHM,Rice,Rice,Rce_Cereals,Rice Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.33449480000000004,Cambodia
+KHM,Sorghum,Sorghum,Cereals,Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.11149826666666668,Cambodia
+KHM,SoyMeal,Soy Meal,Secondary,Soy related Secondary,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.01644645,Cambodia
+KHM,SoyOil,Soy Oil,Secondary,Soy related Secondary,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.014590760000000001,Cambodia
+KHM,Soybean,Soybean,Soy_Cereals,Soybean Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.11149826666666668,Cambodia
+KHM,Wheat,Wheat,Brd_Cereals,Bread Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.11149826666666668,Cambodia
+KOR,Barley,Barley,Bly_Cereals,Barley Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.11502584140583996,South Korea
+KOR,Beef,Beef and veal,Livestock,Livestock,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.20879029172576125,South Korea
+KOR,Corn,Corn,Cereals,Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0,South Korea
+KOR,Cotton,Cotton,Other,Other,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0,South Korea
+KOR,Pork,Pork,Livestock,Livestock,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.048271385664291226,South Korea
+KOR,Poultry,Poultry,Livestock,Livestock,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.032039700148581346,South Korea
+KOR,Rice,Rice,Rce_Cereals,Rice Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.34507752421751986,South Korea
+KOR,Sorghum,Sorghum,Cereals,Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.11502584140583996,South Korea
+KOR,SoyMeal,Soy Meal,Secondary,Soy related Secondary,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0,South Korea
+KOR,SoyOil,Soy Oil,Secondary,Soy related Secondary,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0,South Korea
+KOR,Soybean,Soybean,Soy_Cereals,Soybean Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.11502584140583996,South Korea
+KOR,Wheat,Wheat,Brd_Cereals,Bread Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.11502584140583996,South Korea
+MAR,Barley,Barley,Bly_Cereals,Barley Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.11230256047841641,Morocco
+MAR,Beef,Beef and veal,Livestock,Livestock,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.1963879615616669,Morocco
+MAR,Corn,Corn,Cereals,Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0,Morocco
+MAR,Cotton,Cotton,Other,Other,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0,Morocco
+MAR,Pork,Pork,Livestock,Livestock,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.11489224162974185,Morocco
+MAR,Poultry,Poultry,Livestock,Livestock,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.07386396562519983,Morocco
+MAR,Rice,Rice,Rce_Cereals,Rice Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.3369076814352492,Morocco
+MAR,Sorghum,Sorghum,Cereals,Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.11230256047841641,Morocco
+MAR,SoyMeal,Soy Meal,Secondary,Soy related Secondary,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.005281247375044593,Morocco
+MAR,SoyOil,Soy Oil,Secondary,Soy related Secondary,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.005991412484199872,Morocco
+MAR,Soybean,Soybean,Soy_Cereals,Soybean Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.11230256047841641,Morocco
+MAR,Wheat,Wheat,Brd_Cereals,Bread Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.11230256047841641,Morocco
+MEX,Barley,Barley,Bly_Cereals,Barley Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.039124601,Mexico
+MEX,Beef,Beef and veal,Livestock,Livestock,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.04732403522222223,Mexico
+MEX,Corn,Corn,Cereals,Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0,Mexico
+MEX,Cotton,Cotton,Other,Other,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.0030112280000000003,Mexico
+MEX,Pork,Pork,Livestock,Livestock,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.1759351864,Mexico
+MEX,Poultry,Poultry,Livestock,Livestock,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.012037011111111112,Mexico
+MEX,Rice,Rice,Rce_Cereals,Rice Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.114362575,Mexico
+MEX,Sorghum,Sorghum,Cereals,Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.039124601,Mexico
+MEX,SoyMeal,Soy Meal,Secondary,Soy related Secondary,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0,Mexico
+MEX,SoyOil,Soy Oil,Secondary,Soy related Secondary,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.002464552,Mexico
+MEX,Soybean,Soybean,Soy_Cereals,Soybean Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.039124601,Mexico
+MEX,Wheat,Wheat,Brd_Cereals,Bread Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.039124601,Mexico
+MYS,Barley,Barley,Bly_Cereals,Barley Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.07793308881666666,Malaysia
+MYS,Beef,Beef and veal,Livestock,Livestock,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.034705789,Malaysia
+MYS,Corn,Corn,Cereals,Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0,Malaysia
+MYS,Cotton,Cotton,Other,Other,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.0014918922000000002,Malaysia
+MYS,Pork,Pork,Livestock,Livestock,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.03345586009090909,Malaysia
+MYS,Poultry,Poultry,Livestock,Livestock,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.04265158571428571,Malaysia
+MYS,Rice,Rice,Rce_Cereals,Rice Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.23230737425,Malaysia
+MYS,Sorghum,Sorghum,Cereals,Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.07793308881666666,Malaysia
+MYS,SoyMeal,Soy Meal,Secondary,Soy related Secondary,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.001793589,Malaysia
+MYS,SoyOil,Soy Oil,Secondary,Soy related Secondary,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.013409735,Malaysia
+MYS,Soybean,Soybean,Soy_Cereals,Soybean Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.07793308881666666,Malaysia
+MYS,Wheat,Wheat,Brd_Cereals,Bread Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.07793308881666666,Malaysia
+NGA,Barley,Barley,Bly_Cereals,Barley Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.0069271283333333334,Nigeria
+NGA,Beef,Beef and veal,Livestock,Livestock,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.1594028259090909,Nigeria
+NGA,Corn,Corn,Cereals,Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0,Nigeria
+NGA,Cotton,Cotton,Other,Other,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0,Nigeria
+NGA,Pork,Pork,Livestock,Livestock,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.04437543427272727,Nigeria
+NGA,Poultry,Poultry,Livestock,Livestock,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.033227232999999995,Nigeria
+NGA,Rice,Rice,Rce_Cereals,Rice Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.020781385,Nigeria
+NGA,Sorghum,Sorghum,Cereals,Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.0069271283333333334,Nigeria
+NGA,SoyMeal,Soy Meal,Secondary,Soy related Secondary,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0,Nigeria
+NGA,SoyOil,Soy Oil,Secondary,Soy related Secondary,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.014780365,Nigeria
+NGA,Soybean,Soybean,Soy_Cereals,Soybean Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.0069271283333333334,Nigeria
+NGA,Wheat,Wheat,Brd_Cereals,Bread Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.0069271283333333334,Nigeria
+NZL,Barley,Barley,Bly_Cereals,Barley Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.04688501566666667,New Zealand
+NZL,Beef,Beef and veal,Livestock,Livestock,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.15696242699999996,New Zealand
+NZL,Corn,Corn,Cereals,Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0,New Zealand
+NZL,Cotton,Cotton,Other,Other,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.00230957375,New Zealand
+NZL,Pork,Pork,Livestock,Livestock,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.05794931062500001,New Zealand
+NZL,Poultry,Poultry,Livestock,Livestock,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.019413625,New Zealand
+NZL,Rice,Rice,Rce_Cereals,Rice Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.13834547325000002,New Zealand
+NZL,Sorghum,Sorghum,Cereals,Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.04688501566666667,New Zealand
+NZL,SoyMeal,Soy Meal,Secondary,Soy related Secondary,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.01718097,New Zealand
+NZL,SoyOil,Soy Oil,Secondary,Soy related Secondary,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.011754230000000001,New Zealand
+NZL,Soybean,Soybean,Soy_Cereals,Soybean Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.04688501566666667,New Zealand
+NZL,Wheat,Wheat,Brd_Cereals,Bread Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.04688501566666667,New Zealand
+OAO,Barley,Barley,Bly_Cereals,Barley Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.1886949502749195,Other Asia & Oceania
+OAO,Beef,Beef and veal,Livestock,Livestock,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.2407434547955724,Other Asia & Oceania
+OAO,Corn,Corn,Cereals,Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.004049074853813676,Other Asia & Oceania
+OAO,Cotton,Cotton,Other,Other,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.0043941143206346475,Other Asia & Oceania
+OAO,Pork,Pork,Livestock,Livestock,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.06184536343101769,Other Asia & Oceania
+OAO,Poultry,Poultry,Livestock,Livestock,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.09311930197925314,Other Asia & Oceania
+OAO,Rice,Rice,Rce_Cereals,Rice Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.5576416616503101,Other Asia & Oceania
+OAO,Sorghum,Sorghum,Cereals,Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.1886949502749195,Other Asia & Oceania
+OAO,SoyMeal,Soy Meal,Secondary,Soy related Secondary,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.008543213752162639,Other Asia & Oceania
+OAO,SoyOil,Soy Oil,Secondary,Soy related Secondary,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.01757303856927541,Other Asia & Oceania
+OAO,Soybean,Soybean,Soy_Cereals,Soybean Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.1886949502749195,Other Asia & Oceania
+OAO,Wheat,Wheat,Brd_Cereals,Bread Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.1886949502749195,Other Asia & Oceania
+OEU,Barley,Barley,Bly_Cereals,Barley Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.11843462763514631,Other Europe
+OEU,Beef,Beef and veal,Livestock,Livestock,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.1986475920148241,Other Europe
+OEU,Corn,Corn,Cereals,Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.0019999978568794926,Other Europe
+OEU,Cotton,Cotton,Other,Other,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.006395306464631333,Other Europe
+OEU,Pork,Pork,Livestock,Livestock,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.10391535310576212,Other Europe
+OEU,Poultry,Poultry,Livestock,Livestock,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.07039948571705891,Other Europe
+OEU,Rice,Rice,Rce_Cereals,Rice Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.3469085785839281,Other Europe
+OEU,Sorghum,Sorghum,Cereals,Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.11843462763514631,Other Europe
+OEU,SoyMeal,Soy Meal,Secondary,Soy related Secondary,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.010403108191242093,Other Europe
+OEU,SoyOil,Soy Oil,Secondary,Soy related Secondary,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.005087827757531099,Other Europe
+OEU,Soybean,Soybean,Soy_Cereals,Soybean Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.11843462763514631,Other Europe
+OEU,Wheat,Wheat,Brd_Cereals,Bread Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.11843462763514631,Other Europe
+OFS,Barley,Barley,Bly_Cereals,Barley Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.12913936284041402,"Other Former Soviet Union, 10 Countries"
+OFS,Beef,Beef and veal,Livestock,Livestock,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.22964933642710644,"Other Former Soviet Union, 10 Countries"
+OFS,Corn,Corn,Cereals,Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.013530267191256188,"Other Former Soviet Union, 10 Countries"
+OFS,Cotton,Cotton,Other,Other,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.016029514772348447,"Other Former Soviet Union, 10 Countries"
+OFS,Pork,Pork,Livestock,Livestock,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.1363948012874556,"Other Former Soviet Union, 10 Countries"
+OFS,Poultry,Poultry,Livestock,Livestock,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.10224548768888667,"Other Former Soviet Union, 10 Countries"
+OFS,Rice,Rice,Rce_Cereals,Rice Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.35785830655763745,"Other Former Soviet Union, 10 Countries"
+OFS,Sorghum,Sorghum,Cereals,Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.12913936284041402,"Other Former Soviet Union, 10 Countries"
+OFS,SoyMeal,Soy Meal,Secondary,Soy related Secondary,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.022994603360333262,"Other Former Soviet Union, 10 Countries"
+OFS,SoyOil,Soy Oil,Secondary,Soy related Secondary,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.024282483750758678,"Other Former Soviet Union, 10 Countries"
+OFS,Soybean,Soybean,Soy_Cereals,Soybean Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.12913936284041402,"Other Former Soviet Union, 10 Countries"
+OFS,Wheat,Wheat,Brd_Cereals,Bread Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.12913936284041402,"Other Former Soviet Union, 10 Countries"
+OME,Barley,Barley,Bly_Cereals,Barley Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.1362519254146467,Other Middle East
+OME,Beef,Beef and veal,Livestock,Livestock,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.2401311749213102,Other Middle East
+OME,Corn,Corn,Cereals,Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.01923549589309779,Other Middle East
+OME,Cotton,Cotton,Other,Other,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.022248528805439483,Other Middle East
+OME,Pork,Pork,Livestock,Livestock,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.14592517555607507,Other Middle East
+OME,Poultry,Poultry,Livestock,Livestock,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.11095650645815612,Other Middle East
+OME,Rice,Rice,Rce_Cereals,Rice Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.3672717515454028,Other Middle East
+OME,Sorghum,Sorghum,Cereals,Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.1362519254146467,Other Middle East
+OME,SoyMeal,Soy Meal,Secondary,Soy related Secondary,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.029193386680119383,Other Middle East
+OME,SoyOil,Soy Oil,Secondary,Soy related Secondary,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.03111858928330588,Other Middle East
+OME,Soybean,Soybean,Soy_Cereals,Soybean Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.1362519254146467,Other Middle East
+OME,Wheat,Wheat,Brd_Cereals,Bread Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.1362519254146467,Other Middle East
+ONA,Barley,Barley,Bly_Cereals,Barley Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.11831469425818683,Other North Africa
+ONA,Beef,Beef and veal,Livestock,Livestock,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.2187964570112136,Other North Africa
+ONA,Corn,Corn,Cereals,Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.003190927052485159,Other North Africa
+ONA,Cotton,Cotton,Other,Other,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.003995902588244317,Other North Africa
+ONA,Pork,Pork,Livestock,Livestock,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.12362647629646789,Other North Africa
+ONA,Poultry,Poultry,Livestock,Livestock,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.089793030791958,Other North Africa
+ONA,Rice,Rice,Rce_Cereals,Rice Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.34775725313383105,Other North Africa
+ONA,Sorghum,Sorghum,Cereals,Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.11831469425818683,Other North Africa
+ONA,SoyMeal,Soy Meal,Secondary,Soy related Secondary,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.010587144701510166,Other North Africa
+ONA,SoyOil,Soy Oil,Secondary,Soy related Secondary,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.011007289577371763,Other North Africa
+ONA,Soybean,Soybean,Soy_Cereals,Soybean Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.11831469425818683,Other North Africa
+ONA,Wheat,Wheat,Brd_Cereals,Bread Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.11831469425818683,Other North Africa
+OSA,Barley,Barley,Bly_Cereals,Barley Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.07918299112458647,Other South America
+OSA,Beef,Beef and veal,Livestock,Livestock,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.11794054272615895,Other South America
+OSA,Corn,Corn,Cereals,Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,5.5626096223021723e-5,Other South America
+OSA,Cotton,Cotton,Other,Other,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.0016540657127986319,Other South America
+OSA,Pork,Pork,Livestock,Livestock,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.09624995631171256,Other South America
+OSA,Poultry,Poultry,Livestock,Livestock,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.02306310913819065,Other South America
+OSA,Rice,Rice,Rce_Cereals,Rice Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.23583928156473777,Other South America
+OSA,Sorghum,Sorghum,Cereals,Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.07918299112458647,Other South America
+OSA,SoyMeal,Soy Meal,Secondary,Soy related Secondary,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.007526701963116388,Other South America
+OSA,SoyOil,Soy Oil,Secondary,Soy related Secondary,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.01186801311773522,Other South America
+OSA,Soybean,Soybean,Soy_Cereals,Soybean Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.07918299112458647,Other South America
+OSA,Wheat,Wheat,Brd_Cereals,Bread Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.07918299112458647,Other South America
+OSS,Barley,Barley,Bly_Cereals,Barley Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.06601933469867953,Other Sub-Saharan Africa
+OSS,Beef,Beef and veal,Livestock,Livestock,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.21781695452466251,Other Sub-Saharan Africa
+OSS,Corn,Corn,Cereals,Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.004152767660539837,Other Sub-Saharan Africa
+OSS,Cotton,Cotton,Other,Other,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.006306025122137543,Other Sub-Saharan Africa
+OSS,Pork,Pork,Livestock,Livestock,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.05067547999483593,Other Sub-Saharan Africa
+OSS,Poultry,Poultry,Livestock,Livestock,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.03383718081172408,Other Sub-Saharan Africa
+OSS,Rice,Rice,Rce_Cereals,Rice Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.18759921131336124,Other Sub-Saharan Africa
+OSS,Sorghum,Sorghum,Cereals,Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.06601933469867953,Other Sub-Saharan Africa
+OSS,SoyMeal,Soy Meal,Secondary,Soy related Secondary,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.022919208093139996,Other Sub-Saharan Africa
+OSS,SoyOil,Soy Oil,Secondary,Soy related Secondary,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.021087341369992085,Other Sub-Saharan Africa
+OSS,Soybean,Soybean,Soy_Cereals,Soybean Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.06601933469867953,Other Sub-Saharan Africa
+OSS,Wheat,Wheat,Brd_Cereals,Bread Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.06601933469867953,Other Sub-Saharan Africa
+PAK,Barley,Barley,Bly_Cereals,Barley Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.11725012696973869,Pakistan
+PAK,Beef,Beef and veal,Livestock,Livestock,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.22021819030151327,Pakistan
+PAK,Corn,Corn,Cereals,Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0,Pakistan
+PAK,Cotton,Cotton,Other,Other,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0,Pakistan
+PAK,Pork,Pork,Livestock,Livestock,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.05500268421154563,Pakistan
+PAK,Poultry,Poultry,Livestock,Livestock,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.038612775061629676,Pakistan
+PAK,Rice,Rice,Rce_Cereals,Rice Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.351750380909216,Pakistan
+PAK,Sorghum,Sorghum,Cereals,Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.11725012696973869,Pakistan
+PAK,SoyMeal,Soy Meal,Secondary,Soy related Secondary,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0,Pakistan
+PAK,SoyOil,Soy Oil,Secondary,Soy related Secondary,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.0027862015054859234,Pakistan
+PAK,Soybean,Soybean,Soy_Cereals,Soybean Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.11725012696973869,Pakistan
+PAK,Wheat,Wheat,Brd_Cereals,Bread Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.11725012696973869,Pakistan
+PHL,Barley,Barley,Bly_Cereals,Barley Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.48967745896666665,Philippines
+PHL,Beef,Beef and veal,Livestock,Livestock,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.2296254030909091,Philippines
+PHL,Corn,Corn,Cereals,Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0,Philippines
+PHL,Cotton,Cotton,Other,Other,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.0063074394,Philippines
+PHL,Pork,Pork,Livestock,Livestock,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.082567144,Philippines
+PHL,Poultry,Poultry,Livestock,Livestock,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.06363483777777777,Philippines
+PHL,Rice,Rice,Rce_Cereals,Rice Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,1.4627249375,Philippines
+PHL,Sorghum,Sorghum,Cereals,Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.48967745896666665,Philippines
+PHL,SoyMeal,Soy Meal,Secondary,Soy related Secondary,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.024926543,Philippines
+PHL,SoyOil,Soy Oil,Secondary,Soy related Secondary,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.011563155,Philippines
+PHL,Soybean,Soybean,Soy_Cereals,Soybean Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.48967745896666665,Philippines
+PHL,Wheat,Wheat,Brd_Cereals,Bread Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.48967745896666665,Philippines
+RUS,Barley,Barley,Bly_Cereals,Barley Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.17093243013333337,Russia
+RUS,Beef,Beef and veal,Livestock,Livestock,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.2701629965454545,Russia
+RUS,Corn,Corn,Cereals,Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0,Russia
+RUS,Cotton,Cotton,Other,Other,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.0018857154000000002,Russia
+RUS,Pork,Pork,Livestock,Livestock,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.043960684181818185,Russia
+RUS,Poultry,Poultry,Livestock,Livestock,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.02427193363636363,Russia
+RUS,Rice,Rice,Rce_Cereals,Rice Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.5109115750000001,Russia
+RUS,Sorghum,Sorghum,Cereals,Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.17093243013333337,Russia
+RUS,SoyMeal,Soy Meal,Secondary,Soy related Secondary,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.018130662999999998,Russia
+RUS,SoyOil,Soy Oil,Secondary,Soy related Secondary,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.009513125,Russia
+RUS,Soybean,Soybean,Soy_Cereals,Soybean Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.17093243013333337,Russia
+RUS,Wheat,Wheat,Brd_Cereals,Bread Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.17093243013333337,Russia
+SAU,Barley,Barley,Bly_Cereals,Barley Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.12861832979946486,Saudi Arabia
+SAU,Beef,Beef and veal,Livestock,Livestock,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.23310476635925803,Saudi Arabia
+SAU,Corn,Corn,Cereals,Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.012301565601498518,Saudi Arabia
+SAU,Cotton,Cotton,Other,Other,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.014114157260987357,Saudi Arabia
+SAU,Pork,Pork,Livestock,Livestock,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.13850149454689512,Saudi Arabia
+SAU,Poultry,Poultry,Livestock,Livestock,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.10426221409636728,Saudi Arabia
+SAU,Rice,Rice,Rce_Cereals,Rice Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.35943926653590874,Saudi Arabia
+SAU,Sorghum,Sorghum,Cereals,Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.12861832979946486,Saudi Arabia
+SAU,SoyMeal,Soy Meal,Secondary,Soy related Secondary,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.02164371020297751,Saudi Arabia
+SAU,SoyOil,Soy Oil,Secondary,Soy related Secondary,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.023327906238103272,Saudi Arabia
+SAU,Soybean,Soybean,Soy_Cereals,Soybean Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.12861832979946486,Saudi Arabia
+SAU,Wheat,Wheat,Brd_Cereals,Bread Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.12861832979946486,Saudi Arabia
+THA,Barley,Barley,Bly_Cereals,Barley Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.09072081331666666,Thailand
+THA,Beef,Beef and veal,Livestock,Livestock,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.24918554950000002,Thailand
+THA,Corn,Corn,Cereals,Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0,Thailand
+THA,Cotton,Cotton,Other,Other,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,4.6372819999999996e-4,Thailand
+THA,Pork,Pork,Livestock,Livestock,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.04509417825,Thailand
+THA,Poultry,Poultry,Livestock,Livestock,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.30079618799999996,Thailand
+THA,Rice,Rice,Rce_Cereals,Rice Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.27169871175,Thailand
+THA,Sorghum,Sorghum,Cereals,Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.09072081331666666,Thailand
+THA,SoyMeal,Soy Meal,Secondary,Soy related Secondary,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.006567814,Thailand
+THA,SoyOil,Soy Oil,Secondary,Soy related Secondary,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.0268291,Thailand
+THA,Soybean,Soybean,Soy_Cereals,Soybean Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.09072081331666666,Thailand
+THA,Wheat,Wheat,Brd_Cereals,Bread Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.09072081331666666,Thailand
+TUR,Barley,Barley,Bly_Cereals,Barley Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.11024276694515421,Turkey
+TUR,Beef,Beef and veal,Livestock,Livestock,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.18381373144947338,Turkey
+TUR,Corn,Corn,Cereals,Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0,Turkey
+TUR,Cotton,Cotton,Other,Other,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0,Turkey
+TUR,Pork,Pork,Livestock,Livestock,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.087046067559933,Turkey
+TUR,Poultry,Poultry,Livestock,Livestock,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.07312472204722933,Turkey
+TUR,Rice,Rice,Rce_Cereals,Rice Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.3307283008354627,Turkey
+TUR,Sorghum,Sorghum,Cereals,Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.11024276694515421,Turkey
+TUR,SoyMeal,Soy Meal,Secondary,Soy related Secondary,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0,Turkey
+TUR,SoyOil,Soy Oil,Secondary,Soy related Secondary,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0,Turkey
+TUR,Soybean,Soybean,Soy_Cereals,Soybean Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.11024276694515421,Turkey
+TUR,Wheat,Wheat,Brd_Cereals,Bread Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.11024276694515421,Turkey
+TWN,Barley,Barley,Bly_Cereals,Barley Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.1090479011774782,Taiwan
+TWN,Beef,Beef and veal,Livestock,Livestock,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.2325053376863131,Taiwan
+TWN,Corn,Corn,Cereals,Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0,Taiwan
+TWN,Cotton,Cotton,Other,Other,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,6.714236766470982e-5,Taiwan
+TWN,Pork,Pork,Livestock,Livestock,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.06984736707630289,Taiwan
+TWN,Poultry,Poultry,Livestock,Livestock,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.05227660750423906,Taiwan
+TWN,Rice,Rice,Rce_Cereals,Rice Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.3270765611647699,Taiwan
+TWN,Sorghum,Sorghum,Cereals,Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.1090479011774782,Taiwan
+TWN,SoyMeal,Soy Meal,Secondary,Soy related Secondary,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.012307229987946639,Taiwan
+TWN,SoyOil,Soy Oil,Secondary,Soy related Secondary,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.016646603641913272,Taiwan
+TWN,Soybean,Soybean,Soy_Cereals,Soybean Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.1090479011774782,Taiwan
+TWN,Wheat,Wheat,Brd_Cereals,Bread Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.1090479011774782,Taiwan
+UKR,Barley,Barley,Bly_Cereals,Barley Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.12128178275888846,Ukraine
+UKR,Beef,Beef and veal,Livestock,Livestock,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.224414729556824,Ukraine
+UKR,Corn,Corn,Cereals,Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.004518263042876995,Ukraine
+UKR,Cotton,Cotton,Other,Other,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.007671121256501205,Ukraine
+UKR,Pork,Pork,Livestock,Livestock,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.12962727735118665,Ukraine
+UKR,Poultry,Poultry,Livestock,Livestock,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.09605460316047879,Ukraine
+UKR,Rice,Rice,Rce_Cereals,Rice Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.3516559639772872,Ukraine
+UKR,Sorghum,Sorghum,Cereals,Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.12128178275888846,Ukraine
+UKR,SoyMeal,Soy Meal,Secondary,Soy related Secondary,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.014639632385132363,Ukraine
+UKR,SoyOil,Soy Oil,Secondary,Soy related Secondary,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.015934216049869932,Ukraine
+UKR,Soybean,Soybean,Soy_Cereals,Soybean Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.12128178275888846,Ukraine
+UKR,Wheat,Wheat,Brd_Cereals,Bread Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.12128178275888846,Ukraine
+USA,Barley,Barley,Bly_Cereals,Barley Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.03614849233333333,United States
+USA,Beef,Beef and veal,Livestock,Livestock,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.1893848917,United States
+USA,Corn,Corn,Cereals,Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0,United States
+USA,Cotton,Cotton,Other,Other,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0,United States
+USA,Pork,Pork,Livestock,Livestock,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.04790657736363636,United States
+USA,Poultry,Poultry,Livestock,Livestock,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.0046722199999999995,United States
+USA,Rice,Rice,Rce_Cereals,Rice Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.108445477,United States
+USA,Sorghum,Sorghum,Cereals,Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.03614849233333333,United States
+USA,SoyMeal,Soy Meal,Secondary,Soy related Secondary,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.024985154,United States
+USA,SoyOil,Soy Oil,Secondary,Soy related Secondary,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.01422304,United States
+USA,Soybean,Soybean,Soy_Cereals,Soybean Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.03614849233333333,United States
+USA,Wheat,Wheat,Brd_Cereals,Bread Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.03614849233333333,United States
+VNM,Barley,Barley,Bly_Cereals,Barley Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.08716768500000001,Vietnam
+VNM,Beef,Beef and veal,Livestock,Livestock,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.4859700694285715,Vietnam
+VNM,Corn,Corn,Cereals,Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0,Vietnam
+VNM,Cotton,Cotton,Other,Other,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.0024413449999999997,Vietnam
+VNM,Pork,Pork,Livestock,Livestock,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.04656646214285714,Vietnam
+VNM,Poultry,Poultry,Livestock,Livestock,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.026365233333333335,Vietnam
+VNM,Rice,Rice,Rce_Cereals,Rice Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.25906171,Vietnam
+VNM,Sorghum,Sorghum,Cereals,Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.08716768500000001,Vietnam
+VNM,SoyMeal,Soy Meal,Secondary,Soy related Secondary,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.020778803,Vietnam
+VNM,SoyOil,Soy Oil,Secondary,Soy related Secondary,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.013711789999999996,Vietnam
+VNM,Soybean,Soybean,Soy_Cereals,Soybean Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.08716768500000001,Vietnam
+VNM,Wheat,Wheat,Brd_Cereals,Bread Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.08716768500000001,Vietnam
+ZAF,Barley,Barley,Bly_Cereals,Barley Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.07034287238900264,Republic of South Africa
+ZAF,Beef,Beef and veal,Livestock,Livestock,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.1989148163680429,Republic of South Africa
+ZAF,Corn,Corn,Cereals,Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.007368781723502095,Republic of South Africa
+ZAF,Cotton,Cotton,Other,Other,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.009291651807278603,Republic of South Africa
+ZAF,Pork,Pork,Livestock,Livestock,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.05451218131677088,Republic of South Africa
+ZAF,Poultry,Poultry,Livestock,Livestock,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.04126839435503305,Republic of South Africa
+ZAF,Rice,Rice,Rce_Cereals,Rice Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.19436818363622715,Republic of South Africa
+ZAF,Sorghum,Sorghum,Cereals,Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.07034287238900264,Republic of South Africa
+ZAF,SoyMeal,Soy Meal,Secondary,Soy related Secondary,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.026043964271709744,Republic of South Africa
+ZAF,SoyOil,Soy Oil,Secondary,Soy related Secondary,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.0248734060515877,Republic of South Africa
+ZAF,Soybean,Soybean,Soy_Cereals,Soybean Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.07034287238900264,Republic of South Africa
+ZAF,Wheat,Wheat,Brd_Cereals,Bread Cereals,NTM for importing a product,RNC,Non Tariff Measure for importing a product,decimal form,0.07034287238900264,Republic of South Africa

@@ -1,0 +1,187 @@
+---
+title: "Julia reference: BSATRunner"
+---
+
+`BSATRunner` (`code/model/src/BSATRunner.jl`) wraps the verbatim model core. It reads a standard input package, runs the model year by year and writes a standard output package. Entry points: `run_bsat` from Julia, `run_model.jl` from the command line, and `run_scenario.jl` for the edited-CSV route ([Command line](cli.qmd)). All wrapper names are prefixed `bsat_` so they cannot collide with variables assigned inside the model core, which is evaluated in the module's global scope.
+
+Load the module from the repository root:
+
+```julia
+include("code/model/src/BSATRunner.jl"); using .BSATRunner
+res = run_bsat("data/packages/baseline_2025_Input.zip"; output_zip="output/baseline_Output.zip", periods=2025:2034)
+res.periods_solved
+```
+
+Exports: `run_bsat`, `make_shock`, `build_scenario`, `BSAT_SHOCKS`.
+
+## Constants
+
+| Name | Value | Meaning |
+|---|---|---|
+| `BSAT_MODEL_VERSION` | `"v2.27 (2026-07-29)"` | Version label of the model core embedded in the runner; written to `METADATA.csv` and the solver log |
+| `BSAT_CORE_FILE` | `src/model_core.jl` next to the module | Path of the verbatim model core |
+| `BSAT_DEFAULT_LICENSE` | `code/model/path_license.txt` | Default location of the PATH license file (next to `Project.toml`) |
+| `BSAT_INPUT_FILES` | `("data_params_init.csv", "data_exogenous.csv", "data_targets.csv", "data_shocks.csv")` | Input files the model core reads from `Input/` |
+| `BSAT_SHOCKS` | tuple of ten `(name, type, meaning)` triples | The shock attributes of `data_shocks.csv`, with the baseline quantity each one modifies. Every shock is stored in decimal form and applied additively to the baseline level, except `shock_ag_expenditure_share`, which multiplies the baseline share by (1 + value). The neutral value is 0 for all of them. Table in [Package and file format](../data-format.qmd#shock-attributes) |
+
+## Exported functions
+
+### run_bsat
+
+```julia
+run_bsat(input_zip; output_zip="Output.zip", periods=2025:2034, workdir=nothing,
+         keep_workdir=false, license=BSAT_DEFAULT_LICENSE)
+```
+
+Run the BSAT model on the input package `input_zip` for the years in `periods` and write the output package to `output_zip`.
+
+Arguments:
+
+- `input_zip::AbstractString`: path of the input package.
+- `output_zip::AbstractString`: path of the output package to write (folders are created).
+- `periods`: years to simulate; any collection of integers.
+- `workdir`: folder in which the core reads `Input/` and writes its per-year files. Defaults to a fresh temporary folder, deleted afterwards unless `keep_workdir=true`.
+- `keep_workdir::Bool`: keep the working folder.
+- `license::AbstractString`: path of the PATH license file.
+
+Returns a named tuple with `output_zip`, `periods_solved`, `periods_skipped`, `elapsed` (seconds) and `workdir` (`nothing` when the temporary folder was deleted).
+
+Years the model refuses (market-clearing checks fail, or the solver does not reach a solution) are skipped by the core and reported in `SCENARIO_SOLVER_LOG.txt` and in the return value; the remaining years still produce output. Errors if `periods` is empty, the license file is missing or holds the placeholder, or the input package lacks one of the four required files. Warns when no year was solved.
+
+### make_shock
+
+```julia
+make_shock(template_zip, inputpkg_zip; attribute, value, regions=nothing, commodities=nothing,
+           years=nothing, mode=:set, description=nothing)
+```
+
+Create a scenario input package from `template_zip` by editing `data_shocks.csv`.
+
+Arguments:
+
+- `template_zip::AbstractString`, `inputpkg_zip::AbstractString`: packages to read and write; the package written is a scenario *input* package, the input of `run_bsat`.
+- `attribute::AbstractString`: one of the ten shock attributes (see `BSAT_SHOCKS`).
+- `value::Real`: the shock in decimal form.
+- `regions`, `commodities`, `years`: optional selections (vectors of ISO-3 codes, commodity codes, integer years). `nothing` selects every row of that attribute. Region-level shocks ignore `commodities`.
+- `mode::Symbol`: `:set` writes `value`; `:add` adds it to the existing value, which lets shocks be layered by calling the function repeatedly with the previous package as template.
+- `description`: replaces the `Description` field of `METADATA.csv` (created if the template has no metadata file) and records the derivation in `Comments`, so the dashboard shows what the scenario is.
+
+Returns `(inputpkg_zip, rows_changed, attribute, value)`. Errors if the attribute is unknown, `mode` is not `:set` or `:add`, the template has no `data_shocks.csv`, or no row matches the selection.
+
+### build_scenario
+
+```julia
+build_scenario(template_zip, shocks_csv, inputpkg_zip; description=nothing, io=stdout)
+```
+
+Create a scenario input package from `template_zip` by writing the values of `shocks_csv` into its `data_shocks.csv`. The CSV can be a full edited copy of the shocks file or only the rows to change; rows are matched on region, year, commodity and attribute, and rows absent from the CSV keep the template value. The package's shocks file is regenerated from the template table, so the spreadsheet's formatting never reaches the model.
+
+Arguments:
+
+- `template_zip::AbstractString`, `shocks_csv::AbstractString`, `inputpkg_zip::AbstractString`: package to read, CSV to apply, scenario *input* package to write.
+- `description`: written to the `Description` field of `METADATA.csv`; default `Scenario from <csv name>`. The `Comments` field records the source CSV and the count of changed rows.
+- `io::IO`: where the changed rows are printed, grouped by attribute, region and commodity (`devnull` to silence).
+
+Only the columns `region`, `year`, `commodity`, `attribute` and `value` are read; header names and codes are matched regardless of case and surrounding blanks. A row that cannot be applied (unknown attribute, region or commodity; a commodity on a region-level attribute or none on a commodity-level one; a year outside the template; a blank or non-numeric value; a region and commodity pair the template does not have) is reported with `@warn` (one warning per reason, with line numbers) and skipped; a repeated key warns and the last row wins. Errors if the template has no `data_shocks.csv`, a required column is missing, or no row can be applied; warns if the result equals the template.
+
+Returns `(inputpkg_zip, rows_read, rows_applied, rows_skipped, rows_changed, changes)`, where `changes` is a `DataFrame` (`attribute`, `region`, `commodity`, `year`, `value`) of the rows whose value differs from the template.
+
+## Input and output helpers (io.jl)
+
+### bsat_set_license!
+
+```julia
+bsat_set_license!(path) -> String
+```
+
+Read the PATH license string from `path` (first line that is neither blank nor a `#` comment) and register it with PATHSolver. Throws an informative error when the file is missing, holds no license line, or still holds the placeholder. Returns the string.
+
+### bsat_extract_input
+
+```julia
+bsat_extract_input(zipfile, workdir) -> Dict{String,String}
+```
+
+Extract the standard input files from `zipfile` into `workdir/Input/`, matching entries by file name so the archive may or may not carry a leading folder. Returns a map from file name to extracted path (including `METADATA.csv` when present). Errors if the package is not found or any of the four required files is absent.
+
+### bsat_periods_solved
+
+```julia
+bsat_periods_solved(workdir, periods) -> Vector
+```
+
+Return the years in `periods` for which the core produced a solution file (`workdir/Output_<year>/data_solution.csv`).
+
+### bsat_collect_output
+
+```julia
+bsat_collect_output(workdir, periods_solved) -> String
+```
+
+Assemble `workdir/Output/` from the per-year folders the core wrote. The file contents reproduce the original code's overall export step (same column selections, same read and write sequence), with the targets file renamed to `data_targets_adjusted.csv`. Writes `data_params_calibrated.csv`, `data_exogenous.csv`, `data_shocks.csv`, `data_solution.csv` and `data_targets_adjusted.csv`. Returns the output folder.
+
+### bsat_write_metadata
+
+```julia
+bsat_write_metadata(workdir, input_metadata, periods, periods_solved)
+```
+
+Write `Output/METADATA.csv`. `Author`, `Description` and `Comments` come from the input package's `METADATA.csv` (`input_metadata`, a path or `nothing`) when present, together with any other field it holds; otherwise the defaults of the original code are used. Appends `Model calibration` and `Scenario simulation` (the same timestamp), `Model version`, `Years requested` and `Years solved`.
+
+### bsat_write_solver_log
+
+```julia
+bsat_write_solver_log(workdir, periods, periods_solved, elapsed, console_log)
+```
+
+Write `Output/SCENARIO_SOLVER_LOG.txt`: run summary, per-year solver and model status as recorded by the core in `Results_<year>/Solver_Status_Model_<year>.txt` (or `not solved` for years without that file), and the captured console output (which includes the PATH solver log) read from `console_log`.
+
+### bsat_zip_dir
+
+```julia
+bsat_zip_dir(dir, zipfile) -> String
+```
+
+Zip every file directly under `dir` into `zipfile` with entries at the archive root (no folder prefix), deflate-compressed, in sorted name order. Platform independent. Returns `zipfile`.
+
+### bsat_tee_stdout
+
+```julia
+bsat_tee_stdout(f, logpath)
+```
+
+Run `f()` while copying everything written to standard output (Julia and C level, so the PATH solver output is included) both to the console and to `logpath`. Returns the value of `f()`.
+
+## Shock helpers (shocks.jl)
+
+### bsat_read_zip_entries
+
+```julia
+bsat_read_zip_entries(zipfile) -> Dict{String,Vector{UInt8}}
+```
+
+Read every file entry of a zip into a dictionary from base name to bytes (folder prefixes dropped). Errors if the package is not found.
+
+### bsat_write_zip_entries
+
+```julia
+bsat_write_zip_entries(zipfile, entries) -> String
+```
+
+Write entries (base name to bytes) under an `Input/` folder, the layout of the input packages, deflate-compressed, in sorted name order. Returns `zipfile`.
+
+## Scenario helpers (scenario.jl)
+
+| Name | Meaning |
+|---|---|
+| `BSAT_SCENARIO_COLUMNS` | `("region", "year", "commodity", "attribute", "value")`, the columns an edited shocks CSV must have |
+| `bsat_read_scenario_csv(path)` | Read an edited shocks CSV as a `DataFrame` of trimmed strings (missing cells as empty strings), headers matched case-insensitively; errors if a required column is missing |
+| `bsat_norm(s)` | Matching key for codes and attribute names: lowercased and stripped |
+| `bsat_parse_year(s)`, `bsat_parse_value(s)` | Parse a year (accepting `2026.0`) or a value cell; `nothing` when not a finite number (or not an integer, for years) |
+| `bsat_print_changes(io, changes, template_name)` | Print the changed rows grouped by attribute, region and commodity, one line per group |
+| `bsat_format_runs(years, values)` | Format year and value pairs, compressing runs of consecutive years with equal values to `2026:2034 = -0.1` |
+| `bsat_set_metadata!(entries; description, comment)` | Set the `Description` and `Comments` fields of a package's `METADATA.csv` in an entries dictionary (created when absent); used by `make_shock` and `build_scenario` |
+
+## Command-line helpers
+
+`run_model.jl` defines `bsat_parse_args(args)` and `bsat_parse_years(s)`; `make_shock.jl` defines `bsat_parse(args)`, `bsat_list(s)` and `bsat_years(s)`; `run_scenario.jl` defines `bsat_parse_scenario_args(args)`, `bsat_parse_scenario_years(s)` and `bsat_input_path(output_zip)` (the input package path beside the output, `my_case_Output.zip` to `my_case_Input.zip`). They parse the options documented in [Command line](cli.qmd); a year string is either a range `2025:2034` (or `2025-2034`) or a comma list.

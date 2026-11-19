@@ -1,0 +1,6 @@
+# Working paper reference, used across the site as {{< var wp.cite >}} and {{< var wp.note >}}.
+# When the paper is posted, edit these two values, the two working-paper lines in README.md
+# ("Notes" and "How to cite"), and optionally add the paper under `references:` in CITATION.cff.
+wp:
+  cite: "BSAT working paper, forthcoming"
+  note: "The BSAT working paper is forthcoming on SSRN; its reference and DOI will be added here when it is posted."

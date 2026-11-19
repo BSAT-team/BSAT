@@ -1,0 +1,303 @@
+---
+title: "Walkthrough: from install to results"
+---
+
+This page runs through one complete cycle: install, run the baseline package once as a test of the installation, define a scenario, run it, and read the results in the dashboard, which shows the scenario against the baseline. A scenario can be defined three ways (section 4); the walkthrough follows the spreadsheet route first and the command-line route after it. Commands are for macOS, Linux and the container; on Windows replace `scripts/run_model_unix.sh` with `scripts\run_model_windows.bat` and `julia` with `.bsat_local\julia\bin\julia.exe`. All paths are relative to the repository root.
+
+## 1. Install
+
+Pick one of the three tracks: [Cloud and Docker](installation/cloud.qmd), [Local: macOS and Linux](installation/local-unix.qmd) or [Local: Windows](installation/local-windows.qmd). Each ends with a working Julia environment for `code/model/` and the `bsat` R environment and, optionally, the `bsat-dashboard` Python environment.
+
+The commands below are typed at a terminal prompt and run by pressing Enter. In a codespace the terminal is the panel at the bottom of the VS Code window in the browser, usually already open when the codespace starts; if it is not there, open it from the menu with Terminal > New Terminal (the menu sits behind the three-line icon at the top left) or with the keyboard shortcut Ctrl+`` ` `` (the backtick key). On a local Windows install the terminal is a Command Prompt, on macOS the Terminal application (Applications > Utilities, or search "Terminal" in Spotlight), on Linux your usual terminal application. Every command assumes the repository root is the current directory: a codespace starts there, and on a local install you `cd` into the repository folder first.
+
+**In a codespace, install nothing.** VS Code offers to install extensions, and the R extension in particular asks to install an R language server and then reports that it failed. Decline or close every such prompt and dismiss the error; the container already carries Julia, R and the dashboard environment, and nothing in the model depends on those extensions. [Cloud and Docker](installation/cloud.qmd) has the detail.
+
+## 2. License
+
+The PATH solver needs a free license string. Copy `code/model/path_license.txt.example` to `code/model/path_license.txt` and replace the placeholder line with the "Variable value" string from <https://pages.cs.wisc.edu/~ferris/path/LICENSE>. The runner checks the file at every start and stops with a message if it is missing or still holds the placeholder.
+
+## 3. Test the installation: run the baseline package (no shock)
+
+This run tests the installation and nothing else. The baseline input package `data/packages/baseline_2025_Input.zip` is built by the R pipeline from the USDA 2025 baseline, and its `data_shocks.csv` holds neutral values (all zeros), so the run reproduces the baseline projections and shows no change anywhere. What it demonstrates is that Julia, the solver and the license work.
+
+```bash
+scripts/run_model_unix.sh
+```
+
+Defaults: input `data/packages/baseline_2025_Input.zip`, output `output/baseline_Output.zip`, years `2025:2034`. The run takes about two minutes. The terminal shows, for each year, the three market-clearing checks, the PATH iteration log, and the solver and model status; the last lines are
+
+```
+Output package written to: .../output/baseline_Output.zip
+Years solved:  2025 2026 2027 2028 2029 2030 2031 2032 2033 2034
+Elapsed:       ... s
+```
+
+Unzip the output package, or open it in a file manager, and look at two files:
+
+**`SCENARIO_SOLVER_LOG.txt`** starts with a summary followed by the per-year status, then the full console output:
+
+```
+BSAT scenario solver log
+Model version:   v2.27 (2026-07-29)
+Run finished:    ...
+Elapsed seconds: ...
+Julia:           1.12.1
+Years requested: 2025 2026 2027 2028 2029 2030 2031 2032 2033 2034
+Years solved:    2025 2026 2027 2028 2029 2030 2031 2032 2033 2034
+Years skipped:   none
+
+Per-year status (from Results_<year>/Solver_Status_Model_<year>.txt):
+  2025  Solver status: FEASIBLE_POINT
+  2025  Model status: LOCALLY_SOLVED
+  ...
+```
+
+Every year should read `FEASIBLE_POINT` and `LOCALLY_SOLVED`. A year that the model refused appears as `not solved (market-clearing checks failed or solve skipped)` and under "Years skipped"; see [Troubleshooting](installation/troubleshooting.qmd#the-model-refuses-a-year).
+
+**`METADATA.csv`** carries the fields of the input package's metadata plus what the run added:
+
+```
+field,value
+Author,BSAT team
+Description,Baseline scenario
+Comments,Neutral shocks: reproduces the USDA baseline
+Pipeline build,2026-09-04T14:39:02
+Model calibration,<timestamp>
+Scenario simulation,<timestamp>
+Model version,v2.27 (2026-07-29)
+Years requested,2025 2026 2027 2028 2029 2030 2031 2032 2033 2034
+Years solved,2025 2026 2027 2028 2029 2030 2031 2032 2033 2034
+```
+
+The dashboard shows this table for each uploaded package, so the `Description` line is what identifies a scenario later. The other five files of the package are described in [Package and file format](data-format.qmd#output-package). A copy of this baseline output is committed as `data/outputs/baseline_2025_Output.zip`.
+
+This output is not needed later. Every output package carries the baseline it was solved against (`data_targets_adjusted.csv`), so the dashboard shows a shock against the baseline from the shock's own output package alone. The dashboard's two upload slots are for comparing two different shocks with each other, not a shock against the baseline.
+
+## 4. Three ways to define a scenario
+
+A scenario is the baseline input package with `data_shocks.csv` edited. There are three routes to that package; they produce the same file and can be mixed.
+
+| Route | Where the shock is written | Best for |
+|---|---|---|
+| Edited CSV plus one command (section 5) | a spreadsheet: a copy of `data/scenarios/shocks_template.csv`, or a small file listing only the rows to change | several attributes, regions, years or ramps at once; no command-line options to remember; the run starts from the same command |
+| `make_shock.jl` (section 6) | command-line options: one attribute, a value, and a selection of regions, commodities and years | a single uniform shock; scripting; layering shocks on an existing package |
+| The Julia API (`build_scenario`, `make_shock`, `run_bsat`; [Julia reference](reference/julia.qmd)) | Julia code | loops over many scenarios, or embedding the model in a larger workflow |
+
+Whatever the route, the package then goes through the model (`run_model.jl` or the run scripts) and the dashboard as in sections 6 and 7. The CSV route runs the model itself.
+
+## 5. Scenario from an edited CSV
+
+The shocks file has five columns that matter: `region`, `year`, `commodity`, `attribute` and `value`. `data/scenarios/README.md` documents the ten attributes, their units and neutral value, and the region and commodity codes. Two forms of CSV are accepted:
+
+- a full copy of `data/scenarios/shocks_template.csv` (the baseline shocks, 28,980 rows, all zeros) with some values edited: open it in a spreadsheet, filter by attribute, region, commodity and year, type the values, save as CSV;
+- a partial file with only the rows to change. Rows absent from the file keep the baseline value.
+
+The China soybean import tariff of the worked example (+10 percentage points from 2026 to 2034) as a partial file, `data/scenarios/example_china_soybean_tariff.csv`:
+
+```
+region,year,commodity,attribute,value
+CHN,2026,Soybean,shock_import_tariff,0.1
+CHN,2027,Soybean,shock_import_tariff,0.1
+...
+CHN,2034,Soybean,shock_import_tariff,0.1
+```
+
+One command builds the package, prints what differs from the baseline, runs the model and writes the output:
+
+```bash
+scripts/run_scenario_unix.sh data/scenarios/example_china_soybean_tariff.csv \
+      output/china_soybean_tariff_Output.zip "China soybean import tariff +10 pp from 2026"
+```
+
+```
+9 row(s) differ from baseline_2025_Input.zip:
+  shock_import_tariff                         CHN  Soybean  2026:2034 = 0.1
+Input package written to: .../output/china_soybean_tariff_Input.zip (9 row(s) applied, 0 skipped, 9 differ from the template)
+... (the model run, as in section 3)
+Years solved:  2025 2026 2027 2028 2029 2030 2031 2032 2033 2034
+```
+
+The second argument (output package) defaults to `output/<csv name>_Output.zip`, the third (description written to `METADATA.csv`) to `Scenario from <csv name>`. The input package is written beside the output with the same stem, so a run always leaves both packages behind. On Windows, `scripts\run_scenario_windows.bat` takes the same arguments.
+
+Rows the command cannot apply are skipped with a warning naming the line and the reason (unknown attribute, region or commodity, a year outside 2025 to 2034, a blank or non-numeric value, a commodity on a region-level attribute, a region and commodity pair the model does not have); the run continues with the other rows and stops only if none can be applied. Header names and codes are matched regardless of case, and the byte-order mark, `CRLF` line ends and number spellings such as `2026.0` or `1E-1` that spreadsheets produce are accepted. The package's shocks file is regenerated from the template, so the spreadsheet's formatting never reaches the model.
+
+To check a CSV without running the model, use the Julia entry point with `--build-only`; it writes the input package and prints the changes, and `--years`, `--template` and `--license` are also available there ([Command line](reference/cli.qmd#run_scenario.jl)):
+
+```bash
+julia --project=code/model code/model/run_scenario.jl --shocks my_case.csv --build-only
+```
+
+## 6. Create a shock package with make_shock.jl and simulate it
+
+`code/model/make_shock.jl` takes a template package, edits `data_shocks.csv` for one attribute over a selection of regions, commodities and years, and writes a new package. Start by listing the attributes:
+
+```bash
+julia --project=code/model code/model/make_shock.jl --list
+```
+
+```
+shock_import_tariff                          [RYNC]  ad valorem import tariff, added in decimal form (0.10 = +10 percentage points)
+shock_export_tax                             [RYNC]  ad valorem export tax, added in decimal form
+shock_nontariff_import                       [RYNC]  ad valorem equivalent of import non-tariff measures, added in decimal form
+shock_nontax_export                          [RYNC]  ad valorem equivalent of export non-tax measures, added in decimal form
+shock_land_prod                              [RYNC]  land productivity shifter, decimal change (-0.10 = 10 percent lower yields per hectare)
+shock TFP Productivity Value Added           [RYNC]  total factor productivity shifter in value added, decimal change
+shock TFP Productivity Intermediates         [RYNC]  total factor productivity shifter in intermediate use (soybean crushing), decimal change
+shock_TFP_Productivity_Feed_Use_livestock    [RYNC]  total factor productivity shifter in feed use of livestock, decimal change
+shock_land_supply                            [RY]  land supply availability, decimal change (-0.10 = 10 percent less land), region level
+shock_ag_expenditure_share                   [RY]  agricultural expenditure share, proportional change (0.05 = 5 percent higher), region level
+```
+
+`RYNC` attributes vary by region, year and commodity; `RY` attributes are region-level and ignore `--commodities`. Two attribute names contain spaces and must be quoted on the command line.
+
+### Worked example: China soybean import tariff
+
+Raise China's ad valorem import tariff on soybeans by 10 percentage points from 2026 to the end of the horizon:
+
+```bash
+julia --project=code/model code/model/make_shock.jl \
+      --template data/packages/baseline_2025_Input.zip \
+      --inputpkg output/china_soybean_tariff_Input.zip \
+      --shock shock_import_tariff --value 0.10 \
+      --regions CHN --commodities Soybean --years 2026:2034 \
+      --description "China soybean import tariff +10 pp from 2026"
+```
+
+```
+Wrote .../output/china_soybean_tariff_Input.zip: 9 rows of "shock_import_tariff" set to 0.1
+```
+
+Nine rows changed: one per year from 2026 to 2034. The new package is identical to the template except for those nine values in `data_shocks.csv` and the `Description` and `Comments` fields of `METADATA.csv`. The package produced by this exact command is committed as `data/packages/example_china_soybean_tariff_Input.zip`, and its output as `data/outputs/example_china_soybean_tariff_Output.zip`, so the run below and the dashboard of section 7 can be checked against them. It is the same package that section 5 builds from the CSV.
+
+Options: `--regions` and `--commodities` take comma-separated codes (ISO-3 region codes and the commodity codes `Barley, Beef, Corn, Cotton, Pork, Poultry, Rice, Sorghum, SoyMeal, SoyOil, Soybean, Wheat`); `--years` takes a range `2026:2034` or a list `2026,2027`; omitting a selection means "all". `--add` adds the value to what is already in the file instead of replacing it. The command errors if no row matches the selection or if the attribute name is unknown.
+
+### Simulate it
+
+```bash
+scripts/run_model_unix.sh output/china_soybean_tariff_Input.zip output/china_soybean_tariff_Output.zip
+```
+
+The third argument (years) defaults to `2025:2034`. The 2025 solution is identical to the baseline because the shock starts in 2026. Check `SCENARIO_SOLVER_LOG.txt` as in section 3: ten years solved, none skipped. (The CSV route of section 5 already ran this step.)
+
+## 7. Open the dashboard
+
+In a cloud or container environment (Codespaces, Docker), use the hosted dashboard at <https://huggingface.co/spaces/bsat-team/BSAT_Viz>. Download `output/china_soybean_tariff_Output.zip` from the codespace to your own computer first: right-click the file in the Explorer panel on the left and choose "Download...", or drag it from the Explorer onto your desktop. Then upload it on the hosted page. This route needs nothing installed and is the recommended one for everyone; from a local install the hosted copy works the same way, with the file already on your computer.
+
+Run the dashboard server yourself only if both hold: you work on your own computer, not in the cloud, and you want the server on that computer. It needs the optional `bsat-dashboard` environment from the bootstrap.
+
+```bash
+scripts/run_dashboard_unix.sh
+```
+
+On Windows the script is `scripts\run_dashboard_windows.bat`. Either way, open <http://localhost:8501> afterwards. [Dashboard](dashboard.qmd) describes both routes in full.
+
+Upload `output/china_soybean_tariff_Output.zip` as Shock 1 (up to 20 MB) and leave Shock 2 empty. The baseline output is never uploaded: every package carries its own baseline (`data_targets_adjusted.csv`) and solution (`data_solution.csv`), and the dashboard joins them by region, commodity, year and attribute and computes the ratio solution over baseline. The second slot takes a second, different shock, compared against the first; both scenarios are then measured against the baseline of Shock 1, and if the second package's baseline differs, a warning says so.
+
+What to look at, top to bottom:
+
+- **Metadata**: the `Description` confirms which package this is.
+- **Time series** for `China`, `Soybean`, `Imports`: the baseline path and the scenario path, which diverge from 2026.
+- **Regional changes** and **Heatmap of changes** for `Soybean` and `2026`: the cross-region pattern of the percent change. The year dropdowns open on 2026 because 2025 reproduces the observed data and shows no change.
+- **Top Regional Changes** for `Soybean`, `Imports`, `2026`: which regions' soybean imports move most.
+- **Table: Scenario Variables**, active shocks only: the nine `shock_import_tariff` rows for China, soybeans.
+
+With a second package loaded, the regional charts show the two scenarios side by side, and a radio button picks the one drawn in the heatmap, on a color scale shared by both.
+
+The attribute names in the dashboard are the display names of the baseline file (`Production`, `Imports`, `Beginning Stocks`, ...); the solution file uses lowercase codes that the dashboard maps to them (table in [Package and file format](data-format.qmd#solution-attributes)).
+
+## 8. Layering shocks and editing data_shocks.csv by hand
+
+**Layering with make_shock.** Run the command again with the previous package as template. Each call edits one attribute; `--add` accumulates on rows that already hold a value:
+
+```bash
+julia --project=code/model code/model/make_shock.jl \
+      --template output/china_soybean_tariff_Input.zip \
+      --inputpkg output/china_soybean_tariff_and_us_land_Input.zip \
+      --shock shock_land_supply --value -0.05 --regions USA --years 2026:2034 \
+      --description "China soybean tariff +10 pp and US land supply -5 percent from 2026"
+```
+
+**Editing by hand.** The CSV route of section 5 is the easy form of this: it takes the edited file and does the packaging. Doing it without the command, `data_shocks.csv` inside the package (folder `Input/`) is a plain CSV in the standard 13-column schema; open it in a spreadsheet or a script, edit the `value` column, and zip the folder again (the runner matches files by name, with or without the `Input/` folder). The columns are:
+
+| Column | Content for a shock row |
+|---|---|
+| `region` | ISO-3 region code (`USA`, `CHN`, `EUR`, ...) |
+| `year` | 2025 to 2034 |
+| `nest` | commodity nest (`Cereals`, `Livestock`, ...); blank for region-level shocks |
+| `commodity` | commodity code; blank for region-level shocks |
+| `input` | blank |
+| `attribute` | one of the ten shock attributes, spelled exactly as in `--list` |
+| `value` | the shock, decimal form; 0 is neutral |
+| `unit` | `decimal form` |
+| `attribute_type` | `RYNC` or `RY` |
+| `attribute_description`, `region_name`, `nest_name`, `commodity_name` | labels, not read by the model |
+
+Semantics: the model reads the shock rows of the year being solved and adds each value to the baseline level of the corresponding exogenous variable (tariff, export tax, non-tariff measures, land productivity, the three TFP shifters, land supply). The expenditure share is the one exception: the baseline share is multiplied by `1 + value`. A value of 0 leaves the baseline unchanged, which is why the file shipped with the baseline package is all zeros. Do not add or remove rows: the scaffold covers every region, commodity and year the model expects, and the ten attribute names must not be changed. Change `Description` in `METADATA.csv` so the dashboard can tell the scenario apart.
+
+## 9. Stylized cases
+
+The model team defined four stylized cases for the working paper ({{< var wp.cite >}}). They are shipped as ready-to-run packages under `data/packages/` with their model outputs under `data/outputs/`, so you can upload a case output on its own, or beside another case as Shock 2, in the dashboard without running anything. Each case is shipped twice: as a partial CSV under `data/scenarios/` (the scenario definition, a few rows), and as the `make_shock.jl` command that produces the same package. Either rebuilds the package from the baseline; solving a case takes about two minutes. From the CSV:
+
+```bash
+scripts/run_scenario_unix.sh data/scenarios/case1_land_supply_ukraine.csv output/case1_Output.zip \
+      "Case 1, land availability: Ukraine land supply 20 percent lower in 2026"
+```
+
+2025 is the realized base year and stays at the baseline in every case: the single-year shocks are placed in 2026, the second year of the horizon, and the nine-step ramps run over 2026 to 2034. Every year is solved independently, so a single-year shock changes only that year's results.
+
+### Case 1: land availability
+
+Ukraine's land supply is 20 percent lower in 2026 (`shock_land_supply`, region level).
+
+```bash
+julia --project=code/model code/model/make_shock.jl --template data/packages/baseline_2025_Input.zip \
+      --inputpkg output/case1_Input.zip --shock shock_land_supply --value -0.20 --regions UKR --years 2026 \
+      --description "Case 1, land availability: Ukraine land supply 20 percent lower in 2026"
+```
+
+CSV: `data/scenarios/case1_land_supply_ukraine.csv`. Package: `data/packages/case1_land_supply_ukraine_Input.zip`. What to look at: Ukrainian area and production of every crop in 2026, and the export flows of wheat and corn.
+
+### Case 2: export tax
+
+India applies an export tax of 50 percentage points on rice and wheat in 2026 (`shock_export_tax`).
+
+```bash
+julia --project=code/model code/model/make_shock.jl --template data/packages/baseline_2025_Input.zip \
+      --inputpkg output/case2_Input.zip --shock shock_export_tax --value 0.50 --regions IND --commodities Rice,Wheat --years 2026 \
+      --description "Case 2, export tax: India rice and wheat export tax +50 percentage points in 2026"
+```
+
+CSV: `data/scenarios/case2_export_tax_india.csv`. Package: `data/packages/case2_export_tax_india_Input.zip`. What to look at: Indian rice and wheat exports in 2026 and the exports of the other rice exporters (Thailand, Vietnam, Pakistan, United States).
+
+### Case 3: TFP improvement
+
+Total factor productivity in the value added of Chinese soybean production rises gradually over the horizon (`shock TFP Productivity Value Added`). Two variants ship: Case 3a rises 1 percent per year from 1 percent in 2026 to 9 percent in 2034; Case 3b rises 0.5 percent per year from 0.5 to 4.5 percent. 2025 is not shocked, so its results equal the baseline. A ramp is a sequence of `make_shock.jl` calls, each using the package written by the previous call as template:
+
+```julia
+# julia --project=code/model
+include("code/model/src/BSATRunner.jl"); using .BSATRunner
+pkg = "data/packages/baseline_2025_Input.zip"
+for (k, y) in enumerate(2026:2034)
+    pkg = make_shock(pkg, "output/case3a_Input.zip"; attribute="shock TFP Productivity Value Added",
+                     value=0.01k, regions=["CHN"], commodities=["Soybean"], years=[y],
+                     description="Case 3a, TFP improvement: China soybean value-added TFP rising 1 to 9 percent over 2026 to 2034").inputpkg_zip
+end
+```
+
+For Case 3b use `value=0.005k`. From the command line, the same ramp is nine `make_shock.jl` calls, each with the package written by the previous call as `--template` and `--years` set to one year.
+
+CSVs: `data/scenarios/case3a_tfp_soybean_china.csv`, `data/scenarios/case3b_tfp_soybean_china_half.csv` (nine rows each, one per year from 2026: the ramp is plain to read there). Packages: `data/packages/case3a_tfp_soybean_china_Input.zip`, `data/packages/case3b_tfp_soybean_china_half_Input.zip`. What to look at: Chinese soybean production, imports and crushing year by year, and Brazilian and US soybean exports.
+
+### Case 4: land productivity decline
+
+Land productivity of US corn and soybeans falls 10 percent in 2026 (`shock_land_prod`).
+
+```bash
+julia --project=code/model code/model/make_shock.jl --template data/packages/baseline_2025_Input.zip \
+      --inputpkg output/case4_Input.zip --shock shock_land_prod --value -0.10 --regions USA --commodities Corn,Soybean --years 2026 \
+      --description "Case 4, land productivity decline: US corn and soybean land productivity 10 percent lower in 2026"
+```
+
+CSV: `data/scenarios/case4_land_productivity_usa.csv`. Package: `data/packages/case4_land_productivity_usa_Input.zip`. What to look at: US corn and soybean production, area, yields and exports in 2026, and the imports of the main buyers.
+
+Each case follows the pattern of sections 5 to 7: build and run it from the CSV with `scripts/run_scenario_unix.sh`, or build it with `make_shock.jl` and run it with `scripts/run_model_unix.sh <Input.zip> <Output.zip>`, then open the output in the dashboard.

@@ -1,0 +1,10 @@
+# Build context trimming for the .devcontainer Dockerfile.
+# The Dockerfile only COPYs setup/environment.yml; everything below is
+# unused at build time and is present in the mounted workspace at runtime.
+.git
+.bsat_local
+.superpowers
+data
+doc
+code/model/test
+**/*.zip

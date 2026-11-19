@@ -1,0 +1,236 @@
+---
+title: "Updating raw data"
+---
+
+This page describes what to do when a source publishes a new data vintage. The general procedure is the same for every file:
+
+1. Download the new file from the source listed in [Raw data sources](data-sources.qmd) and place it in `data/raw/` (or the subfolder named below), keeping the old file until the new run is validated.
+2. Edit the constant at the top of the consuming script that names the file, quoted below for each file.
+3. Check the structural assumptions listed for that file. The scripts read sheets, header rows and columns by name or position; a new vintage that changes them fails loudly (a missing sheet or column) or, worse, silently (a shifted column read by position).
+4. Rerun the pipeline (`scripts/run_r_pipeline_unix.sh`, the `.bat` twin, or `Rscript main.R` from `code/processing/`; see [Processing pipeline](pipeline.qmd)) and go through the checklist at the end of this page.
+
+Files are grouped by source. "Consumed by" names the scripts in `code/processing/R/`. Year constants that must move together with the vintage are collected in "Moving the analysis period".
+
+## USDA baseline
+
+### 2025 International Long-Term Projections to 2034.xlsx
+
+- Consumed by: `10_read_baseline_data.R`.
+- Constant: `baseline_data <- "2025 International Long-Term Projections to 2034.xlsx"`.
+- To update: drop the new workbook in `data/raw/`, edit `baseline_data`, update `region_commodity_list_2025.xlsx` if the set of regions per commodity changed, rerun.
+- Assumptions: one sheet per commodity named exactly `Barley`, `Beef and veal`, `Corn`, `Cotton`, `Pork`, `Poultry`, `Rice`, `Sorghum`, `Soybeans`, `Soybean meal`, `Soybean oil`, `Wheat`. Within a sheet, region tables appear in the order of the region list followed by `World`, each 25 rows apart; the first data block spans rows 9 to 29 for Poultry and rows 7 to 27 for every other commodity, and holds 6 (Poultry, Beef and veal, Pork), 8 (Rice), 9 (Cotton), 10 (Barley, Corn, Sorghum, Wheat, Soybean meal, Soybean oil) or 11 (Soybeans) columns whose meaning is fixed in the script. Missing values are the string `     --`; the year column holds crop years such as `2025/26`. Any change in the row spacing, the starting row, the column set of a commodity group, or the region order breaks the read silently (values land under the wrong name), so compare `data/interim/baseline_projections_long.csv` against the workbook for a few regions after the first run.
+
+### region_commodity_list_2025.xlsx
+
+- Consumed by: `01_check_region_commodity_coverage.R`, `10_read_baseline_data.R`.
+- Constant: `input_path_list <- file.path(base_dir, "raw", "region_commodity_list_2025.xlsx")` in both scripts.
+- To update: project-maintained. Rebuild it from the new workbook's table of contents (one row per region and commodity, in the order the regions appear in each commodity sheet), edit the two constants, rerun.
+- Assumptions: sheet `Sheet1` with columns `region` and `commodity`; region names must match those in `mapping.csv` (column `region`) and commodity names must match the sheet names of the baseline workbook.
+
+### baseline_units.csv
+
+- Consumed by: `12_generate_data_targets.R` (declared but not read by `24_generate_data_exogenous.R`).
+- Constant: `input_path_units <- file.path(base_dir, "raw", "baseline_units.csv")`.
+- To update: project-maintained; edit in place only if the baseline changes units (for example cotton bales).
+- Assumptions: columns `commodity`, `commodity_name`, `attribute_description`, `unit`, joined on `commodity` (model code) and `attribute_description`.
+
+## Macro and population
+
+### Current_GDP_WB_2025.xls and population_WB_2025.xls
+
+- Consumed by: `24_generate_data_exogenous.R`.
+- Constants: `input_path_GDP_WB <- file.path(base_dir, "raw", "Current_GDP_WB_2025.xls")` and `input_path_population_WB <- file.path(base_dir, "raw", "population_WB_2025.xls")`.
+- To update: download the World Bank indicator files (`NY.GDP.MKTP.CD`, `SP.POP.TOTL`) in Excel format, drop them in `data/raw/`, edit the two constants, edit the year filters (`filter(year == 2025 ...)` for both GDP and population) if the reference year moves, rerun.
+- Assumptions: sheet `Data` with three title rows above the header (`skip = 3`); header columns `Country Name`, `Country Code`, `Indicator Name`, `Indicator Code`, then one column per year. `WLD` is excluded. Myanmar is `MMR` and is recoded to `BUR`.
+
+### Current_GDP_IMF_WEO_2025.csv and population_IMF_WEO_2025.csv
+
+- Consumed by: `24_generate_data_exogenous.R` (Taiwan only, absent from the World Bank series).
+- Constants: `input_path_GDP_IMF <- file.path(base_dir, "raw", "Current_GDP_IMF_WEO_2025.csv")` and `input_path_population_IMF <- file.path(base_dir, "raw", "population_IMF_WEO_2025.csv")`.
+- To update: export the WEO series `NGDPD` (GDP, current USD, billions) and `LP` (population, millions) in the IMF data portal CSV layout, drop them in `data/raw/`, edit the constants, rerun.
+- Assumptions: columns `DATASET`, `SERIES_CODE`, `OBS_MEASURE`, `COUNTRY`, `INDICATOR`, `FREQUENCY`, `SCALE`, then one column per year; the row is selected with `COUNTRY == "Taiwan Province of China"`; GDP is multiplied by 1e9 and population by 1000, so the `SCALE` must remain billions and millions.
+
+### Global GDP Shares and GDP Growth Assumptions to 2035.xlsx
+
+- Consumed by: `20_compute_ag_expenditure_share.R`.
+- Constant: `input_path_gdp <- file.path(base_dir, "raw", "Global GDP Shares and GDP Growth Assumptions to 2035.xlsx")`.
+- To update: download the macro assumptions table of the new USDA Agricultural Projections, drop it in `data/raw/`, edit the constant, then review the column positions and the year vector in the script: `gdp2025 = g[[2]]`, growth rates in columns 6 to 10 (`g2025` to `g2029`), the long-run average in column 13, `years <- 2025:2034`, and the growth vector `c(r$g2026, r$g2027, r$g2028, r$g2029, rep(r$gavg, 5))`.
+- Assumptions: the first sheet is read without headers; column 1 holds region labels (footnote markers such as ` 1/` are stripped) that must match the 40-entry crosswalk `xwalk` in the script plus the aggregates `Asia and Oceania` and `North Africa` used for the OAO and ONA residuals; rows with a non-numeric column 2 are dropped. Everything is by position, so a column inserted by USDA shifts the growth rates silently.
+
+### current_GDP_2014_WB.csv and current_GDPpc_2014_WB.csv
+
+- Consumed by: `23_compute_NTM_ave.R`.
+- Constants: `input_path_GDP <- file.path(base_dir, "raw", "current_GDP_2014_WB.csv")` and `input_path_GDPpc <- file.path(base_dir, "raw", "current_GDPpc_2014_WB.csv")`.
+- To update: only if the NTM reference year (2014, tied to the BACI and WITS 2014 files and the NTM AVE dataset) changes; then all 2014 inputs move together. Export the WDI series for the new year, edit the constants and the column name below.
+- Assumptions: WDI export layout with columns `Series Name`, `Series Code`, `Country Name`, `Country Code`, `2014 [YR2014]`; the last one is read as `X2014..YR2014.` after `read.csv`. Missing values are `..`. `EUU` is recoded to `EUN`, `MMR` to `BUR`.
+
+### current_GDP_IMF.xls and current_GDPpc_IMF.xls
+
+- Consumed by: `23_compute_NTM_ave.R` (Taiwan only).
+- Constants: `input_path_GDP_twn <- file.path(base_dir, "raw", "current_GDP_IMF.xls")` and `input_path_GDPpc_twn <- file.path(base_dir, "raw", "current_GDPpc_IMF.xls")`.
+- To update: as above, only with the NTM reference year.
+- Assumptions: the first sheet's first column is headed `GDP, current prices (Billions of U.S. dollars)` and `GDP per capita, current prices\n (U.S. dollars per capita)` respectively (the header text, including the line break, is used in `rename()`), followed by one column per year; the column `2014` is read; the row is `Taiwan Province of China`.
+
+## Prices and CPI
+
+### 2026-06-19 IMF Commodity Prices external-data.xlsx
+
+- Consumed by: `20_compute_ag_expenditure_share.R`.
+- Constant: `input_path_imf <- file.path(base_dir, "raw", "2026-06-19 IMF Commodity Prices external-data.xlsx")`.
+- To update: download the IMF Primary Commodity Prices monthly workbook, drop it in `data/raw/`, edit the constant, rerun.
+- Assumptions: sheet `External`, read without headers. Row 1 holds the commodity codes; the script selects `PBARL`, `PWHEAMT`, `PCOTTIND`, `PRICENPQ`, `PMAIZMT`, `PSORG`, `PSOYB`, `PSMEA`, `PSOIL` (table `imf_meta`, which also fixes each commodity's marketing-year start month). Column 1 holds date labels `YYYYMm` (for example `2025M3`); other rows are ignored. Units must stay USD per metric ton, except cotton and sorghum in US cents per pound, because the conversion in `20` and `24` is hard-coded per commodity.
+
+### 2026-06-19 International Prices FAO Meat.xlsx
+
+- Consumed by: `20_compute_ag_expenditure_share.R`.
+- Constant: `input_path_fao <- file.path(base_dir, "raw", "2026-06-19 International Prices FAO Meat.xlsx")`.
+- To update: export the same ten export-price series from the FAO GIEWS FPMA international prices tool, in the same column order, drop the file in `data/raw/`, edit the constant, rerun.
+- Assumptions: sheet `data`, read without headers; column 2 holds dates `MM/DD/YYYY`; the meat averages use fixed column positions (columns 3, 4, 5 for beef: United States, Australia, Brazil; 6, 8, 9 for pork: Brazil, EU, United States; 7 and 10 for poultry: Brazil, United States), so adding, removing or reordering a series in the export changes the averages silently. Prices are USD per tonne.
+
+### 2026-06-24 CPI_US.xlsx
+
+- Consumed by: `20_compute_ag_expenditure_share.R`.
+- Constant: `input_path_cpi_17 <- file.path(base_dir, "raw", "2026-06-24 CPI_US.xlsx")`.
+- To update: extend the annual-average CPI-U series (BLS or FRED `CPIAUCNS`) in the workbook, recompute `CPI_2017` as the annual average divided by the 2017 average, edit the constant, rerun.
+- Assumptions: sheet `Sheet1` with columns `year`, `AVG_CPI`, `CPI_2017`; joined on `year`, and every year with price data must be present (a missing year yields missing deflated prices). The base year 2017 is fixed by the price units of the model (`USD Million (prices of 2017)`).
+
+## Trade barriers
+
+All files live in `data/raw/trade_barriers/`. Five of them are not distributed with the repository (two for size, three because of UNCTAD TRAINS and WTO terms): `tariff_ave_WITS_2023.csv`, `tariff_ave_2014_WITS.csv`, `ag_hs_products.csv`, `ag_tariff_USA_2014.xls` and `BACI_HS92_Y2014_V202401b.csv`. Their derived products are shipped in `data/interim/` and reused by `main.R` when the raw files are absent. A refresh of any of them requires obtaining the file from its source (query settings in [Raw data sources](data-sources.qmd#large-files); `scripts/fetch_large_raw_data.sh` reports which are present and downloads the CEPII file), then rerunning scripts 22 and 23, which rewrite the derived files.
+
+### tariff_ave_WITS_2023.csv (not distributed)
+
+- Consumed by: `22_compute_tariff_ave.R`; its presence is also tested by `main.R`, which otherwise reuses the shipped `data/interim/tariff_ave_region.csv` and `export_taxes_comm_reg.csv`.
+- Constant: `input_path_tariff <- file.path(base_dir, "raw", "trade_barriers/tariff_ave_WITS_2023.csv")`, and the file name in `main.R` (`tariff_raw`) and in the fetch scripts.
+- To update: obtain the file from WITS (Advanced Query, TRAINS, all reporters, all partners, all HS6 products, the new year, AVE of applied tariff, CSV export), drop it in the folder, edit the constant, and edit the string `year = "2023 (or last observed)"` written to the output; rerun. Script 22 then rewrites the two derived files in `data/interim/`, which are tracked in git.
+- Assumptions: WITS export columns `Reporter` (numeric code), `Product` (HS code, leading zero dropped), `DutyType`, `Simple Average`, `Tariff Year` (read as `Simple.Average`, `Tariff.Year`). Only `DutyType == "MFN"` rows are used. Product codes of 3 or 5 digits get a leading zero; the commodity mapping uses fixed HS4 and HS6 lists, so a nomenclature revision that moves the modeled products to other headings requires editing that mapping. The EU must be reported as one reporter (`EUN` in `country_code_WITS.xlsx`).
+
+### country_code_WITS.xlsx
+
+- Consumed by: `22_compute_tariff_ave.R`, `23_compute_NTM_ave.R`.
+- Constant: `input_path_code` (22) and `input_path_WITS_code` (23), both `file.path(base_dir, "raw", "trade_barriers/country_code_WITS.xlsx")`.
+- To update: only if WITS adds reporters; append rows.
+- Assumptions: first sheet with columns `country`, `ISO3`, `Reporter` (the numeric WITS reporter code). `MMR` is recoded to `BUR`.
+
+### ave_hs_importer.csv
+
+- Consumed by: `23_compute_NTM_ave.R`.
+- Constant: `input_path_NTM <- file.path(base_dir, "raw", "trade_barriers/ave_hs_importer.csv")`.
+- To update: the World Bank NTM AVE dataset is a one-off release (2014 reference); if a new release appears, all 2014 inputs of the NTM step should move together.
+- Assumptions: columns `importer` (ISO3), `hs2code` (HS6 code despite the name, leading zero dropped), `ave1C`, `ave2C`; the AVE is the row sum of the last two.
+
+### BACI_HS92_Y2014_V202401b.csv (not distributed)
+
+- Consumed by: `23_compute_NTM_ave.R`; its presence is also tested by `main.R`, which otherwise reuses the shipped `data/interim/NTM_IMP_ave_region.csv` and `NTM_EXP_ave_region.csv`.
+- Constant: `input_path_trade <- file.path(base_dir, "raw", "trade_barriers/BACI_HS92_Y2014_V202401b.csv")`, and the file name in `main.R` (`ntm_raw`) and in `scripts/fetch_large_raw_data.sh` and `.bat` (`BACI_FILE`).
+- To update: `scripts/fetch_large_raw_data.sh --download` fetches release 202401b and extracts the 2014 file. For a newer BACI release, change the URL and file name in the fetch scripts, in `main.R`, and in the constant, and update `country_codes_V202401b.csv` to the matching release. Rerun script 23, which rewrites the NTM derived files in `data/interim/`.
+- Assumptions: BACI columns `t`, `i`, `j`, `k`, `v`, `q` (year, exporter code, importer code, HS6 product, value, quantity); HS codes lose their leading zero and get it back in the script. Taiwan is BACI code 490 and Myanmar 104.
+
+### country_codes_V202401b.csv
+
+- Consumed by: `23_compute_NTM_ave.R`.
+- Constant: `input_path_BACI_code <- file.path(base_dir, "raw", "trade_barriers/country_codes_V202401b.csv")`.
+- To update: together with the BACI release.
+- Assumptions: columns `country_code`, `country_name`, `country_iso2`, `country_iso3`.
+
+### ag_hs_products.csv (not distributed)
+
+- Consumed by: `23_compute_NTM_ave.R`; its presence is also tested by `main.R`.
+- Constant: `input_path_ag_goods <- file.path(base_dir, "raw", "trade_barriers/ag_hs_products.csv")`, plus `main.R` (`ntm_raw`) and the fetch scripts.
+- To update: obtain the WITS product group `WTO_HS_Aggri` exported as CSV; rarely changes. Rerun script 23, which rewrites the NTM derived files in `data/interim/`.
+- Assumptions: WITS layout with a `Product` column; the row `WTO_HS_Aggri` is dropped; only the distinct product codes are used.
+
+### ag_tariff_USA_2014.xls (not distributed)
+
+- Consumed by: `23_compute_NTM_ave.R` (source of the HS6 codes that belong to the twelve commodities). When the file is absent the script reads the shipped `data/interim/commodity_hs6_mapping.csv` (67 HS6 codes) instead; when present it rebuilds and rewrites that mapping.
+- Constant: `input_path_hs6 <- file.path(base_dir, "raw", "trade_barriers/ag_tariff_USA_2014.xls")`.
+- To update: rarely; obtain the WTO Tariff and Trade Data export of the United States applied MFN schedule for 2014 (or any HS6 schedule with the modeled products, if the sheet and column below are kept) and rerun script 23.
+- Assumptions: sheet `Applied_MFN`, column E from row 6 holds HS codes; 6-digit codes are kept and classified by their HS4 prefix using the same fixed lists as script 22.
+
+### tariff_ave_2014_WITS.csv (not distributed)
+
+- Consumed by: `23_compute_NTM_ave.R`; its presence is also tested by `main.R`.
+- Constant: `input_path_tariff <- file.path(base_dir, "raw", "trade_barriers/tariff_ave_2014_WITS.csv")`, plus `main.R` (`ntm_raw`) and the fetch scripts (`WITS_FILE`).
+- To update: obtain it manually from WITS (see `scripts/fetch_large_raw_data.sh` for the query); only with the NTM reference year. Rerun script 23, which rewrites the NTM derived files in `data/interim/`.
+- Assumptions: same WITS export layout as `tariff_ave_WITS_2023.csv`; `DutyType == "MFN"` rows; `Reporter`, `Product`, `Simple.Average`.
+
+### country_region_WB.xlsx
+
+- Consumed by: `23_compute_NTM_ave.R` (geographic region fixed effects).
+- Constant: `input_path_region <- file.path(base_dir, "raw", "trade_barriers/country_region_WB.xlsx")`.
+- To update: download the World Bank country and lending groups workbook, drop it in the folder, edit the constant; check the row range.
+- Assumptions: sheet `List of economies`, rows 1 to 219, columns 2 and 3 headed `Code` and `Region`. Regions `Europe & Central Asia` and `Middle East & North Africa` are merged into `Euro-MENA`, `East Asia & Pacific` and `South Asia` into `Asia-Pacific`; renamed regions break the merge silently (they become their own fixed-effect group).
+
+## Land cost and livestock
+
+### AgTFPInternational2023.xlsx
+
+- Consumed by: `21_compute_land_cost_share.R`.
+- Constant: `input_path_land_share <- file.path(base_dir, "raw", "AgTFPInternational2023.xlsx")`.
+- To update: download the new USDA International Agricultural Productivity workbook, drop it in `data/raw/`, edit the constant, then check the read: `sheet = "Cost Shares", rows = 3:182, cols = c(3, 33)` and `rename(land_share_r = `2021-2030`)`.
+- Assumptions: sheet `Cost Shares`; column 3 is headed `ISO3` on row 3 and column 33 is the land cost share for the latest decade, headed `2021-2030` on row 3 (row 2 carries the block label `LAND`); rows 4 to 182 are countries. A new vintage will add a decade column and shift the position, and will rename the header, so both the column index and the name must be edited. `MMR` is recoded to `BUR`; the EUR share is hard-coded at 0.113 in the script.
+
+### variable_costs_2025/ (five workbooks)
+
+`U.S. Feed Grains projections to 2035.xlsx`, `U.S. Rice projections to 2035.xlsx`, `U.S. Soybeans and products projections to 2035.xlsx`, `U.S. Upland Cotton projections to 2035.xlsx`, `U.S. Wheat Projections to 2035.xlsx`.
+
+- Consumed by: `21_compute_land_cost_share.R`.
+- Constants: `input_path_vc_dir <- file.path(base_dir, "raw", "variable_costs_2025")` and `vc_pattern <- "to 2035"` (every file in the folder whose name matches the pattern is read).
+- To update: create a new folder (for example `variable_costs_2026`), drop the new USDA Agricultural Projections commodity tables in it, edit `input_path_vc_dir` and `vc_pattern`, rerun. Also edit `filter(year >= 2024 ...)` if the projection start moves.
+- Assumptions: parsed by labels in column 1 of every sheet: a `Table ... U.S. <crop>` title (the crop is recognized from the words corn, sorghum, barley, rice, soybean, cotton, wheat; oats are skipped), an `Item` row whose remaining cells are crop years such as `2025/26`, a row starting `Variable costs of production`, and the next row labeled `Per acre` holding the values. A retitled table or a renamed row drops the crop silently; check `data/interim/variable_costs_us_2025.csv` has all seven crops and all years.
+
+### FAOSTAT_total_livestock_value_constant_IntlD.csv and FAOSTAT_each_livestock_value_constant_IntlD.csv
+
+- Consumed by: `11_compute_feed_use_decomposition.R`.
+- Constants: `input_path_total_value`, `input_path_each_value`, each `file.path(base_dir, "raw", "<file>")`.
+- To update: FAOSTAT QV (Value of Agricultural Production, constant 2014-2016 international dollars). Export the 2015 `Livestock` aggregate for all countries, and the 2015 values of the five indigenous meat items for all countries; drop the files in `data/raw/`, edit the constants.
+- Assumptions: FAOSTAT CSV with columns `Area Code (ISO3)` (read as `Area.Code..ISO3.`), `Item`, `Year`, `Value`. Item labels must be exactly `Meat of cattle with the bone, fresh or chilled (indigenous)`, `Meat of buffalo, fresh or chilled (indigenous)`, `Meat of pig with the bone, fresh or chilled (indigenous)`, `Meat of chickens, fresh or chilled (indigenous)`, `Meat of turkeys, fresh or chilled (indigenous)` and, in the total file, `Livestock`. FAOSTAT renames items between releases; a renamed item silently drops out of the shares. The total and each-item files must contain a single year.
+
+### FAOSTAT_Livestock_Inventory_2024.csv and FAOSTAT_Slaughtered Livestock_2024.csv
+
+- Consumed by: `24_generate_data_exogenous.R`.
+- Constants: `input_path_liv_inv <- file.path(base_dir, "raw", "FAOSTAT_Livestock_Inventory_2024.csv")` and `input_path_liv_slg <- file.path(base_dir, "raw", "FAOSTAT_Slaughtered Livestock_2024.csv")`.
+- To update: FAOSTAT QCL, elements `Stocks` and `Producing Animals/Slaughtered` for the new year, all countries; drop the files in `data/raw/`, edit the constants, and edit the two occurrences of `mutate(Year = 2024)` and `year = 2024` in the script.
+- Assumptions: FAOSTAT CSV with columns `Area Code (ISO3)`, `Item`, `Year`, `Unit`, `Value`. Inventory items `Buffalo`, `Cattle`, `Chickens`, `Ducks`, `Geese`, `Other birds`, `Swine / pigs`, `Turkeys`; slaughter items `Meat of buffalo, fresh or chilled`, `Meat of cattle with the bone, fresh or chilled`, `Meat of chickens, fresh or chilled`, `Meat of ducks, fresh or chilled`, `Meat of geese, fresh or chilled`, `Meat of pigeons and other birds n.e.c., fresh, chilled or frozen`, `Meat of turkeys, fresh or chilled`, `Meat of pig with the bone, fresh or chilled`. Cattle and pigs are reported in head and poultry in 1,000 head; the script divides the former by 1,000, so the FAOSTAT units must not change.
+
+## Identifiers and parameters
+
+### mapping.csv
+
+- Consumed by: `11`, `12`, `20`, `21`, `22`, `23`, `24`, `30` (constant `input_path_mapping <- file.path(base_dir, "raw", "mapping.csv")` in each).
+- To update: project-maintained. Edit in place when a country changes region or the baseline adds a region; then provide the new region's parameters in `exogenous_data.csv`.
+- Assumptions: columns `group`, `region_code`, `region`, `region_name`, `country_code`, `country`. `region` must match the USDA baseline region names used in `region_commodity_list_2025.xlsx`; `country_code` is ISO3 with Myanmar as `BUR`; group `A` marks the 42 model regions (B and C are aggregated into `ROW` in the NTM step). Scripts 11, 22 and 23 drop the two former Yemen rows and 22 and 23 replace the EU members by a single `EUN` reporter.
+
+### exogenous_data.csv
+
+- Consumed by: `24_generate_data_exogenous.R`.
+- Constant: `input_path_exo_params <- file.path(base_dir, "raw", "exogenous_data.csv")`.
+- To update: project-maintained (calibrated elasticities `sigma_t`, `sigma_u`, `epsilon_l`, `epsilon_q`, `omega_c`, `omega_q` and the per-region, per-commodity productivity and land parameters). Edit in place; the file is appended to `data_exogenous.csv` as is.
+- Assumptions: already in the model schema (`region, year, nest, commodity, input, attribute, value, unit, attribute_type, attribute_description, region_name, nest_name, commodity_name`). The attribute `Land Unavailability` is renamed with a trailing space by the script to match the model.
+
+## Moving the analysis period
+
+When the USDA baseline advances a year, the following year constants must move together (all in `code/processing/R/`):
+
+- `12_generate_data_targets.R`: `lst_obsv_yr <- 2025`.
+- `30_generate_data_shocks.R`: `first_yr <- 2025`, `last_yr <- 2034`.
+- `11_compute_feed_use_decomposition.R`: `filter(year >= 2025)`.
+- `20_compute_ag_expenditure_share.R`: `years <- 2025:2034`, the GDP level and growth columns (see the GDP shares file above), `filter(year == 2025)` for the expenditure and the exported share.
+- `21_compute_land_cost_share.R`: `filter(year >= 2024 ...)` and `filter(year>=2025)`.
+- `24_generate_data_exogenous.R`: `marketing_year == 2025` for prices, `year == 2025` for population and GDP, `Year = 2024` and `year = 2024` for livestock.
+- The model run: `scripts/run_model_unix.sh` and `.bat` default to `2025:2034`, and `code/model/test/runtests.jl` pins the same period for the baseline package.
+
+The package name written by `60_build_input_package.R` follows the first year of `data_targets.csv` automatically.
+
+## Checklist for a full refresh
+
+1. Place the new raw files in `data/raw/` and edit the file name constants and year constants listed above. Keep the previous `data/processed/` and `data/packages/` copies for comparison (they are tracked in git, so `git diff` and `git stash` work).
+2. Decide whether scripts 22 and 23 run or are skipped. They run only when their raw inputs that are not distributed are under `data/raw/trade_barriers/` (`scripts/fetch_large_raw_data.sh` reports which of the five are present); otherwise `main.R` reuses the derived files shipped in `data/interim/`. A refresh of the trade-barrier sources requires the raw files, and the rerun rewrites the tracked derived files.
+3. Run the pipeline: `scripts/run_r_pipeline_unix.sh` or `scripts\run_r_pipeline_windows.bat` (or `Rscript main.R` from `code/processing/`). It must end with `main.R ... ALL DONE`. Read the console for the `50_harmonize_targets:` summary line and any warning about unmatched names.
+4. Inspect `data/interim/harmonization_log.csv`. Expect rows with `delta` 1 or 2 and status `adjusted`, on both checks; a status containing `outside` or a residual larger than 2 points to a broken read in script 10 or a changed baseline layout.
+5. Spot-check the intermediates against the sources: `baseline_projections_long.csv` for two or three regions, `variable_costs_us_2025.csv` for all seven crops, `international_prices_annual.csv` for the last marketing year, and `ag_expenditure_shares.csv` for plausible shares.
+6. Diff the new `data/processed/*.csv` against the previous vintage (row counts per attribute, new or missing region-commodity pairs) before accepting them.
+7. Run the model on the new package: `scripts/run_model_unix.sh data/packages/baseline_<year>_Input.zip output/baseline_Output.zip <first>:<last>` (or the `.bat` twin). Every year should report a solved status in the solver log.
+8. Check that the neutral run reproduces the new targets: upload the output package to the dashboard ([Dashboard](dashboard.qmd)). With neutral shocks every ratio of solution to baseline is 1, so "Top # Regional Changes" shows zero percent change for every attribute and year. A nonzero change in yields or extraction rates points at script 50 (derived series); a nonzero change elsewhere points at the harmonization log.
+9. Once validated, refresh the regression reference: `code/model/test/expected/baseline_<year>_Input.sha256` and the fixture path in `code/model/test/runtests.jl`, then `julia --project=code/model code/model/test/runtests.jl`.
+10. Update [Raw data sources](data-sources.qmd) (file names and vintage dates), this page, and [Processing pipeline](pipeline.qmd) if any script header changed.

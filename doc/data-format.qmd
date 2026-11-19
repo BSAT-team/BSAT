@@ -1,0 +1,117 @@
+---
+title: "Package and file format"
+---
+
+All data that enters or leaves the model is stored in CSV files with one common schema, bundled into ZIP packages. This page describes the packages as the current code reads and writes them (`code/model/src/io.jl`, `code/processing/R/60_build_input_package.R`, `code/visualization/bsat_dashboard.py`). The original design note is kept as [data/data_specification.md](data/data_specification.md).
+
+## Input package
+
+An input package is a ZIP archive holding four CSV files and an optional metadata file. The pipeline writes them under an `Input/` folder; the runner matches entries by file name, so the folder may be present or absent.
+
+| File | Content | Read by the model |
+|---|---|---|
+| `data_params_init.csv` | Initial values of the seven commodity-level elasticities (`sigma_d`, `sigma_f`, `sigma_c`, `sigma_l`, `sigma_z`, `sigma_w`, `omega_s`) | yes |
+| `data_exogenous.csv` | Everything the model takes as given: global and nest elasticities, distribution parameters, international prices, population and GDP per capita, price normalizations, livestock inventory and slaughter, and the baseline levels of the shock variables (tariffs, export taxes, non-tariff measures, land productivity, land unavailability, TFP) | yes |
+| `data_targets.csv` | The baseline levels the model reproduces: area, yields, production, imports, exports, food, feed and total consumption, beginning and ending stocks, loss, crushing, extraction rate, and feed use by livestock product, for 42 regions, 12 commodities and the years 2025 to 2034 | yes |
+| `data_shocks.csv` | The ten shock attributes for every region, commodity and year; all zeros in the baseline package | yes |
+| `METADATA.csv` | `field,value` pairs: `Author`, `Description`, `Comments`, and whatever else the producer adds (the pipeline adds `Pipeline build`) | copied into the output metadata |
+
+The runner errors if any of the four CSV files is missing. The baseline package is `data/packages/baseline_2025_Input.zip`; scenario packages are derived from it by editing `data_shocks.csv`, from a spreadsheet or the command line (see [Walkthrough](walkthrough.qmd#three-ways-to-define-a-scenario)).
+
+## Output package
+
+An output package is a ZIP archive with seven files at the archive root, written by `run_bsat` for the years that solved.
+
+| File | Content |
+|---|---|
+| `data_params_calibrated.csv` | The calibrated parameters of the exogenous file (`sigma_t`, `sigma_u`, `sigma_n`, `sigma_a`, `sigma_i`, `phi_i`, `phi_f`, `omega_q`, `omega_c`, `epsilon_l`, `epsilon_q`) followed by the rows of `data_params_init.csv` |
+| `data_exogenous.csv` | The exogenous rows the model used: international prices, GDP per capita, population, price normalizations (`Price of No Land Input`, `Price of No AG`, `P_NO_FEED`), `inv_liv`, `slt_liv`, `Ag Expenditure Share`, the two NTM attributes, `Export tax`, `Import tariff`, `Land Unavailability `, the three TFP attributes and `Land Productivity` |
+| `data_shocks.csv` | Copy of the input file |
+| `data_solution.csv` | The model solution, one row per region, commodity, year and solution attribute, for the solved years |
+| `data_targets_adjusted.csv` | The input targets of the solved years, concatenated (the code writes each year's targets back as read; the pipeline's harmonization has already applied the model's own adjustments, except the feed residuals the code repairs internally without changing its reported feed consumption) |
+| `METADATA.csv` | The input metadata plus `Model calibration`, `Scenario simulation` (timestamps), `Model version`, `Years requested`, `Years solved` |
+| `SCENARIO_SOLVER_LOG.txt` | Run summary, per-year solver and model status, and the full console output including the PATH iteration log |
+
+The dashboard reads `data_targets_adjusted.csv` and `data_solution.csv` (required) and `data_shocks.csv` and `METADATA.csv` (optional); it ignores the other three files. Older packages that hold `data_targets.csv` instead of `data_targets_adjusted.csv`, possibly under an `Output/` folder, are still accepted with a note.
+
+## The 13-column schema
+
+Every CSV file, input and output, has the same columns in this order. Three blocks: dimension identifiers, values, labels.
+
+| # | Column | Content |
+|---|---|---|
+| 1 | `region` | ISO-3 code of the country or region (`USA`, `CHN`, `EUR`, `OAO`, ...). Blank for global values. |
+| 2 | `year` | Calendar year of the crop year (2025 stands for 2025/26). Blank for time-invariant values. |
+| 3 | `nest` | Commodity nest the row belongs to (see [Model](model.qmd#sets)). Blank when not commodity-specific. |
+| 4 | `commodity` | Commodity code: `Barley`, `Beef`, `Corn`, `Cotton`, `Pork`, `Poultry`, `Rice`, `Sorghum`, `SoyMeal`, `SoyOil`, `Soybean`, `Wheat`. |
+| 5 | `input` | Input the row refers to, used only by the feed-use rows of the targets (`Total_feed_use_input_to_commodity`, where `input` is the feed crop and `commodity` the livestock product). Blank otherwise. |
+| 6 | `attribute` | Name of the variable or parameter, spelled exactly as the model reads it. |
+| 7 | `value` | The number. Missing values are allowed where the source does not report one (for example `Yields` for the livestock commodities, which have no area). |
+| 8 | `unit` | Unit of `value` for display (`1,000 metric tones`, `1,000 hectares`, `decimal form`, ...). |
+| 9 | `attribute_type` | Code for the dimensions the attribute varies over (below). |
+| 10 | `attribute_description` | Free-text description of the attribute. |
+| 11 | `region_name` | Display name of the region. |
+| 12 | `nest_name` | Display name of the nest. |
+| 13 | `commodity_name` | Display name of the commodity. |
+
+Columns 8 to 13 are for interpretation and display; the model reads columns 1 to 7.
+
+### Attribute type codes
+
+One letter per dimension, combined in alphabetical order:
+
+| Letter | Dimension |
+|---|---|
+| `G` | global, no dimension |
+| `R` | region |
+| `Y` | year |
+| `N` | nest |
+| `C` | commodity |
+| `I` | input |
+
+Examples in the shipped files: `G` (`sigma_t`), `N` (`sigma_n`), `NC` (`sigma_a`, `phi_i`), `C` (`sigma_d`), `R` (`Land Unavailability `), `RY` (`Population`, `shock_land_supply`), `RNC` (`Import tariff` levels), `RYNC` (targets, solution rows, commodity-level shocks), `RYNCI` (feed use by input).
+
+## Solution attributes
+
+`data_solution.csv` uses lowercase attribute codes. The dashboard maps them to the display names used in the targets file:
+
+| Code | Display name | Unit written by the model |
+|---|---|---|
+| `beg_stock` | Beginning Stocks | as in the targets |
+| `production` | Production | as in the targets |
+| `imports` | Imports | as in the targets |
+| `tc` | Total Consumption | as in the targets |
+| `food_cons` | Food Consumption | as in the targets |
+| `feed_cons` | Feed Consumption | as in the targets |
+| `exports` | Exports | as in the targets |
+| `end_stock` | Ending Stocks | as in the targets |
+| `loss` | Loss | as in the targets |
+| `area` | Area | as in the targets |
+| `crush` | Crushing | as in the targets |
+| `yields` | Yields | metric tons per hectare; kg per hectare for cotton |
+| `ext_rate` | Extraction Rate | percentage |
+
+Beginning stocks in the solution are the target values (stocks carried in from the previous year are not shocked). Yields and extraction rates are reported with the conventions described in [Model](model.qmd#outputs-and-reporting-conventions).
+
+## Shock attributes
+
+The ten attributes of `data_shocks.csv`, as defined in `code/model/src/shocks.jl` (`BSAT_SHOCKS`). Every value is a decimal; the neutral value is 0 for all of them.
+
+| Attribute | Type | Baseline quantity it modifies | How it is applied | Unit and example |
+|---|---|---|---|---|
+| `shock_import_tariff` | RYNC | ad valorem import tariff | added | decimal; 0.10 = +10 percentage points |
+| `shock_export_tax` | RYNC | ad valorem export tax | added | decimal |
+| `shock_nontariff_import` | RYNC | ad valorem equivalent of import non-tariff measures | added | decimal |
+| `shock_nontax_export` | RYNC | ad valorem equivalent of export non-tax measures | added | decimal |
+| `shock_land_prod` | RYNC | land productivity shifter (crops) | added | decimal change; -0.10 = 10 percent lower yield per hectare |
+| `shock TFP Productivity Value Added` | RYNC | total factor productivity in value added (crops) | added | decimal change |
+| `shock TFP Productivity Intermediates` | RYNC | total factor productivity in intermediate use (soybean crushing: SoyMeal, SoyOil) | added | decimal change |
+| `shock_TFP_Productivity_Feed_Use_livestock` | RYNC | total factor productivity in feed use (Beef, Pork, Poultry) | added | decimal change |
+| `shock_land_supply` | RY | land supply availability, region level | added | decimal change; -0.10 = 10 percent less land |
+| `shock_ag_expenditure_share` | RY | agricultural expenditure share, region level | baseline share multiplied by 1 + value | proportional change; 0.05 = 5 percent higher share |
+
+"Added" means the model computes the new level as baseline level plus shock value for the year being solved. The rows present in the scaffold define which region-commodity pairs can be shocked: the four trade attributes cover all twelve commodities, `shock_land_prod` and `shock TFP Productivity Value Added` the seven crops, `shock TFP Productivity Intermediates` the two soybean products, and `shock_TFP_Productivity_Feed_Use_livestock` the three livestock products. Two attribute names contain spaces.
+
+## Regions
+
+The 42 model regions are the group A rows of `data/raw/mapping.csv` (`region_code`, `region_name`); the USDA coverage of each commodity is listed in [data/Region_list.txt](data/Region_list.txt). Countries outside the 42 regions are aggregated into a rest-of-world group in the pipeline's non-tariff-measure step and do not appear in the model files.

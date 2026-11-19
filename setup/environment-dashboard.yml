@@ -1,0 +1,12 @@
+# Python environment for running the dashboard locally (code/visualization). Optional: the dashboard is
+# also hosted at https://huggingface.co/spaces/bsat-team/BSAT_Viz. Streamlit pulls in pyarrow and libarrow,
+# a large dependency tree; the bootstrap scripts treat a failure here as a warning, not an error.
+name: bsat-dashboard
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - pandas
+  - numpy
+  - altair
+  - streamlit
